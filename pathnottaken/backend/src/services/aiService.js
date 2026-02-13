@@ -1,25 +1,99 @@
 const careersData = require("../data/careers.json");
 
+// Build a quick lookup of skill labels -> id from the careers dataset (server-side synonym base)
+const skillLabelToId = {};
+careersData.skillCategories.forEach((cat) => {
+  cat.skills.forEach((s) => {
+    skillLabelToId[s.label.toLowerCase()] = s.id;
+    skillLabelToId[s.id.toLowerCase()] = s.id;
+  });
+});
+
+// Small server-side synonym map (mirrors and expands client synonyms).
+const SERVER_SYNONYMS = {
+  python: ["programming", "data-analysis", "machine-learning"],
+  javascript: ["programming", "web-development"],
+  typescript: ["programming", "web-development"],
+  java: ["programming"],
+  "c++": ["programming"],
+  sql: ["programming", "data-analysis"],
+  react: ["programming", "ui-design"],
+  excel: ["data-analysis"],
+  tableau: ["data-analysis"],
+  r: ["data-analysis"],
+  matlab: ["data-analysis"],
+  tensorflow: ["machine-learning"],
+  pytorch: ["machine-learning"],
+  nlp: ["machine-learning"],
+  figma: ["design"],
+  "ux design": ["design"],
+  "public speaking": ["public-speaking"],
+};
+
+// In-memory cache for career embeddings (computed if OpenAI key available)
+let careerEmbeddings = null; // [{ id, vector, career }]
+
+// Basic fuzzy scoring utility used server-side (token-overlap + prefix/includes)
+function fuzzyScore(a, b) {
+  const q = (a || "").toLowerCase().trim();
+  const t = (b || "").toLowerCase();
+  if (q === t) return 100;
+  if (t.startsWith(q)) return 80;
+  if (t.includes(q)) return 60;
+  const qTokens = q.split(/[^a-z0-9]+/).filter(Boolean);
+  const tTokens = t.split(/[^a-z0-9]+/).filter(Boolean);
+  const overlap = qTokens.filter((x) => tTokens.includes(x)).length;
+  if (overlap > 0) return 50 + overlap * 5;
+  const lenDiff = Math.abs(q.length - t.length);
+  return Math.max(0, 30 - lenDiff);
+}
+
+// Normalize a user-provided skill identifier or free-text into one or more canonical skill IDs
+function normalizeSkillInput(input) {
+  if (!input) return [];
+  const key = input.toLowerCase().trim();
+
+  // direct id match
+  if (Object.values(skillLabelToId).includes(key)) return [key];
+
+  // label -> id map
+  if (skillLabelToId[key]) return [skillLabelToId[key]];
+
+  // server synonyms
+  if (SERVER_SYNONYMS[key]) return SERVER_SYNONYMS[key];
+
+  // fuzzy match against labels in skillLabelToId
+  const labelScores = Object.keys(skillLabelToId)
+    .map((label) => ({ id: skillLabelToId[label], label, score: fuzzyScore(key, label) }))
+    .filter((r) => r.score > 50)
+    .sort((a, b) => b.score - a.score)
+    .map((r) => r.id);
+
+  if (labelScores.length > 0) return Array.from(new Set(labelScores));
+
+  // last resort: return the hyphenated version so downstream can still handle it
+  return [key.replace(/[^a-z0-9]+/g, "-")];
+}
+
 /**
  * Built-in recommendation engine that scores careers based on skill/interest overlap.
- * Works without any external API.
+ * Works without any external API. Performs server-side normalization/fuzzying.
  */
 function getBuiltInRecommendations(skills, interests) {
   const careers = careersData.careers;
 
+  // expand any free-text or unknown skills using server-side normalization
+  const normalizedSkills = skills.flatMap((s) => normalizeSkillInput(s));
+
   const scored = careers.map((career) => {
-    // Skill match scoring
-    const matchedSkills = career.requiredSkills.filter((s) =>
-      skills.includes(s)
-    );
+    // Skill match scoring (use normalized skills)
+    const matchedSkills = career.requiredSkills.filter((s) => normalizedSkills.includes(s));
     const skillScore = career.requiredSkills.length
       ? matchedSkills.length / career.requiredSkills.length
       : 0;
 
     // Interest match scoring
-    const matchedInterests = career.relatedInterests.filter((i) =>
-      interests.includes(i)
-    );
+    const matchedInterests = career.relatedInterests.filter((i) => interests.includes(i));
     const interestScore = career.relatedInterests.length
       ? matchedInterests.length / career.relatedInterests.length
       : 0;
@@ -28,17 +102,10 @@ function getBuiltInRecommendations(skills, interests) {
     const totalScore = skillScore * 0.6 + interestScore * 0.4;
 
     // Skills the user still needs
-    const missingSkills = career.requiredSkills.filter(
-      (s) => !skills.includes(s)
-    );
+    const missingSkills = career.requiredSkills.filter((s) => !normalizedSkills.includes(s));
 
     // Generate match explanation
-    const explanation = generateExplanation(
-      career,
-      matchedSkills,
-      matchedInterests,
-      missingSkills
-    );
+    const explanation = generateExplanation(career, matchedSkills, matchedInterests, missingSkills);
 
     return {
       ...career,
@@ -51,8 +118,9 @@ function getBuiltInRecommendations(skills, interests) {
   });
 
   // Sort by score and return top results
+  // include slightly lower-scoring but still relevant matches (>= 10)
   return scored
-    .filter((c) => c.matchScore > 15)
+    .filter((c) => c.matchScore >= 10)
     .sort((a, b) => b.matchScore - a.matchScore)
     .slice(0, 6);
 }
@@ -95,6 +163,54 @@ function generateExplanation(
   }
 
   return parts.join(" ");
+}
+
+/**
+ * --- Embeddings / semantic matching helpers ---
+ */
+function dot(a, b) {
+  return a.reduce((sum, v, i) => sum + v * (b[i] ?? 0), 0);
+}
+function norm(a) {
+  return Math.sqrt(a.reduce((sum, v) => sum + v * v, 0));
+}
+function cosineSim(a, b) {
+  if (!a || !b || a.length !== b.length) return 0;
+  const d = dot(a, b);
+  const n = norm(a) * norm(b);
+  return n === 0 ? 0 : d / n;
+}
+
+async function ensureCareerEmbeddings(openai) {
+  if (careerEmbeddings) return careerEmbeddings;
+  // create embedding inputs for each career
+  const inputs = careersData.careers.map((c) => `${c.title} — ${c.description} Skills: ${c.requiredSkills.join(" ")} Interests: ${c.relatedInterests.join(" ")}`);
+
+  // request embeddings in batches (small dataset so single call ok)
+  const res = await openai.embeddings.create({ model: "text-embedding-3-small", input: inputs });
+  careerEmbeddings = res.data.map((item, i) => ({ id: careersData.careers[i].id, vector: item.embedding, career: careersData.careers[i] }));
+  return careerEmbeddings;
+}
+
+async function getSemanticRecommendations(openai, skills, interests, background) {
+  // build user text
+  const userText = [`Skills: ${skills.join(" ")}`, `Interests: ${interests.join(" ")}`, background || ""].join(" \n");
+  const userEmb = await openai.embeddings.create({ model: "text-embedding-3-small", input: userText });
+  const userVec = userEmb.data[0].embedding;
+
+  await ensureCareerEmbeddings(openai);
+
+  const scored = careerEmbeddings.map((c) => ({ career: c.career, id: c.id, score: cosineSim(userVec, c.vector) }));
+  scored.sort((a, b) => b.score - a.score);
+
+  // Map top semantic matches into recommendation objects (scale score to 0-100)
+  return scored.slice(0, 8).map((s, idx) => ({
+    ...s.career,
+    id: `sem-${s.id}`,
+    source: "semantic",
+    matchScore: Math.round(Math.min(100, s.score * 100)),
+    explanation: `Semantic match (${Math.round(s.score * 100)}%) — based on description, skills and interests.`,
+  }));
 }
 
 /**
@@ -170,26 +286,55 @@ Respond in valid JSON format as an array of objects with keys: title, category, 
  * Main recommendation function — tries AI first, falls back to built-in.
  */
 async function getRecommendations(skills, interests, background) {
-  // Try AI recommendations if API key is set
+  // 1) Always try the built-in engine first (fast + deterministic)
+  console.log("Running built-in recommendation engine...");
+  const builtInResults = getBuiltInRecommendations(skills, interests);
+
+  // 2) If OpenAI is available, compute semantic embeddings and AI recommendations, then merge
   if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY.length > 10) {
+    const OpenAI = require("openai");
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+    // 2a) Try the LLM-based creative recommendations (best-effort)
+    let aiResults = [];
     try {
-      console.log("Using AI-powered recommendations...");
-      const aiResults = await getAIRecommendations(
-        skills,
-        interests,
-        background
-      );
-      if (aiResults.length > 0) {
-        return { source: "ai", recommendations: aiResults };
-      }
-    } catch (error) {
-      console.error("AI recommendation failed, falling back to built-in:", error.message);
+      console.log("Requesting LLM-powered recommendations...");
+      aiResults = await getAIRecommendations(skills, interests, background);
+    } catch (err) {
+      console.warn("LLM recommendations failed:", err.message);
     }
+
+    // 2b) Semantic (embedding) matches — useful as a robust fallback and to surface related items
+    let semanticResults = [];
+    try {
+      semanticResults = await getSemanticRecommendations(openai, skills, interests, background);
+    } catch (err) {
+      console.warn("Semantic recommendation (embeddings) failed:", err.message);
+    }
+
+    // 2c) Merge results: prefer AI > built-in > semantic; dedupe by career id
+    const merged = [];
+    const seen = new Set();
+
+    const pushIfNew = (item) => {
+      const id = item.id || item.title;
+      if (!seen.has(id)) {
+        seen.add(id);
+        merged.push(item);
+      }
+    };
+
+    // Add LLM results first (if any)
+    aiResults.forEach(pushIfNew);
+    // Then built-in
+    builtInResults.forEach(pushIfNew);
+    // Then semantic
+    semanticResults.forEach(pushIfNew);
+
+    return { source: aiResults.length > 0 ? "ai" : "semantic", recommendations: merged.slice(0, 8) };
   }
 
-  // Fall back to built-in recommendations
-  console.log("Using built-in recommendation engine...");
-  const builtInResults = getBuiltInRecommendations(skills, interests);
+  // No OpenAI: return built-in
   return { source: "built-in", recommendations: builtInResults };
 }
 

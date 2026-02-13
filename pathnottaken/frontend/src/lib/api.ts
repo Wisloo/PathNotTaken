@@ -1,4 +1,5 @@
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+export const API_ORIGIN = API_BASE.replace('/api','');
 
 export interface Skill {
   id: string;
@@ -58,6 +59,41 @@ export async function fetchInterests(): Promise<Interest[]> {
   const res = await fetch(`${API_BASE}/skills/interests`);
   const data = await res.json();
   return data.interests;
+}
+
+export async function registerUser(email: string, password: string, name?: string) {
+  try {
+    const res = await fetch(`${API_BASE.replace('/api','')}/api/auth/register`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, name })
+    });
+    return await res.json();
+  } catch (err: any) {
+    return { error: err?.message || 'Network error' };
+  }
+}
+
+export async function loginUser(email: string, password: string) {
+  try {
+    const res = await fetch(`${API_BASE.replace('/api','')}/api/auth/login`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    return await res.json();
+  } catch (err: any) {
+    return { error: err?.message || 'Network error' };
+  }
+}
+
+export async function fetchMe(token: string) {
+  try {
+    const res = await fetch(`${API_BASE.replace('/api','')}/api/auth/me`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    return await res.json();
+  } catch (err: any) {
+    return { error: err?.message || 'Network error' };
+  }
 }
 
 export async function fetchRecommendations(

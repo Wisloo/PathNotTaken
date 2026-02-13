@@ -5,27 +5,51 @@ import { useRouter } from "next/navigation";
 import {
   Interest,
   fetchInterests,
+  fetchSkillCategories,
 } from "@/lib/api";
 
-const SKILL_SUGGESTIONS = [
-  "JavaScript", "Python", "TypeScript", "React", "Node.js", "SQL", "Java", "C++",
-  "HTML/CSS", "Git", "Docker", "AWS", "Machine Learning", "Data Analysis",
-  "Excel", "Tableau", "R", "MATLAB", "Figma", "Adobe Photoshop", "Illustrator",
-  "Project Management", "Agile/Scrum", "Communication", "Public Speaking",
-  "Leadership", "Problem Solving", "Critical Thinking", "Research",
-  "Writing", "Editing", "Teaching", "Mentoring", "Empathy", "Negotiation",
-  "Marketing", "SEO", "Social Media", "Accounting", "Financial Analysis",
-  "Statistics", "Biology", "Chemistry", "Physics", "Psychology",
-  "Graphic Design", "UX Design", "UI Design", "3D Modeling", "Animation",
-  "Video Editing", "Photography", "Music Production", "Creative Writing",
-  "Spanish", "French", "Mandarin", "Japanese", "German",
-  "Customer Service", "Sales", "Business Development", "Strategy",
-  "Supply Chain", "Operations", "HR", "Recruiting",
-  "Cybersecurity", "Networking", "Linux", "Kubernetes",
-  "TensorFlow", "PyTorch", "NLP", "Computer Vision",
-  "Blockchain", "Smart Contracts", "Solidity",
-  "GIS", "AutoCAD", "Civil Engineering", "Mechanical Engineering",
-];
+// Small synonyms map so common free-text skills (e.g. "Python") map to canonical backend skill IDs.
+// Values can be a single id or an array of ids to broaden matches (multi-mapping).
+const SYNONYMS: Record<string, string | string[]> = {
+  // languages -> programming (also map to data/ML when relevant)
+  python: ["programming", "data-analysis", "machine-learning"],
+  javascript: ["programming", "web-development"],
+  typescript: ["programming", "web-development"],
+  java: "programming",
+  "c++": "programming",
+  sql: ["programming", "data-analysis"],
+  react: ["programming", "ui-design"],
+  "node.js": "programming",
+
+  // data tools -> data-analysis
+  excel: "data-analysis",
+  tableau: "data-analysis",
+  r: "data-analysis",
+  matlab: "data-analysis",
+  "data analysis": "data-analysis",
+
+  // ml -> machine-learning
+  tensorflow: "machine-learning",
+  pytorch: "machine-learning",
+  nlp: "machine-learning",
+  "computer vision": "machine-learning",
+
+  // design -> design
+  figma: "design",
+  "ux design": "design",
+  "ui design": "design",
+  "graphic design": "design",
+
+  // soft skills / management
+  "project management": "project-management",
+  "product management": "project-management",
+  "public speaking": "public-speaking",
+  communication: "communication",
+  writing: "writing",
+};
+
+// Suggestions will be loaded from the backend skill catalog at runtime
+let REMOTE_SUGGESTIONS: { id: string; label: string }[] = [];
 
 export default function SkillsForm() {
   const router = useRouter();
@@ -34,9 +58,10 @@ export default function SkillsForm() {
   const [error, setError] = useState<string | null>(null);
 
   // Form state
-  const [skills, setSkills] = useState<string[]>([]);
+  // store selected skills as {id,label} to send canonical IDs to backend
+  const [skills, setSkills] = useState<Array<{ id: string; label: string }>>([]);
   const [skillInput, setSkillInput] = useState("");
-  const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
+  const [filteredSuggestions, setFilteredSuggestions] = useState<Array<{ id: string; label: string }>>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [educationLevel, setEducationLevel] = useState("");
@@ -50,10 +75,15 @@ export default function SkillsForm() {
   useEffect(() => {
     async function loadData() {
       try {
-        const ints = await fetchInterests();
+        const [ints, categories] = await Promise.all([fetchInterests(), fetchSkillCategories()]);
         setInterests(ints);
+
+        // build remote suggestions from categories
+        REMOTE_SUGGESTIONS = categories.flatMap((cat) => cat.skills.map((s) => ({ id: s.id, label: s.label })));
+
         setLoading(false);
-      } catch {
+      } catch (err) {
+        console.error(err);
         setError("Failed to connect. Make sure the backend is running on port 5000.");
         setLoading(false);
       }
@@ -72,33 +102,132 @@ export default function SkillsForm() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
+  // Basic fuzzy scorer: token overlap + prefix + inclusion. Fast and dependency-free.
+  function fuzzyScore(query: string, target: string) {
+    const q = query.toLowerCase().trim();
+    const t = target.toLowerCase();
+    if (q === t) return 100;
+    if (t.startsWith(q)) return 80;
+    if (t.includes(q)) return 60;
+    // token overlap
+    const qTokens = q.split(/[^a-z0-9]+/).filter(Boolean);
+    const tTokens = t.split(/[^a-z0-9]+/).filter(Boolean);
+    const overlap = qTokens.filter((x) => tTokens.includes(x)).length;
+    if (overlap > 0) return 50 + overlap * 5;
+    // small fuzzy length penalty
+    const lenDiff = Math.abs(q.length - t.length);
+    return Math.max(0, 30 - lenDiff);
+  }
+
   const handleSkillInputChange = (value: string) => {
     setSkillInput(value);
     if (value.trim().length > 0) {
-      const filtered = SKILL_SUGGESTIONS.filter(
-        (s) =>
-          s.toLowerCase().includes(value.toLowerCase()) &&
-          !skills.includes(s)
-      ).slice(0, 6);
-      setFilteredSuggestions(filtered);
+      const q = value.toLowerCase();
+      // score remote suggestions by fuzzyScore and filter out already-selected ones
+      const scored = REMOTE_SUGGESTIONS
+        .filter((s) => !skills.find((sk) => sk.id === s.id))
+        .map((s) => ({ s, score: fuzzyScore(q, s.label) }))
+        .filter((r) => r.score > 20)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 6)
+        .map((r) => r.s);
+
+      // also include exact synonyms mapped to remote suggestions
+      const canon = SYNONYMS[value.toLowerCase()];
+      if (canon) {
+        const ids = Array.isArray(canon) ? canon : [canon];
+        ids.forEach((id) => {
+          const found = REMOTE_SUGGESTIONS.find((s) => s.id === id);
+          if (found && !scored.find((x) => x.id === found.id)) scored.unshift(found);
+        });
+      }
+
+      setFilteredSuggestions(scored);
       setShowSuggestions(true);
     } else {
       setShowSuggestions(false);
     }
   };
 
-  const addSkill = (skill: string) => {
-    const trimmed = skill.trim();
-    if (trimmed && !skills.includes(trimmed)) {
-      setSkills((prev) => [...prev, trimmed]);
+  const addSkill = (skillLabel: string) => {
+    const trimmed = skillLabel.trim();
+    if (!trimmed) return;
+
+    // 1) prefer exact match from remote suggestions
+    const exact = REMOTE_SUGGESTIONS.find((s) => s.label.toLowerCase() === trimmed.toLowerCase());
+    if (exact && !skills.find((sk) => sk.id === exact.id)) {
+      setSkills((prev) => [...prev, exact]);
+      setSkillInput("");
+      setShowSuggestions(false);
+      inputRef.current?.focus();
+      return;
+    }
+
+    // 2) try synonyms -> canonical id(s)
+    const canon = SYNONYMS[trimmed.toLowerCase()];
+    if (canon) {
+      const ids = Array.isArray(canon) ? canon : [canon];
+
+      // prefer adding remote suggestion objects when available
+      const toAdd: Array<{ id: string; label: string }> = [];
+      ids.forEach((id) => {
+        const remote = REMOTE_SUGGESTIONS.find((s) => s.id === id);
+        if (remote && !skills.find((sk) => sk.id === remote.id)) toAdd.push(remote);
+        else if (!skills.find((sk) => sk.id === id)) toAdd.push({ id, label: trimmed });
+      });
+
+      if (toAdd.length > 0) {
+        setSkills((prev) => [...prev, ...toAdd]);
+        setSkillInput("");
+        setShowSuggestions(false);
+        inputRef.current?.focus();
+        return;
+      }
+    }
+
+    // 2b) try fuzzy match to pick the best remote suggestion automatically
+    const q = trimmed.toLowerCase();
+    const fuzzyMatches = REMOTE_SUGGESTIONS
+      .filter((s) => !skills.find((sk) => sk.id === s.id))
+      .map((s) => ({
+        s,
+        score: Math.max(0, (function fuzzyScoreLocal(qs: string, ts: string) {
+          const ql = qs.toLowerCase();
+          const tl = ts.toLowerCase();
+          if (ql === tl) return 100;
+          if (tl.startsWith(ql)) return 80;
+          if (tl.includes(ql)) return 60;
+          const qTokens = ql.split(/[^a-z0-9]+/).filter(Boolean);
+          const tTokens = tl.split(/[^a-z0-9]+/).filter(Boolean);
+          const overlap = qTokens.filter((x) => tTokens.includes(x)).length;
+          if (overlap > 0) return 50 + overlap * 5;
+          return 0;
+        })(q, s.label))
+      }))
+      .filter((r) => r.score > 40)
+      .sort((a, b) => b.score - a.score);
+
+    if (fuzzyMatches.length > 0) {
+      const best = fuzzyMatches[0].s;
+      setSkills((prev) => [...prev, best]);
+      setSkillInput("");
+      setShowSuggestions(false);
+      inputRef.current?.focus();
+      return;
+    }
+
+    // 3) free-text fallback — send a hyphenated id (may not match backend but preserves user's input)
+    const freeId = trimmed.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    if (!skills.find((sk) => sk.id === freeId)) {
+      setSkills((prev) => [...prev, { id: freeId, label: trimmed }]);
     }
     setSkillInput("");
     setShowSuggestions(false);
     inputRef.current?.focus();
   };
 
-  const removeSkill = (skill: string) => {
-    setSkills((prev) => prev.filter((s) => s !== skill));
+  const removeSkill = (skillIdOrLabel: string) => {
+    setSkills((prev) => prev.filter((s) => s.id !== skillIdOrLabel && s.label !== skillIdOrLabel));
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -107,7 +236,7 @@ export default function SkillsForm() {
       addSkill(skillInput);
     }
     if (e.key === "Backspace" && !skillInput && skills.length > 0) {
-      removeSkill(skills[skills.length - 1]);
+      removeSkill(skills[skills.length - 1].id || skills[skills.length - 1].label);
     }
   };
 
@@ -118,8 +247,9 @@ export default function SkillsForm() {
   };
 
   const handleSubmit = () => {
-    // Map free-typed skills to closest matching IDs for the backend
-    const skillIds = skills.map((s) => s.toLowerCase().replace(/[\s/]+/g, "-"));
+    // Send canonical skill IDs to the backend
+    const skillIds = skills.map((s) => s.id);
+
     const background = [
       educationLevel && `Education: ${educationLevel}`,
       yearsExperience !== "0" && `${yearsExperience} years of experience`,
@@ -209,17 +339,17 @@ export default function SkillsForm() {
                     >
                       {skills.map((skill) => (
                         <span
-                          key={skill}
+                          key={skill.id}
                           className="inline-flex items-center gap-1.5 bg-brand-50 text-brand-700 text-sm font-medium px-3 py-1 rounded-full border border-brand-200 animate-scale-in"
                         >
-                          {skill}
+                          {skill.label}
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              removeSkill(skill);
+                              removeSkill(skill.id);
                             }}
                             className="text-brand-400 hover:text-brand-700 transition-colors"
-                            aria-label={`Remove ${skill}`}
+                            aria-label={`Remove ${skill.label}`}
                           >
                             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
@@ -247,11 +377,11 @@ export default function SkillsForm() {
                       <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-surface-200 rounded-lg shadow-lg z-20 py-1 animate-fade-in">
                         {filteredSuggestions.map((suggestion) => (
                           <button
-                            key={suggestion}
-                            onClick={() => addSkill(suggestion)}
+                            key={suggestion.id}
+                            onClick={() => addSkill(suggestion.label)}
                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-700 transition-colors"
                           >
-                            {suggestion}
+                            {suggestion.label}
                           </button>
                         ))}
                       </div>

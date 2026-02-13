@@ -1,0 +1,16 @@
+{
+  "mlkymsrp9ih7qa": {
+    "id": "mlkymsrp9ih7qa",
+    "careerId": "bioinformatics-scientist",
+    "title": "Test plan",
+    "weeks": [
+      [
+        {
+          "id": "t-1",
+          "title": "Do X"
+        }
+      ]
+    ],
+    "createdAt": "2026-02-13T14:05:33.349Z"
+  }
+}

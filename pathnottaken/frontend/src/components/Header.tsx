@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Header() {
   const pathname = usePathname();
@@ -15,6 +15,43 @@ export default function Header() {
     { href: "/explore", label: "How It Works" },
     { href: "/careers", label: "Browse Careers" },
   ];
+
+  const [me, setMe] = useState<{ id: string; email: string; name?: string } | null>(null);
+
+  // detect token (use API origin helper so requests go to backend, not Next's /api)
+  useEffect(() => {
+    let mounted = true;
+    async function load() {
+      const token = localStorage.getItem("pn_token");
+      if (!token) {
+        if (mounted) setMe(null);
+        return;
+      }
+      try {
+        const { fetchMe } = await import("@/lib/api");
+        const res = await fetchMe(token);
+        if (mounted) setMe(res?.user || null);
+      } catch (e) {
+        if (mounted) setMe(null);
+      }
+    }
+
+    load();
+
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === 'pn_token') load();
+    };
+    window.addEventListener('storage', onStorage);
+
+    return () => { mounted = false; window.removeEventListener('storage', onStorage); };
+  }, [pathname]);
+
+  function logout() {
+    localStorage.removeItem("pn_token");
+    setMe(null);
+    // refresh to clear any auth-only UI
+    window.location.reload();
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-surface-200">
@@ -47,20 +84,19 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right side */}
+          {/* Right side (auth) */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/explore"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 px-4 py-2 transition-colors"
-            >
-              Login
-            </Link>
-            <Link
-              href="/explore"
-              className="bg-brand-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-brand-700 transition-colors"
-            >
-              Sign Up
-            </Link>
+            {!me ? (
+              <>
+                <Link href="/login" className="text-sm font-medium text-gray-600 hover:text-gray-900 px-4 py-2 transition-colors">Login</Link>
+                <Link href="/signup" className="bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-brand-700 transition-colors">Sign Up</Link>
+              </>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Link href="/account" className="text-sm text-gray-700 px-3 py-2 rounded-md hover:bg-surface-50">My Roadmaps</Link>
+                <button onClick={logout} className="text-sm text-gray-500 px-3 py-2 rounded-md hover:bg-surface-50">Logout</button>
+              </div>
+            )}
           </div>
 
           {/* Mobile toggle */}
@@ -96,19 +132,19 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+
             <div className="pt-3 border-t border-surface-200 flex gap-2 px-4">
-              <Link
-                href="/explore"
-                className="flex-1 text-center py-2.5 rounded-lg text-sm font-medium border border-surface-200 text-gray-700"
-              >
-                Login
-              </Link>
-              <Link
-                href="/explore"
-                className="flex-1 text-center py-2.5 rounded-lg text-sm font-semibold bg-brand-600 text-white"
-              >
-                Sign Up
-              </Link>
+              {!me ? (
+                <>
+                  <Link href="/login" className="flex-1 text-center py-2.5 rounded-lg text-sm font-medium border border-surface-200 text-gray-700">Login</Link>
+                  <Link href="/signup" className="flex-1 text-center py-2.5 rounded-lg text-sm font-semibold bg-brand-600 text-white">Sign Up</Link>
+                </>
+              ) : (
+                <>
+                  <Link href="/account" className="flex-1 text-center py-2.5 rounded-lg text-sm font-medium border border-surface-200 text-gray-700">My Roadmaps</Link>
+                  <button onClick={logout} className="flex-1 text-center py-2.5 rounded-lg text-sm font-medium border border-surface-200 text-gray-700">Logout</button>
+                </>
+              )}
             </div>
           </div>
         )}

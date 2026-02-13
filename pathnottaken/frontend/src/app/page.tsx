@@ -1,41 +1,46 @@
 import Link from "next/link";
+import HeroWelcome from "@/components/HeroWelcome";
 
 export default function Home() {
   return (
     <>
       {/* ─── HERO ─── */}
       <section className="relative overflow-hidden bg-white">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="1" fill="#1e293b" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#dots)" />
+        {/* Growth-themed background (radial gradients + subtle sprout SVG) */}
+        <div className="absolute inset-0 -z-10 hero-growth">
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-transparent to-white opacity-70" />
+
+          {/* floating soft circles */}
+          <svg className="absolute left-8 top-12 w-72 h-72 opacity-30" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="50" fill="rgba(34,197,94,0.08)" />
+            <circle cx="140" cy="140" r="36" fill="rgba(5,150,105,0.06)" />
+          </svg>
+
+          {/* animated sprout */}
+          <svg className="absolute right-16 bottom-10 w-28 h-28 sprout" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M32 56c0-12 6-20 14-24" stroke="rgba(16,185,129,0.95)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M32 48c0-8 4-12 9-14" stroke="rgba(34,197,94,0.9)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M32 36c0-6-4-10-10-12" stroke="rgba(16,185,129,0.9)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M22 24c3 0 6-4 6-8s-4-8-6-8" stroke="rgba(34,197,94,0.95)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-28 md:pt-32 md:pb-36">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-[1.1] mb-6">
-              Discover Career Paths{" "}
-              <span className="font-serif-display text-brand-600">
-                You Never Knew Existed
-              </span>
+              Grow into better career opportunities —
+              <span className="font-serif-display text-brand-600"> one step at a time</span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-              AI-powered career exploration that goes beyond the obvious.{" "}
-              <span className="text-gray-700">Find</span> careers that match your
-              unique skills and interests.
+              Actionable, skill‑first roadmaps backed by market signals. Start small,
+              build steadily, and show measurable growth in 90 days.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-16">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
               <Link
                 href="/explore"
-                className="inline-flex items-center justify-center gap-2 bg-brand-600 text-white px-8 py-3.5 rounded-lg text-base font-semibold hover:bg-brand-700 transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-brand-600 text-white px-8 py-3.5 rounded-lg text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg"
               >
                 Start Exploring Free
               </Link>
@@ -46,6 +51,9 @@ export default function Home() {
                 Watch Demo
               </Link>
             </div>
+
+            {/* personalized welcome when signed in */}
+            <HeroWelcome />
 
             {/* Hero visual placeholder */}
             <div className="relative max-w-2xl mx-auto">
@@ -174,42 +182,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── TESTIMONIAL / SOCIAL PROOF ─── */}
-      <section className="py-16 bg-surface-50 border-y border-surface-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <blockquote className="text-xl md:text-2xl text-gray-700 font-medium leading-relaxed mb-6">
-            &ldquo;I was a psychology major with no idea where to go. PathNotTaken suggested{" "}
-            <span className="text-brand-600 font-semibold">UX Research</span> — a career I&apos;d never
-            heard of. Now I&apos;m doing exactly what I love and getting paid for it.&rdquo;
-          </blockquote>
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 font-bold text-sm">
-              SL
-            </div>
-            <div className="text-left">
-              <p className="text-sm font-semibold text-gray-900">Sarah L.</p>
-              <p className="text-xs text-gray-500">UX Researcher at Spotify</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* ─── CTA ─── */}
       <section className="py-20 md:py-28 bg-brand-950 text-white relative grain">
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
-            Ready to find your{" "}
-            <span className="font-serif-display">hidden path</span>?
+            Ready to start growing your career?
           </h2>
           <p className="text-lg text-slate-300 mb-10 max-w-xl mx-auto">
-            Your skills are more versatile than you think. Discover careers you
-            never considered — but are perfectly suited for.
+            Pick a path, follow a simple 90‑day plan, and track real progress — no fluff.
           </p>
           <Link
             href="/explore"
             className="inline-flex items-center gap-2 bg-white text-brand-900 px-10 py-4 rounded-lg text-base font-semibold hover:bg-slate-100 transition-colors"
           >
-            Start Exploring — It&apos;s Free
+            Start Your 90‑Day Plan — Free
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

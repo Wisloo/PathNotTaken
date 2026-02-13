@@ -29,7 +29,7 @@ export default function CareerCard({ career, index }: CareerCardProps) {
     career.matchScore >= 80
       ? "bg-brand-600"
       : career.matchScore >= 60
-      ? "bg-blue-500"
+      ? "bg-emerald-500"
       : "bg-slate-400";
 
   return (
@@ -40,9 +40,16 @@ export default function CareerCard({ career, index }: CareerCardProps) {
       <div className="p-5 flex-1 flex flex-col">
         {/* Title + Fav */}
         <div className="flex items-start justify-between mb-3">
-          <h3 className="text-lg font-bold text-gray-900 leading-tight pr-2">
-            {career.title}
-          </h3>
+          <div className="flex items-center gap-3">
+            <h3 className="text-lg font-bold text-gray-900 leading-tight pr-2">
+              {career.title}
+            </h3>
+            <div className="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center gap-1">
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12l5-5 5 5M12 19V6"/></svg>
+              {career.growthOutlook || 'Growth'}
+            </div>
+          </div>
+
           <button
             className="text-gray-300 hover:text-red-400 transition-colors flex-shrink-0 mt-0.5"
             aria-label="Save career"
@@ -151,7 +158,8 @@ export default function CareerCard({ career, index }: CareerCardProps) {
       </div>
 
       {/* Learn More button */}
-      <div className="px-5 pb-5">
+      <div className="px-5 pb-5 space-y-2">
+        <a href={`/roadmap?career=${career.id}`} className="block w-full text-center py-2.5 bg-emerald-600 text-white text-sm font-semibold rounded-lg hover:bg-emerald-500 transition-colors">Start 90‑day plan</a>
         <button
           onClick={() => setExpanded(!expanded)}
           className="w-full py-2.5 bg-brand-950 text-white text-sm font-semibold rounded-lg hover:bg-brand-800 transition-colors"

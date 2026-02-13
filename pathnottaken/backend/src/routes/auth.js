@@ -1,0 +1,78 @@
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const db = require("../db");
+
+const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
+
+function signToken(userId) {
+  return jwt.sign({ sub: userId }, JWT_SECRET, { expiresIn: "30d" });
+}
+
+// POST /api/auth/register
+router.post("/register", async (req, res) => {
+  try {
+    const { email, password, name } = req.body;
+    if (!email || !password || !name) return res.status(400).json({ error: "email, name and password required" });
+
+    const exists = await db.get('SELECT id FROM users WHERE email = ?', email.toLowerCase());
+    if (exists) return res.status(409).json({ error: "User already exists" });
+
+    const id = (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)).toLowerCase();
+    const passwordHash = bcrypt.hashSync(password, 10);
+    const createdAt = new Date().toISOString();
+    await db.run('INSERT INTO users (id,email,name,passwordHash,createdAt) VALUES (?,?,?,?,?)', id, email.toLowerCase(), name || null, passwordHash, createdAt);
+
+    const token = signToken(id);
+    return res.json({ success: true, token, user: { id, email: email.toLowerCase(), name } });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "registration failed" });
+  }
+});
+
+// POST /api/auth/login
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) return res.status(400).json({ error: "email and password required" });
+
+    const row = await db.get('SELECT id,email,name,passwordHash,createdAt FROM users WHERE email = ?', email.toLowerCase());
+    if (!row) return res.status(401).json({ error: "invalid credentials" });
+
+    if (!bcrypt.compareSync(password, row.passwordHash)) {
+      return res.status(401).json({ error: "invalid credentials" });
+    }
+
+    const token = signToken(row.id);
+    return res.json({ success: true, token, user: { id: row.id, email: row.email, name: row.name } });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "login failed" });
+  }
+});
+
+// GET /api/auth/me
+router.get("/me", async (req, res) => {
+  try {
+    const auth = (req.headers.authorization || "").replace("Bearer ", "");
+    if (!auth) return res.status(401).json({ error: "unauthenticated" });
+    try {
+      const payload = jwt.verify(auth, JWT_SECRET);
+      const user = await db.get('SELECT id,email,name,createdAt FROM users WHERE id = ?', payload.sub);
+      if (!user) return res.status(401).json({ error: "unauthenticated" });
+      // load user's roadmap ids
+      const rrows = await db.all('SELECT id FROM roadmaps WHERE ownerId = ?', user.id);
+      user.roadmaps = rrows.map(r => r.id);
+      return res.json({ success: true, user });
+    } catch (err) {
+      return res.status(401).json({ error: "unauthenticated" });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "failed" });
+  }
+});
+
+module.exports = router;
