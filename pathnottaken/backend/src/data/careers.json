@@ -1,0 +1,261 @@
+{
+  "careers": [
+    {
+      "id": "ux-researcher",
+      "title": "UX Researcher",
+      "category": "Design & Research",
+      "description": "UX Researchers study how people interact with products and services, using psychology, data analysis, and empathy to improve user experiences. They conduct interviews, surveys, and usability tests to uncover insights that drive product decisions.",
+      "dayInLife": "Your day starts with analyzing survey responses from last week's study. Mid-morning, you moderate a usability test session with participants. After lunch, you synthesize findings into a report with actionable recommendations for the design team. You end the day planning the methodology for an upcoming research project.",
+      "salaryRange": { "min": 65000, "max": 130000, "currency": "USD" },
+      "growthOutlook": "High",
+      "requiredSkills": ["empathy", "analytical-thinking", "communication", "research", "psychology", "data-analysis", "interviewing"],
+      "relatedInterests": ["understanding-people", "problem-solving", "psychology", "design", "technology"],
+      "nonObvious": true,
+      "whyNonObvious": "Many people with psychology or communication backgrounds don't realize their skills directly apply to tech careers in UX research."
+    },
+    {
+      "id": "technical-writer",
+      "title": "Technical Writer",
+      "category": "Writing & Communication",
+      "description": "Technical Writers translate complex technical concepts into clear, accessible documentation. They create user guides, API docs, tutorials, and help content that makes technology understandable for different audiences.",
+      "dayInLife": "You spend the morning reviewing a developer's pull request to understand a new feature, then draft documentation for it. After lunch, you meet with the product team to discuss upcoming releases. You spend the afternoon updating the API reference guide and creating a tutorial with code examples.",
+      "salaryRange": { "min": 55000, "max": 115000, "currency": "USD" },
+      "growthOutlook": "Moderate",
+      "requiredSkills": ["writing", "communication", "technical-literacy", "attention-to-detail", "organization", "research"],
+      "relatedInterests": ["writing", "technology", "teaching", "problem-solving", "organization"],
+      "nonObvious": true,
+      "whyNonObvious": "Writers and communicators often overlook tech industry roles where their core skills command strong salaries."
+    },
+    {
+      "id": "data-ethicist",
+      "title": "Data Ethicist",
+      "category": "Ethics & Policy",
+      "description": "Data Ethicists ensure that data collection, AI systems, and algorithmic decisions are fair, transparent, and respectful of privacy. They bridge philosophy, law, and technology to guide responsible innovation.",
+      "dayInLife": "You review an AI model's training data for potential biases in the morning. After a cross-functional meeting with engineers and legal, you draft ethical guidelines for a new data collection initiative. The afternoon involves researching emerging regulation and preparing a presentation on responsible AI for leadership.",
+      "salaryRange": { "min": 80000, "max": 160000, "currency": "USD" },
+      "growthOutlook": "Very High",
+      "requiredSkills": ["critical-thinking", "ethics", "communication", "research", "data-analysis", "policy", "philosophy"],
+      "relatedInterests": ["ethics", "technology", "social-impact", "law", "philosophy", "psychology"],
+      "nonObvious": true,
+      "whyNonObvious": "Philosophy and ethics graduates rarely consider tech, but the industry desperately needs their perspective on AI fairness and data rights."
+    },
+    {
+      "id": "urban-informatics",
+      "title": "Urban Informatics Specialist",
+      "category": "Data & Cities",
+      "description": "Urban Informatics Specialists use data science and technology to solve city-scale problems — from traffic optimization to public health mapping. They combine GIS, data analysis, and civic technology to improve urban life.",
+      "dayInLife": "You start by analyzing city transit data to identify inefficient routes. Late morning, you meet with city planners to present findings from a noise pollution study. After lunch, you build a dashboard visualizing neighborhood walkability scores. You end the day writing a proposal for a smart city sensor network.",
+      "salaryRange": { "min": 60000, "max": 120000, "currency": "USD" },
+      "growthOutlook": "High",
+      "requiredSkills": ["data-analysis", "programming", "gis", "statistics", "visualization", "problem-solving", "communication"],
+      "relatedInterests": ["cities", "environment", "data", "social-impact", "technology", "geography"],
+      "nonObvious": true,
+      "whyNonObvious": "Students interested in geography or urban planning don't realize their passion can combine with data skills for high-impact tech roles."
+    },
+    {
+      "id": "developer-advocate",
+      "title": "Developer Advocate",
+      "category": "Technology & Community",
+      "description": "Developer Advocates are the bridge between a technology company and its developer community. They create tutorials, give talks, write blog posts, and build sample applications to help developers succeed with a platform or tool.",
+      "dayInLife": "Morning: you record a video tutorial for a new SDK feature. You then respond to developer questions on the community forum. After lunch, you prototype a demo app for an upcoming conference talk. Late afternoon, you write a blog post about a common developer pain point and how to solve it.",
+      "salaryRange": { "min": 80000, "max": 170000, "currency": "USD" },
+      "growthOutlook": "High",
+      "requiredSkills": ["programming", "communication", "public-speaking", "writing", "teaching", "empathy", "creativity"],
+      "relatedInterests": ["technology", "teaching", "community", "public-speaking", "writing", "problem-solving"],
+      "nonObvious": true,
+      "whyNonObvious": "Many developers and communicators don't know this role exists — it perfectly combines technical skills with people skills."
+    },
+    {
+      "id": "bioinformatics",
+      "title": "Bioinformatics Scientist",
+      "category": "Science & Technology",
+      "description": "Bioinformatics Scientists use programming, statistics, and biology knowledge to analyze genomic data, model biological systems, and accelerate drug discovery and personalized medicine.",
+      "dayInLife": "You begin by running a genome alignment pipeline on a new patient dataset. Mid-morning, you debug a Python script that visualizes gene expression patterns. After lunch, you present your mutation analysis findings to the research team. The afternoon is spent developing a machine learning model to predict drug responses.",
+      "salaryRange": { "min": 70000, "max": 140000, "currency": "USD" },
+      "growthOutlook": "Very High",
+      "requiredSkills": ["programming", "biology", "statistics", "data-analysis", "machine-learning", "research", "attention-to-detail"],
+      "relatedInterests": ["science", "biology", "technology", "data", "healthcare", "research"],
+      "nonObvious": true,
+      "whyNonObvious": "Biology students often don't see the massive demand for computational skills in biotech, where coding meets life sciences."
+    },
+    {
+      "id": "sustainability-analyst",
+      "title": "Sustainability Analyst",
+      "category": "Environment & Business",
+      "description": "Sustainability Analysts help organizations measure, report, and reduce their environmental impact. They combine data analysis with environmental science to drive corporate sustainability strategies and ESG reporting.",
+      "dayInLife": "Morning: you collect energy consumption data from facilities worldwide and update the carbon footprint dashboard. You then join a call with supply chain partners to discuss emission reduction targets. After lunch, you draft the quarterly sustainability report for investors. Late afternoon, you research renewable energy options for the company's data centers.",
+      "salaryRange": { "min": 55000, "max": 110000, "currency": "USD" },
+      "growthOutlook": "Very High",
+      "requiredSkills": ["data-analysis", "environmental-science", "communication", "research", "critical-thinking", "project-management"],
+      "relatedInterests": ["environment", "social-impact", "data", "business", "science", "sustainability"],
+      "nonObvious": true,
+      "whyNonObvious": "Environmental science majors often aim for fieldwork but miss the growing corporate demand for sustainability data expertise."
+    },
+    {
+      "id": "forensic-accountant",
+      "title": "Forensic Accountant",
+      "category": "Finance & Investigation",
+      "description": "Forensic Accountants investigate financial fraud, embezzlement, and white-collar crime. They combine accounting expertise with detective work, analyzing financial records to uncover hidden patterns and testify as expert witnesses.",
+      "dayInLife": "You spend the morning tracing suspicious transactions through multiple bank accounts. After a meeting with the legal team about an upcoming court case, you analyze expense reports looking for anomalies. The afternoon involves preparing a detailed forensic report and creating visualizations that explain the fraud scheme for a jury.",
+      "salaryRange": { "min": 60000, "max": 135000, "currency": "USD" },
+      "growthOutlook": "High",
+      "requiredSkills": ["accounting", "analytical-thinking", "attention-to-detail", "investigation", "communication", "critical-thinking", "data-analysis"],
+      "relatedInterests": ["investigation", "law", "finance", "problem-solving", "justice", "data"],
+      "nonObvious": true,
+      "whyNonObvious": "Accounting students rarely discover this exciting intersection of finance and criminal investigation."
+    },
+    {
+      "id": "localization-engineer",
+      "title": "Localization Engineer",
+      "category": "Technology & Languages",
+      "description": "Localization Engineers adapt software products for different languages, cultures, and regions. They combine programming skills with cultural knowledge to ensure apps work naturally for users worldwide.",
+      "dayInLife": "Morning: you fix a bug where Arabic text isn't rendering correctly in the mobile app. Then you review a translator's work for a Japanese release. After lunch, you build automated tests for locale-specific date and currency formatting. Late afternoon, you meet with the product team to plan internationalization for a new feature.",
+      "salaryRange": { "min": 65000, "max": 125000, "currency": "USD" },
+      "growthOutlook": "Moderate",
+      "requiredSkills": ["programming", "languages", "attention-to-detail", "cultural-awareness", "testing", "communication", "problem-solving"],
+      "relatedInterests": ["languages", "culture", "technology", "travel", "problem-solving", "global-perspective"],
+      "nonObvious": true,
+      "whyNonObvious": "Language and linguistics graduates often don't know their skills are valued in software engineering contexts."
+    },
+    {
+      "id": "computational-designer",
+      "title": "Computational Designer",
+      "category": "Design & Technology",
+      "description": "Computational Designers use programming, algorithms, and mathematical models to create designs — from architecture and product design to generative art. They bridge aesthetics and code to create forms impossible by hand.",
+      "dayInLife": "You start by tweaking parameters in a generative algorithm that creates organic-looking building facades. Mid-morning, you code a Grasshopper script to optimize material usage. After lunch, you prototype an interactive installation using Processing. The afternoon is spent collaborating with architects on a parametric design for a community center.",
+      "salaryRange": { "min": 60000, "max": 130000, "currency": "USD" },
+      "growthOutlook": "High",
+      "requiredSkills": ["programming", "design", "mathematics", "creativity", "3d-modeling", "problem-solving", "visualization"],
+      "relatedInterests": ["art", "design", "technology", "mathematics", "architecture", "creativity"],
+      "nonObvious": true,
+      "whyNonObvious": "Art and design students often overlook how adding programming skills opens up entirely new creative career paths."
+    },
+    {
+      "id": "healthcare-ux",
+      "title": "Healthcare UX Designer",
+      "category": "Healthcare & Design",
+      "description": "Healthcare UX Designers create intuitive interfaces for medical applications, electronic health records, telemedicine platforms, and health monitoring devices. Their designs directly impact patient outcomes and clinician efficiency.",
+      "dayInLife": "Morning: you shadow a nurse using the EHR system to identify pain points. Then you sketch wireframes for a new patient intake flow. After lunch, you run a usability test of a telemedicine app with elderly patients. The afternoon is spent creating a design system for accessible health content.",
+      "salaryRange": { "min": 75000, "max": 145000, "currency": "USD" },
+      "growthOutlook": "Very High",
+      "requiredSkills": ["design", "empathy", "research", "accessibility", "prototyping", "communication", "healthcare-knowledge"],
+      "relatedInterests": ["healthcare", "design", "helping-people", "technology", "psychology", "accessibility"],
+      "nonObvious": true,
+      "whyNonObvious": "Healthcare and design are rarely connected in education, but this intersection has tremendous impact and demand."
+    },
+    {
+      "id": "climate-tech-pm",
+      "title": "Climate Tech Product Manager",
+      "category": "Environment & Technology",
+      "description": "Climate Tech Product Managers lead the development of technology solutions that address climate change — from carbon tracking software to renewable energy platforms and sustainable supply chain tools.",
+      "dayInLife": "Morning: you review user feedback on the carbon accounting dashboard and prioritize backlog items. Then you lead a sprint planning meeting with engineers building a supply chain emissions tracker. After lunch, you interview a sustainability director at a potential client. The afternoon is spent drafting a product roadmap for Q3.",
+      "salaryRange": { "min": 90000, "max": 175000, "currency": "USD" },
+      "growthOutlook": "Very High",
+      "requiredSkills": ["project-management", "communication", "analytical-thinking", "leadership", "environmental-science", "strategy", "technology"],
+      "relatedInterests": ["environment", "technology", "leadership", "social-impact", "business", "sustainability"],
+      "nonObvious": true,
+      "whyNonObvious": "Environmentally-passionate students often don't realize they can lead technology products that fight climate change."
+    }
+  ],
+  "skillCategories": [
+    {
+      "id": "technical",
+      "name": "Technical Skills",
+      "skills": [
+        { "id": "programming", "label": "Programming / Coding" },
+        { "id": "data-analysis", "label": "Data Analysis" },
+        { "id": "machine-learning", "label": "Machine Learning / AI" },
+        { "id": "statistics", "label": "Statistics" },
+        { "id": "gis", "label": "GIS / Mapping" },
+        { "id": "3d-modeling", "label": "3D Modeling" },
+        { "id": "testing", "label": "Software Testing" },
+        { "id": "technical-literacy", "label": "Technical Literacy" },
+        { "id": "visualization", "label": "Data Visualization" }
+      ]
+    },
+    {
+      "id": "creative",
+      "name": "Creative Skills",
+      "skills": [
+        { "id": "design", "label": "Design / Visual Design" },
+        { "id": "writing", "label": "Writing" },
+        { "id": "creativity", "label": "Creative Thinking" },
+        { "id": "prototyping", "label": "Prototyping" },
+        { "id": "photography", "label": "Photography / Video" }
+      ]
+    },
+    {
+      "id": "analytical",
+      "name": "Analytical Skills",
+      "skills": [
+        { "id": "critical-thinking", "label": "Critical Thinking" },
+        { "id": "analytical-thinking", "label": "Analytical Thinking" },
+        { "id": "research", "label": "Research" },
+        { "id": "problem-solving", "label": "Problem Solving" },
+        { "id": "attention-to-detail", "label": "Attention to Detail" },
+        { "id": "investigation", "label": "Investigation" },
+        { "id": "accounting", "label": "Accounting / Finance" }
+      ]
+    },
+    {
+      "id": "interpersonal",
+      "name": "People & Communication Skills",
+      "skills": [
+        { "id": "communication", "label": "Communication" },
+        { "id": "empathy", "label": "Empathy" },
+        { "id": "teaching", "label": "Teaching / Mentoring" },
+        { "id": "public-speaking", "label": "Public Speaking" },
+        { "id": "interviewing", "label": "Interviewing" },
+        { "id": "leadership", "label": "Leadership" },
+        { "id": "cultural-awareness", "label": "Cultural Awareness" }
+      ]
+    },
+    {
+      "id": "domain",
+      "name": "Domain Knowledge",
+      "skills": [
+        { "id": "psychology", "label": "Psychology" },
+        { "id": "biology", "label": "Biology / Life Sciences" },
+        { "id": "environmental-science", "label": "Environmental Science" },
+        { "id": "healthcare-knowledge", "label": "Healthcare Knowledge" },
+        { "id": "ethics", "label": "Ethics / Philosophy" },
+        { "id": "policy", "label": "Policy / Regulation" },
+        { "id": "philosophy", "label": "Philosophy" },
+        { "id": "languages", "label": "Foreign Languages" },
+        { "id": "mathematics", "label": "Mathematics" },
+        { "id": "accessibility", "label": "Accessibility" }
+      ]
+    },
+    {
+      "id": "management",
+      "name": "Management & Organization",
+      "skills": [
+        { "id": "project-management", "label": "Project Management" },
+        { "id": "organization", "label": "Organization" },
+        { "id": "strategy", "label": "Strategic Thinking" }
+      ]
+    }
+  ],
+  "interests": [
+    { "id": "technology", "label": "Technology", "icon": "💻" },
+    { "id": "design", "label": "Design & Art", "icon": "🎨" },
+    { "id": "science", "label": "Science", "icon": "🔬" },
+    { "id": "healthcare", "label": "Healthcare", "icon": "🏥" },
+    { "id": "environment", "label": "Environment & Nature", "icon": "🌍" },
+    { "id": "social-impact", "label": "Social Impact", "icon": "🤝" },
+    { "id": "writing", "label": "Writing & Content", "icon": "✍️" },
+    { "id": "psychology", "label": "Psychology & Behavior", "icon": "🧠" },
+    { "id": "data", "label": "Data & Numbers", "icon": "📊" },
+    { "id": "law", "label": "Law & Justice", "icon": "⚖️" },
+    { "id": "business", "label": "Business & Strategy", "icon": "📈" },
+    { "id": "teaching", "label": "Teaching & Education", "icon": "📚" },
+    { "id": "languages", "label": "Languages & Culture", "icon": "🌐" },
+    { "id": "helping-people", "label": "Helping People", "icon": "💛" },
+    { "id": "creativity", "label": "Creativity & Innovation", "icon": "💡" },
+    { "id": "problem-solving", "label": "Problem Solving", "icon": "🧩" },
+    { "id": "community", "label": "Community Building", "icon": "👥" },
+    { "id": "investigation", "label": "Investigation & Research", "icon": "🔍" },
+    { "id": "finance", "label": "Finance & Economics", "icon": "💰" },
+    { "id": "sustainability", "label": "Sustainability", "icon": "♻️" }
+  ]
+}
