@@ -20,6 +20,7 @@ export interface Interest {
 
 export interface SalaryRange {
   min: number;
+  median?: number;
   max: number;
   currency?: string;
 }
@@ -34,12 +35,21 @@ export interface CareerRecommendation {
   growthOutlook: string;
   matchScore: number;
   matchedSkills: string[];
+  requiredSkills?: string[];
   matchedInterests: string[];
   missingSkills: string[];
   explanation: string;
   whyNonObvious?: string;
   nonObvious: boolean;
   source?: string;
+  typicalBackgrounds?: string[];
+  industries?: string[];
+  skillTransfers?: Record<string, string>;
+  realWorldExamples?: string[];
+  entryPaths?: string[];
+  careerProgression?: string[];
+  pros?: string[];
+  cons?: string[];
 }
 
 export interface RecommendationResponse {

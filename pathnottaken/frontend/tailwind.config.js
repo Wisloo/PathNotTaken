@@ -29,7 +29,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["DM Sans", "system-ui", "-apple-system", "sans-serif"],
+        sans: ["Inter", "DM Sans", "system-ui", "-apple-system", "sans-serif"],
         serif: ["Instrument Serif", "Georgia", "serif"],
       },
       borderRadius: {

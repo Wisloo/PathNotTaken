@@ -37,8 +37,39 @@ const SYNONYMS: Record<string, string | string[]> = {
   // design -> design
   figma: "design",
   "ux design": "design",
-  "ui design": "design",
+  "ui design": ["design", "ui-design"],
   "graphic design": "design",
+
+  // cloud & devops
+  aws: "cloud-computing",
+  azure: "cloud-computing",
+  gcp: "cloud-computing",
+  docker: ["devops", "cloud-computing"],
+  kubernetes: ["devops", "cloud-computing"],
+  terraform: ["devops", "cloud-computing"],
+
+  // cybersecurity
+  cybersecurity: "cybersecurity",
+  "penetration testing": "cybersecurity",
+  "ethical hacking": "cybersecurity",
+  splunk: ["cybersecurity", "data-analysis"],
+
+  // supply chain
+  "supply chain": "supply-chain",
+  logistics: "supply-chain",
+  "six sigma": ["supply-chain", "problem-solving"],
+
+  // marketing & content
+  seo: ["digital-marketing", "data-analysis"],
+  "content marketing": ["content-strategy", "digital-marketing"],
+  "digital marketing": "digital-marketing",
+  "social media": "digital-marketing",
+  "content strategy": "content-strategy",
+
+  // education
+  "instructional design": ["education-theory", "design"],
+  "curriculum design": "education-theory",
+  "e-learning": "education-theory",
 
   // soft skills / management
   "project management": "project-management",
@@ -46,6 +77,8 @@ const SYNONYMS: Record<string, string | string[]> = {
   "public speaking": "public-speaking",
   communication: "communication",
   writing: "writing",
+  agile: "agile-methodology",
+  scrum: "agile-methodology",
 };
 
 // Suggestions will be loaded from the backend skill catalog at runtime
@@ -250,6 +283,11 @@ export default function SkillsForm() {
     // Send canonical skill IDs to the backend
     const skillIds = skills.map((s) => s.id);
 
+    // Persist skills to localStorage for roadmap page
+    try {
+      localStorage.setItem('pn_user_skills', JSON.stringify(skillIds));
+    } catch { /* quota exceeded */ }
+
     const background = [
       educationLevel && `Education: ${educationLevel}`,
       yearsExperience !== "0" && `${yearsExperience} years of experience`,
@@ -297,20 +335,20 @@ export default function SkillsForm() {
       {/* ─── Progress Header ─── */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-9 h-9 bg-brand-600 rounded-full flex items-center justify-center">
+          <div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-xl flex items-center justify-center shadow-sm">
             <span className="text-white font-bold text-sm">PN</span>
           </div>
           <div>
             <p className="text-sm font-semibold text-gray-900">
-              Step {step} of 2:{" "}
-              {step === 1 ? "Skills & Interests" : "Preferences"}
+              Step {step} of 1:{" "}
+              Skills & Interests
             </p>
           </div>
         </div>
-        <div className="w-full bg-surface-200 rounded-full h-2">
+        <div className="w-full bg-gray-100 rounded-full h-2">
           <div
-            className="bg-brand-600 h-2 rounded-full transition-all duration-500"
-            style={{ width: `${(step / 2) * 100}%` }}
+            className="bg-gradient-to-r from-emerald-500 to-emerald-700 h-2 rounded-full transition-all duration-500"
+            style={{ width: `100%` }}
           />
         </div>
       </div>
@@ -320,7 +358,7 @@ export default function SkillsForm() {
         <div className="flex-1 min-w-0">
           {step === 1 && (
             <div className="animate-fade-in-up">
-              <div className="bg-white border border-surface-200 rounded-xl p-6 md:p-8 mb-6">
+              <div className="card-static p-6 md:p-8 mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-1">
                   Tell us about your skills
                 </h2>
@@ -334,13 +372,13 @@ export default function SkillsForm() {
                     Current Skills <span className="text-red-500">*</span>
                   </label>
                   <div className="relative" ref={suggestionsRef}>
-                    <div className="tag-input-container border border-surface-200 rounded-lg px-3 py-2.5 flex flex-wrap gap-2 items-center min-h-[48px] bg-white transition-all cursor-text"
+                    <div className="tag-input-container border border-gray-200 rounded-lg px-3 py-2.5 flex flex-wrap gap-2 items-center min-h-[48px] bg-white transition-all cursor-text"
                       onClick={() => inputRef.current?.focus()}
                     >
                       {skills.map((skill) => (
                         <span
                           key={skill.id}
-                          className="inline-flex items-center gap-1.5 bg-brand-50 text-brand-700 text-sm font-medium px-3 py-1 rounded-full border border-brand-200 animate-scale-in"
+                          className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-sm font-medium px-3 py-1 rounded-full border border-emerald-200 animate-scale-in"
                         >
                           {skill.label}
                           <button
@@ -348,7 +386,7 @@ export default function SkillsForm() {
                               e.stopPropagation();
                               removeSkill(skill.id);
                             }}
-                            className="text-brand-400 hover:text-brand-700 transition-colors"
+                            className="text-emerald-400 hover:text-emerald-700 transition-colors"
                             aria-label={`Remove ${skill.label}`}
                           >
                             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -374,12 +412,12 @@ export default function SkillsForm() {
 
                     {/* Autocomplete dropdown */}
                     {showSuggestions && filteredSuggestions.length > 0 && (
-                      <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-surface-200 rounded-lg shadow-lg z-20 py-1 animate-fade-in">
+                      <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-20 py-1 animate-fade-in">
                         {filteredSuggestions.map((suggestion) => (
                           <button
                             key={suggestion.id}
                             onClick={() => addSkill(suggestion.label)}
-                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-700 transition-colors"
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
                           >
                             {suggestion.label}
                           </button>
@@ -394,14 +432,14 @@ export default function SkillsForm() {
                   <label className="block text-sm font-semibold text-gray-900 mb-3">
                     Interests & Passions <span className="text-red-500">*</span>
                   </label>
-                  <div className="grid grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {interests.map((interest) => (
                       <label
                         key={interest.id}
                         className={`flex items-center gap-3 px-4 py-3 rounded-lg border cursor-pointer transition-all text-sm ${
                           selectedInterests.includes(interest.id)
-                            ? "bg-brand-50 border-brand-300 text-brand-700"
-                            : "bg-white border-surface-200 text-gray-600 hover:border-surface-300"
+                            ? "bg-emerald-50 border-emerald-300 text-emerald-700"
+                            : "bg-white border-gray-200 text-gray-600 hover:border-gray-300"
                         }`}
                       >
                         <input
@@ -413,7 +451,7 @@ export default function SkillsForm() {
                         <div
                           className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
                             selectedInterests.includes(interest.id)
-                              ? "bg-brand-600 border-brand-600"
+                              ? "bg-emerald-600 border-emerald-600"
                               : "border-gray-300 bg-white"
                           }`}
                         >
@@ -430,7 +468,7 @@ export default function SkillsForm() {
                 </div>
 
                 {/* ─── Education & Experience Row ─── */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-900 mb-2">
                       Education Level
@@ -438,7 +476,7 @@ export default function SkillsForm() {
                     <select
                       value={educationLevel}
                       onChange={(e) => setEducationLevel(e.target.value)}
-                      className="w-full px-4 py-2.5 border border-surface-200 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 appearance-none cursor-pointer"
+                      className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 appearance-none cursor-pointer"
                       style={{
                         backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")`,
                         backgroundPosition: "right 12px center",
@@ -467,7 +505,7 @@ export default function SkillsForm() {
                       max="50"
                       value={yearsExperience}
                       onChange={(e) => setYearsExperience(e.target.value)}
-                      className="w-full px-4 py-2.5 border border-surface-200 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                      className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
                     />
                   </div>
                 </div>
@@ -482,23 +520,23 @@ export default function SkillsForm() {
                     value={currentField}
                     onChange={(e) => setCurrentField(e.target.value)}
                     placeholder="e.g., Software Development, Marketing"
-                    className="w-full px-4 py-2.5 border border-surface-200 rounded-lg text-sm text-gray-700 placeholder:text-gray-400 bg-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder:text-gray-400 bg-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
                   />
                 </div>
               </div>
 
               {/* ─── Action Buttons ─── */}
-              <div className="flex items-center justify-between bg-white border border-surface-200 rounded-xl px-6 py-4">
+              <div className="flex items-center justify-between card-static px-6 py-4">
                 <button
                   disabled
-                  className="px-6 py-2.5 text-sm font-medium text-gray-400 border border-surface-200 rounded-lg cursor-not-allowed"
+                  className="px-6 py-2.5 text-sm font-medium text-gray-400 border border-gray-200 rounded-lg cursor-not-allowed"
                 >
                   &larr; Back
                 </button>
                 <button
                   onClick={handleSubmit}
                   disabled={skills.length === 0 || selectedInterests.length === 0}
-                  className="px-8 py-2.5 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="btn-primary text-sm px-8 py-2.5 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Discover My Paths &rarr;
                 </button>
@@ -509,7 +547,7 @@ export default function SkillsForm() {
 
         {/* ─── Helpful Tips Sidebar ─── */}
         <div className="hidden lg:block w-72 flex-shrink-0">
-          <div className="sticky top-24 bg-white border border-surface-200 rounded-xl p-6 space-y-5">
+          <div className="sticky top-24 card-static p-6 space-y-5">
             <h3 className="font-bold text-sm text-gray-900 uppercase tracking-wide">
               Helpful Tips
             </h3>
@@ -544,7 +582,7 @@ export default function SkillsForm() {
               },
             ].map((tip, i) => (
               <div key={i} className="flex gap-3">
-                <div className="w-7 h-7 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
                   {tip.icon}
                 </div>
                 <div>

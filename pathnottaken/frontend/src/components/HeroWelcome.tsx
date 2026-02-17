@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function HeroWelcome() {
   const [name, setName] = useState<string | null>(null);
@@ -26,10 +27,10 @@ export default function HeroWelcome() {
   if (!name) return null;
   return (
     <div className="mt-6 text-center">
-      <div className="inline-flex items-center gap-3 bg-emerald-50 border border-emerald-100 text-emerald-700 px-4 py-2 rounded-full shadow-sm">
+      <div className="inline-flex items-center gap-3 bg-emerald-50/80 backdrop-blur-sm border border-emerald-200/60 text-emerald-700 px-5 py-2.5 rounded-xl shadow-sm">
         <span className="text-sm">Welcome back,</span>
         <strong className="text-sm">{name}</strong>
-        <a href="/account" className="text-sm underline ml-2">Open your roadmaps</a>
+        <Link href="/account" className="text-sm underline ml-2">Open your roadmaps</Link>
       </div>
     </div>
   );

@@ -8,50 +8,60 @@ export default function Footer() {
         { label: "Features", href: "/explore" },
         { label: "Career Explorer", href: "/explore" },
         { label: "Browse Careers", href: "/careers" },
-        { label: "FAQ", href: "/" },
+        { label: "FAQ", href: "/about#faq" },
       ],
     },
     {
       title: "Company",
       links: [
-        { label: "About", href: "/" },
-        { label: "Blog", href: "/" },
-        { label: "Careers", href: "/" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        { label: "Help Center", href: "/" },
-        { label: "Contact", href: "/" },
-        { label: "Support", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
       ],
     },
     {
       title: "Legal",
       links: [
-        { label: "Privacy", href: "/" },
-        { label: "Terms", href: "/" },
-        { label: "Cookies", href: "/" },
+        { label: "Privacy Policy", href: "/privacy" },
+        { label: "Terms of Service", href: "/terms" },
       ],
     },
   ];
 
   return (
-    <footer className="bg-brand-950 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-gray-950 text-white relative overflow-hidden">
+      {/* Subtle gradient glow */}
+      <div className="absolute top-0 left-1/3 w-96 h-32 bg-emerald-500/5 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-24 bg-teal-500/5 blur-3xl rounded-full" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Top: Brand + columns */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-14">
+          {/* Brand column */}
+          <div className="col-span-2">
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-xl flex items-center justify-center shadow-md shadow-emerald-500/20">
+                <span className="text-white font-extrabold text-sm">PN</span>
+              </div>
+              <span className="text-[17px] font-extrabold tracking-tight">
+                Path<span className="text-emerald-400">NotTaken</span>
+              </span>
+            </div>
+            <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
+              Discover non-obvious career paths powered by your unique combination of skills and interests.
+            </p>
+          </div>
+
           {columns.map((col) => (
             <div key={col.title}>
-              <h4 className="font-bold text-sm text-white mb-4 tracking-wide">
+              <h4 className="font-semibold text-xs uppercase text-gray-500 mb-4 tracking-widest">
                 {col.title}
               </h4>
-              <ul className="space-y-2.5">
+              <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                      className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -62,26 +72,21 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-brand-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xs">PN</span>
-            </div>
-            <p className="text-sm text-slate-400">
-              &copy; {new Date().getFullYear()} PathNotTaken. All rights reserved.
-            </p>
-          </div>
+        <div className="border-t border-gray-800/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-gray-500">
+            &copy; {new Date().getFullYear()} PathNotTaken. All rights reserved.
+          </p>
 
           {/* Social icons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             {["twitter", "github", "linkedin"].map((social) => (
               <a
                 key={social}
                 href="#"
-                className="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition-colors"
+                className="w-9 h-9 rounded-xl bg-gray-800/60 hover:bg-emerald-500/10 hover:text-emerald-400 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 text-gray-500"
                 aria-label={social}
               >
-                <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   {social === "twitter" && (
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   )}

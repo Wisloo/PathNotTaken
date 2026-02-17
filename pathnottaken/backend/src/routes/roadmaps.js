@@ -20,13 +20,24 @@ function getUserIdFromAuth(req) {
 // POST /api/roadmaps  -> save roadmap, returns { id, url }
 router.post("/", async (req, res) => {
   try {
-    const { careerId, title, weeks } = req.body;
-    if (!careerId || !weeks) return res.status(400).json({ error: "careerId and weeks are required" });
+    const { careerId, title, weeks, months, milestones, matchedSkills, missingSkills, weeklyHours } = req.body;
+    if (!careerId) return res.status(400).json({ error: "careerId is required" });
 
     const id = (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)).toLowerCase();
     const createdAt = new Date().toISOString();
     const ownerId = getUserIdFromAuth(req);
-    await db.run('INSERT INTO roadmaps (id,ownerId,careerId,title,weeks,createdAt) VALUES (?,?,?,?,?,?)', id, ownerId || null, careerId, title || null, JSON.stringify(weeks || []), createdAt);
+
+    // Store full roadmap data including month structure
+    const roadmapData = JSON.stringify({
+      weeks: weeks || [],
+      months: months || null,
+      milestones: milestones || [],
+      matchedSkills: matchedSkills || [],
+      missingSkills: missingSkills || [],
+      weeklyHours: weeklyHours || 10
+    });
+
+    await db.run('INSERT INTO roadmaps (id,ownerId,careerId,title,weeks,createdAt) VALUES (?,?,?,?,?,?)', id, ownerId || null, careerId, title || null, roadmapData, createdAt);
 
     const base = process.env.FRONTEND_URL || "http://localhost:3001";
     return res.json({ success: true, id, url: `${base}/roadmap?share=${id}` });
@@ -42,7 +53,29 @@ router.get("/:id", async (req, res) => {
     const id = req.params.id;
     const row = await db.get('SELECT id,ownerId,careerId,title,weeks,createdAt FROM roadmaps WHERE id = ?', id);
     if (!row) return res.status(404).json({ error: "Not found" });
-    row.weeks = JSON.parse(row.weeks || '[]');
+
+    // Parse stored data — may be new format (object with months) or old format (flat array)
+    let parsed;
+    try { parsed = JSON.parse(row.weeks || '[]'); } catch { parsed = []; }
+
+    if (Array.isArray(parsed)) {
+      // Old format: flat weeks array — wrap for frontend
+      row.weeks = parsed;
+      row.months = null;
+      row.milestones = [];
+      row.matchedSkills = [];
+      row.missingSkills = [];
+      row.weeklyHours = 10;
+    } else {
+      // New format: object with months, milestones, etc.
+      row.weeks = parsed.weeks || [];
+      row.months = parsed.months || null;
+      row.milestones = parsed.milestones || [];
+      row.matchedSkills = parsed.matchedSkills || [];
+      row.missingSkills = parsed.missingSkills || [];
+      row.weeklyHours = parsed.weeklyHours || 10;
+    }
+
     return res.json({ success: true, roadmap: row });
   } catch (err) {
     console.error(err);
@@ -59,8 +92,16 @@ router.put("/:id", async (req, res) => {
     if (!row) return res.status(404).json({ error: 'Not found' });
     if (row.ownerId && row.ownerId !== ownerId) return res.status(403).json({ error: 'forbidden' });
 
-    const { title, weeks } = req.body;
-    await db.run('UPDATE roadmaps SET title = ?, weeks = ? WHERE id = ?', title || null, JSON.stringify(weeks || []), id);
+    const { title, weeks, months, milestones, matchedSkills, missingSkills, weeklyHours } = req.body;
+    const roadmapData = JSON.stringify({
+      weeks: weeks || [],
+      months: months || null,
+      milestones: milestones || [],
+      matchedSkills: matchedSkills || [],
+      missingSkills: missingSkills || [],
+      weeklyHours: weeklyHours || 10
+    });
+    await db.run('UPDATE roadmaps SET title = ?, weeks = ? WHERE id = ?', title || null, roadmapData, id);
     return res.json({ success: true });
   } catch (err) {
     console.error(err);

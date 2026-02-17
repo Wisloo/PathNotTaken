@@ -1,0 +1,747 @@
+{
+  "skillResources": {
+    "programming": {
+      "label": "Programming / Coding",
+      "beginnerResources": [
+        { "type": "course", "title": "CS50: Introduction to Computer Science", "provider": "Harvard / edX", "url": "https://cs50.harvard.edu", "free": true, "hours": 12 },
+        { "type": "course", "title": "freeCodeCamp Responsive Web Design", "provider": "freeCodeCamp", "url": "https://www.freecodecamp.org", "free": true, "hours": 10 },
+        { "type": "book", "title": "Automate the Boring Stuff with Python", "provider": "Al Sweigart", "url": "https://automatetheboringstuff.com", "free": true, "hours": 15 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "The Odin Project – Full Stack Path", "provider": "The Odin Project", "url": "https://www.theodinproject.com", "free": true, "hours": 40 },
+        { "type": "practice", "title": "LeetCode Easy/Medium Problems", "provider": "LeetCode", "url": "https://leetcode.com", "free": true, "hours": 20 }
+      ],
+      "exercises": [
+        "Write a script that reads a CSV file and calculates summary statistics",
+        "Build a simple CLI tool that interacts with a public API",
+        "Create a personal portfolio website with HTML/CSS/JS",
+        "Implement a to-do list app with local storage"
+      ],
+      "projectIdeas": [
+        { "title": "Personal Budget Tracker", "description": "Build a web app that tracks income and expenses with charts", "hours": 15, "skills": ["programming", "data-analysis"] },
+        { "title": "API-Powered Dashboard", "description": "Create a dashboard that pulls data from a public API and displays it with visualizations", "hours": 20, "skills": ["programming", "visualization"] }
+      ],
+      "estimatedHours": 200,
+      "weeklyMilestones": [
+        "Write and run your first program",
+        "Understand variables, loops, and functions",
+        "Build a small project from scratch",
+        "Learn version control with Git"
+      ]
+    },
+    "data-analysis": {
+      "label": "Data Analysis",
+      "beginnerResources": [
+        { "type": "course", "title": "Google Data Analytics Certificate", "provider": "Google / Coursera", "url": "https://www.coursera.org/professional-certificates/google-data-analytics", "free": false, "hours": 20 },
+        { "type": "course", "title": "Khan Academy Statistics & Probability", "provider": "Khan Academy", "url": "https://www.khanacademy.org/math/statistics-probability", "free": true, "hours": 10 },
+        { "type": "tool", "title": "Excel/Google Sheets Fundamentals", "provider": "Google", "url": "https://support.google.com/a/users/answer/9282959", "free": true, "hours": 5 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Python for Data Analysis (Pandas)", "provider": "Kaggle", "url": "https://www.kaggle.com/learn/pandas", "free": true, "hours": 8 },
+        { "type": "practice", "title": "Kaggle Competitions – Getting Started", "provider": "Kaggle", "url": "https://www.kaggle.com/competitions", "free": true, "hours": 15 }
+      ],
+      "exercises": [
+        "Clean and analyze a messy real-world dataset (e.g., Kaggle's Titanic dataset)",
+        "Create pivot tables and charts from sales data in a spreadsheet",
+        "Write SQL queries to answer business questions from a sample database",
+        "Build a data pipeline that automates a daily report"
+      ],
+      "projectIdeas": [
+        { "title": "COVID-19 Data Explorer", "description": "Build an interactive dashboard analyzing publicly available COVID-19 data by region and time", "hours": 12, "skills": ["data-analysis", "visualization"] },
+        { "title": "Survey Analysis Report", "description": "Design a survey, collect responses, clean the data, and produce an insight report with charts", "hours": 10, "skills": ["data-analysis", "research", "communication"] }
+      ],
+      "estimatedHours": 80,
+      "weeklyMilestones": [
+        "Import and explore a dataset",
+        "Calculate descriptive statistics",
+        "Create meaningful visualizations",
+        "Tell a story with data"
+      ]
+    },
+    "machine-learning": {
+      "label": "Machine Learning / AI",
+      "beginnerResources": [
+        { "type": "course", "title": "Andrew Ng's Machine Learning Specialization", "provider": "Stanford / Coursera", "url": "https://www.coursera.org/specializations/machine-learning-introduction", "free": false, "hours": 30 },
+        { "type": "course", "title": "Fast.ai Practical Deep Learning", "provider": "fast.ai", "url": "https://www.fast.ai", "free": true, "hours": 20 },
+        { "type": "course", "title": "Kaggle Intro to Machine Learning", "provider": "Kaggle", "url": "https://www.kaggle.com/learn/intro-to-machine-learning", "free": true, "hours": 4 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Hands-On Machine Learning (Géron)", "provider": "O'Reilly", "url": "https://www.oreilly.com", "free": false, "hours": 30 },
+        { "type": "practice", "title": "Kaggle Featured Competitions", "provider": "Kaggle", "url": "https://www.kaggle.com/competitions", "free": true, "hours": 20 }
+      ],
+      "exercises": [
+        "Train a linear regression model on a housing price dataset",
+        "Build a classification model to predict customer churn",
+        "Implement k-means clustering on a customer segmentation dataset",
+        "Fine-tune a pre-trained image classifier on a custom dataset"
+      ],
+      "projectIdeas": [
+        { "title": "Sentiment Analysis Tool", "description": "Build a model that classifies social media posts as positive, negative, or neutral", "hours": 15, "skills": ["machine-learning", "programming", "data-analysis"] },
+        { "title": "Recommendation Engine", "description": "Create a movie/book recommendation system using collaborative filtering", "hours": 20, "skills": ["machine-learning", "programming"] }
+      ],
+      "estimatedHours": 120,
+      "weeklyMilestones": [
+        "Understand supervised vs unsupervised learning",
+        "Train your first model and evaluate it",
+        "Handle feature engineering and data preprocessing",
+        "Deploy a model as a simple API"
+      ]
+    },
+    "statistics": {
+      "label": "Statistics",
+      "beginnerResources": [
+        { "type": "course", "title": "Statistics Fundamentals – StatQuest", "provider": "YouTube / Josh Starmer", "url": "https://www.youtube.com/c/joshstarmer", "free": true, "hours": 10 },
+        { "type": "course", "title": "Khan Academy AP Statistics", "provider": "Khan Academy", "url": "https://www.khanacademy.org/math/ap-statistics", "free": true, "hours": 15 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Naked Statistics – Charles Wheelan", "provider": "W. W. Norton", "url": "", "free": false, "hours": 8 },
+        { "type": "course", "title": "Statistical Learning (Stanford Online)", "provider": "Stanford", "url": "https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning", "free": true, "hours": 20 }
+      ],
+      "exercises": [
+        "Calculate confidence intervals for a sample dataset",
+        "Run a hypothesis test (t-test) on two groups",
+        "Create a correlation matrix and interpret the results",
+        "Perform a regression analysis and explain R-squared"
+      ],
+      "projectIdeas": [
+        { "title": "A/B Test Simulator", "description": "Build a tool that simulates A/B tests with different sample sizes and effect sizes", "hours": 10, "skills": ["statistics", "programming"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Understand distributions and probability",
+        "Calculate and interpret p-values",
+        "Run hypothesis tests confidently",
+        "Apply regression analysis to real data"
+      ]
+    },
+    "research": {
+      "label": "Research",
+      "beginnerResources": [
+        { "type": "course", "title": "Research Methods – Coursera", "provider": "University of London / Coursera", "url": "https://www.coursera.org/learn/research-methods", "free": false, "hours": 12 },
+        { "type": "article", "title": "How to Read a Scientific Paper", "provider": "Science Magazine", "url": "https://www.science.org/content/article/how-seriously-read-scientific-paper", "free": true, "hours": 1 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Research Design by Creswell", "provider": "SAGE Publications", "url": "", "free": false, "hours": 15 }
+      ],
+      "exercises": [
+        "Write a literature review on a topic that interests you",
+        "Design a survey with 10 questions and test it with 5 people",
+        "Analyze an existing study's methodology and identify limitations",
+        "Synthesize findings from 3 papers into a one-page summary"
+      ],
+      "projectIdeas": [
+        { "title": "Mini Research Report", "description": "Choose a question, design a study, collect data from 20+ people, and write up findings", "hours": 15, "skills": ["research", "data-analysis", "communication"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Formulate a research question",
+        "Design a methodology",
+        "Collect and organize data",
+        "Write and present findings"
+      ]
+    },
+    "communication": {
+      "label": "Communication",
+      "beginnerResources": [
+        { "type": "course", "title": "Improving Communication Skills", "provider": "University of Pennsylvania / Coursera", "url": "https://www.coursera.org/learn/wharton-communication-skills", "free": false, "hours": 8 },
+        { "type": "course", "title": "Business Writing – Coursera", "provider": "University of Colorado / Coursera", "url": "https://www.coursera.org/learn/writing-for-business", "free": false, "hours": 6 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Made to Stick by Chip & Dan Heath", "provider": "Random House", "url": "", "free": false, "hours": 6 }
+      ],
+      "exercises": [
+        "Write a one-page executive summary of a complex topic",
+        "Give a 5-minute presentation to a friend or family member and ask for feedback",
+        "Draft a professional email for three different audiences (technical, executive, customer)",
+        "Record yourself explaining a concept and review for clarity"
+      ],
+      "projectIdeas": [
+        { "title": "Explainer Blog Series", "description": "Write 3 blog posts explaining a technical topic for a non-technical audience", "hours": 8, "skills": ["communication", "writing"] }
+      ],
+      "estimatedHours": 30,
+      "weeklyMilestones": [
+        "Identify your communication strengths and weaknesses",
+        "Practice structured writing (intro → body → conclusion)",
+        "Deliver a short presentation with visual aids",
+        "Get and incorporate peer feedback"
+      ]
+    },
+    "design": {
+      "label": "Design / Visual Design",
+      "beginnerResources": [
+        { "type": "course", "title": "Google UX Design Certificate", "provider": "Google / Coursera", "url": "https://www.coursera.org/professional-certificates/google-ux-design", "free": false, "hours": 20 },
+        { "type": "course", "title": "Figma Tutorial for Beginners", "provider": "Figma / YouTube", "url": "https://www.youtube.com/watch?v=FTFaQWZBqQ8", "free": true, "hours": 3 },
+        { "type": "course", "title": "Intro to Graphic Design – Canva", "provider": "Canva Design School", "url": "https://www.canva.com/designschool/", "free": true, "hours": 5 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Don't Make Me Think by Steve Krug", "provider": "New Riders", "url": "", "free": false, "hours": 4 },
+        { "type": "practice", "title": "Daily UI Challenge", "provider": "dailyui.co", "url": "https://www.dailyui.co", "free": true, "hours": 15 }
+      ],
+      "exercises": [
+        "Redesign the homepage of a website you use frequently",
+        "Create a mood board for a hypothetical product",
+        "Design a mobile app screen in Figma with proper spacing and typography",
+        "Conduct a quick usability test with a friend on an existing app"
+      ],
+      "projectIdeas": [
+        { "title": "App Redesign Case Study", "description": "Pick an app with poor UX, research user pain points, and design an improved version with mockups", "hours": 15, "skills": ["design", "research", "empathy"] }
+      ],
+      "estimatedHours": 100,
+      "weeklyMilestones": [
+        "Learn design principles (contrast, alignment, repetition, proximity)",
+        "Create wireframes for a simple app",
+        "Build a high-fidelity mockup in Figma",
+        "Conduct a usability test and iterate"
+      ]
+    },
+    "empathy": {
+      "label": "Empathy",
+      "beginnerResources": [
+        { "type": "course", "title": "Empathy and Emotional Intelligence at Work", "provider": "UC Berkeley / edX", "url": "https://www.edx.org", "free": true, "hours": 6 },
+        { "type": "book", "title": "Empathy: Why It Matters by Roman Krznaric", "provider": "Tarcher Perigee", "url": "", "free": false, "hours": 5 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "User Interview Practice", "provider": "Self-guided", "url": "", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Conduct 3 empathy interviews (15 min each) with people in different roles",
+        "Write a user persona based on a real conversation",
+        "Shadow someone in a different job for a day and document pain points",
+        "Practice active listening in every conversation for one week"
+      ],
+      "projectIdeas": [
+        { "title": "Empathy Map Collection", "description": "Create empathy maps for 5 different user types based on interviews", "hours": 8, "skills": ["empathy", "research", "communication"] }
+      ],
+      "estimatedHours": 20,
+      "weeklyMilestones": [
+        "Practice active listening daily",
+        "Conduct your first empathy interview",
+        "Create a user persona from real data",
+        "Apply empathy insights to a design decision"
+      ]
+    },
+    "writing": {
+      "label": "Writing",
+      "beginnerResources": [
+        { "type": "course", "title": "Writing in the Sciences – Stanford", "provider": "Stanford / Coursera", "url": "https://www.coursera.org/learn/sciwrite", "free": false, "hours": 8 },
+        { "type": "book", "title": "On Writing Well by William Zinsser", "provider": "Harper", "url": "", "free": false, "hours": 6 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Write 500 words daily for 30 days", "provider": "Self-guided", "url": "", "free": true, "hours": 15 }
+      ],
+      "exercises": [
+        "Write a 500-word explanation of a concept you just learned",
+        "Edit a piece of writing to reduce word count by 30% without losing meaning",
+        "Write the same content for three different audiences",
+        "Create a step-by-step tutorial for a task you know well"
+      ],
+      "projectIdeas": [
+        { "title": "Technical Blog", "description": "Start a blog and publish 4 articles explaining technical concepts clearly", "hours": 12, "skills": ["writing", "communication", "technical-literacy"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Establish a daily writing habit",
+        "Learn to self-edit ruthlessly",
+        "Write for a specific audience",
+        "Publish your first piece"
+      ]
+    },
+    "critical-thinking": {
+      "label": "Critical Thinking",
+      "beginnerResources": [
+        { "type": "course", "title": "Critical Thinking & Problem Solving", "provider": "University of Queensland / edX", "url": "https://www.edx.org", "free": true, "hours": 8 },
+        { "type": "book", "title": "Thinking, Fast and Slow by Daniel Kahneman", "provider": "Farrar, Straus and Giroux", "url": "", "free": false, "hours": 10 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Case Study Analysis", "provider": "Harvard Business Review", "url": "https://hbr.org/topic/subject/case-studies", "free": false, "hours": 10 }
+      ],
+      "exercises": [
+        "Analyze a news article: identify claims, evidence, assumptions, and logical fallacies",
+        "Take both sides of a debate and argue each persuasively",
+        "Break a complex problem into sub-problems and solve each one",
+        "Evaluate 3 competing solutions to a problem using a decision matrix"
+      ],
+      "projectIdeas": [
+        { "title": "Decision Framework", "description": "Create a reusable decision-making framework and test it on 3 real decisions", "hours": 6, "skills": ["critical-thinking", "analytical-thinking"] }
+      ],
+      "estimatedHours": 30,
+      "weeklyMilestones": [
+        "Identify cognitive biases in your own thinking",
+        "Practice structured argumentation",
+        "Apply frameworks to real-world problems",
+        "Make a complex decision using a formal method"
+      ]
+    },
+    "biology": {
+      "label": "Biology / Life Sciences",
+      "beginnerResources": [
+        { "type": "course", "title": "Introduction to Biology – MIT OCW", "provider": "MIT OpenCourseWare", "url": "https://ocw.mit.edu/courses/7-013-introductory-biology-spring-2018/", "free": true, "hours": 15 },
+        { "type": "course", "title": "Genomic Data Science – Johns Hopkins", "provider": "Johns Hopkins / Coursera", "url": "https://www.coursera.org/specializations/genomic-data-science", "free": false, "hours": 20 }
+      ],
+      "intermediateResources": [
+        { "type": "tool", "title": "Biopython Tutorial", "provider": "Biopython", "url": "https://biopython.org/wiki/Documentation", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Use NCBI BLAST to compare gene sequences",
+        "Analyze a gene expression dataset from GEO",
+        "Write a Python script to parse FASTA files",
+        "Create a phylogenetic tree from sequence data"
+      ],
+      "projectIdeas": [
+        { "title": "Gene Expression Analyzer", "description": "Build a tool that visualizes gene expression differences between healthy and disease samples", "hours": 20, "skills": ["biology", "programming", "data-analysis"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Understand DNA/RNA/protein relationships",
+        "Navigate biological databases (NCBI, UniProt)",
+        "Run a basic bioinformatics analysis",
+        "Interpret results in a biological context"
+      ]
+    },
+    "psychology": {
+      "label": "Psychology",
+      "beginnerResources": [
+        { "type": "course", "title": "Introduction to Psychology – Yale", "provider": "Yale / Coursera", "url": "https://www.coursera.org/learn/introduction-psychology", "free": true, "hours": 15 },
+        { "type": "book", "title": "Influence by Robert Cialdini", "provider": "Harper Business", "url": "", "free": false, "hours": 6 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Social Psychology – Wesleyan", "provider": "Wesleyan / Coursera", "url": "https://www.coursera.org/learn/social-psychology", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Observe and document 5 cognitive biases in everyday life",
+        "Design a behavioral experiment with a clear hypothesis",
+        "Analyze a product's UX through a psychological lens",
+        "Write a 1-page summary of a psychology research paper"
+      ],
+      "projectIdeas": [
+        { "title": "Behavioral Analysis Report", "description": "Observe user behavior in a public space, apply psychological frameworks, and present insights", "hours": 10, "skills": ["psychology", "research", "communication"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Learn major psychological theories",
+        "Apply cognitive bias knowledge to real situations",
+        "Conduct a simple behavioral observation",
+        "Connect psychology to UX/product decisions"
+      ]
+    },
+    "analytical-thinking": {
+      "label": "Analytical Thinking",
+      "beginnerResources": [
+        { "type": "course", "title": "Analytical Thinking – Coursera", "provider": "University of Sydney / Coursera", "url": "https://www.coursera.org", "free": false, "hours": 8 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Case Interview Practice", "provider": "Various", "url": "https://www.preplounge.com", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Break a business problem into its component parts",
+        "Create a root cause analysis for a recent failure",
+        "Build a spreadsheet model to compare two business decisions",
+        "Present data-driven recommendations to a peer"
+      ],
+      "projectIdeas": [
+        { "title": "Market Analysis", "description": "Research a market, quantify the opportunity, and present recommendations", "hours": 10, "skills": ["analytical-thinking", "research", "data-analysis"] }
+      ],
+      "estimatedHours": 30,
+      "weeklyMilestones": [
+        "Learn structured problem-solving frameworks",
+        "Practice breaking complex problems into parts",
+        "Build analytical models in spreadsheets",
+        "Present analysis with clear recommendations"
+      ]
+    },
+    "ethics": {
+      "label": "Ethics / Philosophy",
+      "beginnerResources": [
+        { "type": "course", "title": "Justice – Harvard", "provider": "Harvard / edX", "url": "https://www.edx.org/course/justice", "free": true, "hours": 12 },
+        { "type": "course", "title": "Ethics of AI – University of Helsinki", "provider": "Elements of AI", "url": "https://ethics-of-ai.mooc.fi", "free": true, "hours": 6 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Weapons of Math Destruction by Cathy O'Neil", "provider": "Crown", "url": "", "free": false, "hours": 7 }
+      ],
+      "exercises": [
+        "Analyze an AI system for potential bias using an ethical framework",
+        "Write a data ethics policy for a hypothetical company",
+        "Debate both sides of a technology ethics dilemma",
+        "Review a real company's privacy policy and identify concerns"
+      ],
+      "projectIdeas": [
+        { "title": "AI Ethics Audit", "description": "Select an AI product, audit it for fairness/bias/transparency, and write a recommendations report", "hours": 12, "skills": ["ethics", "critical-thinking", "communication"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Learn major ethical frameworks",
+        "Apply ethics to technology decisions",
+        "Conduct an ethics review of a real product",
+        "Write and present ethical guidelines"
+      ]
+    },
+    "gis": {
+      "label": "GIS / Mapping",
+      "beginnerResources": [
+        { "type": "course", "title": "GIS Specialization – UC Davis", "provider": "UC Davis / Coursera", "url": "https://www.coursera.org/specializations/gis", "free": false, "hours": 20 },
+        { "type": "tool", "title": "QGIS Tutorials", "provider": "QGIS Documentation", "url": "https://www.qgis.org/en/docs/", "free": true, "hours": 8 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Build Maps with Leaflet.js", "provider": "Leaflet", "url": "https://leafletjs.com/examples.html", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Create a choropleth map of population density using QGIS",
+        "Build an interactive web map with Leaflet.js",
+        "Geocode a dataset of addresses and plot them",
+        "Analyze spatial data to find optimal locations for a service"
+      ],
+      "projectIdeas": [
+        { "title": "Neighborhood Analysis Dashboard", "description": "Build an interactive map showing walkability, transit access, and amenities for a city", "hours": 15, "skills": ["gis", "programming", "data-analysis"] }
+      ],
+      "estimatedHours": 50,
+      "weeklyMilestones": [
+        "Create your first map in QGIS",
+        "Work with coordinate systems and projections",
+        "Build an interactive web map",
+        "Perform a spatial analysis"
+      ]
+    },
+    "visualization": {
+      "label": "Data Visualization",
+      "beginnerResources": [
+        { "type": "course", "title": "Data Visualization with Python", "provider": "IBM / Coursera", "url": "https://www.coursera.org/learn/python-for-data-visualization", "free": false, "hours": 8 },
+        { "type": "book", "title": "Storytelling with Data by Cole Nussbaumer Knaflic", "provider": "Wiley", "url": "", "free": false, "hours": 5 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Makeover Monday", "provider": "makeovermonday.co.uk", "url": "https://www.makeovermonday.co.uk", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Recreate a famous data visualization (e.g., Minard's Napoleon march)",
+        "Build a dashboard with 3 linked charts in a tool of your choice",
+        "Create before/after versions of a poorly designed chart",
+        "Design an infographic summarizing a dataset"
+      ],
+      "projectIdeas": [
+        { "title": "Interactive Data Story", "description": "Create a scrollytelling webpage that reveals insights from a dataset through animated charts", "hours": 15, "skills": ["visualization", "programming", "data-analysis"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Learn chart type selection principles",
+        "Create publication-quality static charts",
+        "Build interactive visualizations",
+        "Tell a complete story with data"
+      ]
+    },
+    "problem-solving": {
+      "label": "Problem Solving",
+      "beginnerResources": [
+        { "type": "course", "title": "Creative Problem Solving", "provider": "University of Minnesota / Coursera", "url": "https://www.coursera.org/learn/creative-problem-solving", "free": false, "hours": 8 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Project Euler – Math/CS Problems", "provider": "Project Euler", "url": "https://projecteuler.net", "free": true, "hours": 15 }
+      ],
+      "exercises": [
+        "Use the 5 Whys technique on a problem you recently faced",
+        "Solve 3 logic puzzles from a puzzle book or website",
+        "Apply design thinking (empathize, define, ideate, prototype, test) to a real problem",
+        "Create a decision tree for a complex choice"
+      ],
+      "projectIdeas": [
+        { "title": "Process Improvement Report", "description": "Identify an inefficient process, analyze root causes, propose solutions, and measure results", "hours": 10, "skills": ["problem-solving", "analytical-thinking", "communication"] }
+      ],
+      "estimatedHours": 30,
+      "weeklyMilestones": [
+        "Learn structured problem-solving frameworks",
+        "Practice decomposing complex problems",
+        "Apply creative ideation techniques",
+        "Present a well-reasoned solution"
+      ]
+    },
+    "attention-to-detail": {
+      "label": "Attention to Detail",
+      "beginnerResources": [
+        { "type": "article", "title": "Developing Attention to Detail", "provider": "MindTools", "url": "https://www.mindtools.com/ahlep5h/developing-attention-to-detail", "free": true, "hours": 1 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Proofreading exercises", "provider": "Various", "url": "", "free": true, "hours": 5 }
+      ],
+      "exercises": [
+        "Review a document and find all formatting inconsistencies",
+        "Audit a spreadsheet for formula errors",
+        "Create a checklist for a regular process and verify each step",
+        "Compare two versions of a document and list all differences"
+      ],
+      "projectIdeas": [
+        { "title": "Quality Assurance Checklist", "description": "Design a comprehensive QA checklist for a workflow and test it on real work", "hours": 5, "skills": ["attention-to-detail", "organization"] }
+      ],
+      "estimatedHours": 20,
+      "weeklyMilestones": [
+        "Build a personal checklist system",
+        "Practice systematic review techniques",
+        "Develop proofreading habits",
+        "Apply detail-orientation to a real project"
+      ]
+    },
+    "project-management": {
+      "label": "Project Management",
+      "beginnerResources": [
+        { "type": "course", "title": "Google Project Management Certificate", "provider": "Google / Coursera", "url": "https://www.coursera.org/professional-certificates/google-project-management", "free": false, "hours": 20 },
+        { "type": "tool", "title": "Trello Getting Started Guide", "provider": "Trello", "url": "https://trello.com/guide", "free": true, "hours": 2 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "The Lean Startup by Eric Ries", "provider": "Crown Business", "url": "", "free": false, "hours": 6 }
+      ],
+      "exercises": [
+        "Create a project plan with milestones, tasks, and deadlines for a personal goal",
+        "Run a 1-week sprint using a Kanban board",
+        "Conduct a retrospective on a completed project",
+        "Manage scope creep by prioritizing features using MoSCoW"
+      ],
+      "projectIdeas": [
+        { "title": "Event Planner", "description": "Plan and execute a small event (meetup, workshop) from start to finish documenting the PM process", "hours": 15, "skills": ["project-management", "communication", "leadership"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Create a project charter and timeline",
+        "Set up a task management system",
+        "Practice sprint planning and reviews",
+        "Deliver a project on time"
+      ]
+    },
+    "leadership": {
+      "label": "Leadership",
+      "beginnerResources": [
+        { "type": "course", "title": "Foundations of Leadership", "provider": "University of Illinois / Coursera", "url": "https://www.coursera.org/specializations/leading-teams", "free": false, "hours": 12 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Leaders Eat Last by Simon Sinek", "provider": "Portfolio", "url": "", "free": false, "hours": 6 }
+      ],
+      "exercises": [
+        "Lead a small group discussion or meeting",
+        "Mentor someone junior in a skill you're strong in",
+        "Practice giving constructive feedback using the SBI model",
+        "Organize and lead a volunteer initiative"
+      ],
+      "projectIdeas": [
+        { "title": "Team Project Lead", "description": "Lead a small team on a project (hackathon, volunteer work, study group) and document your leadership approach", "hours": 15, "skills": ["leadership", "communication", "project-management"] }
+      ],
+      "estimatedHours": 30,
+      "weeklyMilestones": [
+        "Understand your leadership style",
+        "Practice delegation and feedback",
+        "Lead a small team initiative",
+        "Reflect on and refine your approach"
+      ]
+    }
+  },
+  "defaultResources": {
+    "beginnerResources": [
+      { "type": "article", "title": "Getting Started Guide", "provider": "Self-study", "url": "", "free": true, "hours": 2 },
+      { "type": "course", "title": "LinkedIn Learning Free Courses", "provider": "LinkedIn Learning", "url": "https://www.linkedin.com/learning/", "free": true, "hours": 5 },
+      { "type": "article", "title": "Coursera Free Courses", "provider": "Coursera", "url": "https://www.coursera.org/courses?query=free", "free": true, "hours": 10 }
+    ],
+    "intermediateResources": [
+      { "type": "practice", "title": "Hands-on Practice", "provider": "Self-guided", "url": "", "free": true, "hours": 10 },
+      { "type": "course", "title": "edX Free Courses", "provider": "edX", "url": "https://www.edx.org/search", "free": true, "hours": 10 }
+    ],
+    "exercises": [
+      "Research the fundamentals of this skill area",
+      "Find and complete a beginner tutorial",
+      "Practice for 30 minutes daily for one week",
+      "Apply this skill to a small real-world problem"
+    ],
+    "projectIdeas": [
+      { "title": "Skill Portfolio Piece", "description": "Create a tangible artifact demonstrating this skill", "hours": 10, "skills": [] }
+    ],
+    "estimatedHours": 40,
+    "weeklyMilestones": [
+      "Understand the fundamentals",
+      "Complete first exercises",
+      "Apply to a small project",
+      "Demonstrate competence"
+    ]
+  },
+  "additionalSkills": {
+    "languages": {
+      "label": "Foreign Languages",
+      "beginnerResources": [
+        { "type": "course", "title": "Duolingo — Free Language Learning", "provider": "Duolingo", "url": "https://www.duolingo.com", "free": true, "hours": 10 },
+        { "type": "course", "title": "Pimsleur Language Courses", "provider": "Pimsleur / Audible", "url": "https://www.pimsleur.com", "free": false, "hours": 15 },
+        { "type": "tool", "title": "Anki Flashcard System", "provider": "Anki", "url": "https://apps.ankiweb.net", "free": true, "hours": 5 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "iTalki Language Partners", "provider": "iTalki", "url": "https://www.italki.com", "free": false, "hours": 10 },
+        { "type": "practice", "title": "Language Exchange on Tandem", "provider": "Tandem", "url": "https://www.tandem.net", "free": true, "hours": 8 }
+      ],
+      "exercises": [
+        "Learn 20 new vocabulary words and practice them in sentences",
+        "Have a 10-minute conversation in your target language (even with mistakes)",
+        "Watch a TV show in your target language with subtitles and list new words",
+        "Write a short journal entry (5-10 sentences) in your target language"
+      ],
+      "projectIdeas": [
+        { "title": "Bilingual Content Creator", "description": "Create a blog post or video in your target language on a topic you know well", "hours": 8, "skills": ["languages", "communication", "writing"] }
+      ],
+      "estimatedHours": 200,
+      "weeklyMilestones": [
+        "Learn basic greetings and introductions",
+        "Hold a simple conversation about daily life",
+        "Read a simple article and understand the main idea",
+        "Write a structured paragraph without a dictionary"
+      ]
+    },
+    "cultural-awareness": {
+      "label": "Cultural Awareness",
+      "beginnerResources": [
+        { "type": "course", "title": "Intercultural Communication – Coursera", "provider": "University of Illinois / Coursera", "url": "https://www.coursera.org/learn/intercultural-communication", "free": false, "hours": 10 },
+        { "type": "course", "title": "Cultural Intelligence – edX", "provider": "Purdue / edX", "url": "https://www.edx.org/learn/cultural-studies", "free": true, "hours": 6 },
+        { "type": "book", "title": "The Culture Map by Erin Meyer", "provider": "PublicAffairs", "url": "https://erinmeyer.com/books/the-culture-map/", "free": false, "hours": 6 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Working in Global Teams – Coursera", "provider": "University of Michigan / Coursera", "url": "https://www.coursera.org/learn/global-teams", "free": false, "hours": 8 }
+      ],
+      "exercises": [
+        "Research business etiquette in 3 different countries",
+        "Interview someone from a different cultural background about their work norms",
+        "Analyze a cross-cultural misunderstanding case study",
+        "Attend a cultural event or festival outside your own culture"
+      ],
+      "projectIdeas": [
+        { "title": "Cross-Cultural Communication Guide", "description": "Create a guide for collaborating with teams from 3 different cultural backgrounds", "hours": 10, "skills": ["cultural-awareness", "communication", "research"] }
+      ],
+      "estimatedHours": 30,
+      "weeklyMilestones": [
+        "Understand your own cultural biases",
+        "Learn Hofstede's cultural dimensions framework",
+        "Practice adapting communication styles",
+        "Navigate a real cross-cultural interaction"
+      ]
+    },
+    "teamwork": {
+      "label": "Teamwork & Collaboration",
+      "beginnerResources": [
+        { "type": "course", "title": "Teamwork Skills", "provider": "University of Colorado / Coursera", "url": "https://www.coursera.org/learn/teamwork-skills-effective-communication", "free": false, "hours": 6 },
+        { "type": "article", "title": "Google's Project Aristotle – What Makes Teams Effective", "provider": "Google re:Work", "url": "https://rework.withgoogle.com/guides/understanding-team-effectiveness", "free": true, "hours": 1 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Contribute to Open Source Projects", "provider": "GitHub", "url": "https://github.com/firstcontributions/first-contributions", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Lead a team retrospective using Start/Stop/Continue format",
+        "Practice giving constructive feedback to a colleague",
+        "Collaborate on a shared document or project with clear role assignments",
+        "Facilitate a decision-making meeting using a structured method"
+      ],
+      "projectIdeas": [
+        { "title": "Team Hackathon", "description": "Join or organize a hackathon and work with a team to build something in 24-48 hours", "hours": 15, "skills": ["teamwork", "communication", "project-management"] }
+      ],
+      "estimatedHours": 20,
+      "weeklyMilestones": [
+        "Understand team dynamics and your role",
+        "Practice active listening and feedback",
+        "Collaborate on a shared project",
+        "Reflect on team performance and improve"
+      ]
+    },
+    "creativity": {
+      "label": "Creativity & Innovation",
+      "beginnerResources": [
+        { "type": "course", "title": "Creative Thinking – Imperial College", "provider": "Imperial College London / Coursera", "url": "https://www.coursera.org/learn/creative-thinking-techniques-and-tools-for-success", "free": false, "hours": 8 },
+        { "type": "course", "title": "Design Thinking – IDEO", "provider": "IDEO U", "url": "https://www.ideou.com/products/hello-design-thinking", "free": false, "hours": 5 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Steal Like an Artist by Austin Kleon", "provider": "Workman", "url": "", "free": false, "hours": 3 }
+      ],
+      "exercises": [
+        "Generate 20 ideas in 10 minutes for solving a specific problem",
+        "Do a SCAMPER exercise on an existing product",
+        "Create a mind map connecting 3 unrelated topics",
+        "Redesign an everyday object to solve a different problem"
+      ],
+      "projectIdeas": [
+        { "title": "Innovation Sprint", "description": "Pick a real problem, brainstorm 50+ solutions, prototype the best 3, and test with users", "hours": 12, "skills": ["creativity", "design", "problem-solving"] }
+      ],
+      "estimatedHours": 25,
+      "weeklyMilestones": [
+        "Practice divergent thinking techniques",
+        "Learn brainstorming frameworks (SCAMPER, Six Hats)",
+        "Prototype a creative solution",
+        "Get feedback and iterate"
+      ]
+    },
+    "time-management": {
+      "label": "Time Management",
+      "beginnerResources": [
+        { "type": "course", "title": "Work Smarter, Not Harder – Coursera", "provider": "University of California / Coursera", "url": "https://www.coursera.org/learn/work-smarter-not-harder", "free": false, "hours": 6 },
+        { "type": "article", "title": "The Pomodoro Technique", "provider": "Francesco Cirillo", "url": "https://francescocirillo.com/products/the-pomodoro-technique", "free": true, "hours": 1 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Deep Work by Cal Newport", "provider": "Grand Central Publishing", "url": "", "free": false, "hours": 6 },
+        { "type": "tool", "title": "Todoist Task Management", "provider": "Todoist", "url": "https://todoist.com", "free": true, "hours": 1 }
+      ],
+      "exercises": [
+        "Track how you spend every hour for 3 days",
+        "Use the Eisenhower Matrix to prioritize your to-do list",
+        "Try the Pomodoro Technique for a full work session",
+        "Identify and eliminate your top 3 time wasters"
+      ],
+      "projectIdeas": [
+        { "title": "Personal Productivity System", "description": "Design and implement a personal productivity system tailored to your work style", "hours": 5, "skills": ["time-management", "organization"] }
+      ],
+      "estimatedHours": 15,
+      "weeklyMilestones": [
+        "Audit your current time usage",
+        "Implement a prioritization framework",
+        "Build a daily routine with focused blocks",
+        "Review and optimize your system"
+      ]
+    },
+    "networking": {
+      "label": "Professional Networking",
+      "beginnerResources": [
+        { "type": "course", "title": "Networking for Career Success", "provider": "LinkedIn Learning", "url": "https://www.linkedin.com/learning/topics/networking", "free": false, "hours": 4 },
+        { "type": "article", "title": "How to Network Effectively", "provider": "Harvard Business Review", "url": "https://hbr.org/topic/subject/networking", "free": true, "hours": 1 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Attend Local Meetups", "provider": "Meetup.com", "url": "https://www.meetup.com", "free": true, "hours": 5 }
+      ],
+      "exercises": [
+        "Update your LinkedIn profile with a compelling summary",
+        "Reach out to 3 people in your target field for informational interviews",
+        "Attend a professional meetup or virtual event and introduce yourself to 5 people",
+        "Write a follow-up message to someone you met at an event"
+      ],
+      "projectIdeas": [
+        { "title": "Industry Research Interviews", "description": "Conduct 5 informational interviews with professionals in your target career and summarize insights", "hours": 8, "skills": ["networking", "communication", "research"] }
+      ],
+      "estimatedHours": 15,
+      "weeklyMilestones": [
+        "Optimize your LinkedIn profile",
+        "Conduct your first informational interview",
+        "Attend a professional event",
+        "Build a follow-up system"
+      ]
+    },
+    "organization": {
+      "label": "Organization & Planning",
+      "beginnerResources": [
+        { "type": "course", "title": "Getting Things Done (GTD) Overview", "provider": "David Allen / YouTube", "url": "https://www.youtube.com/results?search_query=getting+things+done+david+allen", "free": true, "hours": 2 },
+        { "type": "tool", "title": "Notion for Personal Organization", "provider": "Notion", "url": "https://www.notion.so", "free": true, "hours": 3 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Getting Things Done by David Allen", "provider": "Penguin", "url": "", "free": false, "hours": 6 }
+      ],
+      "exercises": [
+        "Set up a personal knowledge management system (Notion, Obsidian, or similar)",
+        "Create a weekly review checklist and do it for 4 weeks",
+        "Organize a workspace (physical or digital) using the 5S method",
+        "Build a reference filing system for important documents and notes"
+      ],
+      "projectIdeas": [
+        { "title": "Life Dashboard", "description": "Create a personal dashboard tracking goals, habits, and projects in a tool like Notion", "hours": 6, "skills": ["organization", "time-management"] }
+      ],
+      "estimatedHours": 15,
+      "weeklyMilestones": [
+        "Set up a personal task management system",
+        "Create a filing system for notes and documents",
+        "Build a weekly review habit",
+        "Refine and maintain the system"
+      ]
+    }
+  }
+}

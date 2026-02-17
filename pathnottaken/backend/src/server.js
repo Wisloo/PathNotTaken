@@ -6,6 +6,9 @@ const careerRoutes = require("./routes/careers");
 const skillRoutes = require("./routes/skills");
 const roadmapRoutes = require("./routes/roadmaps");
 const authRoutes = require("./routes/auth");
+const gamificationRoutes = require("./routes/gamification");
+const marketRoutes = require("./routes/market");
+const portfolioRoutes = require("./routes/portfolio");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -37,6 +40,9 @@ app.use("/api/careers", careerRoutes);
 app.use("/api/skills", skillRoutes);
 app.use("/api/roadmaps", roadmapRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/gamification", gamificationRoutes);
+app.use("/api/market", marketRoutes);
+app.use("/api/portfolio", portfolioRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {

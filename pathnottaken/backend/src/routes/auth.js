@@ -62,9 +62,10 @@ router.get("/me", async (req, res) => {
       const payload = jwt.verify(auth, JWT_SECRET);
       const user = await db.get('SELECT id,email,name,createdAt FROM users WHERE id = ?', payload.sub);
       if (!user) return res.status(401).json({ error: "unauthenticated" });
-      // load user's roadmap ids
-      const rrows = await db.all('SELECT id FROM roadmaps WHERE ownerId = ?', user.id);
+      // load user's roadmap summaries
+      const rrows = await db.all('SELECT id, careerId, title, createdAt FROM roadmaps WHERE ownerId = ? ORDER BY createdAt DESC', user.id);
       user.roadmaps = rrows.map(r => r.id);
+      user.roadmapDetails = rrows.map(r => ({ id: r.id, careerId: r.careerId, title: r.title, createdAt: r.createdAt }));
       return res.json({ success: true, user });
     } catch (err) {
       return res.status(401).json({ error: "unauthenticated" });

@@ -6,12 +6,46 @@
       "category": "Design & Research",
       "description": "UX Researchers study how people interact with products and services, using psychology, data analysis, and empathy to improve user experiences. They conduct interviews, surveys, and usability tests to uncover insights that drive product decisions.",
       "dayInLife": "Your day starts with analyzing survey responses from last week's study. Mid-morning, you moderate a usability test session with participants. After lunch, you synthesize findings into a report with actionable recommendations for the design team. You end the day planning the methodology for an upcoming research project.",
-      "salaryRange": { "min": 65000, "max": 130000, "currency": "USD" },
+      "salaryRange": { "min": 65000, "median": 92000, "max": 130000, "currency": "USD" },
       "growthOutlook": "High",
       "requiredSkills": ["empathy", "analytical-thinking", "communication", "research", "psychology", "data-analysis", "interviewing"],
       "relatedInterests": ["understanding-people", "problem-solving", "psychology", "design", "technology"],
       "nonObvious": true,
-      "whyNonObvious": "Many people with psychology or communication backgrounds don't realize their skills directly apply to tech careers in UX research."
+      "whyNonObvious": "Many people with psychology or communication backgrounds don't realize their skills directly apply to tech careers in UX research.",
+      "typicalBackgrounds": ["Psychology", "Sociology", "Communications", "Anthropology", "Marketing", "Human Factors"],
+      "industries": ["Tech companies", "Healthcare apps", "Financial services", "E-commerce", "Government digital services", "Consulting firms"],
+      "skillTransfers": {
+        "empathy": "Your ability to understand others' feelings directly translates to identifying user pain points and unmet needs",
+        "research": "Literature reviews and study design are the same methodological skills used in usability research",
+        "communication": "Presenting findings to stakeholders is a core daily activity — your writing and speaking skills are essential",
+        "data-analysis": "Analyzing survey data, A/B test results, and behavioral metrics requires the same analytical rigor you already have",
+        "psychology": "Understanding cognitive biases, mental models, and decision-making patterns is exactly what UX research is built on"
+      },
+      "realWorldExamples": [
+        "Redesigning a hospital check-in kiosk after discovering that elderly patients couldn't read the small fonts",
+        "Running usability tests on a banking app that reduced customer support calls by 40%",
+        "Conducting interviews with teachers to design a more intuitive learning management system"
+      ],
+      "entryPaths": [
+        "Start with online UX research courses (Google UX Certificate, UXPA resources)",
+        "Practice by doing guerrilla usability testing on existing apps",
+        "Build a portfolio with 2-3 case studies showing your research process",
+        "Apply for junior UX researcher or UX research assistant positions"
+      ],
+      "careerProgression": ["UX Research Assistant", "Junior UX Researcher", "UX Researcher", "Senior UX Researcher", "Lead/Principal UX Researcher", "Head of Research"],
+      "pros": [
+        "High demand with strong job security across tech, healthcare, and finance",
+        "Meaningful work that directly improves how people experience products",
+        "Great work-life balance with predictable schedules in most organizations",
+        "Remote-friendly role since interviews and tests can be conducted virtually",
+        "Strong salary growth potential especially at large tech companies"
+      ],
+      "cons": [
+        "Stakeholders sometimes ignore research findings in favor of gut instinct",
+        "Can feel repetitive when running similar usability studies back to back",
+        "Requires constant internal advocacy to prove the ROI of research",
+        "Career ceiling can be lower than engineering or product management tracks"
+      ]
     },
     {
       "id": "technical-writer",
@@ -19,12 +53,45 @@
       "category": "Writing & Communication",
       "description": "Technical Writers translate complex technical concepts into clear, accessible documentation. They create user guides, API docs, tutorials, and help content that makes technology understandable for different audiences.",
       "dayInLife": "You spend the morning reviewing a developer's pull request to understand a new feature, then draft documentation for it. After lunch, you meet with the product team to discuss upcoming releases. You spend the afternoon updating the API reference guide and creating a tutorial with code examples.",
-      "salaryRange": { "min": 55000, "max": 115000, "currency": "USD" },
+      "salaryRange": { "min": 55000, "median": 80000, "max": 115000, "currency": "USD" },
       "growthOutlook": "Moderate",
       "requiredSkills": ["writing", "communication", "technical-literacy", "attention-to-detail", "organization", "research"],
       "relatedInterests": ["writing", "technology", "teaching", "problem-solving", "organization"],
       "nonObvious": true,
-      "whyNonObvious": "Writers and communicators often overlook tech industry roles where their core skills command strong salaries."
+      "whyNonObvious": "Writers and communicators often overlook tech industry roles where their core skills command strong salaries.",
+      "typicalBackgrounds": ["English", "Journalism", "Communications", "Computer Science", "Liberal Arts"],
+      "industries": ["Software companies", "API platforms", "Developer tools", "Healthcare IT", "Fintech", "Cloud services"],
+      "skillTransfers": {
+        "writing": "Your ability to write clearly and concisely is the core skill — you'll translate complex technical concepts into guides that thousands of developers read daily",
+        "communication": "Interviewing engineers, understanding their intent, and communicating it to different audiences is what you'll do every day",
+        "research": "You'll research new features, APIs, and technologies to document them accurately — the same investigative skills from academia",
+        "attention-to-detail": "Technical documentation must be precise — a wrong code example can break a user's project. Your eye for detail is critical"
+      },
+      "realWorldExamples": [
+        "Writing API reference documentation that helps 50,000 developers integrate a payment system",
+        "Creating step-by-step tutorials that reduce onboarding time from 2 weeks to 3 days",
+        "Building an interactive documentation site with code samples in 5 programming languages"
+      ],
+      "entryPaths": [
+        "Learn basic coding (HTML, Markdown, Git) — you don't need to be a developer, but you need to read code",
+        "Contribute to open-source documentation to build a portfolio",
+        "Take the Google Technical Writing courses (free)",
+        "Apply for technical writing internships or junior technical writer roles"
+      ],
+      "careerProgression": ["Junior Technical Writer", "Technical Writer", "Senior Technical Writer", "Staff Technical Writer", "Documentation Manager", "Director of Documentation"],
+      "pros": [
+        "Excellent remote work opportunities since writing is inherently async",
+        "Steady demand in every tech company that ships a product or API",
+        "Lower barrier to entry compared to engineering roles in tech",
+        "Intellectually stimulating — you learn new technologies constantly",
+        "Good work-life balance with minimal on-call or crunch periods"
+      ],
+      "cons": [
+        "Often undervalued compared to engineering and product roles internally",
+        "Salary ceiling is lower than many other tech career paths",
+        "Can feel isolating since writers often work solo for long stretches",
+        "Documentation is frequently deprioritized when deadlines get tight"
+      ]
     },
     {
       "id": "data-ethicist",
@@ -32,12 +99,45 @@
       "category": "Ethics & Policy",
       "description": "Data Ethicists ensure that data collection, AI systems, and algorithmic decisions are fair, transparent, and respectful of privacy. They bridge philosophy, law, and technology to guide responsible innovation.",
       "dayInLife": "You review an AI model's training data for potential biases in the morning. After a cross-functional meeting with engineers and legal, you draft ethical guidelines for a new data collection initiative. The afternoon involves researching emerging regulation and preparing a presentation on responsible AI for leadership.",
-      "salaryRange": { "min": 80000, "max": 160000, "currency": "USD" },
+      "salaryRange": { "min": 80000, "median": 115000, "max": 160000, "currency": "USD" },
       "growthOutlook": "Very High",
       "requiredSkills": ["critical-thinking", "ethics", "communication", "research", "data-analysis", "policy", "philosophy"],
       "relatedInterests": ["ethics", "technology", "social-impact", "law", "philosophy", "psychology"],
       "nonObvious": true,
-      "whyNonObvious": "Philosophy and ethics graduates rarely consider tech, but the industry desperately needs their perspective on AI fairness and data rights."
+      "whyNonObvious": "Philosophy and ethics graduates rarely consider tech, but the industry desperately needs their perspective on AI fairness and data rights.",
+      "typicalBackgrounds": ["Philosophy", "Ethics", "Law", "Political Science", "Data Science", "Public Policy"],
+      "industries": ["Big Tech (Google, Meta, Microsoft)", "AI startups", "Government regulation", "Healthcare AI", "Financial technology", "Consulting"],
+      "skillTransfers": {
+        "critical-thinking": "Evaluating AI systems for fairness requires the same rigorous logical analysis you use in philosophical arguments",
+        "ethics": "Your training in ethical frameworks (utilitarian, deontological, virtue ethics) directly applies to evaluating AI decisions that affect millions of people",
+        "research": "Researching emerging regulations and case studies is the same investigative skill set from academic research",
+        "communication": "You'll need to explain complex ethical concepts to engineers, executives, and regulators — bridging technical and human concerns"
+      },
+      "realWorldExamples": [
+        "Auditing a hiring AI to ensure it doesn't discriminate against protected groups",
+        "Drafting ethical guidelines for a company's use of facial recognition technology",
+        "Advising lawmakers on responsible AI legislation"
+      ],
+      "entryPaths": [
+        "Take courses in AI ethics and data privacy (many free options from MIT, Stanford, Helsinki)",
+        "Learn enough about AI/ML to understand how models make decisions",
+        "Write articles or give talks about AI ethics issues",
+        "Apply for ethics roles at major tech companies or AI policy think tanks"
+      ],
+      "careerProgression": ["Ethics Research Assistant", "Data Ethics Analyst", "AI Ethics Specialist", "Senior Ethics Advisor", "Head of Responsible AI", "Chief Ethics Officer"],
+      "pros": [
+        "Rapidly growing field with increasing regulatory pressure creating new positions",
+        "Deeply meaningful work that protects vulnerable communities from algorithmic harm",
+        "High visibility role that interacts with leadership and shapes company direction",
+        "Strong salaries driven by scarce talent and high corporate stakes",
+        "Opportunity to influence policy at both organizational and governmental levels"
+      ],
+      "cons": [
+        "Role can feel performative at companies that treat ethics as a PR exercise",
+        "Emotionally draining when your recommendations are overruled by business priorities",
+        "Still a nascent field with inconsistent job titles and unclear career ladders",
+        "Requires constant upskilling as AI technology evolves rapidly"
+      ]
     },
     {
       "id": "urban-informatics",
@@ -45,12 +145,44 @@
       "category": "Data & Cities",
       "description": "Urban Informatics Specialists use data science and technology to solve city-scale problems — from traffic optimization to public health mapping. They combine GIS, data analysis, and civic technology to improve urban life.",
       "dayInLife": "You start by analyzing city transit data to identify inefficient routes. Late morning, you meet with city planners to present findings from a noise pollution study. After lunch, you build a dashboard visualizing neighborhood walkability scores. You end the day writing a proposal for a smart city sensor network.",
-      "salaryRange": { "min": 60000, "max": 120000, "currency": "USD" },
+      "salaryRange": { "min": 60000, "median": 85000, "max": 120000, "currency": "USD" },
       "growthOutlook": "High",
       "requiredSkills": ["data-analysis", "programming", "gis", "statistics", "visualization", "problem-solving", "communication"],
       "relatedInterests": ["cities", "environment", "data", "social-impact", "technology", "geography"],
       "nonObvious": true,
-      "whyNonObvious": "Students interested in geography or urban planning don't realize their passion can combine with data skills for high-impact tech roles."
+      "whyNonObvious": "Students interested in geography or urban planning don't realize their passion can combine with data skills for high-impact tech roles.",
+      "typicalBackgrounds": ["Geography", "Urban Planning", "Civil Engineering", "Environmental Science", "Data Science", "Public Policy"],
+      "industries": ["City governments", "Transportation companies (Uber, Lyft)", "Smart city startups", "Environmental consulting", "Real estate tech", "Public health agencies"],
+      "skillTransfers": {
+        "data-analysis": "Analyzing city-scale datasets (traffic, census, pollution) requires the same analytical skills as any data role, but with a civic impact",
+        "programming": "Your coding skills let you build dashboards, automate analysis, and create tools that city planners actually use",
+        "gis": "GIS and mapping skills are essential — you'll create spatial analyses that influence decisions about where to build parks, hospitals, and transit lines",
+        "visualization": "Making complex urban data understandable through maps and charts helps decision-makers take action"
+      },
+      "realWorldExamples": [
+        "Building a real-time dashboard showing air quality across city neighborhoods",
+        "Analyzing bike-sharing data to recommend new station locations",
+        "Creating a walkability score system that helps residents choose where to live"
+      ],
+      "entryPaths": [
+        "Learn GIS tools (QGIS is free) and Python for spatial analysis",
+        "Work on civic tech projects through Code for America or local equivalents",
+        "Build a portfolio analyzing open city data (most cities publish open datasets)",
+        "Apply for data analyst roles in city government or urban planning firms"
+      ],
+      "careerProgression": ["Urban Data Analyst", "Urban Informatics Specialist", "Senior Spatial Data Scientist", "Director of Urban Analytics", "Chief Innovation Officer (City)"],
+      "pros": [
+        "Tangible real-world impact — your work visibly improves neighborhoods and cities",
+        "Growing smart-city investment creates expanding job opportunities worldwide",
+        "Fascinating variety of projects from transit to public health to sustainability",
+        "Strong sense of purpose working on civic problems that affect millions"
+      ],
+      "cons": [
+        "Government and municipal roles often pay less than private sector data jobs",
+        "Bureaucratic environments can slow down projects significantly",
+        "Requires niche GIS and spatial analysis skills that narrow your job market",
+        "Data quality from city agencies is often messy and inconsistent"
+      ]
     },
     {
       "id": "developer-advocate",
@@ -58,12 +190,45 @@
       "category": "Technology & Community",
       "description": "Developer Advocates are the bridge between a technology company and its developer community. They create tutorials, give talks, write blog posts, and build sample applications to help developers succeed with a platform or tool.",
       "dayInLife": "Morning: you record a video tutorial for a new SDK feature. You then respond to developer questions on the community forum. After lunch, you prototype a demo app for an upcoming conference talk. Late afternoon, you write a blog post about a common developer pain point and how to solve it.",
-      "salaryRange": { "min": 80000, "max": 170000, "currency": "USD" },
+      "salaryRange": { "min": 80000, "median": 120000, "max": 170000, "currency": "USD" },
       "growthOutlook": "High",
       "requiredSkills": ["programming", "communication", "public-speaking", "writing", "teaching", "empathy", "creativity"],
       "relatedInterests": ["technology", "teaching", "community", "public-speaking", "writing", "problem-solving"],
       "nonObvious": true,
-      "whyNonObvious": "Many developers and communicators don't know this role exists — it perfectly combines technical skills with people skills."
+      "whyNonObvious": "Many developers and communicators don't know this role exists — it perfectly combines technical skills with people skills.",
+      "typicalBackgrounds": ["Computer Science", "Software Engineering", "Communications", "Education", "Journalism", "Content Creation"],
+      "industries": ["Cloud platforms (AWS, Google Cloud, Azure)", "Developer tools", "Open source companies", "API companies (Stripe, Twilio)", "DevOps tools", "Database companies"],
+      "skillTransfers": {
+        "programming": "You need to be a competent developer who can write real code — you'll build demos, debug issues, and write sample applications",
+        "communication": "You'll present at conferences, write blog posts, and create tutorials. The ability to explain complex concepts simply is your superpower",
+        "teaching": "Developer Advocacy is fundamentally teaching at scale — if you love helping others understand things, this is your role",
+        "public-speaking": "Conference talks, webinars, and meetup presentations are a regular part of the job. Your stage presence matters"
+      },
+      "realWorldExamples": [
+        "Creating a tutorial series that helps 100,000 developers adopt a new framework",
+        "Speaking at tech conferences (PyCon, KubeCon, React Summit) representing your company",
+        "Building demo applications that showcase a product's capabilities"
+      ],
+      "entryPaths": [
+        "Start a tech blog or YouTube channel teaching something you know",
+        "Give talks at local meetups to practice public speaking",
+        "Contribute to open source and help others in community forums",
+        "Apply for junior developer advocate or community manager positions"
+      ],
+      "careerProgression": ["Junior Developer Advocate", "Developer Advocate", "Senior Developer Advocate", "Staff Developer Advocate", "Head of Developer Relations", "VP of Developer Experience"],
+      "pros": [
+        "One of the highest-paying non-management tech roles with strong compensation",
+        "Incredible variety — coding, writing, speaking, and traveling in one job",
+        "Large personal brand and public visibility in the developer community",
+        "Flexible schedule and strong remote work culture in most companies",
+        "Directly shapes how developers experience and adopt new technologies"
+      ],
+      "cons": [
+        "Extensive travel for conferences can lead to burnout and strained personal life",
+        "Hard to measure impact which makes justifying your role during layoffs difficult",
+        "DevRel teams are often first to be cut during company cost reductions",
+        "Constantly context-switching between coding, writing, and speaking is exhausting"
+      ]
     },
     {
       "id": "bioinformatics",
@@ -71,12 +236,46 @@
       "category": "Science & Technology",
       "description": "Bioinformatics Scientists use programming, statistics, and biology knowledge to analyze genomic data, model biological systems, and accelerate drug discovery and personalized medicine.",
       "dayInLife": "You begin by running a genome alignment pipeline on a new patient dataset. Mid-morning, you debug a Python script that visualizes gene expression patterns. After lunch, you present your mutation analysis findings to the research team. The afternoon is spent developing a machine learning model to predict drug responses.",
-      "salaryRange": { "min": 70000, "max": 140000, "currency": "USD" },
+      "salaryRange": { "min": 70000, "median": 100000, "max": 140000, "currency": "USD" },
       "growthOutlook": "Very High",
       "requiredSkills": ["programming", "biology", "statistics", "data-analysis", "machine-learning", "research", "attention-to-detail"],
       "relatedInterests": ["science", "biology", "technology", "data", "healthcare", "research"],
       "nonObvious": true,
-      "whyNonObvious": "Biology students often don't see the massive demand for computational skills in biotech, where coding meets life sciences."
+      "whyNonObvious": "Biology students often don't see the massive demand for computational skills in biotech, where coding meets life sciences.",
+      "typicalBackgrounds": ["Biology", "Biochemistry", "Computer Science", "Statistics", "Genetics", "Biomedical Engineering"],
+      "industries": ["Pharmaceutical companies", "Biotech startups", "Research hospitals", "Genomics companies (23andMe, Illumina)", "Academic research labs", "Government health agencies (NIH, CDC)"],
+      "skillTransfers": {
+        "programming": "Python and R are the primary languages — if you can code, you can analyze genomic data. You don't need to be a software engineer",
+        "biology": "Your understanding of molecular biology, genetics, and cellular processes is irreplaceable — pure computer scientists can't interpret results without it",
+        "statistics": "Genomic analysis is fundamentally statistical — your ability to design studies and interpret p-values is directly applicable",
+        "data-analysis": "Working with massive biological datasets (millions of gene sequences) uses the same analytical thinking as any data role",
+        "machine-learning": "ML is increasingly used to predict drug responses, protein structures, and disease markers — this is where biology meets AI"
+      },
+      "realWorldExamples": [
+        "Analyzing tumor genomic data to help oncologists choose the most effective treatment for each patient",
+        "Developing a machine learning model that predicts which drug candidates will succeed in clinical trials",
+        "Building a pipeline that processes 10,000 gene sequences per day for a COVID variant tracking project"
+      ],
+      "entryPaths": [
+        "Learn Python and focus on libraries like Biopython, Pandas, and scikit-learn",
+        "Take free genomics courses (MIT OCW, Coursera Genomic Data Science)",
+        "Practice with publicly available datasets from NCBI GEO",
+        "Apply for bioinformatics intern or research assistant positions at universities or biotech companies"
+      ],
+      "careerProgression": ["Bioinformatics Intern", "Junior Bioinformatician", "Bioinformatics Scientist", "Senior Bioinformatics Scientist", "Principal Scientist", "Director of Computational Biology"],
+      "pros": [
+        "Directly contributes to life-saving medical breakthroughs and drug discoveries",
+        "Booming job market fueled by genomics, precision medicine, and biotech investment",
+        "Intellectually challenging work at the cutting edge of science and technology",
+        "Strong job security as demand far outstrips the supply of qualified candidates",
+        "Opportunities in both academia and industry with competitive salaries"
+      ],
+      "cons": [
+        "Steep learning curve requiring deep expertise in both biology and computer science",
+        "Academic positions often require a PhD and offer lower pay than industry",
+        "Working with massive datasets means long compute times and tedious debugging",
+        "Can feel isolated as one of few people who understand both domains on a team"
+      ]
     },
     {
       "id": "sustainability-analyst",
@@ -84,12 +283,45 @@
       "category": "Environment & Business",
       "description": "Sustainability Analysts help organizations measure, report, and reduce their environmental impact. They combine data analysis with environmental science to drive corporate sustainability strategies and ESG reporting.",
       "dayInLife": "Morning: you collect energy consumption data from facilities worldwide and update the carbon footprint dashboard. You then join a call with supply chain partners to discuss emission reduction targets. After lunch, you draft the quarterly sustainability report for investors. Late afternoon, you research renewable energy options for the company's data centers.",
-      "salaryRange": { "min": 55000, "max": 110000, "currency": "USD" },
+      "salaryRange": { "min": 55000, "median": 78000, "max": 110000, "currency": "USD" },
       "growthOutlook": "Very High",
       "requiredSkills": ["data-analysis", "environmental-science", "communication", "research", "critical-thinking", "project-management"],
       "relatedInterests": ["environment", "social-impact", "data", "business", "science", "sustainability"],
       "nonObvious": true,
-      "whyNonObvious": "Environmental science majors often aim for fieldwork but miss the growing corporate demand for sustainability data expertise."
+      "whyNonObvious": "Environmental science majors often aim for fieldwork but miss the growing corporate demand for sustainability data expertise.",
+      "typicalBackgrounds": ["Environmental Science", "Environmental Engineering", "Business Administration", "Data Science", "Chemistry", "Public Policy"],
+      "industries": ["Fortune 500 corporations", "ESG consulting firms", "Renewable energy companies", "Government environmental agencies", "Investment firms", "Manufacturing companies"],
+      "skillTransfers": {
+        "data-analysis": "Carbon tracking, emissions modeling, and ESG reporting are fundamentally data problems — your analytical skills apply directly",
+        "environmental-science": "Understanding ecosystems, pollution, and climate science lets you ask the right questions and interpret environmental data meaningfully",
+        "communication": "You'll write sustainability reports for investors, present to boards, and explain complex environmental data to non-experts",
+        "research": "Staying current with regulations (EU taxonomy, SEC climate rules) requires the same research skills from academia"
+      },
+      "realWorldExamples": [
+        "Building a carbon footprint dashboard that tracks emissions across 200 global facilities",
+        "Writing a company's first ESG report that helped attract $50M in sustainable investment",
+        "Analyzing supply chain data to identify the biggest opportunities for emissions reduction"
+      ],
+      "entryPaths": [
+        "Learn about ESG frameworks (GRI, SASB, TCFD) — many free resources available",
+        "Get comfortable with data tools (Excel/Python) for sustainability metrics",
+        "Take a sustainability certification course",
+        "Apply for sustainability coordinator or analyst roles at large companies"
+      ],
+      "careerProgression": ["Sustainability Coordinator", "Sustainability Analyst", "Senior Sustainability Analyst", "Sustainability Manager", "Director of Sustainability", "Chief Sustainability Officer"],
+      "pros": [
+        "Rapidly expanding field driven by ESG regulations and investor pressure",
+        "Purpose-driven work that directly addresses the climate crisis",
+        "Growing C-suite visibility as sustainability becomes a board-level priority",
+        "Diverse industries need sustainability talent from tech to manufacturing",
+        "Good work-life balance compared to other corporate analyst roles"
+      ],
+      "cons": [
+        "Entry-level salaries are lower than comparable analyst roles in finance or tech",
+        "Risk of greenwashing — some companies treat sustainability as marketing not action",
+        "Measuring real environmental impact is often frustratingly imprecise",
+        "Regulatory landscape changes frequently requiring constant relearning"
+      ]
     },
     {
       "id": "forensic-accountant",
@@ -97,12 +329,45 @@
       "category": "Finance & Investigation",
       "description": "Forensic Accountants investigate financial fraud, embezzlement, and white-collar crime. They combine accounting expertise with detective work, analyzing financial records to uncover hidden patterns and testify as expert witnesses.",
       "dayInLife": "You spend the morning tracing suspicious transactions through multiple bank accounts. After a meeting with the legal team about an upcoming court case, you analyze expense reports looking for anomalies. The afternoon involves preparing a detailed forensic report and creating visualizations that explain the fraud scheme for a jury.",
-      "salaryRange": { "min": 60000, "max": 135000, "currency": "USD" },
+      "salaryRange": { "min": 60000, "median": 92000, "max": 135000, "currency": "USD" },
       "growthOutlook": "High",
       "requiredSkills": ["accounting", "analytical-thinking", "attention-to-detail", "investigation", "communication", "critical-thinking", "data-analysis"],
       "relatedInterests": ["investigation", "law", "finance", "problem-solving", "justice", "data"],
       "nonObvious": true,
-      "whyNonObvious": "Accounting students rarely discover this exciting intersection of finance and criminal investigation."
+      "whyNonObvious": "Accounting students rarely discover this exciting intersection of finance and criminal investigation.",
+      "typicalBackgrounds": ["Accounting", "Finance", "Criminal Justice", "Law", "Mathematics", "Economics"],
+      "industries": ["Big Four accounting firms", "FBI/Law enforcement", "Corporate investigation units", "Insurance companies", "Law firms", "Government agencies (SEC, IRS)"],
+      "skillTransfers": {
+        "accounting": "Your understanding of financial statements, bookkeeping, and audit trails is the foundation — you'll use it to trace money through complex schemes",
+        "analytical-thinking": "You'll analyze thousands of transactions to find needles in haystacks — the same analytical patterns from accounting and finance",
+        "attention-to-detail": "A single overlooked transaction can be the key to proving fraud. Your meticulousness is your most important skill",
+        "data-analysis": "Modern forensic accounting uses data analytics tools to detect anomalies in financial data at scale"
+      },
+      "realWorldExamples": [
+        "Tracing $2M in embezzled funds through 15 shell companies to recover stolen assets",
+        "Testifying as an expert witness in a federal fraud trial, explaining financial evidence to a jury",
+        "Using data analytics to discover a pattern of ghost employees on a company's payroll"
+      ],
+      "entryPaths": [
+        "Get a CPA or accounting degree, then specialize in forensic accounting",
+        "Pursue the CFE (Certified Fraud Examiner) certification",
+        "Learn data analytics tools for financial data (SQL, Benford's Law analysis)",
+        "Apply to forensic accounting divisions at Big Four firms or FBI financial crimes units"
+      ],
+      "careerProgression": ["Staff Accountant", "Forensic Accountant", "Senior Forensic Accountant", "Forensic Accounting Manager", "Partner/Director", "Chief Investigator"],
+      "pros": [
+        "Thrilling detective-style work that makes accounting far more engaging",
+        "Strong job security since financial fraud never goes away",
+        "Excellent earning potential especially at Big Four firms and FBI",
+        "High-profile cases can be intellectually fascinating and career-defining",
+        "Respected expertise that translates well to consulting and expert witness work"
+      ],
+      "cons": [
+        "Court testimony and legal proceedings can be stressful and adversarial",
+        "Long irregular hours when cases go to trial or hit critical deadlines",
+        "Emotionally taxing when investigating fraud that harmed real victims",
+        "Requires multiple certifications (CPA, CFE) that take years to obtain"
+      ]
     },
     {
       "id": "localization-engineer",
@@ -110,12 +375,44 @@
       "category": "Technology & Languages",
       "description": "Localization Engineers adapt software products for different languages, cultures, and regions. They combine programming skills with cultural knowledge to ensure apps work naturally for users worldwide.",
       "dayInLife": "Morning: you fix a bug where Arabic text isn't rendering correctly in the mobile app. Then you review a translator's work for a Japanese release. After lunch, you build automated tests for locale-specific date and currency formatting. Late afternoon, you meet with the product team to plan internationalization for a new feature.",
-      "salaryRange": { "min": 65000, "max": 125000, "currency": "USD" },
+      "salaryRange": { "min": 65000, "median": 90000, "max": 125000, "currency": "USD" },
       "growthOutlook": "Moderate",
       "requiredSkills": ["programming", "languages", "attention-to-detail", "cultural-awareness", "testing", "communication", "problem-solving"],
       "relatedInterests": ["languages", "culture", "technology", "travel", "problem-solving", "global-perspective"],
       "nonObvious": true,
-      "whyNonObvious": "Language and linguistics graduates often don't know their skills are valued in software engineering contexts."
+      "whyNonObvious": "Language and linguistics graduates often don't know their skills are valued in software engineering contexts.",
+      "typicalBackgrounds": ["Linguistics", "Foreign Languages", "Computer Science", "Translation Studies", "Cultural Studies", "International Relations"],
+      "industries": ["Global software companies", "Gaming studios", "E-commerce platforms", "Social media companies", "SaaS companies", "Localization service providers"],
+      "skillTransfers": {
+        "languages": "Your fluency in multiple languages gives you an intuitive understanding of how text, dates, currencies, and cultural norms vary worldwide",
+        "programming": "You'll write automation scripts, fix encoding bugs, and build internationalization frameworks — coding is essential",
+        "attention-to-detail": "A misplaced comma in Japanese or a wrong number format in Germany can break an app — your precision matters",
+        "cultural-awareness": "Understanding cultural context is what separates good localization from bad. You know that colors, icons, and phrases mean different things in different cultures"
+      },
+      "realWorldExamples": [
+        "Fixing a critical bug where right-to-left Arabic text broke the entire app layout for 10 million users",
+        "Building an automated testing framework that validates date/currency formatting across 40 locales",
+        "Managing the localization pipeline for a game launch in 12 languages simultaneously"
+      ],
+      "entryPaths": [
+        "Learn web development basics (HTML, CSS, JavaScript) with a focus on i18n libraries",
+        "Study internationalization standards (Unicode, CLDR, ICU)",
+        "Contribute to open-source localization projects",
+        "Apply for localization QA or junior localization engineer roles"
+      ],
+      "careerProgression": ["Localization QA Tester", "Localization Engineer", "Senior Localization Engineer", "Internationalization Architect", "Director of Globalization"],
+      "pros": [
+        "Unique niche combining language skills with engineering for less competition",
+        "Remote-friendly role since global teams naturally span time zones",
+        "Fascinating cultural problem-solving that goes far beyond simple translation",
+        "Growing demand as companies expand into new international markets"
+      ],
+      "cons": [
+        "Niche role with fewer open positions compared to general software engineering",
+        "Often seen as a support function rather than a core product team",
+        "Tedious edge cases with character encoding and text rendering bugs",
+        "Coordinating across many time zones can disrupt your personal schedule"
+      ]
     },
     {
       "id": "computational-designer",
@@ -123,12 +420,45 @@
       "category": "Design & Technology",
       "description": "Computational Designers use programming, algorithms, and mathematical models to create designs — from architecture and product design to generative art. They bridge aesthetics and code to create forms impossible by hand.",
       "dayInLife": "You start by tweaking parameters in a generative algorithm that creates organic-looking building facades. Mid-morning, you code a Grasshopper script to optimize material usage. After lunch, you prototype an interactive installation using Processing. The afternoon is spent collaborating with architects on a parametric design for a community center.",
-      "salaryRange": { "min": 60000, "max": 130000, "currency": "USD" },
+      "salaryRange": { "min": 60000, "median": 88000, "max": 130000, "currency": "USD" },
       "growthOutlook": "High",
       "requiredSkills": ["programming", "design", "mathematics", "creativity", "3d-modeling", "problem-solving", "visualization"],
       "relatedInterests": ["art", "design", "technology", "mathematics", "architecture", "creativity"],
       "nonObvious": true,
-      "whyNonObvious": "Art and design students often overlook how adding programming skills opens up entirely new creative career paths."
+      "whyNonObvious": "Art and design students often overlook how adding programming skills opens up entirely new creative career paths.",
+      "typicalBackgrounds": ["Architecture", "Industrial Design", "Fine Arts", "Computer Science", "Mathematics", "Graphic Design"],
+      "industries": ["Architecture firms", "Product design studios", "Art installations", "Fashion tech", "Game studios", "Digital art agencies"],
+      "skillTransfers": {
+        "programming": "Your coding skills let you create forms, patterns, and structures that are impossible to make by hand — algorithms become your creative tools",
+        "design": "Your eye for aesthetics and composition guides the parametric designs you create with code",
+        "mathematics": "Geometry, trigonometry, and linear algebra directly translate to generating complex shapes and patterns algorithmically",
+        "creativity": "You'll push boundaries of what's possible by combining artistic vision with computational power"
+      },
+      "realWorldExamples": [
+        "Designing a building facade with 10,000 unique panels generated by an algorithm that optimizes for sunlight and ventilation",
+        "Creating a generative art installation for a museum that responds to visitor movement",
+        "Building a tool that lets fashion designers generate textile patterns using mathematical functions"
+      ],
+      "entryPaths": [
+        "Learn Processing, p5.js, or Grasshopper (for 3D)",
+        "Create a portfolio of generative art or parametric designs",
+        "Participate in creative coding challenges (Genuary, Inktober)",
+        "Apply to design studios that use computational methods"
+      ],
+      "careerProgression": ["Creative Coder", "Computational Designer", "Senior Computational Designer", "Design Technologist Lead", "Director of Creative Technology"],
+      "pros": [
+        "Uniquely creative role where code is your artistic medium",
+        "High demand in architecture, fashion, and digital art industries",
+        "Produces stunning portfolio work that attracts future opportunities",
+        "Blends left-brain and right-brain thinking in a rare and satisfying way",
+        "Freelance and independent work is very viable in this space"
+      ],
+      "cons": [
+        "Job market is small and concentrated in major design cities",
+        "Clients often struggle to understand or value algorithmic design processes",
+        "Requires maintaining skills in both design software and programming languages",
+        "Income can be inconsistent especially for freelance or studio work"
+      ]
     },
     {
       "id": "healthcare-ux",
@@ -136,12 +466,45 @@
       "category": "Healthcare & Design",
       "description": "Healthcare UX Designers create intuitive interfaces for medical applications, electronic health records, telemedicine platforms, and health monitoring devices. Their designs directly impact patient outcomes and clinician efficiency.",
       "dayInLife": "Morning: you shadow a nurse using the EHR system to identify pain points. Then you sketch wireframes for a new patient intake flow. After lunch, you run a usability test of a telemedicine app with elderly patients. The afternoon is spent creating a design system for accessible health content.",
-      "salaryRange": { "min": 75000, "max": 145000, "currency": "USD" },
+      "salaryRange": { "min": 75000, "median": 105000, "max": 145000, "currency": "USD" },
       "growthOutlook": "Very High",
       "requiredSkills": ["design", "empathy", "research", "accessibility", "prototyping", "communication", "healthcare-knowledge"],
       "relatedInterests": ["healthcare", "design", "helping-people", "technology", "psychology", "accessibility"],
       "nonObvious": true,
-      "whyNonObvious": "Healthcare and design are rarely connected in education, but this intersection has tremendous impact and demand."
+      "whyNonObvious": "Healthcare and design are rarely connected in education, but this intersection has tremendous impact and demand.",
+      "typicalBackgrounds": ["Graphic Design", "Human-Computer Interaction", "Nursing", "Public Health", "Psychology", "Biomedical Engineering"],
+      "industries": ["Health tech companies", "Hospital systems", "Telemedicine platforms", "Medical device companies", "Health insurance companies", "Digital health startups"],
+      "skillTransfers": {
+        "design": "Your visual and interaction design skills directly apply — but in healthcare, a confusing interface can literally endanger lives, making design even more critical",
+        "empathy": "Understanding patients, doctors, and nurses — each with vastly different needs, stress levels, and technical abilities — is essential",
+        "research": "Healthcare UX requires rigorous research due to regulatory requirements and the stakes involved in medical decisions",
+        "accessibility": "Patients include elderly, visually impaired, and cognitively impaired users — accessibility isn't optional, it's the job"
+      },
+      "realWorldExamples": [
+        "Redesigning an EHR system that reduced nurse charting time by 30%, giving them more time with patients",
+        "Creating a telemedicine app interface that elderly patients can navigate without assistance",
+        "Designing a medication management app that reduced dosing errors by 60%"
+      ],
+      "entryPaths": [
+        "Learn UX design fundamentals and healthcare domain knowledge (HIPAA, FDA regulations)",
+        "Shadow healthcare workers to understand their daily challenges",
+        "Build case studies redesigning existing health apps",
+        "Apply to health tech companies or hospital innovation departments"
+      ],
+      "careerProgression": ["UX Designer (Healthcare)", "Healthcare UX Designer", "Senior Healthcare UX Designer", "UX Lead (Healthcare)", "VP of Design (Health Tech)"],
+      "pros": [
+        "Your designs can literally save lives by reducing medical errors",
+        "Booming health tech industry with very high demand for specialized UX talent",
+        "Higher salaries than general UX roles due to domain expertise requirements",
+        "Deeply rewarding work improving experiences for patients and clinicians",
+        "Strong job security as healthcare digitization continues to accelerate"
+      ],
+      "cons": [
+        "Heavy regulatory burden (HIPAA, FDA) adds complexity and slows iteration",
+        "Emotionally heavy when designing for seriously ill or vulnerable patients",
+        "Stakeholder alignment is difficult across clinicians, administrators, and IT teams",
+        "Design decisions carry high stakes which can create significant pressure"
+      ]
     },
     {
       "id": "climate-tech-pm",
@@ -149,12 +512,413 @@
       "category": "Environment & Technology",
       "description": "Climate Tech Product Managers lead the development of technology solutions that address climate change — from carbon tracking software to renewable energy platforms and sustainable supply chain tools.",
       "dayInLife": "Morning: you review user feedback on the carbon accounting dashboard and prioritize backlog items. Then you lead a sprint planning meeting with engineers building a supply chain emissions tracker. After lunch, you interview a sustainability director at a potential client. The afternoon is spent drafting a product roadmap for Q3.",
-      "salaryRange": { "min": 90000, "max": 175000, "currency": "USD" },
+      "salaryRange": { "min": 90000, "median": 130000, "max": 175000, "currency": "USD" },
       "growthOutlook": "Very High",
       "requiredSkills": ["project-management", "communication", "analytical-thinking", "leadership", "environmental-science", "strategy", "technology"],
       "relatedInterests": ["environment", "technology", "leadership", "social-impact", "business", "sustainability"],
       "nonObvious": true,
-      "whyNonObvious": "Environmentally-passionate students often don't realize they can lead technology products that fight climate change."
+      "whyNonObvious": "Environmentally-passionate students often don't realize they can lead technology products that fight climate change.",
+      "typicalBackgrounds": ["Environmental Science", "Business Administration", "Engineering", "Public Policy", "Computer Science", "Sustainability Studies"],
+      "industries": ["Climate tech startups", "Clean energy companies", "Carbon accounting platforms", "ESG data providers", "Sustainable supply chain companies", "Green building technology"],
+      "skillTransfers": {
+        "project-management": "Product management is advanced project management — you'll prioritize features, manage timelines, and coordinate engineering teams",
+        "communication": "You'll be the bridge between engineers, customers, and executives — clear communication is your primary tool",
+        "environmental-science": "Understanding carbon accounting, emissions standards, and environmental regulations gives you domain expertise that pure tech PMs lack",
+        "strategy": "You'll define product strategy based on market trends, competitive analysis, and climate policy changes"
+      },
+      "realWorldExamples": [
+        "Leading the development of a carbon accounting platform used by 500 companies to track their emissions",
+        "Building a supply chain transparency tool that helps fashion brands verify sustainable sourcing",
+        "Managing a team building renewable energy monitoring software for solar farm operators"
+      ],
+      "entryPaths": [
+        "Take product management courses (Pragmatic Institute, Reforge, or free resources)",
+        "Learn the climate tech landscape — who the players are, what problems they solve",
+        "Build something small in the climate space to demonstrate product thinking",
+        "Apply for associate PM roles at climate tech companies or sustainability divisions of large companies"
+      ],
+      "careerProgression": ["Associate Product Manager", "Product Manager (Climate Tech)", "Senior Product Manager", "Group Product Manager", "VP of Product", "Chief Product Officer"],
+      "pros": [
+        "Among the highest salaries in the sustainability space with strong upside",
+        "Mission-driven work directly combating climate change through technology",
+        "Rapidly growing sector with massive venture capital investment flowing in",
+        "Leadership role with high visibility and cross-functional influence",
+        "Combines business strategy with environmental impact in a fulfilling way"
+      ],
+      "cons": [
+        "Climate tech startups can be unstable with high failure rates",
+        "Pressure to balance profitability with genuine environmental impact",
+        "Requires broad knowledge spanning climate science, policy, and software",
+        "Fast-moving regulatory landscape makes long-term product planning difficult"
+      ]
+    },
+    {
+      "id": "product-designer",
+      "title": "Product Designer",
+      "category": "Design & Technology",
+      "description": "Product Designers own the end-to-end experience of digital products — from user research and wireframing to high-fidelity prototypes and design systems. They combine visual design, interaction design, and user psychology to create intuitive, delightful interfaces.",
+      "dayInLife": "Morning: you review analytics on a new feature launch and sketch ideas for improvements. You then join a design critique where teammates give feedback on your checkout flow redesign. After lunch, you build an interactive prototype in Figma for user testing. Late afternoon, you update the design system with new component variants.",
+      "salaryRange": { "min": 75000, "median": 115000, "max": 165000, "currency": "USD" },
+      "growthOutlook": "High",
+      "requiredSkills": ["design", "prototyping", "empathy", "communication", "creativity", "research", "ui-design"],
+      "relatedInterests": ["design", "technology", "psychology", "creativity", "problem-solving", "helping-people"],
+      "nonObvious": true,
+      "whyNonObvious": "Many creative people don't realize product design is one of the highest-paying creative careers in tech, with massive demand.",
+      "typicalBackgrounds": ["Graphic Design", "Fine Arts", "Human-Computer Interaction", "Psychology", "Architecture", "Industrial Design"],
+      "industries": ["Tech companies (FAANG)", "SaaS startups", "E-commerce", "Fintech", "Healthcare tech", "Design agencies"],
+      "skillTransfers": {
+        "design": "Your visual design eye is foundational — you'll craft interfaces used by millions of people daily",
+        "empathy": "Understanding user frustrations, motivations, and mental models is how you create products people love",
+        "prototyping": "Building interactive prototypes lets you test ideas before engineering invests weeks building them",
+        "creativity": "You'll solve complex interaction puzzles — making complicated workflows feel effortless requires immense creativity"
+      },
+      "realWorldExamples": [
+        "Redesigning a banking app's transfer flow, reducing abandoned transactions by 45%",
+        "Creating a design system used by 200 engineers across 15 product teams",
+        "Designing an accessibility-first mobile experience that won an Apple Design Award"
+      ],
+      "entryPaths": [
+        "Master Figma — it's the industry standard tool for product design",
+        "Complete the Google UX Design Certificate or a design bootcamp",
+        "Build 3-4 case studies showing your design process from research to final designs",
+        "Apply for junior product designer or UI/UX designer positions at startups"
+      ],
+      "careerProgression": ["Junior Product Designer", "Product Designer", "Senior Product Designer", "Staff Designer", "Design Lead", "VP of Design"],
+      "pros": [
+        "One of the highest-paying creative careers with strong demand across all tech companies",
+        "Deeply satisfying to see millions of people use interfaces you designed",
+        "Excellent remote work opportunities with flexible schedules",
+        "Creative problem-solving every day — no two design challenges are the same",
+        "Strong career growth with clear paths to leadership"
+      ],
+      "cons": [
+        "Design decisions frequently overridden by product managers or executives",
+        "Can be frustrating when eng constraints force you to simplify your best ideas",
+        "Imposter syndrome is common since design is subjective and hard to measure",
+        "Constant tool changes and trend shifts require ongoing skill investment"
+      ]
+    },
+    {
+      "id": "devops-engineer",
+      "title": "DevOps / Platform Engineer",
+      "category": "Technology & Infrastructure",
+      "description": "DevOps Engineers build and maintain the infrastructure that lets software teams ship code reliably and at scale. They automate deployments, manage cloud infrastructure, and ensure systems stay fast, secure, and available 24/7.",
+      "dayInLife": "Morning: you review overnight alerts and fix a memory leak in the staging environment. Then you write Terraform to provision a new Kubernetes cluster. After lunch, you optimize the CI/CD pipeline to cut build times from 20 minutes to 8. Late afternoon, you pair with a developer to troubleshoot a deployment issue.",
+      "salaryRange": { "min": 85000, "median": 130000, "max": 185000, "currency": "USD" },
+      "growthOutlook": "Very High",
+      "requiredSkills": ["programming", "cloud-computing", "devops", "automation", "problem-solving", "linux", "networking"],
+      "relatedInterests": ["technology", "problem-solving", "security", "automation", "data"],
+      "nonObvious": true,
+      "whyNonObvious": "Many programmers focus on app development without realizing infrastructure roles often pay more and have even higher demand.",
+      "typicalBackgrounds": ["Computer Science", "IT Administration", "Software Engineering", "Network Engineering", "Mathematics"],
+      "industries": ["Cloud providers (AWS, GCP, Azure)", "Fintech", "E-commerce", "SaaS companies", "Gaming", "Streaming platforms"],
+      "skillTransfers": {
+        "programming": "You'll write infrastructure-as-code, automation scripts, and CI/CD pipelines — coding is essential but focused on systems, not features",
+        "cloud-computing": "Understanding cloud services (compute, storage, networking) is the foundation of modern DevOps",
+        "automation": "Your ability to automate repetitive tasks saves engineering teams thousands of hours and prevents human errors",
+        "problem-solving": "When production goes down at 3 AM, your debugging and troubleshooting skills are what keep the company running"
+      },
+      "realWorldExamples": [
+        "Building a CI/CD pipeline that deploys code to production 50 times per day with zero downtime",
+        "Migrating a company's infrastructure from on-premise servers to Kubernetes, cutting costs by 40%",
+        "Automating disaster recovery so the platform can self-heal from failures in under 60 seconds"
+      ],
+      "entryPaths": [
+        "Learn Linux, Docker, and one cloud platform (AWS is most popular)",
+        "Get certified — AWS Solutions Architect or CKA (Kubernetes) credentials are highly valued",
+        "Practice with personal projects: deploy apps, set up CI/CD, write Terraform",
+        "Start as a junior sysadmin, SRE, or cloud engineer and grow into DevOps"
+      ],
+      "careerProgression": ["Junior DevOps Engineer", "DevOps Engineer", "Senior DevOps Engineer", "Staff Platform Engineer", "Principal Engineer", "VP of Infrastructure"],
+      "pros": [
+        "Among the highest-paying engineering roles with extreme demand",
+        "Fascinating puzzle-solving when diagnosing and fixing production systems",
+        "High job security — every company needs infrastructure, and talent is scarce",
+        "Broad exposure to the entire tech stack gives you versatile skills",
+        "Strong remote work culture since infrastructure is managed virtually"
+      ],
+      "cons": [
+        "On-call rotations mean middle-of-the-night pages when things break",
+        "Invisible work — nobody notices infrastructure until it fails",
+        "Rapidly changing tool landscape creates constant learning pressure",
+        "Can feel isolating since you're often a specialist on a generalist team"
+      ]
+    },
+    {
+      "id": "content-strategist",
+      "title": "Content Strategist",
+      "category": "Marketing & Communication",
+      "description": "Content Strategists plan, create, and optimize content across channels to achieve business goals. They blend writing, SEO, analytics, and audience psychology to build content ecosystems that drive growth, engagement, and brand authority.",
+      "dayInLife": "Morning: you analyze which blog posts drove the most organic traffic last month and brief writers on new topics. Then you review a product launch content plan with the marketing team. After lunch, you audit the website's content architecture and create a taxonomy for better navigation. Late afternoon, you write a content brief and review SEO keyword research.",
+      "salaryRange": { "min": 60000, "median": 90000, "max": 135000, "currency": "USD" },
+      "growthOutlook": "High",
+      "requiredSkills": ["writing", "communication", "analytical-thinking", "creativity", "digital-marketing", "research", "strategy"],
+      "relatedInterests": ["writing", "marketing", "technology", "psychology", "creativity", "business"],
+      "nonObvious": true,
+      "whyNonObvious": "English and journalism majors often don't realize content strategy is a lucrative tech career that values their storytelling and editorial skills.",
+      "typicalBackgrounds": ["English", "Journalism", "Communications", "Marketing", "Liberal Arts", "Public Relations"],
+      "industries": ["SaaS companies", "E-commerce", "Media companies", "Marketing agencies", "Tech startups", "Publishing platforms"],
+      "skillTransfers": {
+        "writing": "Your ability to write compelling, clear content is the core skill — you'll craft everything from landing pages to email sequences",
+        "communication": "Collaborating with designers, developers, and executives to align content with business goals is a daily activity",
+        "analytical-thinking": "You'll use data to decide what content to create, optimize, or retire — editorial instinct meets analytics",
+        "creativity": "Finding fresh angles, storytelling approaches, and content formats that cut through noise requires serious creative thinking"
+      },
+      "realWorldExamples": [
+        "Building a content engine that grew organic traffic from 10K to 500K monthly visitors in 18 months",
+        "Creating a content taxonomy that improved site navigation and increased time-on-page by 35%",
+        "Developing a thought leadership program that positioned the CEO as an industry authority"
+      ],
+      "entryPaths": [
+        "Start a blog or newsletter to build a portfolio of strategic content",
+        "Learn SEO fundamentals and content analytics tools (Google Analytics, Ahrefs)",
+        "Take courses in content strategy (HubSpot, Coursera, or Content Marketing Institute)",
+        "Apply for content coordinator or junior content strategist roles"
+      ],
+      "careerProgression": ["Content Coordinator", "Content Strategist", "Senior Content Strategist", "Head of Content", "VP of Content Marketing", "Chief Content Officer"],
+      "pros": [
+        "Creative and analytical in equal measure — satisfies both sides of your brain",
+        "Strong demand as every company needs content to grow",
+        "Excellent remote work flexibility since writing is inherently async",
+        "Clear career path into marketing leadership roles",
+        "Low barrier to entry with a portfolio and demonstrated results"
+      ],
+      "cons": [
+        "Content ROI is hard to prove which makes budget conversations difficult",
+        "Often treated as a support function rather than a strategic partner",
+        "Constant pressure to produce more content faster can lead to burnout",
+        "SEO algorithm changes can invalidate months of carefully planned work"
+      ]
+    },
+    {
+      "id": "cybersecurity-analyst",
+      "title": "Cybersecurity Analyst",
+      "category": "Technology & Security",
+      "description": "Cybersecurity Analysts protect organizations from digital threats by monitoring systems, investigating breaches, and building defenses. They combine technical skills with investigative thinking to stay one step ahead of attackers.",
+      "dayInLife": "Morning: you review overnight security alerts and investigate a suspicious login pattern. Then you run a vulnerability scan on the company's web applications. After lunch, you lead a security awareness training for new employees. Late afternoon, you write detection rules for a new type of phishing attack and update the incident response playbook.",
+      "salaryRange": { "min": 70000, "median": 105000, "max": 155000, "currency": "USD" },
+      "growthOutlook": "Very High",
+      "requiredSkills": ["cybersecurity", "programming", "analytical-thinking", "networking", "attention-to-detail", "problem-solving", "communication"],
+      "relatedInterests": ["technology", "security", "investigation", "problem-solving", "data"],
+      "nonObvious": true,
+      "whyNonObvious": "Many tech-curious people overlook cybersecurity, not realizing it's one of the fastest-growing and highest-paying fields with a massive talent shortage.",
+      "typicalBackgrounds": ["Computer Science", "Information Technology", "Criminal Justice", "Mathematics", "Network Engineering", "Military/Intelligence"],
+      "industries": ["Financial services", "Government/Defense", "Healthcare", "Tech companies", "Consulting firms", "Retail/E-commerce"],
+      "skillTransfers": {
+        "programming": "Writing scripts to automate threat detection, analyze malware, and build security tools requires solid coding skills",
+        "analytical-thinking": "Analyzing attack patterns, correlating security events, and investigating breaches is detective work applied to technology",
+        "networking": "Understanding how networks work is essential — most attacks exploit network vulnerabilities and protocols",
+        "attention-to-detail": "A single misconfigured firewall rule or overlooked log entry can be the difference between catching and missing a breach"
+      },
+      "realWorldExamples": [
+        "Detecting and stopping a ransomware attack before it encrypted the company's data, saving millions in potential losses",
+        "Building an automated threat detection system that catches 95% of phishing emails before they reach employees",
+        "Leading the incident response for a data breach, containing it within 4 hours and preventing customer data exposure"
+      ],
+      "entryPaths": [
+        "Get CompTIA Security+ certification — it's the industry entry point",
+        "Set up a home security lab to practice with tools like Wireshark, Metasploit, and Splunk",
+        "Participate in Capture The Flag (CTF) competitions to build practical skills",
+        "Apply for SOC analyst or junior security analyst positions"
+      ],
+      "careerProgression": ["SOC Analyst", "Cybersecurity Analyst", "Senior Security Analyst", "Security Engineer", "Security Architect", "CISO"],
+      "pros": [
+        "Massive talent shortage means high salaries and easy job placement",
+        "Intellectually thrilling cat-and-mouse game against real attackers",
+        "Critical role that gives you significant organizational influence",
+        "Recession-proof — companies can't cut security even in downturns",
+        "Continuous learning keeps the work fresh and engaging"
+      ],
+      "cons": [
+        "On-call and incident response can mean stressful, unpredictable hours",
+        "Constant pressure knowing a missed threat could cause massive damage",
+        "Rapidly evolving threat landscape requires relentless skill updating",
+        "Can feel thankless — success means nothing bad happened, which is hard to celebrate"
+      ]
+    },
+    {
+      "id": "learning-designer",
+      "title": "Learning Experience Designer",
+      "category": "Education & Technology",
+      "description": "Learning Experience Designers create engaging educational content for online courses, corporate training, and edtech products. They combine instructional design theory, multimedia production, and user experience principles to make learning effective and enjoyable.",
+      "dayInLife": "Morning: you storyboard an interactive simulation for a compliance training module. Then you conduct a needs analysis interview with subject matter experts. After lunch, you build an interactive lesson in Articulate Rise and record a short video explanation. Late afternoon, you analyze course completion data and A/B test results to optimize a struggling module.",
+      "salaryRange": { "min": 60000, "median": 85000, "max": 125000, "currency": "USD" },
+      "growthOutlook": "High",
+      "requiredSkills": ["teaching", "design", "writing", "creativity", "communication", "empathy", "education-theory"],
+      "relatedInterests": ["teaching", "design", "technology", "psychology", "creativity", "helping-people"],
+      "nonObvious": true,
+      "whyNonObvious": "Teachers and educators rarely discover that their pedagogical skills are in huge demand in the corporate and edtech sectors.",
+      "typicalBackgrounds": ["Education", "Instructional Design", "Psychology", "Communications", "Graphic Design", "English"],
+      "industries": ["Edtech companies (Coursera, Udemy)", "Corporate L&D departments", "Healthcare training", "Tech companies", "Government agencies", "Consulting firms"],
+      "skillTransfers": {
+        "teaching": "Your understanding of how people learn, retain, and apply knowledge is the core of this role — it's teaching, evolved for digital",
+        "design": "Visual design skills help you create engaging slides, infographics, and interactive elements that keep learners motivated",
+        "writing": "You'll write scripts for videos, scenarios for simulations, and assessment questions — clear writing makes learning effective",
+        "empathy": "Understanding the learner's perspective — their frustrations, motivations, and knowledge gaps — drives every design decision"
+      },
+      "realWorldExamples": [
+        "Designing an onboarding program that reduced new hire ramp-up time from 6 weeks to 3 weeks",
+        "Creating an interactive cybersecurity training that increased employee threat detection by 60%",
+        "Building a mobile-first microlearning platform for healthcare workers that fits into their shift schedules"
+      ],
+      "entryPaths": [
+        "Complete an instructional design certificate program (ATD, IDOL Academy, or university programs)",
+        "Learn authoring tools (Articulate 360, Adobe Captivate) and basic video editing",
+        "Build a portfolio with sample course designs showing your process",
+        "Apply for instructional designer or learning designer roles in corporate L&D or edtech"
+      ],
+      "careerProgression": ["Instructional Designer", "Senior Learning Designer", "Learning Experience Lead", "Director of Learning", "VP of Learning & Development", "Chief Learning Officer"],
+      "pros": [
+        "Deeply rewarding work helping people learn and grow professionally",
+        "Strong demand in corporate training — every large company has L&D teams",
+        "Creative variety — you work with video, interactive media, and storytelling",
+        "Good work-life balance compared to many other tech-adjacent roles",
+        "Natural career transition for teachers who want higher salaries"
+      ],
+      "cons": [
+        "Stakeholders often underestimate how long good learning design takes",
+        "Can feel repetitive when creating similar compliance training modules",
+        "SMEs (subject matter experts) can be difficult to pin down for content review",
+        "Lower salary ceiling compared to pure tech roles like engineering"
+      ]
+    },
+    {
+      "id": "sports-analyst",
+      "title": "Sports Analytics Manager",
+      "category": "Sports & Data",
+      "description": "Sports Analytics Managers use data science, statistics, and domain expertise to help sports teams and organizations make better decisions — from player recruitment and game strategy to fan engagement and revenue optimization.",
+      "dayInLife": "Morning: you analyze player performance data from last night's game and prepare a scouting report. Then you build a predictive model for injury risk based on training load data. After lunch, you present your findings to coaches and front office staff. Late afternoon, you work on a ticket pricing model that optimizes revenue based on opponent, day of week, and weather.",
+      "salaryRange": { "min": 60000, "median": 95000, "max": 145000, "currency": "USD" },
+      "growthOutlook": "High",
+      "requiredSkills": ["data-analysis", "statistics", "programming", "communication", "visualization", "sports-science", "machine-learning"],
+      "relatedInterests": ["sports", "data", "technology", "problem-solving", "business", "science"],
+      "nonObvious": true,
+      "whyNonObvious": "Sports fans with data skills don't realize that professional teams actively hire analysts — it's not just for former athletes.",
+      "typicalBackgrounds": ["Statistics", "Data Science", "Sports Management", "Mathematics", "Computer Science", "Economics"],
+      "industries": ["Professional sports teams (NFL, NBA, MLB, Premier League)", "Sports media companies (ESPN)", "Sports betting platforms", "Athletic performance companies", "College athletic departments", "Sports agencies"],
+      "skillTransfers": {
+        "data-analysis": "Analyzing player statistics, game footage data, and performance metrics uses the same analytical toolkit as any data role",
+        "statistics": "Building predictive models for player performance, injury risk, and game outcomes is applied statistics at its most exciting",
+        "programming": "Python and R are the primary tools — you'll build models, scrape data, and create interactive dashboards",
+        "visualization": "Coaches and executives need insights presented clearly — your ability to turn data into compelling visuals drives decisions"
+      },
+      "realWorldExamples": [
+        "Building a player valuation model that identified undervalued free agents, saving the team $15M in salary",
+        "Creating a real-time game strategy dashboard that coaches used during timeouts to adjust tactics",
+        "Developing a dynamic ticket pricing algorithm that increased season revenue by 12%"
+      ],
+      "entryPaths": [
+        "Master Python/R and build sports analytics projects using publicly available data (Basketball Reference, FBref)",
+        "Complete a sports analytics course (MIT Sloan Sports Analytics, Coursera)",
+        "Start a sports analytics blog or Twitter account to build your reputation",
+        "Apply for analytics intern positions at professional sports teams or sports media companies"
+      ],
+      "careerProgression": ["Analytics Intern", "Junior Sports Analyst", "Sports Analyst", "Senior Sports Analyst", "Director of Analytics", "VP of Strategy & Analytics"],
+      "pros": [
+        "Dream job for sports fans — you get paid to analyze the games you love",
+        "Growing field with teams investing more heavily in analytics every year",
+        "High-stakes decisions make the work thrilling and impactful",
+        "Unique networking opportunities in the sports industry",
+        "Transferable skills mean you can move to finance or tech if you want"
+      ],
+      "cons": [
+        "Entry-level sports analytics salaries are often lower than comparable tech data roles",
+        "Coaches and scouts may resist data-driven recommendations",
+        "Long hours during the season, including nights and weekends for games",
+        "Very competitive field — many qualified candidates for few positions"
+      ]
+    },
+    {
+      "id": "digital-health-consultant",
+      "title": "Digital Health Consultant",
+      "category": "Healthcare & Technology",
+      "description": "Digital Health Consultants advise healthcare organizations on adopting technology solutions — from telemedicine and EHR systems to AI diagnostics and remote patient monitoring. They bridge the gap between healthcare operations and technological innovation.",
+      "dayInLife": "Morning: you lead a stakeholder workshop with hospital administrators to map their current patient flow. Then you draft a technology roadmap for a clinic's digital transformation. After lunch, you evaluate three telemedicine vendors and prepare a comparison matrix. Late afternoon, you present recommendations to the C-suite on how to reduce readmission rates using predictive analytics.",
+      "salaryRange": { "min": 80000, "median": 120000, "max": 175000, "currency": "USD" },
+      "growthOutlook": "Very High",
+      "requiredSkills": ["healthcare-knowledge", "communication", "analytical-thinking", "project-management", "strategy", "technology", "problem-solving"],
+      "relatedInterests": ["healthcare", "technology", "helping-people", "business", "social-impact", "problem-solving"],
+      "nonObvious": true,
+      "whyNonObvious": "Healthcare professionals often don't realize their clinical experience combined with tech interest makes them extremely valuable as consultants.",
+      "typicalBackgrounds": ["Healthcare Administration", "Nursing", "Public Health", "Business Administration", "Health Informatics", "Biomedical Engineering"],
+      "industries": ["Healthcare consulting firms (McKinsey, Deloitte Health)", "Health tech companies", "Hospital systems", "Health insurance companies", "Government health agencies", "Pharmaceutical companies"],
+      "skillTransfers": {
+        "healthcare-knowledge": "Understanding clinical workflows, patient needs, and regulatory requirements (HIPAA, FDA) gives you credibility that pure tech consultants lack",
+        "communication": "You'll translate between clinical staff and technology teams, making complex concepts accessible to both audiences",
+        "project-management": "Managing multi-stakeholder digital transformation projects requires strong organizational and leadership skills",
+        "analytical-thinking": "Evaluating technology solutions against clinical needs, budget constraints, and regulatory requirements demands rigorous analysis"
+      },
+      "realWorldExamples": [
+        "Leading a hospital's telemedicine rollout that enabled 50,000 virtual visits in its first year",
+        "Designing a remote patient monitoring program that reduced ICU readmissions by 25%",
+        "Advising a health system on AI-powered radiology tools, guiding them from pilot to enterprise deployment"
+      ],
+      "entryPaths": [
+        "Gain healthcare experience in clinical, administrative, or health IT roles",
+        "Get certified in health informatics or digital health (AMIA, HIMSS CPHIMS)",
+        "Learn the health tech landscape — major vendors, emerging startups, regulatory frameworks",
+        "Apply for healthcare consulting roles at big firms or health tech product management positions"
+      ],
+      "careerProgression": ["Health IT Analyst", "Digital Health Consultant", "Senior Consultant", "Manager/Principal", "Director of Digital Health", "Chief Digital Health Officer"],
+      "pros": [
+        "High-impact work that directly improves patient care and outcomes",
+        "Excellent compensation driven by the complexity and stakes of healthcare",
+        "Growing field as healthcare undergoes massive digital transformation",
+        "Intellectual variety — every client and project presents unique challenges",
+        "Path to senior leadership in both consulting and healthcare organizations"
+      ],
+      "cons": [
+        "Healthcare organizations change slowly, which can be frustrating",
+        "Heavy regulatory burden adds complexity to every recommendation",
+        "Travel-intensive if working at a consulting firm",
+        "Emotionally taxing when technology failures impact patient care"
+      ]
+    },
+    {
+      "id": "supply-chain-analyst",
+      "title": "Supply Chain Data Analyst",
+      "category": "Business & Data",
+      "description": "Supply Chain Data Analysts use data science to optimize how goods move from suppliers to customers. They forecast demand, reduce waste, improve logistics, and build dashboards that help companies save millions in operational costs.",
+      "dayInLife": "Morning: you analyze last quarter's inventory data to identify overstocked and understocked items. Then you update a demand forecasting model with new sales data. After lunch, you build a dashboard showing real-time logistics performance across distribution centers. Late afternoon, you present recommendations to the operations team on optimizing shipping routes.",
+      "salaryRange": { "min": 55000, "median": 80000, "max": 120000, "currency": "USD" },
+      "growthOutlook": "High",
+      "requiredSkills": ["data-analysis", "statistics", "programming", "visualization", "supply-chain", "problem-solving", "communication"],
+      "relatedInterests": ["data", "business", "problem-solving", "technology", "sustainability", "finance"],
+      "nonObvious": true,
+      "whyNonObvious": "Data-skilled graduates gravitate toward flashy tech roles, not realizing that supply chain analytics is a massive, well-paying field with global impact.",
+      "typicalBackgrounds": ["Supply Chain Management", "Operations Research", "Statistics", "Business Analytics", "Industrial Engineering", "Economics"],
+      "industries": ["Retail (Amazon, Walmart)", "Manufacturing", "Logistics companies (FedEx, UPS)", "Consumer goods (P&G, Unilever)", "Automotive", "Pharmaceutical supply chain"],
+      "skillTransfers": {
+        "data-analysis": "Analyzing inventory levels, shipping data, and supplier performance uses the same analytical skills as any data role — but impacts physical supply chains",
+        "statistics": "Demand forecasting, quality control, and risk modeling are fundamentally statistical problems",
+        "programming": "Python and SQL power everything from automated reporting to machine learning demand models",
+        "visualization": "Creating dashboards that show real-time supply chain performance helps executives make multi-million dollar decisions"
+      },
+      "realWorldExamples": [
+        "Building a demand forecasting model that reduced excess inventory by $8M annually",
+        "Optimizing shipping routes across 50 distribution centers, cutting transportation costs by 15%",
+        "Creating a supplier risk dashboard that predicted disruptions 2 weeks before they impacted production"
+      ],
+      "entryPaths": [
+        "Learn SQL and Python for data analysis, then study supply chain fundamentals",
+        "Get APICS CSCP or Six Sigma certification to demonstrate domain knowledge",
+        "Build projects analyzing publicly available supply chain datasets",
+        "Apply for supply chain analyst or operations analyst roles at large companies"
+      ],
+      "careerProgression": ["Junior Supply Chain Analyst", "Supply Chain Analyst", "Senior Analyst", "Supply Chain Data Scientist", "Director of Supply Chain Analytics", "VP of Operations"],
+      "pros": [
+        "Massive global industry with high demand in every sector",
+        "Tangible, measurable impact — you can see the millions you save in real data",
+        "Post-pandemic awareness has dramatically increased investment in supply chain talent",
+        "Strong career progression into operations leadership",
+        "Interesting global scope — your work spans countries and continents"
+      ],
+      "cons": [
+        "Can feel less glamorous than consumer-facing tech roles",
+        "Legacy systems and messy data are common pain points",
+        "Pressure intensifies during supply chain disruptions (holidays, crises)",
+        "Requires understanding complex operational processes beyond just data"
+      ]
     }
   ],
   "skillCategories": [
@@ -170,7 +934,15 @@
         { "id": "3d-modeling", "label": "3D Modeling" },
         { "id": "testing", "label": "Software Testing" },
         { "id": "technical-literacy", "label": "Technical Literacy" },
-        { "id": "visualization", "label": "Data Visualization" }
+        { "id": "visualization", "label": "Data Visualization" },
+        { "id": "cloud-computing", "label": "Cloud Computing" },
+        { "id": "cybersecurity", "label": "Cybersecurity" },
+        { "id": "devops", "label": "DevOps / CI-CD" },
+        { "id": "automation", "label": "Automation" },
+        { "id": "web-development", "label": "Web Development" },
+        { "id": "ui-design", "label": "UI Design" },
+        { "id": "networking", "label": "Networking" },
+        { "id": "linux", "label": "Linux / Systems" }
       ]
     },
     {
@@ -181,7 +953,10 @@
         { "id": "writing", "label": "Writing" },
         { "id": "creativity", "label": "Creative Thinking" },
         { "id": "prototyping", "label": "Prototyping" },
-        { "id": "photography", "label": "Photography / Video" }
+        { "id": "photography", "label": "Photography / Video" },
+        { "id": "content-strategy", "label": "Content Strategy" },
+        { "id": "storytelling", "label": "Storytelling" },
+        { "id": "digital-marketing", "label": "Digital Marketing" }
       ]
     },
     {
@@ -194,7 +969,9 @@
         { "id": "problem-solving", "label": "Problem Solving" },
         { "id": "attention-to-detail", "label": "Attention to Detail" },
         { "id": "investigation", "label": "Investigation" },
-        { "id": "accounting", "label": "Accounting / Finance" }
+        { "id": "accounting", "label": "Accounting / Finance" },
+        { "id": "systems-thinking", "label": "Systems Thinking" },
+        { "id": "risk-assessment", "label": "Risk Assessment" }
       ]
     },
     {
@@ -223,7 +1000,10 @@
         { "id": "philosophy", "label": "Philosophy" },
         { "id": "languages", "label": "Foreign Languages" },
         { "id": "mathematics", "label": "Mathematics" },
-        { "id": "accessibility", "label": "Accessibility" }
+        { "id": "accessibility", "label": "Accessibility" },
+        { "id": "sports-science", "label": "Sports Science" },
+        { "id": "supply-chain", "label": "Supply Chain / Logistics" },
+        { "id": "education-theory", "label": "Education Theory" }
       ]
     },
     {
@@ -232,7 +1012,9 @@
       "skills": [
         { "id": "project-management", "label": "Project Management" },
         { "id": "organization", "label": "Organization" },
-        { "id": "strategy", "label": "Strategic Thinking" }
+        { "id": "strategy", "label": "Strategic Thinking" },
+        { "id": "stakeholder-management", "label": "Stakeholder Management" },
+        { "id": "agile-methodology", "label": "Agile / Scrum" }
       ]
     }
   ],
@@ -256,6 +1038,15 @@
     { "id": "community", "label": "Community Building", "icon": "👥" },
     { "id": "investigation", "label": "Investigation & Research", "icon": "🔍" },
     { "id": "finance", "label": "Finance & Economics", "icon": "💰" },
-    { "id": "sustainability", "label": "Sustainability", "icon": "♻️" }
+    { "id": "sustainability", "label": "Sustainability", "icon": "♻️" },
+    { "id": "sports", "label": "Sports & Athletics", "icon": "⚽" },
+    { "id": "gaming", "label": "Gaming", "icon": "🎮" },
+    { "id": "music", "label": "Music & Audio", "icon": "🎵" },
+    { "id": "fashion", "label": "Fashion & Style", "icon": "👗" },
+    { "id": "education", "label": "Education", "icon": "🎓" },
+    { "id": "marketing", "label": "Marketing & Growth", "icon": "📣" },
+    { "id": "security", "label": "Security & Privacy", "icon": "🔒" },
+    { "id": "automation", "label": "Automation & Efficiency", "icon": "⚙️" },
+    { "id": "travel", "label": "Travel & Exploration", "icon": "✈️" }
   ]
 }

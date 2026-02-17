@@ -7,6 +7,7 @@ import { CareerRecommendation, fetchAllCareers } from "@/lib/api";
 export default function CareersPage() {
   const [careers, setCareers] = useState<CareerRecommendation[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export default function CareersPage() {
         const data = await fetchAllCareers();
         setCareers(data);
       } catch {
-        // silently fail
+        setError("Unable to load careers. Please check your connection and try again.");
       }
       setLoading(false);
     }
@@ -43,24 +44,37 @@ export default function CareersPage() {
   };
 
   return (
-    <section className="py-12 md:py-20 bg-surface-50 min-h-screen">
+    <section className="py-12 md:py-20 bg-[#fafbfc] min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            Browse All Careers
+        <div className="text-center mb-12">
+          <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase mb-3">Career Library</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
+            Browse All <span className="gradient-text">Careers</span>
           </h1>
-          <p className="text-gray-500 max-w-2xl mx-auto mb-6">
-            Explore our database of non-obvious career paths. Each career sits
+          <p className="text-gray-500 max-w-2xl mx-auto mb-8">
+            Explore our database of {careers.length}+ non-obvious career paths. Each career sits
             at the intersection of multiple disciplines.
           </p>
-          <input
-            type="text"
-            placeholder="Search careers..."
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="w-full max-w-md mx-auto px-5 py-3 border border-surface-200 rounded-xl text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
-          />
+          <div className="relative w-full max-w-md mx-auto">
+            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search careers or categories..."
+              aria-label="Search careers"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="w-full pl-11 pr-5 py-3.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50 transition-all shadow-sm"
+            />
+          </div>
         </div>
+
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center mb-8">
+            <p className="text-sm text-red-700">{error}</p>
+          </div>
+        )}
 
         {loading ? (
           <div className="space-y-4">
@@ -69,11 +83,12 @@ export default function CareersPage() {
             ))}
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-3">
             {filtered.map((career, index) => (
-              <div
+              <Link
                 key={career.id}
-                className="animate-fade-in-up opacity-0 bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
+                href={`/career-detail?id=${career.id}`}
+                className="animate-fade-in-up opacity-0 block bg-white border border-gray-200/60 rounded-2xl p-5 hover:shadow-lg hover:border-emerald-200/60 transition-all duration-300 hover:-translate-y-0.5 group"
                 style={{
                   animationDelay: `${index * 60}ms`,
                   animationFillMode: "forwards",
@@ -82,11 +97,11 @@ export default function CareersPage() {
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-1">
-                      <h3 className="text-lg font-bold text-gray-900">
+                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-emerald-700 transition-colors">
                         {career.title}
                       </h3>
                       <span
-                        className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                        className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${
                           growthColors[career.growthOutlook] ||
                           "bg-gray-100 text-gray-600"
                         }`}
@@ -97,30 +112,37 @@ export default function CareersPage() {
                     <p className="text-sm text-gray-500 mb-2">
                       {career.category} • {formatSalary(career.salaryRange.min)}{" "}
                       – {formatSalary(career.salaryRange.max)}
+                      {career.salaryRange.median && (
+                        <span className="text-emerald-600 font-medium"> (median {formatSalary(career.salaryRange.median)})</span>
+                      )}
                     </p>
                     <p className="text-sm text-gray-600 line-clamp-2">
                       {career.description}
                     </p>
                   </div>
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 flex flex-col items-end gap-2">
                     <div className="flex flex-wrap gap-1.5">
-                      {career.matchedSkills?.slice(0, 4).map((skill: string) => (
+                      {(career.requiredSkills || career.matchedSkills || []).slice(0, 4).map((skill: string) => (
                         <span
                           key={skill}
-                          className="text-xs bg-brand-50 text-brand-700 px-2 py-0.5 rounded-full border border-brand-200"
+                          className="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full border border-emerald-200/60"
                         >
                           {skill.replace(/-/g, " ")}
                         </span>
                       ))}
-                      {(career.matchedSkills?.length || 0) > 4 && (
+                      {((career.requiredSkills || career.matchedSkills || []).length) > 4 && (
                         <span className="text-xs text-gray-400 px-1">
-                          +{(career.matchedSkills?.length || 0) - 4}
+                          +{(career.requiredSkills || career.matchedSkills || []).length - 4}
                         </span>
                       )}
                     </div>
+                    <span className="text-xs text-emerald-600 group-hover:text-emerald-700 font-semibold flex items-center gap-1">
+                      View details
+                      <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
 
             {filtered.length === 0 && (
@@ -133,12 +155,13 @@ export default function CareersPage() {
           </div>
         )}
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-14">
           <Link
             href="/explore"
-            className="inline-flex items-center gap-2 bg-brand-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-brand-700 transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-8 py-3.5 rounded-xl font-bold hover:from-emerald-700 hover:to-emerald-800 transition-all shadow-md shadow-emerald-600/20 hover:shadow-emerald-600/30 hover:-translate-y-px group"
           >
-            Get Personalized Recommendations →
+            Get Personalized Recommendations
+            <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>
         </div>
       </div>

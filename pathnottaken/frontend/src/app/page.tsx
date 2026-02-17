@@ -1,205 +1,266 @@
+"use client";
+
 import Link from "next/link";
-import HeroWelcome from "@/components/HeroWelcome";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const features = [
+    {
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      ),
+      title: "Hidden Paths Revealed",
+      desc: "Our AI finds careers you'd never Google — roles at the intersection of your unique skill combinations.",
+      color: "from-emerald-500 to-teal-500",
+      bg: "bg-emerald-50",
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+      title: "Data-Driven Matching",
+      desc: "Weighted skill scoring, synonym matching, and interest alignment — not just keyword matching.",
+      color: "from-blue-500 to-indigo-500",
+      bg: "bg-blue-50",
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+        </svg>
+      ),
+      title: "90-Day Roadmaps",
+      desc: "Every career comes with a concrete, month-by-month plan with milestones, resources, and progress tracking.",
+      color: "from-purple-500 to-pink-500",
+      bg: "bg-purple-50",
+    },
+  ];
+
+  const steps = [
+    { num: "01", title: "Share Your Skills", desc: "Tell us what you're good at — from Python to public speaking." },
+    { num: "02", title: "Pick Your Interests", desc: "Select what excites you — we find surprising connections." },
+    { num: "03", title: "Get Matched", desc: "Our engine scores you against 20+ non-obvious career paths." },
+    { num: "04", title: "Start Your Roadmap", desc: "Follow a concrete 90-day plan tailored to your chosen path." },
+  ];
+
+  const careerPreviews = [
+    { title: "Data Ethicist", cat: "Ethics & Policy", growth: "Very High", salary: "$115k" },
+    { title: "Developer Advocate", cat: "Tech & Community", growth: "High", salary: "$120k" },
+    { title: "Sports Analytics", cat: "Sports & Data", growth: "High", salary: "$95k" },
+    { title: "Cybersecurity", cat: "Tech & Security", growth: "Very High", salary: "$105k" },
+    { title: "Product Designer", cat: "Design & Tech", growth: "High", salary: "$115k" },
+    { title: "Climate Tech PM", cat: "Environment", growth: "Very High", salary: "$130k" },
+  ];
+
   return (
     <>
-      {/* ─── HERO ─── */}
-      <section className="relative overflow-hidden bg-white">
-        {/* Growth-themed background (radial gradients + subtle sprout SVG) */}
-        <div className="absolute inset-0 -z-10 hero-growth">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-transparent to-white opacity-70" />
+      {/* ─── Hero Section ─── */}
+      <section className="relative overflow-hidden min-h-[92vh] flex items-center">
+        {/* Animated background */}
+        <div className="absolute inset-0 hero-mesh" />
+        <div className="absolute inset-0 grid-pattern opacity-40" />
 
-          {/* floating soft circles */}
-          <svg className="absolute left-8 top-12 w-72 h-72 opacity-30" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="60" r="50" fill="rgba(34,197,94,0.08)" />
-            <circle cx="140" cy="140" r="36" fill="rgba(5,150,105,0.06)" />
-          </svg>
+        {/* Animated blobs */}
+        <div className="absolute top-20 left-[10%] w-72 h-72 bg-emerald-200/20 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-teal-200/15 rounded-full blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-100/10 rounded-full blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
 
-          {/* animated sprout */}
-          <svg className="absolute right-16 bottom-10 w-28 h-28 sprout" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <path d="M32 56c0-12 6-20 14-24" stroke="rgba(16,185,129,0.95)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M32 48c0-8 4-12 9-14" stroke="rgba(34,197,94,0.9)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M32 36c0-6-4-10-10-12" stroke="rgba(16,185,129,0.9)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M22 24c3 0 6-4 6-8s-4-8-6-8" stroke="rgba(34,197,94,0.95)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: Copy */}
+            <div className={`space-y-8 ${mounted ? "animate-fade-in-up" : "opacity-0"}`}>
+              <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-full">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                <span className="text-sm font-medium text-emerald-700">20+ non-obvious career paths</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
+                Your skills lead to
+                <span className="block gradient-text mt-1">careers you&apos;d never expect</span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-gray-500 max-w-lg leading-relaxed">
+                PathNotTaken discovers hidden career paths by analyzing your unique combination of skills, interests, and experience. No more generic job boards.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/explore"
+                  className="btn-primary text-base px-8 py-4 shadow-lg shadow-emerald-500/20 group"
+                >
+                  Discover My Paths
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/careers"
+                  className="btn-secondary text-base px-8 py-4"
+                >
+                  Browse All Careers
+                </Link>
+              </div>
+
+              {/* Stats bar */}
+              <div className="grid grid-cols-4 gap-6 pt-4 border-t border-gray-100">
+                {[
+                  { value: "20+", label: "Career Paths" },
+                  { value: "50+", label: "Skills Tracked" },
+                  { value: "90", label: "Day Plans" },
+                  { value: "Free", label: "No Catch" },
+                ].map((stat, i) => (
+                  <div key={i} className={`${mounted ? "animate-fade-in-up opacity-0" : "opacity-0"}`} style={{ animationDelay: `${400 + i * 100}ms`, animationFillMode: "forwards" }}>
+                    <p className="text-2xl font-extrabold text-gray-900">{stat.value}</p>
+                    <p className="text-xs text-gray-400 font-medium mt-0.5">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Visual — floating career preview cards */}
+            <div className={`hidden lg:block ${mounted ? "animate-fade-in opacity-0" : "opacity-0"}`} style={{ animationDelay: "300ms", animationFillMode: "forwards" }}>
+              <div className="relative">
+                <div className="grid grid-cols-2 gap-4">
+                  {careerPreviews.map((career, i) => (
+                    <div
+                      key={i}
+                      className="card-static p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 opacity-0 animate-fade-in-up"
+                      style={{ animationDelay: `${500 + i * 100}ms`, animationFillMode: "forwards" }}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${
+                          i % 3 === 0 ? "from-emerald-400 to-emerald-600" :
+                          i % 3 === 1 ? "from-blue-400 to-indigo-600" :
+                          "from-purple-400 to-pink-600"
+                        } flex items-center justify-center flex-shrink-0`}>
+                          <span className="text-white text-sm font-bold">{career.title.charAt(0)}</span>
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-sm font-bold text-gray-900 truncate">{career.title}</p>
+                          <p className="text-xs text-gray-400 mt-0.5">{career.cat}</p>
+                          <div className="flex items-center gap-2 mt-2">
+                            <span className="text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full">{career.growth}</span>
+                            <span className="text-[10px] text-gray-400">{career.salary}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* Decorative gradient ring */}
+                <div className="absolute -z-10 -inset-4 bg-gradient-to-br from-emerald-100/40 via-transparent to-teal-100/40 rounded-3xl blur-sm" />
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-28 md:pt-32 md:pb-36">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-[1.1] mb-6">
-              Grow into better career opportunities —
-              <span className="font-serif-display text-brand-600"> one step at a time</span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-              Actionable, skill‑first roadmaps backed by market signals. Start small,
-              build steadily, and show measurable growth in 90 days.
+      {/* ─── Features Section ─── */}
+      <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 dot-pattern opacity-30" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase mb-3">Why PathNotTaken</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+              Career discovery, <span className="gradient-text">reimagined</span>
+            </h2>
+            <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+              We don&apos;t just match keywords. Our engine understands how skills transfer across fields to find careers you&apos;d never think to search for.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
-              <Link
-                href="/explore"
-                className="inline-flex items-center justify-center gap-2 bg-brand-600 text-white px-8 py-3.5 rounded-lg text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg"
-              >
-                Start Exploring Free
-              </Link>
-              <Link
-                href="#how-it-works"
-                className="inline-flex items-center justify-center gap-2 bg-white text-gray-700 px-8 py-3.5 rounded-lg text-base font-semibold border border-surface-200 hover:bg-surface-50 transition-colors"
-              >
-                Watch Demo
-              </Link>
-            </div>
-
-            {/* personalized welcome when signed in */}
-            <HeroWelcome />
-
-            {/* Hero visual placeholder */}
-            <div className="relative max-w-2xl mx-auto">
-              <div className="bg-surface-50 border border-surface-200 rounded-2xl aspect-[16/9] flex items-center justify-center overflow-hidden">
-                <div className="text-center p-8">
-                  <div className="grid grid-cols-3 gap-4 mb-6">
-                    {["JavaScript", "Communication", "Data Analysis", "Problem Solving", "Design", "Leadership"].map((skill) => (
-                      <span
-                        key={skill}
-                        className="bg-white border border-surface-200 text-gray-600 text-xs font-medium px-3 py-1.5 rounded-full animate-float"
-                        style={{ animationDelay: `${Math.random() * 2}s` }}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                  <svg className="w-8 h-8 text-brand-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
-                  </svg>
-                  <div className="flex justify-center gap-3">
-                    {["UX Researcher — 92%", "Data Ethicist — 87%", "Dev Advocate — 84%"].map((result) => (
-                      <span
-                        key={result}
-                        className="bg-brand-50 border border-brand-200 text-brand-700 text-xs font-semibold px-3 py-1.5 rounded-full"
-                      >
-                        {result}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="section-divider mt-6" />
           </div>
-        </div>
-      </section>
 
-      {/* ─── VALUE PROPOSITION ─── */}
-      <section className="py-20 md:py-28 bg-surface-50 border-y border-surface-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-14">
-            Why PathNotTaken?
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-            {[
-              {
-                title: "AI-Powered Matching",
-                desc: "Our engine analyzes your unique combination of skills and interests to find career paths that traditional assessments miss entirely.",
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
-                  </svg>
-                ),
-              },
-              {
-                title: "Non-Obvious Careers",
-                desc: "We specialize in careers at the intersection of disciplines — the hidden gems that perfectly fit your profile but you'd never think of on your own.",
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" />
-                  </svg>
-                ),
-              },
-              {
-                title: "Skill Alignment",
-                desc: "See exactly how your existing skills transfer to new fields, with clear gap analysis and development roadmaps for each recommended path.",
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
-                  </svg>
-                ),
-              },
-            ].map((item) => (
-              <div key={item.title} className="text-center">
-                <div className="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                  {item.icon}
+          <div className="grid md:grid-cols-3 gap-8">
+            {features.map((feature, i) => (
+              <div
+                key={i}
+                className="group relative card-static p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+              >
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <div className={`w-14 h-14 ${feature.bg} rounded-2xl flex items-center justify-center mb-6 text-emerald-600 group-hover:scale-110 transition-transform duration-300`}>
+                  {feature.icon}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed max-w-sm mx-auto">
-                  {item.desc}
-                </p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-500 leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── HOW IT WORKS ─── */}
-      <section id="how-it-works" className="py-20 md:py-28 bg-white">
+      {/* ─── How It Works ─── */}
+      <section id="how-it-works" className="py-20 md:py-28 bg-[#fafbfc] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-16">
-            How It Works
-          </h2>
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase mb-3">How it works</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+              From skills to roadmap in <span className="gradient-text">4 steps</span>
+            </h2>
+            <div className="section-divider mt-6" />
+          </div>
 
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-6 md:gap-0">
-            {[
-              { step: 1, title: "Enter Your Skills", desc: "Type your skills freely — technical, creative, soft skills — anything you're good at." },
-              { step: 2, title: "Share Interests", desc: "Tell us what excites you. The more you share, the better we match." },
-              { step: 3, title: "Get Matched", desc: "Our AI reveals non-obvious career paths tailored to your unique profile." },
-              { step: 4, title: "Explore Paths", desc: "Dive deep into each career — salary, growth, day-to-day, and what skills to build." },
-            ].map((item, index) => (
-              <div key={item.step} className="flex flex-col md:flex-row items-center">
-                <div className="flex flex-col items-center text-center max-w-[180px]">
-                  <div className="w-14 h-14 rounded-full bg-brand-600 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-lg shadow-brand-600/20">
-                    {item.step}
-                  </div>
-                  <h3 className="font-bold text-gray-900 text-sm mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-                {index < 3 && (
-                  <div className="hidden md:block mx-6 mt-[-28px]">
-                    <svg className="w-6 h-6 text-surface-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {steps.map((step, i) => (
+              <div key={i} className="relative group">
+                {i < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-8 left-[calc(50%+32px)] w-[calc(100%-64px)] h-px bg-gradient-to-r from-emerald-200 to-transparent" />
                 )}
+                <div className="text-center">
+                  <div className="relative inline-flex mb-6">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 group-hover:scale-110 transition-all duration-300">
+                      <span className="text-white font-extrabold text-lg">{step.num}</span>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ─── CTA Section ─── */}
+      <section className="py-20 md:py-28 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+        <div className="absolute inset-0 dot-pattern opacity-5" />
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-teal-500/10 rounded-full blur-3xl" />
 
-
-      {/* ─── CTA ─── */}
-      <section className="py-20 md:py-28 bg-brand-950 text-white relative grain">
-        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
-            Ready to start growing your career?
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+            Stop searching for obvious careers
           </h2>
-          <p className="text-lg text-slate-300 mb-10 max-w-xl mx-auto">
-            Pick a path, follow a simple 90‑day plan, and track real progress — no fluff.
+          <p className="text-gray-400 max-w-2xl mx-auto mb-10 text-lg">
+            The best career for you might be one you&apos;ve never heard of. Let your unique skill combination guide you to unexpected opportunities.
           </p>
+
+          <div className="grid grid-cols-3 gap-8 mb-10">
+            {[
+              { val: "20+", label: "Unique career paths across 12 categories" },
+              { val: "50+", label: "Skills & interests analyzed for matches" },
+              { val: "90", label: "Days to your first career milestone" },
+            ].map((s, i) => (
+              <div key={i} className="text-center">
+                <p className="text-3xl md:text-4xl font-extrabold text-emerald-400 mb-1">{s.val}</p>
+                <p className="text-sm text-gray-400">{s.label}</p>
+              </div>
+            ))}
+          </div>
+
           <Link
             href="/explore"
-            className="inline-flex items-center gap-2 bg-white text-brand-900 px-10 py-4 rounded-lg text-base font-semibold hover:bg-slate-100 transition-colors"
+            className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group"
           >
-            Start Your 90‑Day Plan — Free
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            Start Your Discovery
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
         </div>

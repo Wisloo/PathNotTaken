@@ -29,6 +29,56 @@ async function init() {
     FOREIGN KEY(ownerId) REFERENCES users(id)
   );`);
 
+  // Gamification table
+  await db.exec(`CREATE TABLE IF NOT EXISTS user_gamification (
+    userId TEXT PRIMARY KEY,
+    xp INTEGER DEFAULT 0,
+    level INTEGER DEFAULT 1,
+    streakDays INTEGER DEFAULT 0,
+    lastActivityDate TEXT,
+    tasksCompleted INTEGER DEFAULT 0,
+    badges TEXT DEFAULT '[]',
+    statistics TEXT DEFAULT '{}',
+    FOREIGN KEY(userId) REFERENCES users(id)
+  );`);
+
+  // Portfolio projects table
+  await db.exec(`CREATE TABLE IF NOT EXISTS portfolio_projects (
+    id TEXT PRIMARY KEY,
+    userId TEXT,
+    title TEXT,
+    description TEXT,
+    skills TEXT,
+    githubUrl TEXT,
+    liveUrl TEXT,
+    imageUrl TEXT,
+    completedAt TEXT,
+    visibility TEXT DEFAULT 'public',
+    FOREIGN KEY(userId) REFERENCES users(id)
+  );`);
+
+  // Skill tracking table
+  await db.exec(`CREATE TABLE IF NOT EXISTS user_skills (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    userId TEXT,
+    skillId TEXT,
+    proficiency INTEGER DEFAULT 1,
+    lastPracticedAt TEXT,
+    totalPracticeHours REAL DEFAULT 0,
+    FOREIGN KEY(userId) REFERENCES users(id)
+  );`);
+
+  // Career exploration history
+  await db.exec(`CREATE TABLE IF NOT EXISTS career_explorations (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    userId TEXT,
+    careerId TEXT,
+    exploredAt TEXT,
+    matchScore INTEGER,
+    bookmarked INTEGER DEFAULT 0,
+    FOREIGN KEY(userId) REFERENCES users(id)
+  );`);
+
   // migrate existing users.json -> users table (if any)
   const usersJson = path.join(__dirname, 'data', 'users.json');
   if (fs.existsSync(usersJson)) {
