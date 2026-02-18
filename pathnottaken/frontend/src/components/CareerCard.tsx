@@ -2,6 +2,7 @@
 
 import { CareerRecommendation } from "@/lib/api";
 import { useState } from "react";
+import Link from "next/link";
 
 interface CareerCardProps {
   career: CareerRecommendation;
@@ -35,6 +36,9 @@ export default function CareerCard({ career, index }: CareerCardProps) {
       ? "from-teal-400 to-emerald-500"
       : "from-slate-400 to-slate-500";
 
+  // Quick win indicator: high match + few missing skills
+  const isQuickWin = career.matchScore >= 65 && (career.missingSkills || []).length <= 2;
+
   // Build a richer explanation from skill transfers
   const getDetailedFitExplanation = () => {
     if (!career.skillTransfers || Object.keys(career.skillTransfers).length === 0) {
@@ -61,6 +65,15 @@ export default function CareerCard({ career, index }: CareerCardProps) {
       <div className={`h-1.5 bg-gradient-to-r ${scoreGradient}`} />
 
       <div className="p-6 flex-1 flex flex-col">
+        {/* Quick Win Badge */}
+        {isQuickWin && (
+          <div className="mb-3 -mt-1">
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"/></svg>
+              Quick Win
+            </span>
+          </div>
+        )}
         {/* Header: Title + Score */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1 min-w-0 pr-4">
@@ -122,11 +135,11 @@ export default function CareerCard({ career, index }: CareerCardProps) {
         </div>
 
         {/* Matched Skills */}
-        {career.matchedSkills?.length > 0 && (
+        {(career.matchedSkills ?? []).length > 0 && (
           <div className="mb-4">
             <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Your matching skills</p>
             <div className="flex flex-wrap gap-1.5">
-              {career.matchedSkills.slice(0, 4).map((skill) => (
+              {(career.matchedSkills ?? []).slice(0, 4).map((skill) => (
                 <span
                   key={skill}
                   className="inline-flex items-center gap-1 text-xs font-medium bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg border border-emerald-200/60"
@@ -137,9 +150,9 @@ export default function CareerCard({ career, index }: CareerCardProps) {
                   {skill.replace(/-/g, " ")}
                 </span>
               ))}
-              {career.matchedSkills.length > 4 && (
+              {(career.matchedSkills ?? []).length > 4 && (
                 <span className="text-xs text-gray-400 px-2 py-1">
-                  +{career.matchedSkills.length - 4} more
+                  +{(career.matchedSkills ?? []).length - 4} more
                 </span>
               )}
             </div>
@@ -385,11 +398,11 @@ export default function CareerCard({ career, index }: CareerCardProps) {
                   </div>
                 )}
 
-                {career.missingSkills?.length > 0 && (
+                {(career.missingSkills ?? []).length > 0 && (
                   <div>
                     <p className="text-xs font-bold text-gray-800 mb-2">Skills to Develop</p>
                     <div className="flex flex-wrap gap-1.5">
-                      {career.missingSkills.map((skill) => (
+                      {(career.missingSkills ?? []).map((skill) => (
                         <span
                           key={skill}
                           className="text-xs font-medium bg-amber-50 text-amber-700 px-2.5 py-1 rounded-lg border border-amber-200/60"
@@ -408,18 +421,22 @@ export default function CareerCard({ career, index }: CareerCardProps) {
 
       {/* Action buttons */}
       <div className="px-6 pb-6 space-y-2.5 mt-auto">
-        <a
+        <Link
           href={`/roadmap?career=${career.id}`}
-          className="group/btn block w-full text-center py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white text-sm font-bold rounded-xl hover:from-emerald-700 hover:to-emerald-800 transition-all shadow-md shadow-emerald-600/20 hover:shadow-emerald-600/30 hover:-translate-y-px"
+          className="group/btn block w-full text-center py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white text-sm font-bold rounded-xl hover:from-emerald-700 hover:to-emerald-800 transition-all shadow-md shadow-emerald-600/20 hover:shadow-lg hover:shadow-emerald-600/30 hover:-translate-y-px"
         >
-          Start 90-day plan
+          Start 90-Day Plan
           <svg className="inline-block w-4 h-4 ml-1.5 group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
-        </a>
+        </Link>
         <button
           onClick={() => setExpanded(!expanded)}
-          className="w-full py-3 bg-gray-900 text-white text-sm font-bold rounded-xl hover:bg-gray-800 transition-all hover:-translate-y-px"
+          className={`w-full py-3 text-sm font-bold rounded-xl transition-all hover:-translate-y-px ${
+            expanded
+              ? 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              : 'bg-gray-900 text-white hover:bg-gray-800'
+          }`}
         >
           {expanded ? "Show Less" : "Why This Career?"}
           <svg className={`inline-block w-4 h-4 ml-1.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">

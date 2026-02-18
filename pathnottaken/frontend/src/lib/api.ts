@@ -61,12 +61,14 @@ export interface RecommendationResponse {
 
 export async function fetchSkillCategories(): Promise<SkillCategory[]> {
   const res = await fetch(`${API_BASE}/skills/categories`);
+  if (!res.ok) throw new Error(`Failed to fetch skill categories: ${res.status}`);
   const data = await res.json();
   return data.categories;
 }
 
 export async function fetchInterests(): Promise<Interest[]> {
   const res = await fetch(`${API_BASE}/skills/interests`);
+  if (!res.ok) throw new Error(`Failed to fetch interests: ${res.status}`);
   const data = await res.json();
   return data.interests;
 }
@@ -109,26 +111,30 @@ export async function fetchMe(token: string) {
 export async function fetchRecommendations(
   skills: string[],
   interests: string[],
-  background?: string
+  background?: string,
+  currentField?: string
 ): Promise<RecommendationResponse> {
   const res = await fetch(`${API_BASE}/careers/recommend`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ skills, interests, background }),
+    body: JSON.stringify({ skills, interests, background, currentField }),
   });
+  if (!res.ok) throw new Error(`Failed to fetch recommendations: ${res.status}`);
   return res.json();
 }
 
 export async function fetchAllCareers(): Promise<CareerRecommendation[]> {
   const res = await fetch(`${API_BASE}/careers/all`);
+  if (!res.ok) throw new Error(`Failed to fetch careers: ${res.status}`);
   const data = await res.json();
-  return data.careers;
+  return data.careers || [];
 }
 
 export async function fetchCareerById(
   id: string
 ): Promise<CareerRecommendation> {
   const res = await fetch(`${API_BASE}/careers/${id}`);
+  if (!res.ok) throw new Error(`Career not found: ${res.status}`);
   const data = await res.json();
   return data.career;
 }

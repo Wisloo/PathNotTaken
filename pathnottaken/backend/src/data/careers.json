@@ -606,7 +606,7 @@
       "dayInLife": "Morning: you review overnight alerts and fix a memory leak in the staging environment. Then you write Terraform to provision a new Kubernetes cluster. After lunch, you optimize the CI/CD pipeline to cut build times from 20 minutes to 8. Late afternoon, you pair with a developer to troubleshoot a deployment issue.",
       "salaryRange": { "min": 85000, "median": 130000, "max": 185000, "currency": "USD" },
       "growthOutlook": "Very High",
-      "requiredSkills": ["programming", "cloud-computing", "devops", "automation", "problem-solving", "linux", "networking"],
+      "requiredSkills": ["programming", "cloud-computing", "devops", "automation", "problem-solving", "linux", "computer-networking"],
       "relatedInterests": ["technology", "problem-solving", "security", "automation", "data"],
       "nonObvious": true,
       "whyNonObvious": "Many programmers focus on app development without realizing infrastructure roles often pay more and have even higher demand.",
@@ -698,7 +698,7 @@
       "dayInLife": "Morning: you review overnight security alerts and investigate a suspicious login pattern. Then you run a vulnerability scan on the company's web applications. After lunch, you lead a security awareness training for new employees. Late afternoon, you write detection rules for a new type of phishing attack and update the incident response playbook.",
       "salaryRange": { "min": 70000, "median": 105000, "max": 155000, "currency": "USD" },
       "growthOutlook": "Very High",
-      "requiredSkills": ["cybersecurity", "programming", "analytical-thinking", "networking", "attention-to-detail", "problem-solving", "communication"],
+      "requiredSkills": ["cybersecurity", "programming", "analytical-thinking", "computer-networking", "attention-to-detail", "problem-solving", "communication"],
       "relatedInterests": ["technology", "security", "investigation", "problem-solving", "data"],
       "nonObvious": true,
       "whyNonObvious": "Many tech-curious people overlook cybersecurity, not realizing it's one of the fastest-growing and highest-paying fields with a massive talent shortage.",
@@ -707,7 +707,7 @@
       "skillTransfers": {
         "programming": "Writing scripts to automate threat detection, analyze malware, and build security tools requires solid coding skills",
         "analytical-thinking": "Analyzing attack patterns, correlating security events, and investigating breaches is detective work applied to technology",
-        "networking": "Understanding how networks work is essential — most attacks exploit network vulnerabilities and protocols",
+        "computer-networking": "Understanding how networks work is essential — most attacks exploit network vulnerabilities and protocols",
         "attention-to-detail": "A single misconfigured firewall rule or overlooked log entry can be the difference between catching and missing a breach"
       },
       "realWorldExamples": [
@@ -941,8 +941,11 @@
         { "id": "automation", "label": "Automation" },
         { "id": "web-development", "label": "Web Development" },
         { "id": "ui-design", "label": "UI Design" },
-        { "id": "networking", "label": "Networking" },
-        { "id": "linux", "label": "Linux / Systems" }
+        { "id": "computer-networking", "label": "Computer Networking" },
+        { "id": "linux", "label": "Linux / Systems" },
+        { "id": "database-management", "label": "Database Management" },
+        { "id": "mobile-development", "label": "Mobile App Development" },
+        { "id": "api-development", "label": "API Development" }
       ]
     },
     {
@@ -956,7 +959,9 @@
         { "id": "photography", "label": "Photography / Video" },
         { "id": "content-strategy", "label": "Content Strategy" },
         { "id": "storytelling", "label": "Storytelling" },
-        { "id": "digital-marketing", "label": "Digital Marketing" }
+        { "id": "digital-marketing", "label": "Digital Marketing" },
+        { "id": "video-production", "label": "Video Production" },
+        { "id": "copywriting", "label": "Copywriting" }
       ]
     },
     {
@@ -971,7 +976,9 @@
         { "id": "investigation", "label": "Investigation" },
         { "id": "accounting", "label": "Accounting / Finance" },
         { "id": "systems-thinking", "label": "Systems Thinking" },
-        { "id": "risk-assessment", "label": "Risk Assessment" }
+        { "id": "risk-assessment", "label": "Risk Assessment" },
+        { "id": "data-modeling", "label": "Data Modeling" },
+        { "id": "process-improvement", "label": "Process Improvement" }
       ]
     },
     {
@@ -984,7 +991,10 @@
         { "id": "public-speaking", "label": "Public Speaking" },
         { "id": "interviewing", "label": "Interviewing" },
         { "id": "leadership", "label": "Leadership" },
-        { "id": "cultural-awareness", "label": "Cultural Awareness" }
+        { "id": "cultural-awareness", "label": "Cultural Awareness" },
+        { "id": "negotiation", "label": "Negotiation" },
+        { "id": "conflict-resolution", "label": "Conflict Resolution" },
+        { "id": "networking", "label": "Professional Networking" }
       ]
     },
     {
@@ -1014,7 +1024,10 @@
         { "id": "organization", "label": "Organization" },
         { "id": "strategy", "label": "Strategic Thinking" },
         { "id": "stakeholder-management", "label": "Stakeholder Management" },
-        { "id": "agile-methodology", "label": "Agile / Scrum" }
+        { "id": "agile-methodology", "label": "Agile / Scrum" },
+        { "id": "budgeting", "label": "Budgeting & Cost Control" },
+        { "id": "change-management", "label": "Change Management" },
+        { "id": "product-management", "label": "Product Management" }
       ]
     }
   ],
@@ -1047,6 +1060,12 @@
     { "id": "marketing", "label": "Marketing & Growth", "icon": "📣" },
     { "id": "security", "label": "Security & Privacy", "icon": "🔒" },
     { "id": "automation", "label": "Automation & Efficiency", "icon": "⚙️" },
-    { "id": "travel", "label": "Travel & Exploration", "icon": "✈️" }
+    { "id": "travel", "label": "Travel & Exploration", "icon": "✈️" },
+    { "id": "entrepreneurship", "label": "Entrepreneurship & Startups", "icon": "🚀" },
+    { "id": "media", "label": "Media & Entertainment", "icon": "🎬" },
+    { "id": "real-estate", "label": "Real Estate & Property", "icon": "🏠" },
+    { "id": "food", "label": "Food & Agriculture", "icon": "🌾" },
+    { "id": "manufacturing", "label": "Manufacturing & Production", "icon": "🏭" },
+    { "id": "nonprofit", "label": "Nonprofit & NGO", "icon": "🕊️" }
   ]
 }

@@ -527,33 +527,1047 @@
         "Lead a small team initiative",
         "Reflect on and refine your approach"
       ]
+    },
+    "interviewing": {
+      "label": "Interviewing & User Research",
+      "beginnerResources": [
+        { "type": "course", "title": "User Research and Design", "provider": "University of Michigan / Coursera", "url": "https://www.coursera.org/learn/user-research", "free": false, "hours": 12 },
+        { "type": "course", "title": "UX Research at Scale: Surveys, Analytics, Online Testing", "provider": "University of Michigan / Coursera", "url": "https://www.coursera.org/learn/quantitative-research", "free": false, "hours": 10 },
+        { "type": "article", "title": "Interviewing Users – NNGroup Articles", "provider": "Nielsen Norman Group", "url": "https://www.nngroup.com/articles/interviewing-users/", "free": true, "hours": 2 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Interviewing Users by Steve Portigal", "provider": "Rosenfeld Media", "url": "https://rosenfeldmedia.com/books/interviewing-users/", "free": false, "hours": 8 },
+        { "type": "course", "title": "Qualitative Research Methods", "provider": "University of Amsterdam / Coursera", "url": "https://www.coursera.org/learn/qualitative-methods", "free": false, "hours": 15 }
+      ],
+      "exercises": [
+        "Write a discussion guide with 10 open-ended questions for a product you use daily",
+        "Conduct a 30-minute user interview with a friend about their experience with a specific app",
+        "Transcribe a recorded interview and code it for themes using affinity mapping",
+        "Create a research report summarizing findings from 3 mock interviews with actionable recommendations"
+      ],
+      "projectIdeas": [
+        { "title": "User Research Study", "description": "Recruit 5 participants, conduct semi-structured interviews about a product or service, synthesize findings into personas and a research report", "hours": 20, "skills": ["interviewing", "research", "communication"] },
+        { "title": "Usability Test & Report", "description": "Design a usability test for an existing website, run it with 3-5 participants, and present findings with severity ratings and recommendations", "hours": 15, "skills": ["interviewing", "design", "analytical-thinking"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Learn question types and practice writing non-leading open-ended questions",
+        "Conduct your first moderated user interview and take structured notes",
+        "Synthesize interview data using affinity diagrams and thematic analysis",
+        "Present research findings with evidence-based recommendations"
+      ]
+    },
+    "technical-literacy": {
+      "label": "Technical Literacy",
+      "beginnerResources": [
+        { "type": "course", "title": "CS50's Understanding Technology", "provider": "Harvard / edX", "url": "https://www.edx.org/learn/technology/harvard-university-cs50-s-understanding-technology", "free": true, "hours": 6 },
+        { "type": "course", "title": "How the Internet Works", "provider": "Khan Academy", "url": "https://www.khanacademy.org/computing/computers-and-internet", "free": true, "hours": 5 },
+        { "type": "article", "title": "Base CS – Exploring Computer Science Fundamentals", "provider": "Vaidehi Joshi / Medium", "url": "https://medium.com/basecs", "free": true, "hours": 4 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "IT Support Professional Certificate", "provider": "Google / Coursera", "url": "https://www.coursera.org/professional-certificates/google-it-support", "free": false, "hours": 20 },
+        { "type": "book", "title": "The Non-Technical Guide to Web Technologies", "provider": "Self-published", "url": "https://www.amazon.com/Non-Technical-Guide-Web-Technologies/dp/B09XZMPRRC", "free": false, "hours": 5 }
+      ],
+      "exercises": [
+        "Diagram how a web request flows from browser to server and back, labeling DNS, HTTP, and server components",
+        "Set up a simple HTML page and deploy it using GitHub Pages, documenting each step",
+        "Read the API documentation of a service you use (e.g., Slack or Stripe) and explain three endpoints in plain language",
+        "Attend a sprint planning or standup meeting and create a glossary of all technical terms used"
+      ],
+      "projectIdeas": [
+        { "title": "Tech Glossary for Non-Developers", "description": "Create a living glossary document of 50+ technical terms with plain-language definitions, real-world analogies, and example usage", "hours": 10, "skills": ["technical-literacy", "writing", "communication"] },
+        { "title": "Architecture Explainer", "description": "Research how a popular application (e.g., Netflix, Spotify) works technically and create a visual explainer with diagrams", "hours": 8, "skills": ["technical-literacy", "research", "visualization"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Understand how the internet, browsers, and servers work at a high level",
+        "Learn to read basic code and understand version control concepts",
+        "Navigate developer tools, read API docs, and understand databases conceptually",
+        "Confidently participate in technical discussions and translate between technical and business language"
+      ]
+    },
+    "policy": {
+      "label": "Policy Analysis & Development",
+      "beginnerResources": [
+        { "type": "course", "title": "Public Policy Challenges of the 21st Century", "provider": "University of Virginia / Coursera", "url": "https://www.coursera.org/learn/public-policy", "free": false, "hours": 10 },
+        { "type": "course", "title": "Policy Analysis Using Interrupted Time Series", "provider": "Johns Hopkins / Coursera", "url": "https://www.coursera.org/learn/policy-analysis", "free": false, "hours": 8 },
+        { "type": "article", "title": "How to Write a Policy Brief", "provider": "IDRC", "url": "https://www.idrc.ca/en/how-write-policy-brief", "free": true, "hours": 1 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Evidence-Based Policy", "provider": "McMaster University / Coursera", "url": "https://www.coursera.org/learn/evidence-based-policy", "free": false, "hours": 12 },
+        { "type": "book", "title": "Policy Analysis: Concepts and Practice by David Weimer", "provider": "Routledge", "url": "https://www.routledge.com", "free": false, "hours": 15 }
+      ],
+      "exercises": [
+        "Write a 2-page policy brief on a local issue, including problem statement, evidence, and 3 policy options with trade-offs",
+        "Conduct a stakeholder analysis for a proposed regulation, mapping interests, influence, and positions",
+        "Compare policies from two different countries addressing the same issue (e.g., carbon tax approaches) and summarize strengths and weaknesses",
+        "Analyze the unintended consequences of a historical policy decision using primary and secondary sources"
+      ],
+      "projectIdeas": [
+        { "title": "Policy Impact Assessment", "description": "Select a current policy proposal, gather data on its likely impacts, interview 3 stakeholders, and produce a comprehensive analysis report with recommendations", "hours": 25, "skills": ["policy", "research", "analytical-thinking", "communication"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Learn policy analysis frameworks (cost-benefit, stakeholder, SWOT)",
+        "Write a structured policy brief using real data and evidence",
+        "Conduct stakeholder analysis and map competing interests",
+        "Present a policy recommendation with supporting evidence and implementation plan"
+      ]
+    },
+    "philosophy": {
+      "label": "Philosophy & Ethics Reasoning",
+      "beginnerResources": [
+        { "type": "course", "title": "Introduction to Philosophy", "provider": "University of Edinburgh / Coursera", "url": "https://www.coursera.org/learn/philosophy", "free": true, "hours": 12 },
+        { "type": "course", "title": "Justice", "provider": "Harvard / edX", "url": "https://www.edx.org/learn/philosophy/harvard-university-justice", "free": true, "hours": 12 },
+        { "type": "course", "title": "Think Again: How to Reason and Argue", "provider": "Duke University / Coursera", "url": "https://www.coursera.org/learn/understanding-arguments", "free": true, "hours": 10 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Justice: What's the Right Thing to Do? by Michael Sandel", "provider": "Farrar, Straus and Giroux", "url": "", "free": false, "hours": 8 },
+        { "type": "course", "title": "Philosophy, Science and Religion", "provider": "University of Edinburgh / Coursera", "url": "https://www.coursera.org/learn/philosophy-science-religion-1", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Reconstruct the argument structure of a published op-ed, identifying premises, conclusions, and logical fallacies",
+        "Write a 1-page ethical analysis of a technology dilemma (e.g., facial recognition in policing) using two different ethical frameworks",
+        "Create a Socratic dialogue between two characters debating whether AI should make life-or-death medical decisions",
+        "Analyze a corporate code of ethics and identify gaps or contradictions using deontological and consequentialist perspectives"
+      ],
+      "projectIdeas": [
+        { "title": "Ethics Case Study Portfolio", "description": "Write 4 detailed case studies analyzing real-world ethical dilemmas, each applying a different ethical framework (utilitarianism, deontology, virtue ethics, care ethics)", "hours": 20, "skills": ["philosophy", "critical-thinking", "writing"] }
+      ],
+      "estimatedHours": 50,
+      "weeklyMilestones": [
+        "Understand major ethical frameworks: consequentialism, deontology, virtue ethics",
+        "Practice identifying and evaluating arguments for validity and soundness",
+        "Apply ethical reasoning to real-world technology and business scenarios",
+        "Write a structured philosophical argument with clear premises and conclusions"
+      ]
+    },
+    "public-speaking": {
+      "label": "Public Speaking & Presentations",
+      "beginnerResources": [
+        { "type": "course", "title": "Introduction to Public Speaking", "provider": "University of Washington / Coursera", "url": "https://www.coursera.org/learn/public-speaking", "free": true, "hours": 10 },
+        { "type": "course", "title": "Dynamic Public Speaking Specialization", "provider": "University of Washington / Coursera", "url": "https://www.coursera.org/specializations/public-speaking", "free": false, "hours": 16 },
+        { "type": "article", "title": "TED Talks: The Official TED Guide to Public Speaking", "provider": "TED / YouTube", "url": "https://www.youtube.com/c/TED", "free": true, "hours": 3 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Talk Like TED by Carmine Gallo", "provider": "St. Martin's Press", "url": "", "free": false, "hours": 6 },
+        { "type": "practice", "title": "Toastmasters International", "provider": "Toastmasters", "url": "https://www.toastmasters.org", "free": false, "hours": 20 }
+      ],
+      "exercises": [
+        "Record yourself giving a 3-minute talk on a topic you know well, review it, and note filler words and body language habits",
+        "Design a 10-slide presentation following the 10/20/30 rule and present it to a friend for feedback",
+        "Practice impromptu speaking by randomly selecting a topic and speaking about it for 2 minutes without preparation",
+        "Deliver the same 5-minute presentation three times, each time incorporating feedback from the previous round"
+      ],
+      "projectIdeas": [
+        { "title": "Lightning Talk Series", "description": "Prepare and deliver three 5-minute lightning talks on different topics at a meetup, lunch-and-learn, or to friends, recording each for self-review", "hours": 12, "skills": ["public-speaking", "communication", "storytelling"] },
+        { "title": "Conference Talk Proposal", "description": "Write a conference talk proposal, create a slide deck, rehearse 5 times, and deliver the full 20-minute talk to a practice audience", "hours": 15, "skills": ["public-speaking", "writing", "communication"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Overcome initial anxiety with a recorded 2-minute self-introduction",
+        "Structure a talk with a clear hook, body, and memorable close",
+        "Practice vocal variety, pacing, and purposeful body language",
+        "Deliver a polished 10-minute presentation and incorporate audience feedback"
+      ]
+    },
+    "teaching": {
+      "label": "Teaching & Instruction",
+      "beginnerResources": [
+        { "type": "course", "title": "Foundations of Teaching for Learning", "provider": "Commonwealth Education Trust / Coursera", "url": "https://www.coursera.org/learn/teaching", "free": true, "hours": 10 },
+        { "type": "course", "title": "Learning How to Learn", "provider": "McMaster University / Coursera", "url": "https://www.coursera.org/learn/learning-how-to-learn", "free": true, "hours": 8 },
+        { "type": "article", "title": "How People Learn – Summary of National Academies Report", "provider": "National Academies Press", "url": "https://nap.nationalacademies.org/catalog/9853/how-people-learn-brain-mind-experience-and-school-expanded-edition", "free": true, "hours": 3 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Make It Stick: The Science of Successful Learning", "provider": "Belknap Press", "url": "", "free": false, "hours": 7 },
+        { "type": "course", "title": "Instructional Design Foundations and Applications", "provider": "University of Illinois / Coursera", "url": "https://www.coursera.org/learn/instructional-design-foundations-applications", "free": false, "hours": 12 }
+      ],
+      "exercises": [
+        "Create a 30-minute lesson plan on a topic you know, including learning objectives, activities, and an assessment",
+        "Teach a skill to a friend using the I Do / We Do / You Do scaffolding technique and collect their feedback",
+        "Design three different explanations for the same concept targeted at beginner, intermediate, and expert audiences",
+        "Record a 10-minute instructional video with visual aids and review it for clarity of explanation"
+      ],
+      "projectIdeas": [
+        { "title": "Mini Workshop", "description": "Design and deliver a 1-hour workshop on a skill you know well, including hands-on exercises, to at least 5 participants, then collect and analyze feedback", "hours": 15, "skills": ["teaching", "communication", "public-speaking"] },
+        { "title": "Online Tutorial Series", "description": "Create a 4-part written or video tutorial series teaching a skill from scratch, with progressive complexity and practice exercises", "hours": 20, "skills": ["teaching", "writing", "communication"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Write a lesson plan with clear learning objectives and success criteria",
+        "Deliver a short lesson using active learning techniques and check for understanding",
+        "Design formative assessments that reveal learner misconceptions",
+        "Iterate on instruction based on learner feedback and assessment results"
+      ]
+    },
+    "environmental-science": {
+      "label": "Environmental Science",
+      "beginnerResources": [
+        { "type": "course", "title": "Introduction to Environmental Science", "provider": "Dartmouth / edX", "url": "https://www.edx.org/learn/environmental-science", "free": true, "hours": 12 },
+        { "type": "course", "title": "Climate Change: The Science and Global Impact", "provider": "SDG Academy / edX", "url": "https://www.edx.org/learn/climate-change", "free": true, "hours": 10 },
+        { "type": "article", "title": "EPA Environmental Topics Resources", "provider": "U.S. EPA", "url": "https://www.epa.gov/environmental-topics", "free": true, "hours": 3 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Global Environmental Management", "provider": "Technical University of Denmark / Coursera", "url": "https://www.coursera.org/learn/global-environmental-management", "free": false, "hours": 15 },
+        { "type": "tool", "title": "EPA EJSCREEN Tool", "provider": "U.S. EPA", "url": "https://www.epa.gov/ejscreen", "free": true, "hours": 4 }
+      ],
+      "exercises": [
+        "Calculate your personal carbon footprint using three different online calculators and compare the methodologies",
+        "Analyze local air quality data from the EPA AirNow database and create a weekly trend chart",
+        "Map environmental justice hotspots in your county using EPA EJSCREEN data",
+        "Write a 2-page impact assessment for a proposed development project near a wetland"
+      ],
+      "projectIdeas": [
+        { "title": "Local Environmental Audit", "description": "Conduct an environmental audit of your neighborhood: measure waste, map green spaces, analyze water quality data, and create an improvement proposal with cost estimates", "hours": 20, "skills": ["environmental-science", "data-analysis", "research"] },
+        { "title": "Sustainability Dashboard", "description": "Build a data dashboard tracking key environmental indicators (carbon emissions, deforestation, ocean health) using publicly available datasets", "hours": 15, "skills": ["environmental-science", "data-analysis", "visualization"] }
+      ],
+      "estimatedHours": 50,
+      "weeklyMilestones": [
+        "Understand key environmental systems: carbon cycle, water cycle, biodiversity",
+        "Learn to read and interpret environmental data and scientific reports",
+        "Conduct a basic environmental assessment using real data and tools",
+        "Present environmental findings with actionable policy or behavioral recommendations"
+      ]
+    },
+    "accounting": {
+      "label": "Accounting & Financial Analysis",
+      "beginnerResources": [
+        { "type": "course", "title": "Introduction to Financial Accounting", "provider": "University of Pennsylvania / Coursera", "url": "https://www.coursera.org/learn/wharton-accounting", "free": false, "hours": 12 },
+        { "type": "course", "title": "Accounting and Finance – Khan Academy", "provider": "Khan Academy", "url": "https://www.khanacademy.org/economics-finance-domain/core-finance/accounting-and-financial-stateme", "free": true, "hours": 8 },
+        { "type": "course", "title": "Bookkeeping Basics – LinkedIn Learning", "provider": "LinkedIn Learning", "url": "https://www.linkedin.com/learning/topics/accounting", "free": false, "hours": 5 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Financial Analysis and Decision Making", "provider": "University of Illinois / Coursera", "url": "https://www.coursera.org/learn/financial-analysis", "free": false, "hours": 15 },
+        { "type": "book", "title": "Financial Intelligence by Karen Berman", "provider": "Harvard Business Review Press", "url": "", "free": false, "hours": 8 }
+      ],
+      "exercises": [
+        "Create a complete income statement, balance sheet, and cash flow statement for a fictional small business with 20 transactions",
+        "Calculate and interpret 5 key financial ratios (current ratio, debt-to-equity, ROE, gross margin, operating margin) from a real public company's 10-K filing",
+        "Reconcile a mock bank statement with a general ledger, identifying and correcting 5 discrepancies",
+        "Prepare a monthly budget vs. actuals variance analysis with explanations for each line item variance"
+      ],
+      "projectIdeas": [
+        { "title": "Company Financial Health Report", "description": "Select a public company, analyze its last 3 years of financial statements, calculate key ratios, identify trends, and write a financial health assessment", "hours": 15, "skills": ["accounting", "data-analysis", "analytical-thinking"] },
+        { "title": "Small Business Bookkeeping System", "description": "Set up a complete bookkeeping system for a real or simulated small business using spreadsheets, including chart of accounts, journal entries, and monthly closing process", "hours": 12, "skills": ["accounting", "organization", "attention-to-detail"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Understand the accounting equation and double-entry bookkeeping fundamentals",
+        "Read and interpret income statements, balance sheets, and cash flow statements",
+        "Perform financial ratio analysis and trend analysis on real company data",
+        "Prepare a complete set of financial statements and explain them to a non-financial audience"
+      ]
+    },
+    "investigation": {
+      "label": "Investigation & Forensic Analysis",
+      "beginnerResources": [
+        { "type": "course", "title": "Introduction to Forensic Science", "provider": "Nanyang Technological University / Coursera", "url": "https://www.coursera.org/learn/forensic-science", "free": true, "hours": 10 },
+        { "type": "course", "title": "OSINT Fundamentals", "provider": "SEC497 / SANS", "url": "https://www.sans.org/cyber-security-courses/open-source-intelligence-gathering/", "free": false, "hours": 15 },
+        { "type": "article", "title": "Bellingcat Online Investigation Toolkit", "provider": "Bellingcat", "url": "https://www.bellingcat.com/category/resources/", "free": true, "hours": 4 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Digital Forensics Concepts", "provider": "Infosec / Coursera", "url": "https://www.coursera.org/learn/digital-forensics-concepts", "free": false, "hours": 12 },
+        { "type": "tool", "title": "Autopsy Digital Forensics", "provider": "Sleuth Kit", "url": "https://www.autopsy.com", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Conduct an OSINT investigation on yourself: find all publicly available information using only search engines and public records",
+        "Analyze metadata from 10 sample image files to extract timestamps, GPS coordinates, and device information",
+        "Create a timeline of events from a mock case file containing emails, log entries, and witness statements",
+        "Verify the authenticity of 5 social media posts using reverse image search, metadata analysis, and cross-referencing"
+      ],
+      "projectIdeas": [
+        { "title": "OSINT Investigation Report", "description": "Choose a publicly available case (e.g., from Trace Labs), conduct a thorough open-source investigation, document methodology, and write a structured findings report", "hours": 20, "skills": ["investigation", "research", "critical-thinking"] },
+        { "title": "Digital Forensics Lab", "description": "Download a forensic disk image from a CTF challenge, analyze it using Autopsy, document the chain of evidence, and present findings in a formal forensic report", "hours": 18, "skills": ["investigation", "cybersecurity", "attention-to-detail"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Learn OSINT fundamentals and master search operators for Google, social media, and public records",
+        "Practice evidence collection with proper documentation and chain-of-custody procedures",
+        "Analyze digital artifacts (metadata, logs, file systems) to reconstruct timelines",
+        "Write a complete investigation report with methodology, evidence, findings, and conclusions"
+      ]
+    },
+    "testing": {
+      "label": "Software Testing & QA",
+      "beginnerResources": [
+        { "type": "course", "title": "Software Testing and Automation Specialization", "provider": "University of Minnesota / Coursera", "url": "https://www.coursera.org/specializations/software-testing-automation", "free": false, "hours": 16 },
+        { "type": "course", "title": "Introduction to Software Testing", "provider": "University of Minnesota / Coursera", "url": "https://www.coursera.org/learn/introduction-software-testing", "free": true, "hours": 10 },
+        { "type": "article", "title": "ISTQB Foundation Level Syllabus", "provider": "ISTQB", "url": "https://www.istqb.org/certifications/certified-tester-foundation-level", "free": true, "hours": 5 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Automated Software Testing with Selenium", "provider": "University of Minnesota / Coursera", "url": "https://www.coursera.org/learn/automated-testing-with-selenium", "free": false, "hours": 12 },
+        { "type": "tool", "title": "Cypress End-to-End Testing Documentation", "provider": "Cypress", "url": "https://docs.cypress.io", "free": true, "hours": 8 }
+      ],
+      "exercises": [
+        "Write test cases for a login page covering valid credentials, invalid credentials, empty fields, SQL injection, and session management",
+        "Set up a test automation framework using Cypress or Selenium for a sample web application and write 10 automated test scripts",
+        "Perform exploratory testing on a public website for 60 minutes and file 5 structured bug reports with steps to reproduce, expected vs. actual results, and severity",
+        "Create a test plan for a mobile app feature including scope, approach, test types (functional, regression, performance), and exit criteria"
+      ],
+      "projectIdeas": [
+        { "title": "Automated Test Suite", "description": "Build a comprehensive automated test suite for an open-source web application including unit tests, integration tests, and end-to-end tests with CI/CD integration", "hours": 25, "skills": ["testing", "programming", "automation"] },
+        { "title": "QA Process Documentation", "description": "Design a complete QA process for a development team including test strategy, bug reporting templates, regression test plan, and release checklist", "hours": 12, "skills": ["testing", "organization", "communication"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Learn testing fundamentals: test levels, types, and techniques (equivalence partitioning, boundary value analysis)",
+        "Write structured test cases and bug reports for a real application",
+        "Set up and write automated tests using Cypress or Selenium",
+        "Design a test plan and integrate automated tests into a CI/CD pipeline"
+      ]
+    },
+    "mathematics": {
+      "label": "Mathematics & Applied Math",
+      "beginnerResources": [
+        { "type": "course", "title": "Mathematics for Machine Learning Specialization", "provider": "Imperial College London / Coursera", "url": "https://www.coursera.org/specializations/mathematics-machine-learning", "free": false, "hours": 20 },
+        { "type": "course", "title": "Pre-Calculus through Calculus", "provider": "Khan Academy", "url": "https://www.khanacademy.org/math/calculus-1", "free": true, "hours": 15 },
+        { "type": "course", "title": "Linear Algebra – MIT OCW", "provider": "MIT OpenCourseWare", "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/", "free": true, "hours": 20 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Discrete Mathematics", "provider": "UC San Diego / Coursera", "url": "https://www.coursera.org/specializations/discrete-mathematics", "free": false, "hours": 18 },
+        { "type": "practice", "title": "Project Euler – Mathematical Programming Problems", "provider": "Project Euler", "url": "https://projecteuler.net", "free": true, "hours": 15 }
+      ],
+      "exercises": [
+        "Solve 10 linear algebra problems involving matrix multiplication, eigenvalues, and vector spaces by hand and verify with NumPy",
+        "Model a real-world problem (e.g., population growth, compound interest) using differential equations and graph the solutions",
+        "Implement 3 optimization algorithms (gradient descent, Newton's method, simplex) from scratch in Python",
+        "Write proofs for 5 fundamental theorems (e.g., Pythagorean theorem, fundamental theorem of calculus) using different proof techniques"
+      ],
+      "projectIdeas": [
+        { "title": "Mathematical Modeling Project", "description": "Choose a real-world phenomenon (epidemic spread, traffic flow, stock prices), model it mathematically, simulate it in Python, and validate against real data", "hours": 25, "skills": ["mathematics", "programming", "data-analysis"] },
+        { "title": "Linear Algebra Visualizer", "description": "Build an interactive web tool that visualizes matrix transformations, eigenvectors, and vector spaces in 2D and 3D", "hours": 20, "skills": ["mathematics", "programming", "visualization"] }
+      ],
+      "estimatedHours": 120,
+      "weeklyMilestones": [
+        "Review algebra and trigonometry fundamentals; solve practice problem sets",
+        "Learn core linear algebra: vectors, matrices, transformations, and eigenvalues",
+        "Study calculus concepts: derivatives, integrals, and optimization",
+        "Apply mathematical concepts to real-world problems using programming"
+      ]
+    },
+    "3d-modeling": {
+      "label": "3D Modeling & Animation",
+      "beginnerResources": [
+        { "type": "course", "title": "Blender 3D Modeling Tutorial for Beginners", "provider": "Blender Guru / YouTube", "url": "https://www.youtube.com/playlist?list=PLjEaoINr3zgFX8ZsChQVQsuDSjEqdWMAD", "free": true, "hours": 10 },
+        { "type": "tool", "title": "Blender Official Getting Started Guide", "provider": "Blender Foundation", "url": "https://docs.blender.org/manual/en/latest/getting_started/index.html", "free": true, "hours": 5 },
+        { "type": "course", "title": "Introduction to 3D Modeling", "provider": "Unity Learn", "url": "https://learn.unity.com", "free": true, "hours": 8 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "3D Modeling Specialization", "provider": "Michigan State / Coursera", "url": "https://www.coursera.org/specializations/3d-design", "free": false, "hours": 20 },
+        { "type": "practice", "title": "Sketchfab Weekly Challenge", "provider": "Sketchfab Community", "url": "https://sketchfab.com", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Model a detailed coffee mug in Blender with accurate proportions, materials, and a studio lighting setup",
+        "Create a low-poly character model with proper topology suitable for animation (under 5,000 polygons)",
+        "UV unwrap a complex object and create a custom texture in a painting tool, then apply it in Blender",
+        "Animate a 10-second walk cycle for a rigged character following the 12 principles of animation"
+      ],
+      "projectIdeas": [
+        { "title": "3D Environment Scene", "description": "Design and model a complete 3D environment (room, street, or landscape) with props, lighting, textures, and a rendered final image or flythrough video", "hours": 30, "skills": ["3d-modeling", "design", "creativity"] },
+        { "title": "Product Visualization Reel", "description": "Create photorealistic 3D renders of 5 consumer products with studio lighting, materials, and turntable animations suitable for a portfolio", "hours": 20, "skills": ["3d-modeling", "design", "attention-to-detail"] }
+      ],
+      "estimatedHours": 100,
+      "weeklyMilestones": [
+        "Navigate the Blender UI and create primitive shapes with basic modifiers",
+        "Model a complete hard-surface object with proper topology and materials",
+        "Learn UV mapping, texturing, and lighting for realistic renders",
+        "Rig a simple character and create a basic animation with keyframes"
+      ]
+    },
+    "accessibility": {
+      "label": "Accessibility & Inclusive Design",
+      "beginnerResources": [
+        { "type": "course", "title": "Web Accessibility – Udacity / Google", "provider": "Google / Udacity", "url": "https://www.udacity.com/course/web-accessibility--ud891", "free": true, "hours": 8 },
+        { "type": "article", "title": "W3C Web Accessibility Initiative (WAI) Tutorials", "provider": "W3C", "url": "https://www.w3.org/WAI/tutorials/", "free": true, "hours": 5 },
+        { "type": "course", "title": "An Introduction to Accessibility and Inclusive Design", "provider": "University of Illinois / Coursera", "url": "https://www.coursera.org/learn/accessibility", "free": true, "hours": 10 }
+      ],
+      "intermediateResources": [
+        { "type": "article", "title": "WCAG 2.1 Guidelines Quick Reference", "provider": "W3C", "url": "https://www.w3.org/WAI/WCAG21/quickref/", "free": true, "hours": 4 },
+        { "type": "tool", "title": "Axe DevTools Browser Extension", "provider": "Deque Systems", "url": "https://www.deque.com/axe/devtools/", "free": true, "hours": 3 }
+      ],
+      "exercises": [
+        "Audit a public website using axe DevTools and WAVE, document all WCAG violations, and propose fixes for each issue",
+        "Navigate a website using only a keyboard and a screen reader (NVDA or VoiceOver) for 30 minutes, documenting barriers encountered",
+        "Refactor a web page to fix 10 accessibility issues: add alt text, ARIA labels, focus management, color contrast, and semantic HTML",
+        "Create an accessible form with proper labels, error handling, focus management, and screen reader announcements"
+      ],
+      "projectIdeas": [
+        { "title": "Accessibility Audit Report", "description": "Conduct a WCAG 2.1 AA audit of a complete website, test with assistive technologies, document all findings with severity ratings, and produce a remediation roadmap", "hours": 20, "skills": ["accessibility", "testing", "web-development"] },
+        { "title": "Inclusive Component Library", "description": "Build an accessible component library (buttons, modals, tabs, accordions, dropdowns) that passes WCAG 2.1 AA with documentation and usage guidelines", "hours": 25, "skills": ["accessibility", "web-development", "ui-design"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Learn WCAG principles (POUR: Perceivable, Operable, Understandable, Robust) and common accessibility issues",
+        "Use screen readers and keyboard-only navigation to identify barriers",
+        "Fix real accessibility issues using semantic HTML, ARIA, and CSS",
+        "Conduct a full WCAG audit and write a remediation plan with priorities"
+      ]
+    },
+    "prototyping": {
+      "label": "Prototyping & Wireframing",
+      "beginnerResources": [
+        { "type": "course", "title": "Figma UI/UX Design Essentials", "provider": "Figma / YouTube", "url": "https://www.youtube.com/watch?v=FTFaQWZBqQ8", "free": true, "hours": 5 },
+        { "type": "course", "title": "UX Design: From Wireframe to Prototype", "provider": "Google / Coursera", "url": "https://www.coursera.org/learn/wireframes-low-fidelity-prototypes", "free": false, "hours": 10 },
+        { "type": "article", "title": "Figma Learn – Design Basics", "provider": "Figma", "url": "https://help.figma.com/hc/en-us/categories/360002042553-Figma-design", "free": true, "hours": 4 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Advanced Prototyping with Figma", "provider": "DesignLab", "url": "https://designlab.com", "free": false, "hours": 10 },
+        { "type": "practice", "title": "Daily UI Challenge", "provider": "dailyui.co", "url": "https://www.dailyui.co", "free": true, "hours": 15 }
+      ],
+      "exercises": [
+        "Sketch 3 different layout variations for a mobile onboarding flow using paper and pen within 15 minutes",
+        "Build a clickable prototype in Figma for a food delivery app with at least 8 screens and realistic navigation flows",
+        "Create a wireframe kit with reusable components (buttons, inputs, cards, navigation) in Figma and organize it as a component library",
+        "Conduct a prototype walkthrough with 3 users, noting where they get confused, and iterate on the design based on findings"
+      ],
+      "projectIdeas": [
+        { "title": "Mobile App Prototype", "description": "Design a complete mobile app prototype in Figma from research to interactive prototype, including user flows, wireframes, and high-fidelity screens with animations", "hours": 20, "skills": ["prototyping", "ui-design", "design"] },
+        { "title": "Rapid Prototyping Sprint", "description": "In one week, prototype 5 different solution concepts for a single user problem, test each with 2 users, and present a comparison", "hours": 15, "skills": ["prototyping", "interviewing", "design"] }
+      ],
+      "estimatedHours": 50,
+      "weeklyMilestones": [
+        "Learn wireframing fundamentals: layout grids, information hierarchy, and user flow diagrams",
+        "Build low-fidelity wireframes for a complete user journey in Figma",
+        "Create high-fidelity interactive prototypes with transitions and micro-interactions",
+        "Test prototypes with real users and iterate based on observed pain points"
+      ]
+    },
+    "healthcare-knowledge": {
+      "label": "Healthcare & Clinical Knowledge",
+      "beginnerResources": [
+        { "type": "course", "title": "Introduction to the U.S. Healthcare System", "provider": "Harvard / edX", "url": "https://www.edx.org/learn/healthcare", "free": true, "hours": 10 },
+        { "type": "course", "title": "Health Informatics", "provider": "Johns Hopkins / Coursera", "url": "https://www.coursera.org/learn/health-informatics", "free": false, "hours": 12 },
+        { "type": "article", "title": "Healthcare 101 – KFF Explainers", "provider": "Kaiser Family Foundation", "url": "https://www.kff.org/health-reform/", "free": true, "hours": 3 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Clinical Data Science Specialization", "provider": "University of Colorado / Coursera", "url": "https://www.coursera.org/specializations/clinical-data-science", "free": false, "hours": 20 },
+        { "type": "article", "title": "HL7 FHIR Documentation", "provider": "HL7", "url": "https://www.hl7.org/fhir/", "free": true, "hours": 5 }
+      ],
+      "exercises": [
+        "Map a patient journey through a typical primary care visit, identifying every touchpoint, data exchange, and handoff",
+        "Compare healthcare systems of 3 countries (e.g., US, UK, Singapore) on cost, outcomes, and access using OECD data",
+        "Read and summarize 3 clinical trial abstracts from PubMed, explaining methodology, results, and limitations in plain language",
+        "Create a flowchart for a clinical decision workflow (e.g., diabetes screening) using published clinical guidelines"
+      ],
+      "projectIdeas": [
+        { "title": "Patient Experience Research", "description": "Interview 5 patients or caregivers about their healthcare experiences, identify common pain points, and propose 3 design interventions with supporting evidence", "hours": 20, "skills": ["healthcare-knowledge", "interviewing", "research"] },
+        { "title": "Health Data Dashboard", "description": "Build a dashboard visualizing public health data (CDC, WHO) for a specific condition, with trend analysis and demographic breakdowns", "hours": 15, "skills": ["healthcare-knowledge", "data-analysis", "visualization"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Understand healthcare system structure: payers, providers, regulations (HIPAA, ICD-10)",
+        "Learn clinical terminology and how to read medical literature and guidelines",
+        "Analyze healthcare data using public databases (CDC WONDER, OECD Health Statistics)",
+        "Apply healthcare knowledge to a project addressing a real patient or system challenge"
+      ]
+    },
+    "strategy": {
+      "label": "Strategic Thinking & Planning",
+      "beginnerResources": [
+        { "type": "course", "title": "Foundations of Business Strategy", "provider": "University of Virginia / Coursera", "url": "https://www.coursera.org/learn/uva-darden-foundations-business-strategy", "free": false, "hours": 10 },
+        { "type": "course", "title": "Strategic Management", "provider": "Copenhagen Business School / Coursera", "url": "https://www.coursera.org/learn/strategic-management", "free": true, "hours": 8 },
+        { "type": "book", "title": "Good Strategy Bad Strategy by Richard Rumelt", "provider": "Crown Business", "url": "", "free": false, "hours": 8 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Harvard Business Review Strategy Cases", "provider": "Harvard Business Review", "url": "https://hbr.org/topic/subject/strategy", "free": false, "hours": 12 },
+        { "type": "course", "title": "Business Strategy Specialization", "provider": "University of Virginia / Coursera", "url": "https://www.coursera.org/specializations/business-strategy", "free": false, "hours": 20 }
+      ],
+      "exercises": [
+        "Conduct a SWOT analysis and Porter's Five Forces analysis for a company in an industry you follow",
+        "Write a 3-year strategic plan for a hypothetical startup, including vision, goals, key metrics, and resource allocation",
+        "Analyze a real company's pivot (e.g., Netflix from DVDs to streaming) and map the strategic decisions and trade-offs involved",
+        "Create a competitive landscape map for an industry with 10+ players, identifying strategic groups and white spaces"
+      ],
+      "projectIdeas": [
+        { "title": "Strategic Analysis Report", "description": "Choose a public company, analyze its strategy using multiple frameworks (SWOT, Five Forces, Value Chain), assess competitive position, and present strategic recommendations", "hours": 20, "skills": ["strategy", "analytical-thinking", "research"] },
+        { "title": "Business Model Canvas Workshop", "description": "Design business model canvases for 3 different startup ideas, validate assumptions with customer interviews, and present the strongest opportunity", "hours": 15, "skills": ["strategy", "critical-thinking", "communication"] }
+      ],
+      "estimatedHours": 50,
+      "weeklyMilestones": [
+        "Learn core strategy frameworks: SWOT, Porter's Five Forces, Value Chain Analysis",
+        "Apply strategy frameworks to analyze a real company or industry",
+        "Develop a strategic plan with goals, metrics, and resource priorities",
+        "Present strategic recommendations with supporting evidence and implementation roadmap"
+      ]
+    },
+    "technology": {
+      "label": "Technology Fundamentals",
+      "beginnerResources": [
+        { "type": "course", "title": "IT Fundamentals for Everyone", "provider": "IBM / Coursera", "url": "https://www.coursera.org/learn/it-fundamentals-everyone", "free": true, "hours": 10 },
+        { "type": "course", "title": "Computer Science 101", "provider": "Stanford / edX", "url": "https://www.edx.org/learn/computer-science/stanford-university-computer-science-101", "free": true, "hours": 6 },
+        { "type": "course", "title": "Computers and the Internet", "provider": "Khan Academy", "url": "https://www.khanacademy.org/computing/computers-and-internet", "free": true, "hours": 5 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Google IT Support Professional Certificate", "provider": "Google / Coursera", "url": "https://www.coursera.org/professional-certificates/google-it-support", "free": false, "hours": 20 },
+        { "type": "article", "title": "Hacker News – Stay Current on Technology", "provider": "Y Combinator", "url": "https://news.ycombinator.com", "free": true, "hours": 2 }
+      ],
+      "exercises": [
+        "Set up a virtual machine using VirtualBox, install an operating system, and configure basic networking",
+        "Explain how 5 everyday technologies work at a high level (GPS, Wi-Fi, encryption, cloud storage, streaming) in a 1-page document each",
+        "Compare 3 cloud platforms (AWS, Azure, GCP) and map their equivalent services for compute, storage, and databases",
+        "Build a personal home lab: set up a NAS, configure a router, and implement basic network security"
+      ],
+      "projectIdeas": [
+        { "title": "Technology Landscape Report", "description": "Research and map the technology landscape for a specific industry, identify key trends, evaluate emerging technologies, and predict impact over 3-5 years", "hours": 15, "skills": ["technology", "research", "analytical-thinking"] },
+        { "title": "Home Lab Setup", "description": "Build a home technology lab with a server, network storage, and development environment, documenting the architecture and setup process", "hours": 12, "skills": ["technology", "linux", "computer-networking"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Understand core computing concepts: hardware, software, operating systems, and binary",
+        "Learn how networks, the internet, and cloud computing work at a conceptual level",
+        "Explore databases, APIs, and how applications are built and deployed",
+        "Stay current by reading tech news and evaluating new technologies critically"
+      ]
+    },
+    "ui-design": {
+      "label": "UI Design & Visual Systems",
+      "beginnerResources": [
+        { "type": "course", "title": "Google UX Design Certificate", "provider": "Google / Coursera", "url": "https://www.coursera.org/professional-certificates/google-ux-design", "free": false, "hours": 20 },
+        { "type": "course", "title": "UI Design with Figma – Beginners", "provider": "Bring Your Own Laptop / YouTube", "url": "https://www.youtube.com/watch?v=FTFaQWZBqQ8", "free": true, "hours": 5 },
+        { "type": "article", "title": "Material Design Guidelines", "provider": "Google", "url": "https://m3.material.io", "free": true, "hours": 4 }
+      ],
+      "intermediateResources": [
+        { "type": "article", "title": "Apple Human Interface Guidelines", "provider": "Apple", "url": "https://developer.apple.com/design/human-interface-guidelines/", "free": true, "hours": 5 },
+        { "type": "practice", "title": "Daily UI Challenge", "provider": "dailyui.co", "url": "https://www.dailyui.co", "free": true, "hours": 15 }
+      ],
+      "exercises": [
+        "Create a design system with a type scale (6 sizes), color palette (primary, secondary, neutral, semantic colors), and 8px spacing grid in Figma",
+        "Redesign 3 screens of a popular app following Material Design or Apple HIG guidelines and document your design decisions",
+        "Design a dark mode and light mode variant for a dashboard UI with proper contrast ratios and consistent component styling",
+        "Create a reusable component library in Figma with variants for buttons, inputs, cards, and navigation with auto-layout"
+      ],
+      "projectIdeas": [
+        { "title": "Design System", "description": "Create a comprehensive design system in Figma with foundations (color, typography, spacing, icons), components (30+ with states and variants), and documentation pages", "hours": 30, "skills": ["ui-design", "design", "accessibility"] },
+        { "title": "App Redesign Case Study", "description": "Redesign an existing application with a focus on visual hierarchy, consistency, and brand alignment; create before/after comparisons and explain design rationale", "hours": 20, "skills": ["ui-design", "prototyping", "design"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Learn visual design fundamentals: typography, color theory, spacing, and hierarchy",
+        "Study design systems (Material Design, Apple HIG) and understand component patterns",
+        "Build a color palette, type scale, and component library in Figma",
+        "Design a complete multi-screen interface with a consistent visual system"
+      ]
+    },
+    "cloud-computing": {
+      "label": "Cloud Computing",
+      "beginnerResources": [
+        { "type": "course", "title": "AWS Cloud Practitioner Essentials", "provider": "AWS / Coursera", "url": "https://www.coursera.org/learn/aws-cloud-practitioner-essentials", "free": false, "hours": 8 },
+        { "type": "course", "title": "Google Cloud Fundamentals", "provider": "Google Cloud / Coursera", "url": "https://www.coursera.org/learn/gcp-fundamentals", "free": false, "hours": 8 },
+        { "type": "article", "title": "Azure Fundamentals Learning Path", "provider": "Microsoft", "url": "https://learn.microsoft.com/en-us/certifications/azure-fundamentals/", "free": true, "hours": 10 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "AWS Solutions Architect Associate", "provider": "AWS / Udemy (Stephane Maarek)", "url": "https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/", "free": false, "hours": 25 },
+        { "type": "practice", "title": "AWS Free Tier Hands-On Labs", "provider": "AWS", "url": "https://aws.amazon.com/free/", "free": true, "hours": 15 }
+      ],
+      "exercises": [
+        "Deploy a static website using AWS S3 and CloudFront with a custom domain and HTTPS certificate",
+        "Set up a VPC with public and private subnets, NAT gateway, security groups, and deploy an EC2 instance in each",
+        "Create a serverless API using AWS Lambda, API Gateway, and DynamoDB that handles CRUD operations",
+        "Set up monitoring and alerting for a cloud application using CloudWatch dashboards, alarms, and SNS notifications"
+      ],
+      "projectIdeas": [
+        { "title": "Cloud-Native Web Application", "description": "Architect and deploy a scalable web application on AWS using EC2/ECS, RDS, S3, CloudFront, and Route 53 with auto-scaling and load balancing", "hours": 30, "skills": ["cloud-computing", "web-development", "devops"] },
+        { "title": "Multi-Cloud Cost Comparison", "description": "Deploy the same application on AWS, Azure, and GCP; compare pricing, performance, and developer experience; produce a recommendation report", "hours": 20, "skills": ["cloud-computing", "analytical-thinking", "technology"] }
+      ],
+      "estimatedHours": 80,
+      "weeklyMilestones": [
+        "Understand cloud computing models (IaaS, PaaS, SaaS), pricing, and shared responsibility",
+        "Deploy virtual machines, configure networking, and manage storage in a cloud platform",
+        "Build serverless applications with managed services (Lambda, API Gateway, DynamoDB)",
+        "Architect a production-ready cloud solution with security, monitoring, and cost optimization"
+      ]
+    },
+    "devops": {
+      "label": "DevOps & CI/CD",
+      "beginnerResources": [
+        { "type": "course", "title": "Introduction to DevOps", "provider": "IBM / Coursera", "url": "https://www.coursera.org/learn/intro-to-devops", "free": true, "hours": 8 },
+        { "type": "course", "title": "DevOps with Docker", "provider": "University of Helsinki", "url": "https://devopswithdocker.com", "free": true, "hours": 12 },
+        { "type": "article", "title": "GitHub Actions Documentation", "provider": "GitHub", "url": "https://docs.github.com/en/actions", "free": true, "hours": 4 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Continuous Integration and Continuous Delivery (CI/CD)", "provider": "IBM / Coursera", "url": "https://www.coursera.org/learn/continuous-integration-and-continuous-delivery-ci-cd", "free": false, "hours": 12 },
+        { "type": "tool", "title": "Kubernetes Official Tutorials", "provider": "Kubernetes", "url": "https://kubernetes.io/docs/tutorials/", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Write a Dockerfile for a Node.js application with multi-stage builds, health checks, and a non-root user",
+        "Create a GitHub Actions CI/CD pipeline that runs tests, builds a Docker image, and deploys to a staging environment on every push",
+        "Set up a docker-compose environment with a web app, database, and Redis cache with persistent volumes and proper networking",
+        "Implement infrastructure as code using Terraform to provision an AWS EC2 instance with security groups and an Elastic IP"
+      ],
+      "projectIdeas": [
+        { "title": "Full CI/CD Pipeline", "description": "Build a complete CI/CD pipeline for a microservices application: automated testing, Docker builds, container registry, staging and production deployments with rollback capability", "hours": 25, "skills": ["devops", "cloud-computing", "automation"] },
+        { "title": "Infrastructure as Code Project", "description": "Define an entire application infrastructure using Terraform or Pulumi: networking, compute, database, monitoring, and deploy it reproducibly from scratch", "hours": 20, "skills": ["devops", "cloud-computing", "linux"] }
+      ],
+      "estimatedHours": 80,
+      "weeklyMilestones": [
+        "Learn DevOps principles, containerize an application with Docker, and run it locally",
+        "Build CI/CD pipelines with GitHub Actions or Jenkins for automated testing and deployment",
+        "Orchestrate containers with Docker Compose and learn Kubernetes fundamentals",
+        "Implement infrastructure as code and set up monitoring, logging, and alerting"
+      ]
+    },
+    "automation": {
+      "label": "Automation & Scripting",
+      "beginnerResources": [
+        { "type": "course", "title": "Google IT Automation with Python", "provider": "Google / Coursera", "url": "https://www.coursera.org/professional-certificates/google-it-automation", "free": false, "hours": 20 },
+        { "type": "book", "title": "Automate the Boring Stuff with Python", "provider": "Al Sweigart", "url": "https://automatetheboringstuff.com", "free": true, "hours": 15 },
+        { "type": "course", "title": "Bash Scripting Basics", "provider": "Linux Foundation / edX", "url": "https://www.edx.org/learn/linux/the-linux-foundation-introduction-to-linux", "free": true, "hours": 6 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Using Python to Interact with the Operating System", "provider": "Google / Coursera", "url": "https://www.coursera.org/learn/python-operating-system", "free": false, "hours": 12 },
+        { "type": "tool", "title": "Selenium WebDriver Documentation", "provider": "Selenium", "url": "https://www.selenium.dev/documentation/", "free": true, "hours": 6 }
+      ],
+      "exercises": [
+        "Write a Python script that monitors a folder for new files, renames them by date, and moves them to organized subdirectories",
+        "Build a web scraper that extracts product prices from 3 e-commerce sites and sends a daily email report of price changes",
+        "Create a bash script that backs up specified directories, compresses them with timestamps, and deletes backups older than 30 days",
+        "Automate a repetitive spreadsheet task: read data from multiple CSV files, clean and merge them, and generate a formatted Excel report"
+      ],
+      "projectIdeas": [
+        { "title": "Personal Automation Suite", "description": "Identify 5 repetitive tasks in your daily workflow and automate each one with Python scripts, including error handling, logging, and scheduling with cron or Task Scheduler", "hours": 20, "skills": ["automation", "programming", "problem-solving"] },
+        { "title": "Data Pipeline Automator", "description": "Build an automated data pipeline that scrapes data from public sources, cleans and transforms it, stores it in a database, and generates daily reports", "hours": 18, "skills": ["automation", "programming", "data-analysis"] }
+      ],
+      "estimatedHours": 50,
+      "weeklyMilestones": [
+        "Write Python scripts for file manipulation, text processing, and data extraction",
+        "Automate web tasks with Selenium and API interactions with the requests library",
+        "Write bash scripts for system administration tasks and schedule them with cron",
+        "Build an end-to-end automation pipeline with error handling, logging, and notifications"
+      ]
+    },
+    "linux": {
+      "label": "Linux & System Administration",
+      "beginnerResources": [
+        { "type": "course", "title": "Introduction to Linux", "provider": "Linux Foundation / edX", "url": "https://www.edx.org/learn/linux/the-linux-foundation-introduction-to-linux", "free": true, "hours": 14 },
+        { "type": "practice", "title": "Linux Survival – Interactive Tutorial", "provider": "Linux Survival", "url": "https://linuxsurvival.com", "free": true, "hours": 3 },
+        { "type": "course", "title": "The Unix Workbench", "provider": "Johns Hopkins / Coursera", "url": "https://www.coursera.org/learn/unix", "free": true, "hours": 8 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "The Linux Command Line by William Shotts", "provider": "No Starch Press", "url": "https://linuxcommand.org/tlcl.php", "free": true, "hours": 15 },
+        { "type": "practice", "title": "OverTheWire Bandit – Linux Wargame", "provider": "OverTheWire", "url": "https://overthewire.org/wargames/bandit/", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Install Ubuntu in a VM, configure user accounts with proper permissions, and set up SSH key-based authentication",
+        "Write a bash script that monitors system resources (CPU, memory, disk) and sends alerts when thresholds are exceeded",
+        "Configure an Nginx web server on Linux to serve a static website with SSL/TLS using Let's Encrypt",
+        "Set up automated backups using rsync with scheduled cron jobs and log rotation"
+      ],
+      "projectIdeas": [
+        { "title": "Linux Web Server", "description": "Set up a production-ready Linux server running Nginx, configure firewall rules with UFW, implement fail2ban, set up log monitoring, and deploy a web application", "hours": 20, "skills": ["linux", "computer-networking", "cybersecurity"] },
+        { "title": "System Administration Toolkit", "description": "Create a collection of 10 bash scripts for common sysadmin tasks: user management, log analysis, backup, monitoring, and security hardening", "hours": 15, "skills": ["linux", "automation", "cybersecurity"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Navigate the file system, manage files, and use essential commands (grep, find, sed, awk)",
+        "Manage users, permissions, processes, and install software with package managers",
+        "Configure networking, services (SSH, Nginx, cron), and basic firewall rules",
+        "Write bash scripts for automation and set up monitoring and backups"
+      ]
+    },
+    "computer-networking": {
+      "label": "Computer Networking & Infrastructure",
+      "beginnerResources": [
+        { "type": "course", "title": "The Bits and Bytes of Computer Networking", "provider": "Google / Coursera", "url": "https://www.coursera.org/learn/computer-networking", "free": false, "hours": 12 },
+        { "type": "course", "title": "Computer Networking – Khan Academy", "provider": "Khan Academy", "url": "https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:the-internet", "free": true, "hours": 5 },
+        { "type": "course", "title": "Introduction to Computer Networking – Stanford", "provider": "Stanford / YouTube", "url": "https://www.youtube.com/playlist?list=PLoCMsyE1cvdWKsLVyf6cPwCLDIZnOj0NS", "free": true, "hours": 15 }
+      ],
+      "intermediateResources": [
+        { "type": "tool", "title": "Wireshark Official Documentation", "provider": "Wireshark", "url": "https://www.wireshark.org/docs/", "free": true, "hours": 8 },
+        { "type": "practice", "title": "Packet Tracer Labs", "provider": "Cisco Networking Academy", "url": "https://www.netacad.com/courses/packet-tracer", "free": true, "hours": 12 }
+      ],
+      "exercises": [
+        "Use Wireshark to capture and analyze TCP/IP packets during a web browsing session, identifying the 3-way handshake, HTTP requests, and DNS lookups",
+        "Subnet a /24 network into 4 subnets, calculate the valid host ranges, and diagram the network topology with proper addressing",
+        "Set up a home network lab with VLANs, DHCP, and DNS using Cisco Packet Tracer or GNS3",
+        "Troubleshoot a network connectivity issue using ping, traceroute, nslookup, and netstat, documenting each diagnostic step"
+      ],
+      "projectIdeas": [
+        { "title": "Network Design Project", "description": "Design a complete network architecture for a small office (50 users): create a topology diagram, IP addressing scheme, VLAN plan, firewall rules, and Wi-Fi deployment plan", "hours": 20, "skills": ["computer-networking", "cybersecurity", "technology"] },
+        { "title": "Network Monitoring Dashboard", "description": "Set up a network monitoring system using open-source tools (Nagios, Zabbix, or Grafana/Prometheus) to monitor bandwidth, latency, and device health", "hours": 15, "skills": ["computer-networking", "linux", "automation"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Understand the OSI model, TCP/IP stack, and how data flows across networks",
+        "Learn IP addressing, subnetting, and routing fundamentals with hands-on practice",
+        "Analyze network traffic with Wireshark and troubleshoot common connectivity issues",
+        "Design and implement a multi-subnet network with DNS, DHCP, and firewall rules"
+      ]
+    },
+    "digital-marketing": {
+      "label": "Digital Marketing & Analytics",
+      "beginnerResources": [
+        { "type": "course", "title": "Google Digital Marketing & E-commerce Certificate", "provider": "Google / Coursera", "url": "https://www.coursera.org/professional-certificates/google-digital-marketing-ecommerce", "free": false, "hours": 20 },
+        { "type": "course", "title": "Google Analytics for Beginners", "provider": "Google Analytics Academy", "url": "https://analytics.google.com/analytics/academy/course/6", "free": true, "hours": 5 },
+        { "type": "course", "title": "Social Media Marketing Specialization", "provider": "Northwestern University / Coursera", "url": "https://www.coursera.org/specializations/social-media-marketing", "free": false, "hours": 15 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "SEO Specialization", "provider": "UC Davis / Coursera", "url": "https://www.coursera.org/specializations/seo", "free": false, "hours": 15 },
+        { "type": "tool", "title": "Google Search Console Documentation", "provider": "Google", "url": "https://developers.google.com/search/docs", "free": true, "hours": 4 }
+      ],
+      "exercises": [
+        "Conduct a complete SEO audit for a website: analyze on-page SEO, backlinks, page speed, mobile-friendliness, and create a prioritized optimization plan",
+        "Set up a Google Analytics 4 property, configure 5 custom events, and build a conversion tracking report",
+        "Create a 30-day social media content calendar for a brand with post copy, visuals, hashtag strategy, and posting schedule for 3 platforms",
+        "Run an A/B test on email subject lines with at least 100 recipients per variant and analyze the results for statistical significance"
+      ],
+      "projectIdeas": [
+        { "title": "Digital Marketing Campaign", "description": "Plan and execute a complete digital marketing campaign for a real or hypothetical product: market research, channel strategy, content creation, ad setup, and performance analytics", "hours": 25, "skills": ["digital-marketing", "content-strategy", "data-analysis"] },
+        { "title": "Marketing Analytics Dashboard", "description": "Build a marketing analytics dashboard in Google Data Studio or Looker connecting multiple data sources (Google Analytics, social media, email) with KPI tracking", "hours": 15, "skills": ["digital-marketing", "data-analysis", "visualization"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Understand the digital marketing funnel and core channels (SEO, SEM, social, email)",
+        "Set up Google Analytics, Search Console, and track key conversion metrics",
+        "Create content for social media and email campaigns with A/B testing",
+        "Analyze campaign performance data and optimize based on ROI metrics"
+      ]
+    },
+    "cybersecurity": {
+      "label": "Cybersecurity & Information Security",
+      "beginnerResources": [
+        { "type": "course", "title": "Google Cybersecurity Certificate", "provider": "Google / Coursera", "url": "https://www.coursera.org/professional-certificates/google-cybersecurity", "free": false, "hours": 20 },
+        { "type": "course", "title": "Introduction to Cybersecurity", "provider": "Cisco Networking Academy", "url": "https://www.netacad.com/courses/cybersecurity/introduction-cybersecurity", "free": true, "hours": 6 },
+        { "type": "practice", "title": "TryHackMe – Beginner Path", "provider": "TryHackMe", "url": "https://tryhackme.com/paths", "free": true, "hours": 15 }
+      ],
+      "intermediateResources": [
+        { "type": "practice", "title": "Hack The Box – Labs", "provider": "Hack The Box", "url": "https://www.hackthebox.com", "free": true, "hours": 20 },
+        { "type": "course", "title": "CompTIA Security+ Preparation", "provider": "Professor Messer / YouTube", "url": "https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/", "free": true, "hours": 20 }
+      ],
+      "exercises": [
+        "Set up a vulnerable virtual machine (DVWA or Metasploitable) and practice identifying and exploiting the OWASP Top 10 vulnerabilities",
+        "Configure a firewall on a Linux server, set up fail2ban, and test the rules by simulating a brute-force attack",
+        "Perform a vulnerability scan on your home network using Nmap and OpenVAS, then write a remediation report",
+        "Analyze a PCAP file containing a network attack, identify the attack vector, timeline, and compromised systems"
+      ],
+      "projectIdeas": [
+        { "title": "Home Lab Security Setup", "description": "Build a cybersecurity home lab with pfSense firewall, Kali Linux, vulnerable VMs, and a SIEM (Wazuh or ELK); document and practice common attack/defense scenarios", "hours": 30, "skills": ["cybersecurity", "linux", "computer-networking"] },
+        { "title": "Security Assessment Report", "description": "Perform a security assessment of a small business or personal setup: network scan, vulnerability assessment, policy review, and produce a professional security report with recommendations", "hours": 20, "skills": ["cybersecurity", "risk-assessment", "communication"] }
+      ],
+      "estimatedHours": 100,
+      "weeklyMilestones": [
+        "Understand security fundamentals: CIA triad, authentication, encryption, and common attack types",
+        "Practice with hands-on labs on TryHackMe: network scanning, exploitation basics, and log analysis",
+        "Set up defensive tools (firewalls, IDS, SIEM) and learn incident response procedures",
+        "Conduct a vulnerability assessment and write a professional security report"
+      ]
+    },
+    "education-theory": {
+      "label": "Education Theory & Pedagogy",
+      "beginnerResources": [
+        { "type": "course", "title": "Foundations of Teaching for Learning", "provider": "Commonwealth Education Trust / Coursera", "url": "https://www.coursera.org/learn/teaching", "free": true, "hours": 10 },
+        { "type": "course", "title": "What Future for Education?", "provider": "University of London / Coursera", "url": "https://www.coursera.org/learn/future-education", "free": true, "hours": 8 },
+        { "type": "book", "title": "Pedagogy of the Oppressed by Paulo Freire", "provider": "Continuum", "url": "", "free": false, "hours": 6 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Learning, Knowledge, and Human Development", "provider": "University of Illinois / Coursera", "url": "https://www.coursera.org/learn/learning-knowledge-human-development", "free": false, "hours": 12 },
+        { "type": "book", "title": "Understanding by Design by Wiggins & McTighe", "provider": "ASCD", "url": "", "free": false, "hours": 8 }
+      ],
+      "exercises": [
+        "Compare and contrast Bloom's Taxonomy, Constructivism, and Connectivism in a 2-page essay with real classroom examples",
+        "Design a curriculum unit using backward design (Understanding by Design): start with desired outcomes, determine assessments, then plan learning activities",
+        "Observe a class or training session, then analyze the teaching methods used against Kolb's experiential learning cycle",
+        "Create rubrics for 3 different assessment types (project, presentation, written report) with clear criteria and performance levels"
+      ],
+      "projectIdeas": [
+        { "title": "Curriculum Design Project", "description": "Design a complete 8-week curriculum for a subject, including learning objectives mapped to Bloom's Taxonomy, lesson plans, assessments, and differentiation strategies", "hours": 25, "skills": ["education-theory", "teaching", "writing"] },
+        { "title": "Learning Experience Evaluation", "description": "Evaluate an existing online course or training program using educational theory frameworks, conduct learner interviews, and write a redesign proposal", "hours": 15, "skills": ["education-theory", "research", "analytical-thinking"] }
+      ],
+      "estimatedHours": 50,
+      "weeklyMilestones": [
+        "Study major learning theories: behaviorism, cognitivism, constructivism, and connectivism",
+        "Learn instructional design models: ADDIE, backward design, and Bloom's Taxonomy",
+        "Design assessments aligned with learning objectives at multiple cognitive levels",
+        "Create a complete lesson plan applying evidence-based pedagogical strategies"
+      ]
+    },
+    "sports-science": {
+      "label": "Sports Science & Analytics",
+      "beginnerResources": [
+        { "type": "course", "title": "Exercise Physiology: Understanding the Athlete Within", "provider": "University of Melbourne / Coursera", "url": "https://www.coursera.org/learn/exercise-physiology", "free": true, "hours": 10 },
+        { "type": "course", "title": "Moneyball and Beyond – Sports Analytics", "provider": "University of Michigan / edX", "url": "https://www.edx.org/learn/sports", "free": true, "hours": 8 },
+        { "type": "article", "title": "FiveThirtyEight Sports Analytics Articles", "provider": "FiveThirtyEight", "url": "https://fivethirtyeight.com/sports/", "free": true, "hours": 3 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Sports Performance Analytics Specialization", "provider": "University of Michigan / Coursera", "url": "https://www.coursera.org/specializations/sports-analytics", "free": false, "hours": 15 },
+        { "type": "practice", "title": "Kaggle Sports Datasets", "provider": "Kaggle", "url": "https://www.kaggle.com/datasets?search=sports", "free": true, "hours": 10 }
+      ],
+      "exercises": [
+        "Analyze a season's worth of NBA or soccer player statistics to identify undervalued players using efficiency metrics",
+        "Build a regression model to predict race finishing times based on training data (pace, mileage, elevation)",
+        "Create a training load monitoring dashboard that tracks volume, intensity, and acute-to-chronic workload ratio",
+        "Design a data-driven scouting report for a sports team, comparing 10 prospects across key performance indicators"
+      ],
+      "projectIdeas": [
+        { "title": "Sports Analytics Dashboard", "description": "Build an interactive dashboard analyzing a full season of sports data with player comparisons, team performance trends, and predictive models", "hours": 20, "skills": ["sports-science", "data-analysis", "visualization"] },
+        { "title": "Training Program Optimizer", "description": "Design an evidence-based training program for an athlete, incorporating periodization, load monitoring, and performance benchmarks with automated tracking", "hours": 15, "skills": ["sports-science", "data-analysis", "research"] }
+      ],
+      "estimatedHours": 50,
+      "weeklyMilestones": [
+        "Learn exercise physiology fundamentals and key sports performance metrics",
+        "Collect and clean sports data from public sources (ESPN, Basketball Reference)",
+        "Build statistical models to evaluate player performance and predict outcomes",
+        "Create visualizations and reports that translate data into actionable coaching insights"
+      ]
+    },
+    "supply-chain": {
+      "label": "Supply Chain & Operations",
+      "beginnerResources": [
+        { "type": "course", "title": "Supply Chain Management Specialization", "provider": "Rutgers University / Coursera", "url": "https://www.coursera.org/specializations/supply-chain-management", "free": false, "hours": 16 },
+        { "type": "course", "title": "Operations Management", "provider": "University of Illinois / Coursera", "url": "https://www.coursera.org/learn/operations-management", "free": false, "hours": 10 },
+        { "type": "article", "title": "APICS Supply Chain Dictionary", "provider": "ASCM", "url": "https://www.ascm.org/learning-development/certifications-credentials/", "free": true, "hours": 3 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Supply Chain Analytics", "provider": "Georgia Tech / edX", "url": "https://www.edx.org/learn/supply-chain-management", "free": true, "hours": 12 },
+        { "type": "book", "title": "The Goal by Eliyahu M. Goldratt", "provider": "North River Press", "url": "", "free": false, "hours": 7 }
+      ],
+      "exercises": [
+        "Map the end-to-end supply chain for a product you own, from raw materials to final delivery, identifying 10+ nodes and lead times",
+        "Calculate Economic Order Quantity (EOQ) and reorder points for 5 products using real or simulated demand data",
+        "Build a demand forecasting model using 12 months of historical sales data with moving averages and exponential smoothing",
+        "Conduct a bottleneck analysis on a process using Theory of Constraints and propose 3 improvement strategies"
+      ],
+      "projectIdeas": [
+        { "title": "Supply Chain Simulation", "description": "Build a supply chain simulation in Python or Excel that models inventory levels, lead times, demand variability, and calculates optimal safety stock and reorder points", "hours": 20, "skills": ["supply-chain", "data-analysis", "mathematics"] },
+        { "title": "Process Optimization Study", "description": "Select a real or hypothetical manufacturing/logistics process, map it end-to-end, identify bottlenecks and waste using Lean principles, and present an improvement plan with projected savings", "hours": 15, "skills": ["supply-chain", "analytical-thinking", "problem-solving"] }
+      ],
+      "estimatedHours": 60,
+      "weeklyMilestones": [
+        "Understand supply chain fundamentals: procurement, manufacturing, logistics, and distribution",
+        "Learn inventory management models: EOQ, safety stock, and ABC analysis",
+        "Apply forecasting techniques and analyze supply chain data for bottlenecks",
+        "Design a supply chain optimization plan with measurable KPIs and cost projections"
+      ]
+    },
+    "storytelling": {
+      "label": "Storytelling & Narrative Design",
+      "beginnerResources": [
+        { "type": "course", "title": "The Art of Storytelling", "provider": "Pixar / Khan Academy", "url": "https://www.khanacademy.org/computing/pixar/storytelling", "free": true, "hours": 6 },
+        { "type": "course", "title": "Storytelling and Influencing: Communicate with Impact", "provider": "Macquarie University / Coursera", "url": "https://www.coursera.org/learn/communicate-with-impact", "free": false, "hours": 8 },
+        { "type": "book", "title": "Building a StoryBrand by Donald Miller", "provider": "HarperCollins", "url": "", "free": false, "hours": 5 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Creative Writing Specialization", "provider": "Wesleyan University / Coursera", "url": "https://www.coursera.org/specializations/creative-writing", "free": false, "hours": 15 },
+        { "type": "article", "title": "StoryBrand Framework Workshop", "provider": "StoryBrand", "url": "https://storybrand.com/resources/", "free": true, "hours": 3 }
+      ],
+      "exercises": [
+        "Rewrite a dull product description as a customer story using the hero's journey framework in under 200 words",
+        "Create 3 different narrative arcs for the same brand message: problem-solution, before-after, and customer journey",
+        "Write a 2-minute brand origin story for a hypothetical company and deliver it on camera",
+        "Analyze the storytelling structure of 3 successful TED Talks and identify the narrative techniques used (hook, tension, resolution)"
+      ],
+      "projectIdeas": [
+        { "title": "Brand Storytelling Guide", "description": "Create a comprehensive storytelling guide for a brand, including brand narrative, customer stories, messaging framework, and templates for different channels (web, email, social)", "hours": 15, "skills": ["storytelling", "content-strategy", "writing"] },
+        { "title": "Narrative Content Series", "description": "Write a 5-part narrative content series (blog, video script, or podcast) that tells a compelling brand or educational story with a consistent arc", "hours": 12, "skills": ["storytelling", "writing", "content-strategy"] }
+      ],
+      "estimatedHours": 35,
+      "weeklyMilestones": [
+        "Learn narrative structures: hero's journey, three-act structure, and the StoryBrand framework",
+        "Practice writing stories with clear characters, conflict, and resolution",
+        "Adapt storytelling techniques for different media: written, spoken, and visual",
+        "Create a portfolio of 3 stories that demonstrate different narrative approaches"
+      ]
+    },
+    "content-strategy": {
+      "label": "Content Strategy & Marketing",
+      "beginnerResources": [
+        { "type": "course", "title": "Content Strategy for Professionals Specialization", "provider": "Northwestern University / Coursera", "url": "https://www.coursera.org/specializations/content-strategy", "free": false, "hours": 16 },
+        { "type": "course", "title": "The Strategy of Content Marketing", "provider": "UC Davis / Coursera", "url": "https://www.coursera.org/learn/content-marketing", "free": false, "hours": 8 },
+        { "type": "article", "title": "Content Strategy Basics – Moz Beginner's Guide", "provider": "Moz", "url": "https://moz.com/beginners-guide-to-content-marketing", "free": true, "hours": 3 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Content Strategy for the Web by Kristina Halvorson", "provider": "New Riders", "url": "", "free": false, "hours": 7 },
+        { "type": "tool", "title": "SEMrush Content Marketing Toolkit", "provider": "SEMrush", "url": "https://www.semrush.com/content-marketing/", "free": false, "hours": 5 }
+      ],
+      "exercises": [
+        "Conduct a content audit of a website with 50+ pages: inventory all content, score it on relevance and quality, and create a keep/improve/remove plan",
+        "Create a persona-driven content map that matches content types to each stage of the buyer's journey (awareness, consideration, decision)",
+        "Write a quarterly content calendar with 30 pieces of content across blog, email, and social media, each tied to a specific business objective",
+        "Analyze the top 10 performing pieces of content from a competitor and identify the content themes, formats, and distribution patterns that drive engagement"
+      ],
+      "projectIdeas": [
+        { "title": "Content Strategy Blueprint", "description": "Create a complete content strategy for a brand: audience research, content audit, competitive analysis, editorial calendar, governance framework, and KPI dashboard", "hours": 25, "skills": ["content-strategy", "digital-marketing", "research"] },
+        { "title": "Content Measurement Framework", "description": "Design a content performance measurement framework with KPIs for each funnel stage, set up tracking in analytics, and produce a monthly reporting template", "hours": 12, "skills": ["content-strategy", "data-analysis", "digital-marketing"] }
+      ],
+      "estimatedHours": 50,
+      "weeklyMilestones": [
+        "Understand content strategy fundamentals: audience, goals, channels, and governance",
+        "Conduct a content audit and competitive analysis with actionable findings",
+        "Build a content calendar and editorial workflow aligned with business goals",
+        "Measure content performance with analytics and optimize based on data"
+      ]
+    },
+    "web-development": {
+      "label": "Web Development",
+      "beginnerResources": [
+        { "type": "course", "title": "The Odin Project – Full Stack Curriculum", "provider": "The Odin Project", "url": "https://www.theodinproject.com", "free": true, "hours": 40 },
+        { "type": "course", "title": "freeCodeCamp Responsive Web Design", "provider": "freeCodeCamp", "url": "https://www.freecodecamp.org/learn/2022/responsive-web-design/", "free": true, "hours": 10 },
+        { "type": "course", "title": "CS50's Web Programming with Python and JavaScript", "provider": "Harvard / edX", "url": "https://www.edx.org/learn/web-development/harvard-university-cs50-s-web-programming-with-python-and-javascript", "free": true, "hours": 20 }
+      ],
+      "intermediateResources": [
+        { "type": "article", "title": "MDN Web Docs – Complete Web Development Guide", "provider": "Mozilla", "url": "https://developer.mozilla.org/en-US/docs/Learn", "free": true, "hours": 20 },
+        { "type": "course", "title": "Full-Stack Open", "provider": "University of Helsinki", "url": "https://fullstackopen.com/en/", "free": true, "hours": 30 }
+      ],
+      "exercises": [
+        "Build a responsive landing page from a Figma design using HTML, CSS Grid, and Flexbox that works on mobile, tablet, and desktop",
+        "Create a full-stack CRUD application with a React frontend, Node.js/Express backend, and PostgreSQL database with user authentication",
+        "Implement a REST API with 5 endpoints including input validation, error handling, pagination, and JWT authentication",
+        "Deploy a full-stack application to production using Vercel (frontend) and Railway or Render (backend) with environment variables and a custom domain"
+      ],
+      "projectIdeas": [
+        { "title": "Portfolio Website", "description": "Design and build a personal portfolio website with responsive design, project showcases, blog integration, contact form, and deploy it to production", "hours": 20, "skills": ["web-development", "design", "programming"] },
+        { "title": "Full-Stack SaaS Application", "description": "Build a complete SaaS application with user authentication, dashboard, CRUD operations, payments integration (Stripe), and deploy to cloud hosting", "hours": 40, "skills": ["web-development", "programming", "cloud-computing"] }
+      ],
+      "estimatedHours": 150,
+      "weeklyMilestones": [
+        "Learn HTML semantics and CSS layout (Flexbox, Grid) and build responsive pages",
+        "Build interactive UIs with JavaScript and a framework (React, Vue, or Svelte)",
+        "Create backend APIs with Node.js/Express and connect to a database",
+        "Deploy a full-stack application with CI/CD, custom domain, and production best practices"
+      ]
+    },
+    "risk-assessment": {
+      "label": "Risk Assessment & Analysis",
+      "beginnerResources": [
+        { "type": "course", "title": "Risk Management Professional Certificate", "provider": "New York Institute of Finance / edX", "url": "https://www.edx.org/learn/risk-management", "free": true, "hours": 12 },
+        { "type": "course", "title": "Introduction to Risk Management", "provider": "University of Michigan / Coursera", "url": "https://www.coursera.org/learn/risk-management", "free": false, "hours": 8 },
+        { "type": "article", "title": "ISO 31000 Risk Management Overview", "provider": "ISO", "url": "https://www.iso.org/iso-31000-risk-management.html", "free": true, "hours": 2 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Enterprise Risk Management", "provider": "Columbia / edX", "url": "https://www.edx.org/learn/risk-management", "free": false, "hours": 12 },
+        { "type": "book", "title": "Against the Gods: The Remarkable Story of Risk by Peter Bernstein", "provider": "Wiley", "url": "", "free": false, "hours": 8 }
+      ],
+      "exercises": [
+        "Create a risk register for a project you're involved in, identifying 15+ risks with likelihood, impact, mitigation strategies, and risk owners",
+        "Perform a quantitative risk analysis using Monte Carlo simulation in Excel or Python for a project budget with 10 uncertain cost items",
+        "Conduct a failure mode and effects analysis (FMEA) for a product or process, scoring each failure mode on severity, occurrence, and detection",
+        "Design a risk heat map dashboard for an organization showing risk categories, trends, and top 10 risks requiring immediate attention"
+      ],
+      "projectIdeas": [
+        { "title": "Enterprise Risk Assessment", "description": "Conduct a comprehensive risk assessment for a real or hypothetical project: identify risks, quantify using probability and impact matrices, develop mitigation plans, and create a risk monitoring dashboard", "hours": 20, "skills": ["risk-assessment", "analytical-thinking", "data-analysis"] },
+        { "title": "Risk Simulation Tool", "description": "Build a Monte Carlo simulation tool in Python that models project risk scenarios, runs 10,000 iterations, and produces probability distributions for cost, schedule, and key outcomes", "hours": 18, "skills": ["risk-assessment", "mathematics", "programming"] }
+      ],
+      "estimatedHours": 50,
+      "weeklyMilestones": [
+        "Learn risk management fundamentals: risk identification, qualitative and quantitative analysis",
+        "Build a risk register and heat map for a real project or scenario",
+        "Apply quantitative methods: Monte Carlo simulation, decision trees, and expected value analysis",
+        "Develop risk mitigation strategies and a monitoring/reporting framework"
+      ]
+    },
+    "stakeholder-management": {
+      "label": "Stakeholder Management",
+      "beginnerResources": [
+        { "type": "course", "title": "Stakeholder Management", "provider": "Google / Coursera (Project Management Certificate)", "url": "https://www.coursera.org/professional-certificates/google-project-management", "free": false, "hours": 8 },
+        { "type": "course", "title": "Managing Project Stakeholders", "provider": "University of Virginia / Coursera", "url": "https://www.coursera.org/learn/uva-darden-project-management-stakeholders", "free": false, "hours": 6 },
+        { "type": "article", "title": "Stakeholder Analysis – MindTools", "provider": "MindTools", "url": "https://www.mindtools.com/aol0rms/stakeholder-analysis", "free": true, "hours": 1 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Crucial Conversations by Kerry Patterson", "provider": "McGraw-Hill", "url": "", "free": false, "hours": 7 },
+        { "type": "practice", "title": "Stakeholder Simulation Exercises", "provider": "Self-guided", "url": "", "free": true, "hours": 5 }
+      ],
+      "exercises": [
+        "Create a stakeholder map for a current project: identify all stakeholders, classify by power/interest, and define an engagement strategy for each group",
+        "Draft 3 versions of a project status update tailored to different audiences: technical team, executive sponsor, and end user",
+        "Role-play a difficult stakeholder conversation where you need to push back on scope creep while maintaining the relationship",
+        "Design a RACI matrix for a 10-task project with 6 stakeholders and use it to resolve 3 accountability ambiguities"
+      ],
+      "projectIdeas": [
+        { "title": "Stakeholder Communication Plan", "description": "Develop a comprehensive stakeholder communication plan for a major project, including stakeholder analysis, communication matrix, meeting cadences, escalation paths, and feedback mechanisms", "hours": 12, "skills": ["stakeholder-management", "communication", "project-management"] },
+        { "title": "Stakeholder Alignment Workshop", "description": "Design and facilitate a 2-hour stakeholder alignment workshop with agenda, activities, decision-making framework, and documented outcomes", "hours": 10, "skills": ["stakeholder-management", "leadership", "communication"] }
+      ],
+      "estimatedHours": 30,
+      "weeklyMilestones": [
+        "Learn stakeholder analysis techniques: power/interest grid, influence mapping, and RACI",
+        "Practice tailoring communications to different stakeholder audiences and priorities",
+        "Develop negotiation and conflict resolution skills for stakeholder disagreements",
+        "Build and execute a stakeholder engagement plan for a real project"
+      ]
+    },
+    "agile-methodology": {
+      "label": "Agile Methodology",
+      "beginnerResources": [
+        { "type": "course", "title": "Agile with Atlassian Jira", "provider": "Atlassian / Coursera", "url": "https://www.coursera.org/learn/agile-atlassian-jira", "free": true, "hours": 8 },
+        { "type": "course", "title": "Agile Development Specialization", "provider": "University of Virginia / Coursera", "url": "https://www.coursera.org/specializations/agile-development", "free": false, "hours": 16 },
+        { "type": "article", "title": "Agile Manifesto and Scrum Guide", "provider": "Scrum.org", "url": "https://scrumguides.org", "free": true, "hours": 2 }
+      ],
+      "intermediateResources": [
+        { "type": "book", "title": "Scrum: The Art of Doing Twice the Work in Half the Time by Jeff Sutherland", "provider": "Crown Business", "url": "", "free": false, "hours": 6 },
+        { "type": "course", "title": "Professional Scrum Master Training", "provider": "Scrum.org", "url": "https://www.scrum.org/courses/professional-scrum-master-training", "free": false, "hours": 16 }
+      ],
+      "exercises": [
+        "Break down a feature into user stories using the INVEST criteria and estimate each story using planning poker with a team",
+        "Run a 1-week sprint for a personal project: plan a sprint backlog, do daily check-ins, and hold a sprint review and retrospective",
+        "Create a product backlog for a hypothetical app with 20+ user stories, prioritized using MoSCoW and estimated in story points",
+        "Facilitate a sprint retrospective using the Start/Stop/Continue format and produce 3 actionable improvement items with owners and deadlines"
+      ],
+      "projectIdeas": [
+        { "title": "Agile Team Simulation", "description": "Run a 4-sprint agile project (real or simulated), tracking velocity, maintaining a burndown chart, conducting all ceremonies, and documenting lessons learned and process improvements", "hours": 25, "skills": ["agile-methodology", "project-management", "leadership"] },
+        { "title": "Agile Transformation Plan", "description": "Assess a team's current workflow, identify opportunities for agile adoption, design a transition plan with training, ceremonies, and tools, and present the business case", "hours": 15, "skills": ["agile-methodology", "stakeholder-management", "communication"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Understand Agile principles, Scrum roles (Product Owner, Scrum Master, Dev Team), and ceremonies",
+        "Write user stories, estimate with story points, and create a sprint backlog",
+        "Run a complete sprint with daily standups, sprint review, and retrospective",
+        "Track velocity, identify impediments, and facilitate continuous improvement"
+      ]
+    },
+    "systems-thinking": {
+      "label": "Systems Thinking",
+      "beginnerResources": [
+        { "type": "course", "title": "Systems Thinking In Public Health", "provider": "Johns Hopkins / Coursera", "url": "https://www.coursera.org/learn/systems-thinking", "free": true, "hours": 8 },
+        { "type": "book", "title": "Thinking in Systems by Donella Meadows", "provider": "Chelsea Green Publishing", "url": "", "free": false, "hours": 7 },
+        { "type": "article", "title": "Introduction to Systems Thinking", "provider": "The Systems Thinker", "url": "https://thesystemsthinker.com", "free": true, "hours": 3 }
+      ],
+      "intermediateResources": [
+        { "type": "course", "title": "Model Thinking", "provider": "University of Michigan / Coursera", "url": "https://www.coursera.org/learn/model-thinking", "free": true, "hours": 12 },
+        { "type": "tool", "title": "Loopy – Systems Thinking Visualization Tool", "provider": "Ncase", "url": "https://ncase.me/loopy/", "free": true, "hours": 2 }
+      ],
+      "exercises": [
+        "Draw a causal loop diagram for a complex problem (e.g., urban traffic congestion) identifying reinforcing and balancing feedback loops",
+        "Map the system dynamics of a workplace issue using stock-and-flow diagrams, identifying delays and leverage points",
+        "Analyze an unintended consequence of a policy or product decision by tracing cause-and-effect chains across at least 3 system boundaries",
+        "Use the iceberg model to analyze a current event: surface events, patterns, underlying structures, and mental models"
+      ],
+      "projectIdeas": [
+        { "title": "Systems Analysis Report", "description": "Select a complex organizational or social problem, map the system with causal loop diagrams, identify leverage points using Meadows' framework, and propose interventions with expected system-wide effects", "hours": 20, "skills": ["systems-thinking", "analytical-thinking", "research"] },
+        { "title": "Interactive Systems Model", "description": "Build an interactive systems model using Loopy or a simulation tool that demonstrates feedback loops and emergent behavior for an educational or business context", "hours": 12, "skills": ["systems-thinking", "technology", "visualization"] }
+      ],
+      "estimatedHours": 40,
+      "weeklyMilestones": [
+        "Learn systems thinking fundamentals: feedback loops, emergence, stocks and flows, and delays",
+        "Draw causal loop diagrams and stock-and-flow diagrams for real-world systems",
+        "Identify leverage points using Donella Meadows' 12 leverage points framework",
+        "Apply systems thinking to analyze a complex problem and propose high-leverage interventions"
+      ]
     }
   },
   "defaultResources": {
     "beginnerResources": [
-      { "type": "article", "title": "Getting Started Guide", "provider": "Self-study", "url": "", "free": true, "hours": 2 },
-      { "type": "course", "title": "LinkedIn Learning Free Courses", "provider": "LinkedIn Learning", "url": "https://www.linkedin.com/learning/", "free": true, "hours": 5 },
-      { "type": "article", "title": "Coursera Free Courses", "provider": "Coursera", "url": "https://www.coursera.org/courses?query=free", "free": true, "hours": 10 }
+      { "type": "course", "title": "Explore Free Courses on Coursera", "provider": "Coursera", "url": "https://www.coursera.org/courses?query=free", "free": true, "hours": 10 },
+      { "type": "course", "title": "Browse Free Courses on edX", "provider": "edX", "url": "https://www.edx.org/search?tab=course", "free": true, "hours": 10 },
+      { "type": "course", "title": "Khan Academy — Free Learning", "provider": "Khan Academy", "url": "https://www.khanacademy.org", "free": true, "hours": 8 }
     ],
     "intermediateResources": [
-      { "type": "practice", "title": "Hands-on Practice", "provider": "Self-guided", "url": "", "free": true, "hours": 10 },
-      { "type": "course", "title": "edX Free Courses", "provider": "edX", "url": "https://www.edx.org/search", "free": true, "hours": 10 }
+      { "type": "course", "title": "LinkedIn Learning Skill Courses", "provider": "LinkedIn Learning", "url": "https://www.linkedin.com/learning/", "free": false, "hours": 10 },
+      { "type": "practice", "title": "Skillshare — Creative & Professional Classes", "provider": "Skillshare", "url": "https://www.skillshare.com", "free": false, "hours": 10 }
     ],
     "exercises": [
-      "Research the fundamentals of this skill area",
-      "Find and complete a beginner tutorial",
-      "Practice for 30 minutes daily for one week",
-      "Apply this skill to a small real-world problem"
+      "Find and follow a step-by-step project tutorial on YouTube (at least 30 minutes)",
+      "Write a 1-page summary of 3 key concepts you learned this week",
+      "Teach someone else a concept you learned — explaining solidifies knowledge",
+      "Complete a hands-on mini-project applying what you've studied so far"
     ],
     "projectIdeas": [
-      { "title": "Skill Portfolio Piece", "description": "Create a tangible artifact demonstrating this skill", "hours": 10, "skills": [] }
+      { "title": "Learning Portfolio", "description": "Create a portfolio documenting your learning journey with examples, reflections, and evidence of progress over 4 weeks", "hours": 10, "skills": [] },
+      { "title": "Skill Showcase Presentation", "description": "Prepare and deliver a 10-minute presentation teaching a concept from this skill area to an audience", "hours": 5, "skills": ["communication"] }
     ],
     "estimatedHours": 40,
     "weeklyMilestones": [
-      "Understand the fundamentals",
-      "Complete first exercises",
-      "Apply to a small project",
-      "Demonstrate competence"
+      "Complete your first tutorial and summarize what you learned in writing",
+      "Practice the core techniques daily for one week and track your progress",
+      "Build a small project applying your new knowledge to a real-world scenario",
+      "Share your work with someone else and incorporate their feedback"
     ]
   },
   "additionalSkills": {

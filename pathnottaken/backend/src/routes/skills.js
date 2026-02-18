@@ -107,6 +107,11 @@ router.post("/concrete-roadmap", (req, res) => {
       return resource;
     }
 
+    // Guard against empty skills
+    if (orderedSkills.length === 0) {
+      return res.status(400).json({ error: 'This career has no required skills defined.' });
+    }
+
     // Build 12 weeks of concrete tasks
     const weeks = [];
     for (let w = 0; w < 12; w++) {
@@ -124,16 +129,19 @@ router.post("/concrete-roadmap", (req, res) => {
       const phase = month === 0 ? 'foundation' : month === 1 ? 'practice' : 'project';
 
       const tasks = [];
-      const skillLabel = (skillData.label || primarySkill).replace(/-/g, ' ');
+      const skillLabel = formatSkillLabel(skillData.label || primarySkill);
 
       // Theory / Learning task
       if (phase === 'foundation' || weekInMonth < 2) {
         const resourcePool = month === 0 ? (skillData.beginnerResources || []) : (skillData.intermediateResources || []);
-        const resource = resourcePool[weekInMonth % resourcePool.length] || resourcePool[0];
+        // Use w-based index to avoid repeating same resource across rotations
+        const resIdx = resourcePool.length > 0 ? Math.floor(w / orderedSkills.length) % resourcePool.length : 0;
+        const resource = resourcePool.length > 0 ? resourcePool[resIdx] : null;
         const safeResource = ensureUrl(resource, skillLabel);
+        const phaseVerb = month === 0 ? 'Learn' : 'Deepen';
         tasks.push({
           id: `w${w}-learn`,
-          title: `Learn: ${skillLabel} — ${safeResource ? safeResource.title : 'core concepts'}`,
+          title: `${phaseVerb}: ${skillLabel} — ${safeResource ? safeResource.title : 'core concepts'}`,
           type: 'learn',
           estimatedHours: Math.min(Math.round(weeklyHours * 0.3), safeResource?.hours || 3),
           resource: safeResource || null,
@@ -142,8 +150,10 @@ router.post("/concrete-roadmap", (req, res) => {
       }
 
       // Practice task
-      const exerciseIdx = w % (skillData.exercises || []).length;
-      const exercise = (skillData.exercises || [])[exerciseIdx];
+      const exercises = skillData.exercises || [];
+      // Avoid repeating same exercise: use combined w + skill index
+      const exerciseIdx = exercises.length > 0 ? (Math.floor(w / orderedSkills.length) + weekInMonth) % exercises.length : 0;
+      const exercise = exercises.length > 0 ? exercises[exerciseIdx] : null;
       if (exercise) {
         tasks.push({
           id: `w${w}-practice`,
@@ -157,10 +167,12 @@ router.post("/concrete-roadmap", (req, res) => {
       // Build / Project task
       if (phase === 'project' || weekInMonth >= 2) {
         const projectPool = skillData.projectIdeas || [];
-        const project = projectPool[month % projectPool.length] || projectPool[0];
+        const projIdx = projectPool.length > 0 ? (month + Math.floor(w / orderedSkills.length)) % projectPool.length : 0;
+        const project = projectPool[projIdx] || projectPool[0];
+        const buildVerb = phase === 'project' ? 'Build' : 'Apply';
         tasks.push({
           id: `w${w}-build`,
-          title: `Build: ${project ? project.title + ' — ' + project.description : 'Apply ' + skillLabel + ' to a mini-project'}`,
+          title: `${buildVerb}: ${project ? project.title : 'Apply ' + skillLabel + ' to a mini-project'}`,
           type: 'build',
           estimatedHours: Math.round(weeklyHours * 0.3),
           project: project || null,
@@ -169,8 +181,9 @@ router.post("/concrete-roadmap", (req, res) => {
       }
 
       // Milestone task (reflection + checkpoint)
-      const milestoneIdx = weekInMonth % (skillData.weeklyMilestones || []).length;
-      const milestone = (skillData.weeklyMilestones || [])[milestoneIdx];
+      const milestoneArr = skillData.weeklyMilestones || [];
+      const milestoneIdx = milestoneArr.length > 0 ? weekInMonth % milestoneArr.length : 0;
+      const milestone = milestoneArr[milestoneIdx];
       tasks.push({
         id: `w${w}-milestone`,
         title: `Milestone: ${milestone || 'Review progress and adjust plan'}`,
@@ -196,11 +209,17 @@ router.post("/concrete-roadmap", (req, res) => {
     const months = [0, 1, 2].map(m => {
       const monthWeeks = weeks.filter(w => w.month === m + 1);
       const focusSkills = [...new Set(monthWeeks.map(w => w.focusSkillLabel))];
+      const phaseDescriptions = {
+        0: 'Learn the fundamentals and set up your environment',
+        1: 'Apply your knowledge through hands-on practice and exercises',
+        2: 'Build portfolio projects and prepare for real-world applications'
+      };
       return {
         month: m + 1,
         title: m === 0 ? 'Foundation' : m === 1 ? 'Practice & Deepen' : 'Build & Apply',
         focus: focusSkills.join(', '),
         phase: m === 0 ? 'foundation' : m === 1 ? 'practice' : 'project',
+        description: phaseDescriptions[m],
         weeks: monthWeeks
       };
     });
@@ -262,19 +281,56 @@ router.post("/concrete-roadmap", (req, res) => {
 });
 
 function getTip(phase, weekInMonth, isMissing, skillLabel) {
-  if (phase === 'foundation' && isMissing) {
-    return `${skillLabel} is new for you — focus on understanding the "why" before the "how". Don't rush.`;
-  }
-  if (phase === 'foundation' && !isMissing) {
-    return `You already know ${skillLabel} — use this week to go deeper and fill any gaps.`;
+  const tips = {
+    foundation: {
+      missing: [
+        `${skillLabel} is new for you — focus on understanding the "why" before the "how". Don't rush.`,
+        `Take time to absorb ${skillLabel} fundamentals. Active note-taking boosts retention by 30%.`,
+        `Compare ${skillLabel} concepts to skills you already know — analogies accelerate learning.`,
+        `Set up your ${skillLabel} environment or tools early. A smooth setup prevents frustration later.`
+      ],
+      known: [
+        `You already know ${skillLabel} — use this week to go deeper and fill gaps you didn't know existed.`,
+        `Try teaching ${skillLabel} concepts to someone else (even a rubber duck). Teaching reveals blind spots.`,
+        `Explore advanced ${skillLabel} techniques you haven't tried. Push past your comfort zone.`,
+        `Review best practices and industry standards for ${skillLabel}. What have you been doing differently?`
+      ]
+    },
+    practice: [
+      `Hands-on practice with ${skillLabel} is key this week. Aim for typing code/doing work over watching videos.`,
+      `Mistakes are progress. If your ${skillLabel} exercises feel easy, increase the difficulty.`,
+      `Try to complete exercises without looking at solutions first. Struggling builds stronger neural pathways.`,
+      `Pair ${skillLabel} practice with a timer — 25 min focused work, 5 min break (Pomodoro technique).`
+    ],
+    project: [
+      `Start building something real with ${skillLabel}. Even a simple project teaches more than hours of tutorials.`,
+      `Focus on creating portfolio-worthy ${skillLabel} work you can showcase to potential employers.`,
+      `Document your ${skillLabel} project process — decision logs and READMEs impress hiring managers.`,
+      `You're in the home stretch. Polish your ${skillLabel} project and prepare to present it.`
+    ]
+  };
+
+  if (phase === 'foundation') {
+    const pool = isMissing ? tips.foundation.missing : tips.foundation.known;
+    return pool[weekInMonth % pool.length];
   }
   if (phase === 'practice') {
-    return `This is your practice phase. Aim for hands-on exercises over passive learning. Mistakes are progress.`;
+    return tips.practice[weekInMonth % tips.practice.length];
   }
-  if (phase === 'project' && weekInMonth < 2) {
-    return `Start building something real. Even a simple project teaches more than hours of tutorials.`;
-  }
-  return `You're in the home stretch. Focus on creating portfolio-worthy work you can show to others.`;
+  return tips.project[weekInMonth % tips.project.length];
+}
+
+function formatSkillLabel(raw) {
+  return raw
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase())
+    .replace(/\bCi Cd\b/i, 'CI/CD')
+    .replace(/\bUi\b/g, 'UI')
+    .replace(/\bUx\b/g, 'UX')
+    .replace(/\bAi\b/g, 'AI')
+    .replace(/\bApi\b/g, 'API')
+    .replace(/\bDevops\b/g, 'DevOps')
+    .replace(/\bGis\b/g, 'GIS');
 }
 
 module.exports = router;

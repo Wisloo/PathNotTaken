@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { fetchCareerById } from "@/lib/api";
+import { fetchCareerById, API_ORIGIN } from "@/lib/api";
 import { useToast } from "@/components/Toast";
 
 type Resource = { type: string; title: string; provider: string; url?: string; free?: boolean; hours?: number; skill?: string; skillId?: string; isFree?: boolean };
@@ -24,6 +24,21 @@ type MonthData = { month: number; title: string; focus: string; phase: string; w
 type Milestone = { week: number; title: string; description: string };
 
 export default function RoadmapPage() {
+  return (
+    <Suspense fallback={
+      <div className="max-w-4xl mx-auto py-20 px-4 text-center">
+        <div className="flex items-center justify-center gap-3">
+          <div className="w-6 h-6 border-3 border-gray-200 border-t-emerald-600 rounded-full animate-spin" />
+          <span className="text-gray-500">Loading roadmap...</span>
+        </div>
+      </div>
+    }>
+      <RoadmapContent />
+    </Suspense>
+  );
+}
+
+function RoadmapContent() {
   const params = useSearchParams();
   const careerId = params?.get("career") || "";
   const [loading, setLoading] = useState(true);
@@ -39,6 +54,7 @@ export default function RoadmapPage() {
   const [initialWeeklyHours, setInitialWeeklyHours] = useState(10);
   const [error, setError] = useState<string | null>(null);
   const [showResources, setShowResources] = useState(false);
+  const [savedUrl, setSavedUrl] = useState<string | null>(null);
   const { toast } = useToast();
 
   // Convert flat weeks (old save format) into month structure so everything uses the unified accordion UI
@@ -94,7 +110,6 @@ export default function RoadmapPage() {
       setLoading(true);
       setError(null);
       try {
-        const { API_ORIGIN } = await import('@/lib/api');
         const res = await fetch(`${API_ORIGIN}/api/roadmaps/${id}`);
         if (!res.ok) throw new Error("Roadmap not found");
         const json = await res.json();
@@ -129,15 +144,15 @@ export default function RoadmapPage() {
     async function buildForCareer(id: string) {
       setLoading(true);
       setError(null);
+      let careerData: any = null;
       try {
-        const c = await fetchCareerById(id);
-        setCareer(c);
+        careerData = await fetchCareerById(id);
+        setCareer(careerData);
 
         // Try loading concrete roadmap from backend
-        const { API_ORIGIN } = await import('@/lib/api');
 
         // Get user skills from URL or localStorage
-        const urlSkills = params?.get("skills")?.split(",") || [];
+        const urlSkills = params?.get("skills")?.split(",").filter(Boolean) || [];
         const storedSkills = JSON.parse(localStorage.getItem("pn_user_skills") || "[]");
         const userSkills = urlSkills.length > 0 ? urlSkills : storedSkills;
 
@@ -159,11 +174,11 @@ export default function RoadmapPage() {
           setInitialWeeklyHours(weeklyHours);
         } else {
           // Fallback to old-style generation
-          buildLegacyRoadmap(c);
+          buildLegacyRoadmap(careerData);
         }
       } catch (err) {
         console.error(err);
-        if (career) buildLegacyRoadmap(career);
+        if (careerData) buildLegacyRoadmap(careerData);
         else setError("Failed to build roadmap. Please check your connection and try again.");
       } finally {
         setLoading(false);
@@ -223,10 +238,6 @@ export default function RoadmapPage() {
     setOriginalMonths(generatedMonths);
   }
 
-  const [savedUrl, setSavedUrl] = useState<string | null>(null);
-  const [apiOrigin, setApiOrigin] = useState<string>('');
-  useEffect(() => { import('@/lib/api').then(m => setApiOrigin(m.API_ORIGIN)).catch(() => {}); }, []);
-
   function toggleTask(monthIdx: number, weekIdx: number, taskIdx: number) {
     setMonths(prev => {
       const copy = JSON.parse(JSON.stringify(prev));
@@ -240,9 +251,8 @@ export default function RoadmapPage() {
 
   async function awardXPForTask(task: WeekTask) {
     try {
-      const token = localStorage.getItem('authToken') || localStorage.getItem('pn_token');
+      const token = localStorage.getItem('pn_token');
       if (!token) return;
-      const { API_ORIGIN } = await import('@/lib/api');
       const res = await fetch(`${API_ORIGIN}/api/gamification/task-complete`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
@@ -262,7 +272,7 @@ export default function RoadmapPage() {
     if (!career) return;
     try {
       const token = localStorage.getItem('pn_token');
-      const headers: any = { "Content-Type": "application/json" };
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
       if (token) headers.Authorization = `Bearer ${token}`;
 
       const shareId = params?.get('share');
@@ -278,13 +288,13 @@ export default function RoadmapPage() {
       };
 
       if (shareId) {
-        const res = await fetch(`${apiOrigin}/api/roadmaps/${shareId}`, { method: 'PUT', headers, body: JSON.stringify(payload) });
+        const res = await fetch(`${API_ORIGIN}/api/roadmaps/${shareId}`, { method: 'PUT', headers, body: JSON.stringify(payload) });
         const j = await res.json();
         if (j?.success) { toast('Roadmap saved!', 'success'); setSavedUrl(window.location.href); }
         return;
       }
 
-      const res = await fetch(`${apiOrigin}/api/roadmaps`, {
+      const res = await fetch(`${API_ORIGIN}/api/roadmaps`, {
         method: "POST", headers,
         body: JSON.stringify(payload),
       });
@@ -501,6 +511,45 @@ export default function RoadmapPage() {
         )}
       </div>
 
+      {/* ──────── LEARNING JOURNEY SUMMARY ──────── */}
+      {(missingSkills.length > 0 || matchedSkills.length > 0) && (
+        <div className="card-static p-5 mb-6">
+          <h3 className="text-sm font-semibold text-gray-900 mb-1">🎯 Your Learning Journey</h3>
+          <p className="text-xs text-gray-400 mb-4">
+            Over 12 weeks, you&apos;ll progress from foundations to portfolio-ready projects. Here&apos;s what you&apos;re covering:
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50 border border-blue-100">
+              <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0">
+                <span className="text-white text-sm">📚</span>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-blue-800">Weeks 1–4</p>
+                <p className="text-[10px] text-blue-600">Learn fundamentals & set up tools</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-amber-50 border border-amber-100">
+              <div className="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center flex-shrink-0">
+                <span className="text-white text-sm">🏋️</span>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-amber-800">Weeks 5–8</p>
+                <p className="text-[10px] text-amber-600">Practice with exercises & projects</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-emerald-50 border border-emerald-100">
+              <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                <span className="text-white text-sm">🚀</span>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-emerald-800">Weeks 9–12</p>
+                <p className="text-[10px] text-emerald-600">Build portfolio & prepare for roles</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ──────── SKILLS OVERVIEW ──────── */}
       {(missingSkills.length > 0 || matchedSkills.length > 0) && (
         <div className="card-static p-5 mb-6">
@@ -629,7 +678,9 @@ export default function RoadmapPage() {
                           <span className="text-2xl lg:hidden">{phaseIcons[month.phase] || '📋'}</span>
                           <div>
                             <h2 className="text-lg font-bold text-white">Month {month.month}: {month.title}</h2>
-                            <p className="text-white/70 text-xs">Focus: {month.focus} · Weeks {(mi * 4) + 1}–{(mi + 1) * 4}</p>
+                            <p className="text-white/70 text-xs">
+                              {(month as any).description || `Focus: ${month.focus}`} · Weeks {(mi * 4) + 1}–{(mi + 1) * 4}
+                            </p>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">

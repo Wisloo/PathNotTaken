@@ -118,15 +118,15 @@ const SERVER_SYNONYMS = {
   "ci/cd": ["devops", "automation"],
   jenkins: ["devops", "automation"],
   "github actions": ["devops", "automation"],
-  cybersecurity: ["cybersecurity", "networking"],
+  cybersecurity: ["cybersecurity", "computer-networking"],
   "penetration testing": ["cybersecurity", "testing"],
   "ethical hacking": ["cybersecurity"],
-  firewall: ["cybersecurity", "networking"],
+  firewall: ["cybersecurity", "computer-networking"],
   encryption: ["cybersecurity"],
   "security+": ["cybersecurity"],
   comptia: ["cybersecurity"],
   splunk: ["cybersecurity", "data-analysis"],
-  wireshark: ["cybersecurity", "networking"],
+  wireshark: ["cybersecurity", "computer-networking"],
   "supply chain": ["supply-chain", "project-management"],
   logistics: ["supply-chain", "organization"],
   inventory: ["supply-chain", "data-analysis"],
@@ -152,6 +152,194 @@ const SERVER_SYNONYMS = {
   "attention to detail": ["attention-to-detail"],
   organization: ["project-management", "attention-to-detail"],
   "time management": ["project-management"],
+
+  // additional common tools & skills
+  mongodb: ["database-management", "programming"],
+  postgresql: ["database-management", "programming"],
+  mysql: ["database-management", "programming"],
+  redis: ["database-management"],
+  graphql: ["api-development", "web-development"],
+  "rest api": ["api-development", "web-development"],
+  flutter: ["mobile-development", "programming"],
+  "react native": ["mobile-development", "programming"],
+  "swift ui": ["mobile-development", "programming"],
+  "android development": ["mobile-development", "programming"],
+  "ios development": ["mobile-development", "programming"],
+  negotiation: ["negotiation", "communication"],
+  "conflict resolution": ["conflict-resolution", "communication"],
+  budgeting: ["budgeting", "accounting"],
+  "change management": ["change-management", "project-management"],
+  "product management": ["product-management", "strategy"],
+  "data modeling": ["data-modeling", "data-analysis"],
+  "process improvement": ["process-improvement", "problem-solving"],
+  "video editing": ["video-production", "creativity"],
+  "premiere pro": ["video-production"],
+  "after effects": ["video-production", "design"],
+  "final cut": ["video-production"],
+  copywriting: ["copywriting", "writing"],
+  "brand strategy": ["digital-marketing", "strategy"],
+  "email marketing": ["digital-marketing", "copywriting"],
+  notion: ["organization", "project-management"],
+  asana: ["project-management"],
+  monday: ["project-management"],
+  salesforce: ["data-analysis", "digital-marketing"],
+  hubspot: ["digital-marketing", "data-analysis"],
+  "power automate": ["automation"],
+  zapier: ["automation"],
+  "google sheets": ["data-analysis"],
+  "data entry": ["data-analysis", "attention-to-detail"],
+  typing: ["attention-to-detail"],
+  bookkeeping: ["accounting", "attention-to-detail"],
+  "financial modeling": ["accounting", "data-analysis"],
+  "customer service": ["communication", "empathy"],
+  "client management": ["communication", "stakeholder-management"],
+  fundraising: ["communication", "strategy"],
+  "grant writing": ["writing", "research"],
+  "event planning": ["project-management", "organization"],
+
+  // ─── Agriculture & Food ───
+  agriculture: ["biology", "environmental-science", "data-analysis"],
+  farming: ["biology", "environmental-science", "project-management"],
+  agronomy: ["biology", "environmental-science", "research"],
+  horticulture: ["biology", "environmental-science", "creativity"],
+  "crop science": ["biology", "research", "data-analysis"],
+  "soil science": ["biology", "environmental-science", "research"],
+  "food science": ["biology", "research", "data-analysis"],
+  "animal husbandry": ["biology", "project-management"],
+  "precision agriculture": ["data-analysis", "automation", "gis"],
+  "food safety": ["biology", "attention-to-detail", "policy"],
+  "sustainable farming": ["environmental-science", "biology", "strategy"],
+  irrigation: ["environmental-science", "automation", "gis"],
+  "farm management": ["project-management", "budgeting", "leadership"],
+  "pest management": ["biology", "research", "problem-solving"],
+  forestry: ["environmental-science", "biology", "gis"],
+  aquaculture: ["biology", "environmental-science", "project-management"],
+
+  // ─── Healthcare & Medical ───
+  nursing: ["healthcare-knowledge", "empathy", "communication"],
+  "patient care": ["healthcare-knowledge", "empathy", "communication"],
+  "clinical research": ["research", "healthcare-knowledge", "data-analysis"],
+  pharmacy: ["healthcare-knowledge", "biology", "attention-to-detail"],
+  "medical coding": ["healthcare-knowledge", "data-analysis", "attention-to-detail"],
+  "medical billing": ["healthcare-knowledge", "accounting", "attention-to-detail"],
+  "physical therapy": ["healthcare-knowledge", "empathy", "biology"],
+  "occupational therapy": ["healthcare-knowledge", "empathy", "psychology"],
+  "mental health": ["psychology", "empathy", "healthcare-knowledge"],
+  epidemiology: ["data-analysis", "research", "healthcare-knowledge"],
+  "public health": ["healthcare-knowledge", "policy", "communication"],
+  nutrition: ["biology", "healthcare-knowledge", "research"],
+  "health informatics": ["healthcare-knowledge", "data-analysis", "programming"],
+
+  // ─── Real Estate & Property ───
+  "real estate": ["negotiation", "communication", "accounting"],
+  "property management": ["project-management", "communication", "budgeting"],
+  appraisal: ["data-analysis", "attention-to-detail", "accounting"],
+  mortgage: ["accounting", "communication", "attention-to-detail"],
+  zoning: ["policy", "research", "gis"],
+  "home staging": ["design", "creativity", "communication"],
+
+  // ─── Manufacturing & Engineering ───
+  manufacturing: ["project-management", "process-improvement", "attention-to-detail"],
+  "quality control": ["attention-to-detail", "data-analysis", "process-improvement"],
+  "lean manufacturing": ["process-improvement", "project-management", "data-analysis"],
+  cnc: ["technical-literacy", "attention-to-detail", "3d-modeling"],
+  cad: ["3d-modeling", "design", "technical-literacy"],
+  autocad: ["3d-modeling", "design", "technical-literacy"],
+  solidworks: ["3d-modeling", "design"],
+  welding: ["technical-literacy", "attention-to-detail"],
+  "industrial engineering": ["process-improvement", "data-analysis", "project-management"],
+  robotics: ["programming", "automation", "machine-learning"],
+  "3d printing": ["3d-modeling", "creativity", "design"],
+  plc: ["automation", "programming", "technical-literacy"],
+
+  // ─── Legal ───
+  "legal research": ["research", "attention-to-detail", "writing"],
+  "contract law": ["policy", "negotiation", "attention-to-detail"],
+  paralegal: ["research", "writing", "attention-to-detail"],
+  compliance: ["policy", "attention-to-detail", "risk-assessment"],
+  litigation: ["research", "communication", "writing"],
+  mediation: ["conflict-resolution", "negotiation", "empathy"],
+  "regulatory affairs": ["policy", "research", "communication"],
+
+  // ─── Hospitality & Tourism ───
+  "hotel management": ["project-management", "communication", "leadership"],
+  "food service": ["project-management", "communication", "leadership"],
+  catering: ["project-management", "organization", "creativity"],
+  "restaurant management": ["leadership", "budgeting", "communication"],
+  concierge: ["communication", "organization", "cultural-awareness"],
+
+  // ─── Human Resources ───
+  recruiting: ["communication", "interviewing", "empathy"],
+  "talent acquisition": ["communication", "interviewing", "strategy"],
+  "employee relations": ["communication", "conflict-resolution", "empathy"],
+  compensation: ["accounting", "data-analysis", "policy"],
+  onboarding: ["communication", "organization", "teaching"],
+  "workforce planning": ["data-analysis", "strategy", "project-management"],
+  "hr analytics": ["data-analysis", "statistics", "communication"],
+
+  // ─── Military & Defense ───
+  "military leadership": ["leadership", "project-management", "communication"],
+  "military operations": ["project-management", "leadership", "strategy"],
+  "military intelligence": ["research", "data-analysis", "cybersecurity"],
+  security: ["cybersecurity", "risk-assessment", "attention-to-detail"],
+  "crisis management": ["leadership", "communication", "problem-solving"],
+  "emergency management": ["leadership", "project-management", "communication"],
+
+  // ─── Nonprofit & Social Impact ───
+  "community organizing": ["communication", "leadership", "empathy"],
+  "volunteer management": ["leadership", "communication", "organization"],
+  advocacy: ["communication", "writing", "policy"],
+  "social work": ["empathy", "communication", "psychology"],
+  "impact measurement": ["data-analysis", "research", "strategy"],
+
+  // ─── Finance & Banking ───
+  "financial analysis": ["accounting", "data-analysis", "statistics"],
+  trading: ["data-analysis", "risk-assessment", "statistics"],
+  "wealth management": ["accounting", "communication", "strategy"],
+  "risk management": ["risk-assessment", "data-analysis", "statistics"],
+  auditing: ["accounting", "attention-to-detail", "data-analysis"],
+  taxation: ["accounting", "attention-to-detail", "policy"],
+  actuarial: ["statistics", "mathematics", "data-analysis"],
+  blockchain: ["programming", "cybersecurity", "data-analysis"],
+  fintech: ["programming", "accounting", "data-analysis"],
+
+  // ─── Science & Research ───
+  "lab work": ["research", "biology", "attention-to-detail"],
+  chemistry: ["research", "attention-to-detail", "data-analysis"],
+  physics: ["mathematics", "research", "problem-solving"],
+  geology: ["environmental-science", "research", "gis"],
+  meteorology: ["data-analysis", "environmental-science", "statistics"],
+
+  // ─── Government & Public Sector ───
+  "public administration": ["project-management", "communication", "policy"],
+  "public policy": ["policy", "research", "communication"],
+  "urban planning": ["gis", "policy", "design"],
+  diplomacy: ["communication", "cultural-awareness", "negotiation"],
+  "intelligence analysis": ["research", "data-analysis", "analytical-thinking"],
+
+  // ─── Retail & E-commerce ───
+  merchandising: ["data-analysis", "design", "strategy"],
+  "inventory management": ["supply-chain", "data-analysis", "organization"],
+  "e-commerce": ["digital-marketing", "web-development", "data-analysis"],
+  "customer experience": ["communication", "empathy", "data-analysis"],
+
+  // ─── Construction & Trades ───
+  construction: ["project-management", "budgeting", "leadership"],
+  plumbing: ["technical-literacy", "problem-solving"],
+  carpentry: ["creativity", "attention-to-detail"],
+  hvac: ["technical-literacy", "problem-solving"],
+  surveying: ["gis", "mathematics", "attention-to-detail"],
+
+  // ─── Energy & Environment ───
+  "renewable energy": ["environmental-science", "project-management", "data-analysis"],
+  "solar energy": ["environmental-science", "technical-literacy", "project-management"],
+  sustainability: ["environmental-science", "strategy", "data-analysis"],
+  "climate science": ["environmental-science", "data-analysis", "research"],
+
+  // ─── Transportation & Logistics ───
+  warehousing: ["supply-chain", "organization", "project-management"],
+  procurement: ["supply-chain", "negotiation", "budgeting"],
+  purchasing: ["supply-chain", "negotiation", "data-analysis"],
 };
 
 // In-memory cache for career embeddings (computed if OpenAI key available)
@@ -204,11 +392,60 @@ function normalizeSkillInput(input) {
  * Works without any external API. Performs server-side normalization/fuzzying.
  * Uses weighted scoring: foundational skills (listed first) count more.
  */
-function getBuiltInRecommendations(skills, interests) {
+function getBuiltInRecommendations(skills, interests, currentField) {
   const careers = careersData.careers;
 
   // expand any free-text or unknown skills using server-side normalization
   const normalizedSkills = [...new Set(skills.flatMap((s) => normalizeSkillInput(s)))];
+
+  // Industry affinity map: maps user's current field to related career industries / categories
+  // so that careers in adjacent (but NOT same) industries get a small bonus
+  const INDUSTRY_AFFINITY = {
+    'software': ['technology', 'data', 'security', 'design'],
+    'technology': ['technology', 'data', 'security', 'design'],
+    'it': ['technology', 'data', 'security'],
+    'finance': ['data', 'business', 'technology', 'law'],
+    'banking': ['finance', 'data', 'business', 'technology'],
+    'accounting': ['finance', 'data', 'business'],
+    'healthcare': ['healthcare', 'science', 'data', 'technology'],
+    'medical': ['healthcare', 'science', 'data'],
+    'nursing': ['healthcare', 'helping', 'science'],
+    'education': ['teaching', 'design', 'technology', 'psychology'],
+    'teaching': ['teaching', 'psychology', 'design', 'technology'],
+    'marketing': ['marketing', 'data', 'writing', 'design', 'business'],
+    'advertising': ['marketing', 'design', 'writing', 'data'],
+    'sales': ['business', 'marketing', 'communication'],
+    'retail': ['business', 'marketing', 'supply chain'],
+    'design': ['design', 'technology', 'marketing', 'creativity'],
+    'engineering': ['technology', 'data', 'science', 'manufacturing'],
+    'manufacturing': ['supply chain', 'data', 'technology', 'business'],
+    'construction': ['engineering', 'management', 'environment'],
+    'legal': ['law', 'investigation', 'data', 'writing'],
+    'law': ['law', 'investigation', 'writing'],
+    'government': ['law', 'data', 'social impact', 'environment'],
+    'nonprofit': ['social impact', 'helping', 'community', 'environment'],
+    'media': ['writing', 'design', 'marketing', 'technology'],
+    'journalism': ['writing', 'investigation', 'media'],
+    'consulting': ['business', 'data', 'strategy', 'technology'],
+    'real estate': ['business', 'finance', 'data'],
+    'hospitality': ['business', 'travel', 'community'],
+    'food': ['business', 'science', 'sustainability'],
+    'agriculture': ['science', 'sustainability', 'data', 'environment'],
+    'logistics': ['supply chain', 'data', 'technology', 'business'],
+    'transportation': ['supply chain', 'logistics', 'technology'],
+    'military': ['security', 'technology', 'leadership'],
+    'science': ['science', 'data', 'technology', 'environment'],
+    'research': ['science', 'data', 'technology', 'investigation'],
+    'hr': ['psychology', 'communication', 'business'],
+    'human resources': ['psychology', 'communication', 'business'],
+    'customer service': ['helping', 'communication', 'business'],
+    'student': [],  // no bias for students — explore all
+    'none': [],     // no current field — explore all
+  };
+
+  // Determine if we should diversify results (user has no field or is a student/career changer)
+  const fieldKey = (currentField || '').toLowerCase().trim();
+  const affinityTags = INDUSTRY_AFFINITY[fieldKey] || [];
 
   const scored = careers.map((career) => {
     // Weighted skill match — skills listed earlier in requiredSkills are more foundational
@@ -240,8 +477,22 @@ function getBuiltInRecommendations(skills, interests) {
       ? (matchedSkills.length / career.requiredSkills.length) * 0.1
       : 0;
 
-    // Combined score (skills weighted more + coverage bonus)
-    const totalScore = Math.min(1, skillScore * 0.55 + interestScore * 0.35 + coverageBonus);
+    // Industry affinity bonus: slightly boost careers whose category/interests overlap
+    // with the user's current field (encourages adjacent-industry recommendations)
+    let industryBonus = 0;
+    if (affinityTags.length > 0) {
+      const careerTags = [
+        ...(career.relatedInterests || []),
+        (career.category || '').toLowerCase(),
+      ];
+      const overlap = affinityTags.filter(tag =>
+        careerTags.some(ct => ct.includes(tag))
+      ).length;
+      industryBonus = Math.min(overlap * 0.03, 0.08); // up to 8% bonus
+    }
+
+    // Combined score (skills weighted most + interests + coverage + industry)
+    const totalScore = Math.min(1, skillScore * 0.55 + interestScore * 0.35 + coverageBonus + industryBonus);
 
     // Generate match explanation
     const explanation = generateExplanation(career, matchedSkills, matchedInterests, missingSkills);
@@ -439,10 +690,10 @@ Respond in valid JSON format as an array of objects with keys: title, category, 
 /**
  * Main recommendation function — tries AI first, falls back to built-in.
  */
-async function getRecommendations(skills, interests, background) {
+async function getRecommendations(skills, interests, background, currentField) {
   // 1) Always try the built-in engine first (fast + deterministic)
   console.log("Running built-in recommendation engine...");
-  const builtInResults = getBuiltInRecommendations(skills, interests);
+  const builtInResults = getBuiltInRecommendations(skills, interests, currentField);
 
   // 2) If OpenAI is available, compute semantic embeddings and AI recommendations, then merge
   if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY.length > 10) {

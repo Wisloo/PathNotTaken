@@ -175,13 +175,16 @@ router.get('/:id/ics', async (req, res) => {
     const id = req.params.id;
     const row = await db.get('SELECT id,careerId,title,weeks,createdAt FROM roadmaps WHERE id = ?', id);
     if (!row) return res.status(404).json({ error: 'Not found' });
-    const weeks = JSON.parse(row.weeks || '[]');
+    let parsedData = JSON.parse(row.weeks || '[]');
+    // Handle both old format (array of arrays) and new format (object with months/weeks)
+    let weeks = Array.isArray(parsedData) ? parsedData : (parsedData.weeks || parsedData.months?.flatMap(m => m.weeks?.map(w => w.tasks) || []) || []);
 
     // build ICS (simple): each week's first task as an all-day event on consecutive days starting today
     const dtStart = new Date();
     let ics = 'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//PathNotTaken//EN\n';
     weeks.forEach((week, idx) => {
-      const task = week[0];
+      const task = Array.isArray(week) ? week[0] : (week?.tasks ? week.tasks[0] : week);
+      if (!task || !task.title) return;
       const date = new Date(dtStart.getTime() + idx * 7 * 24 * 60 * 60 * 1000);
       const dateStr = date.toISOString().slice(0,10).replace(/-/g,'');
       const uid = `${id}-${idx}@pathnotaken.local`;

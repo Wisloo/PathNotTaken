@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { fetchMe, API_ORIGIN } from "@/lib/api";
 import { useToast } from "@/components/Toast";
+import ProgressDashboard from "@/components/ProgressDashboard";
 
 interface RoadmapDetail {
   id: string;
@@ -60,7 +61,7 @@ export default function AccountPage() {
         });
         const j = await res.json();
         if (j?.success) {
-          setUser((prev) => prev ? { ...prev, roadmaps: prev.roadmaps?.filter((r) => r !== id) } : prev);
+          setUser((prev) => prev ? { ...prev, roadmaps: prev.roadmaps?.filter((r) => r !== id), roadmapDetails: prev.roadmapDetails?.filter((r: any) => r.id !== id) } : prev);
           toast("Roadmap deleted.", "success");
         } else {
           toast("Failed to delete roadmap.", "error");
@@ -125,6 +126,11 @@ export default function AccountPage() {
             Sign out
           </button>
         </div>
+      </div>
+
+      {/* Progress Dashboard */}
+      <div className="mb-6">
+        <ProgressDashboard />
       </div>
 
       {/* Saved roadmaps */}

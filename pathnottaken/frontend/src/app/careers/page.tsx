@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { CareerRecommendation, fetchAllCareers } from "@/lib/api";
 
@@ -9,6 +9,7 @@ export default function CareersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
 
   useEffect(() => {
     async function load() {
@@ -23,10 +24,18 @@ export default function CareersPage() {
     load();
   }, []);
 
+  const categories = useMemo(() => {
+    const cats = Array.from(new Set(careers.map((c) => c.category))).sort();
+    return ["All", ...cats];
+  }, [careers]);
+
   const filtered = careers.filter(
-    (c) =>
-      c.title.toLowerCase().includes(filter.toLowerCase()) ||
-      c.category.toLowerCase().includes(filter.toLowerCase())
+    (c) => {
+      if (activeCategory !== "All" && c.category !== activeCategory) return false;
+      if (!filter.trim()) return true;
+      return c.title.toLowerCase().includes(filter.toLowerCase()) ||
+        c.category.toLowerCase().includes(filter.toLowerCase());
+    }
   );
 
   const formatSalary = (amount: number) =>
@@ -44,18 +53,28 @@ export default function CareersPage() {
   };
 
   return (
-    <section className="py-12 md:py-20 bg-[#fafbfc] min-h-screen">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase mb-3">Career Library</p>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
-            Browse All <span className="gradient-text">Careers</span>
+    <section className="min-h-screen bg-[#fafbfc]">
+      {/* Hero bar */}
+      <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/3 w-48 h-48 bg-teal-500/15 rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+          <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Career Library</p>
+          <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-2">
+            Browse All <span className="text-emerald-400">Careers</span>
           </h1>
-          <p className="text-gray-500 max-w-2xl mx-auto mb-8">
-            Explore our database of {careers.length}+ non-obvious career paths. Each career sits
-            at the intersection of multiple disciplines.
+          <p className="text-gray-400 text-sm max-w-lg">
+            Explore our database of {careers.length}+ non-obvious career paths. Each career sits at the intersection of multiple disciplines.
           </p>
-          <div className="relative w-full max-w-md mx-auto">
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Search + Category filters */}
+        <div className="mb-8">
+          <div className="relative w-full max-w-md mb-5">
             <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -68,7 +87,32 @@ export default function CareersPage() {
               className="w-full pl-11 pr-5 py-3.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50 transition-all shadow-sm"
             />
           </div>
+
+          {/* Category badges */}
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                  activeCategory === cat
+                    ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
+                    : "bg-white border border-gray-200 text-gray-600 hover:border-emerald-300 hover:text-emerald-700"
+                }`}
+              >
+                {cat}
+                {cat !== "All" && (
+                  <span className="ml-1.5 opacity-60">
+                    {careers.filter((c) => c.category === cat).length}
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* Results count */}
+        <p className="text-xs text-gray-400 mb-4">{filtered.length} career{filtered.length !== 1 ? "s" : ""} found</p>
 
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center mb-8">

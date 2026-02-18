@@ -16,6 +16,13 @@ router.post("/register", async (req, res) => {
     const { email, password, name } = req.body;
     if (!email || !password || !name) return res.status(400).json({ error: "email, name and password required" });
 
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return res.status(400).json({ error: "Please provide a valid email address" });
+
+    // Password strength validation
+    if (password.length < 8) return res.status(400).json({ error: "Password must be at least 8 characters long" });
+
     const exists = await db.get('SELECT id FROM users WHERE email = ?', email.toLowerCase());
     if (exists) return res.status(409).json({ error: "User already exists" });
 

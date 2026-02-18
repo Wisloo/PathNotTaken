@@ -6,7 +6,7 @@ const { getRecommendations } = require("../services/aiService");
 // POST /api/careers/recommend
 router.post("/recommend", async (req, res) => {
   try {
-    const { skills, interests, background } = req.body;
+    const { skills, interests, background, currentField } = req.body;
 
     if (!skills || !interests || skills.length === 0 || interests.length === 0) {
       return res.status(400).json({
@@ -14,7 +14,7 @@ router.post("/recommend", async (req, res) => {
       });
     }
 
-    const result = await getRecommendations(skills, interests, background);
+    const result = await getRecommendations(skills, interests, background, currentField);
 
     res.json({
       success: true,

@@ -14,7 +14,7 @@ export default function Header() {
     { href: "/", label: "Home" },
     { href: "/explore", label: "Explore" },
     { href: "/careers", label: "Browse Careers" },
-    { href: "/about", label: "About" },
+    { href: "/#how-it-works", label: "How It Works" },
   ];
 
   const [me, setMe] = useState<{ id: string; email: string; name?: string } | null>(null);
