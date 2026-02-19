@@ -144,9 +144,10 @@ class GamificationService {
   static async initializeUser(userId) {
     try {
       await db.run(`
-        INSERT OR IGNORE INTO user_gamification 
-        (userId, xp, level, streakDays, lastActivityDate, tasksCompleted, badges, statistics)
+        INSERT INTO user_gamification 
+        ("userId", xp, level, "streakDays", "lastActivityDate", "tasksCompleted", badges, statistics)
         VALUES (?, 0, 1, 0, NULL, 0, '[]', '{}')
+        ON CONFLICT DO NOTHING
       `, userId);
     } catch (err) {
       console.error("Error initializing gamification:", err);
@@ -198,7 +199,7 @@ class GamificationService {
   static async updateStreak(userId) {
     const today = new Date().toISOString().split('T')[0];
     const userData = await db.get(
-      'SELECT streakDays, lastActivityDate FROM user_gamification WHERE userId = ?',
+      'SELECT "streakDays", "lastActivityDate" FROM user_gamification WHERE "userId" = ?',
       userId
     );
 
@@ -214,7 +215,7 @@ class GamificationService {
     if (!lastDate || lastDate === today) {
       // Same day or first activity
       await db.run(
-        'UPDATE user_gamification SET lastActivityDate = ? WHERE userId = ?',
+        'UPDATE user_gamification SET "lastActivityDate" = ? WHERE "userId" = ?',
         new Date().toISOString(), userId
       );
       return { streakDays: newStreak, isNewStreak: false };
@@ -235,7 +236,7 @@ class GamificationService {
     }
 
     await db.run(
-      'UPDATE user_gamification SET streakDays = ?, lastActivityDate = ? WHERE userId = ?',
+      'UPDATE user_gamification SET "streakDays" = ?, "lastActivityDate" = ? WHERE "userId" = ?',
       newStreak, new Date().toISOString(), userId
     );
 
@@ -255,7 +256,7 @@ class GamificationService {
     const leveledUp = newLevel > userData.level;
 
     await db.run(
-      'UPDATE user_gamification SET xp = ?, level = ? WHERE userId = ?',
+      'UPDATE user_gamification SET xp = ?, level = ? WHERE "userId" = ?',
       newXP, newLevel, userId
     );
 
@@ -289,7 +290,7 @@ class GamificationService {
    */
   static async incrementTaskCount(userId) {
     await db.run(
-      'UPDATE user_gamification SET tasksCompleted = tasksCompleted + 1 WHERE userId = ?',
+      'UPDATE user_gamification SET "tasksCompleted" = "tasksCompleted" + 1 WHERE "userId" = ?',
       userId
     );
   }
@@ -326,7 +327,7 @@ class GamificationService {
 
     if (newBadges.length > 0) {
       await db.run(
-        'UPDATE user_gamification SET badges = ? WHERE userId = ?',
+        'UPDATE user_gamification SET badges = ? WHERE "userId" = ?',
         JSON.stringify(currentBadges), userId
       );
     }
@@ -339,14 +340,14 @@ class GamificationService {
    */
   static async getUserGamification(userId) {
     let userData = await db.get(
-      'SELECT * FROM user_gamification WHERE userId = ?',
+      'SELECT * FROM user_gamification WHERE "userId" = ?',
       userId
     );
 
     if (!userData) {
       await this.initializeUser(userId);
       userData = await db.get(
-        'SELECT * FROM user_gamification WHERE userId = ?',
+        'SELECT * FROM user_gamification WHERE "userId" = ?',
         userId
       );
     }
@@ -379,7 +380,7 @@ class GamificationService {
    */
   static async getLeaderboard(limit = 100) {
     const users = await db.all(
-      `SELECT userId, xp, level, streakDays, tasksCompleted, badges
+      `SELECT "userId", xp, level, "streakDays", "tasksCompleted", badges
        FROM user_gamification 
        ORDER BY xp DESC
        LIMIT ?`,
@@ -399,7 +400,7 @@ class GamificationService {
   static async getUserPercentile(userId) {
     const totalUsers = await db.get('SELECT COUNT(*) as count FROM user_gamification');
     const usersAbove = await db.get(
-      'SELECT COUNT(*) as count FROM user_gamification WHERE xp > (SELECT xp FROM user_gamification WHERE userId = ?)',
+      'SELECT COUNT(*) as count FROM user_gamification WHERE xp > (SELECT xp FROM user_gamification WHERE "userId" = ?)',
       userId
     );
 

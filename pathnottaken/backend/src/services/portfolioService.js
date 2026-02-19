@@ -104,7 +104,7 @@ class PortfolioService {
 
     await db.run(
       `INSERT INTO portfolio_projects 
-       (id, userId, title, description, skills, githubUrl, liveUrl, imageUrl, completedAt, visibility)
+       (id, "userId", title, description, skills, "githubUrl", "liveUrl", "imageUrl", "completedAt", visibility)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       id, userId, title, description, JSON.stringify(skills), githubUrl || null, liveUrl || null,
       imageUrl || null, completedAt, visibility
@@ -118,8 +118,8 @@ class PortfolioService {
    */
   static async getUserProjects(userId, includePrivate = true) {
     const query = includePrivate
-      ? `SELECT * FROM portfolio_projects WHERE userId = ? ORDER BY completedAt DESC`
-      : `SELECT * FROM portfolio_projects WHERE userId = ? AND visibility = 'public' ORDER BY completedAt DESC`;
+      ? `SELECT * FROM portfolio_projects WHERE "userId" = ? ORDER BY "completedAt" DESC`
+      : `SELECT * FROM portfolio_projects WHERE "userId" = ? AND visibility = 'public' ORDER BY "completedAt" DESC`;
 
     const projects = await db.all(query, userId);
 
@@ -134,7 +134,7 @@ class PortfolioService {
    */
   static async updateProject(userId, projectId, updates) {
     const project = await db.get(
-      'SELECT userId FROM portfolio_projects WHERE id = ?',
+      'SELECT "userId" FROM portfolio_projects WHERE id = ?',
       projectId
     );
 
@@ -157,9 +157,9 @@ class PortfolioService {
        SET title = COALESCE(?, title),
            description = COALESCE(?, description),
            skills = COALESCE(?, skills),
-           githubUrl = COALESCE(?, githubUrl),
-           liveUrl = COALESCE(?, liveUrl),
-           imageUrl = COALESCE(?, imageUrl),
+           "githubUrl" = COALESCE(?, "githubUrl"),
+           "liveUrl" = COALESCE(?, "liveUrl"),
+           "imageUrl" = COALESCE(?, "imageUrl"),
            visibility = COALESCE(?, visibility)
        WHERE id = ?`,
       title || null,
@@ -180,7 +180,7 @@ class PortfolioService {
    */
   static async deleteProject(userId, projectId) {
     const project = await db.get(
-      'SELECT userId FROM portfolio_projects WHERE id = ?',
+      'SELECT "userId" FROM portfolio_projects WHERE id = ?',
       projectId
     );
 
@@ -214,10 +214,10 @@ class PortfolioService {
    */
   static async getPublicPortfolio(userId) {
     const projects = await db.all(
-      `SELECT id, title, description, skills, githubUrl, liveUrl, imageUrl, completedAt
+      `SELECT id, title, description, skills, "githubUrl", "liveUrl", "imageUrl", "completedAt"
        FROM portfolio_projects 
-       WHERE userId = ? AND visibility = 'public'
-       ORDER BY completedAt DESC`,
+       WHERE "userId" = ? AND visibility = 'public'
+       ORDER BY "completedAt" DESC`,
       userId
     );
 
@@ -229,7 +229,7 @@ class PortfolioService {
 
     // Get user skills
     const userSkills = await db.all(
-      'SELECT skillId, proficiency FROM user_skills WHERE userId = ?',
+      'SELECT "skillId", proficiency FROM user_skills WHERE "userId" = ?',
       userId
     );
 
@@ -308,20 +308,20 @@ class PortfolioService {
     // Update user_skills table
     for (const [skillId, usageCount] of Object.entries(skillUsage)) {
       const existing = await db.get(
-        'SELECT id FROM user_skills WHERE userId = ? AND skillId = ?',
+        'SELECT id FROM user_skills WHERE "userId" = ? AND "skillId" = ?',
         userId, skillId
       );
 
       if (existing) {
         // Increase proficiency based on usage
         await db.run(
-          'UPDATE user_skills SET proficiency = MIN(10, proficiency + ?) WHERE userId = ? AND skillId = ?',
+          'UPDATE user_skills SET proficiency = MIN(10, proficiency + ?) WHERE "userId" = ? AND "skillId" = ?',
           Math.min(3, usageCount), userId, skillId
         );
       } else {
         // Add new skill
         await db.run(
-          'INSERT INTO user_skills (userId, skillId, proficiency, lastPracticedAt) VALUES (?, ?, ?, ?)',
+          'INSERT INTO user_skills ("userId", "skillId", proficiency, "lastPracticedAt") VALUES (?, ?, ?, ?)',
           userId, skillId, Math.min(5, usageCount), new Date().toISOString()
         );
       }

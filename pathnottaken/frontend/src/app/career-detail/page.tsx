@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
 import MarketInsights from "@/components/MarketInsights";
 import CareerTransitionAnalyzer from "@/components/CareerTransitionAnalyzer";
@@ -24,7 +24,15 @@ interface Career {
   cons?: string[];
 }
 
-export default function CareerDetailPage() {
+export default function CareerDetailPageWrapper() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-950 flex items-center justify-center"><div className="text-white text-lg">Loading...</div></div>}>
+      <CareerDetailPage />
+    </Suspense>
+  );
+}
+
+function CareerDetailPage() {
   const searchParams = useSearchParams();
   const careerId = searchParams?.get("id") || "";
   const [career, setCareer] = useState<Career | null>(null);

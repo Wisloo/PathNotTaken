@@ -2,20 +2,7 @@ const express = require("express");
 const router = express.Router();
 const MarketIntelligenceService = require("../services/marketIntelligence");
 const careersData = require("../data/careers.json");
-const jwt = require("jsonwebtoken");
-
-const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
-
-function getUserIdFromAuth(req) {
-  const auth = (req.headers.authorization || "").replace("Bearer ", "");
-  if (!auth) return null;
-  try {
-    const p = jwt.verify(auth, JWT_SECRET);
-    return p.sub;
-  } catch (e) {
-    return null;
-  }
-}
+const { getUserIdFromAuth } = require("../middleware/auth");
 
 // GET /api/market/skill/:skillId - Get market data for a specific skill
 router.get("/skill/:skillId", (req, res) => {

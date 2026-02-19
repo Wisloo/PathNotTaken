@@ -1,14 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const db = require("../db");
-
-const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
-
-function signToken(userId) {
-  return jwt.sign({ sub: userId }, JWT_SECRET, { expiresIn: "30d" });
-}
+const { getUserIdFromAuth, signToken, JWT_SECRET } = require("../middleware/auth");
+const jwt = require("jsonwebtoken");
 
 // POST /api/auth/register
 router.post("/register", async (req, res) => {
@@ -29,7 +24,7 @@ router.post("/register", async (req, res) => {
     const id = (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)).toLowerCase();
     const passwordHash = bcrypt.hashSync(password, 10);
     const createdAt = new Date().toISOString();
-    await db.run('INSERT INTO users (id,email,name,passwordHash,createdAt) VALUES (?,?,?,?,?)', id, email.toLowerCase(), name || null, passwordHash, createdAt);
+    await db.run('INSERT INTO users (id,email,name,"passwordHash","createdAt") VALUES (?,?,?,?,?)', id, email.toLowerCase(), name || null, passwordHash, createdAt);
 
     const token = signToken(id);
     return res.json({ success: true, token, user: { id, email: email.toLowerCase(), name } });
@@ -45,7 +40,7 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ error: "email and password required" });
 
-    const row = await db.get('SELECT id,email,name,passwordHash,createdAt FROM users WHERE email = ?', email.toLowerCase());
+    const row = await db.get('SELECT id,email,name,"passwordHash","createdAt" FROM users WHERE email = ?', email.toLowerCase());
     if (!row) return res.status(401).json({ error: "invalid credentials" });
 
     if (!bcrypt.compareSync(password, row.passwordHash)) {
@@ -63,20 +58,17 @@ router.post("/login", async (req, res) => {
 // GET /api/auth/me
 router.get("/me", async (req, res) => {
   try {
-    const auth = (req.headers.authorization || "").replace("Bearer ", "");
-    if (!auth) return res.status(401).json({ error: "unauthenticated" });
-    try {
-      const payload = jwt.verify(auth, JWT_SECRET);
-      const user = await db.get('SELECT id,email,name,createdAt FROM users WHERE id = ?', payload.sub);
-      if (!user) return res.status(401).json({ error: "unauthenticated" });
-      // load user's roadmap summaries
-      const rrows = await db.all('SELECT id, careerId, title, createdAt FROM roadmaps WHERE ownerId = ? ORDER BY createdAt DESC', user.id);
-      user.roadmaps = rrows.map(r => r.id);
-      user.roadmapDetails = rrows.map(r => ({ id: r.id, careerId: r.careerId, title: r.title, createdAt: r.createdAt }));
-      return res.json({ success: true, user });
-    } catch (err) {
-      return res.status(401).json({ error: "unauthenticated" });
-    }
+    const userId = getUserIdFromAuth(req);
+    if (!userId) return res.status(401).json({ error: "unauthenticated" });
+
+    const user = await db.get('SELECT id,email,name,"createdAt" FROM users WHERE id = ?', userId);
+    if (!user) return res.status(401).json({ error: "unauthenticated" });
+
+    // load user's roadmap summaries
+    const rrows = await db.all('SELECT id, "careerId", title, "createdAt" FROM roadmaps WHERE "ownerId" = ? ORDER BY "createdAt" DESC', user.id);
+    user.roadmaps = rrows.map(r => r.id);
+    user.roadmapDetails = rrows.map(r => ({ id: r.id, careerId: r.careerId, title: r.title, createdAt: r.createdAt }));
+    return res.json({ success: true, user });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "failed" });

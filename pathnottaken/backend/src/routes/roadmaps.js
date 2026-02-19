@@ -1,21 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
-const jwt = require("jsonwebtoken");
-const { Configuration, OpenAIApi } = require("openai");
-
-const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
-
-function getUserIdFromAuth(req) {
-  const auth = (req.headers.authorization || "").replace("Bearer ", "");
-  if (!auth) return null;
-  try {
-    const p = jwt.verify(auth, JWT_SECRET);
-    return p.sub;
-  } catch (e) {
-    return null;
-  }
-}
+const { getUserIdFromAuth } = require("../middleware/auth");
 
 // POST /api/roadmaps  -> save roadmap, returns { id, url }
 router.post("/", async (req, res) => {
@@ -37,9 +23,9 @@ router.post("/", async (req, res) => {
       weeklyHours: weeklyHours || 10
     });
 
-    await db.run('INSERT INTO roadmaps (id,ownerId,careerId,title,weeks,createdAt) VALUES (?,?,?,?,?,?)', id, ownerId || null, careerId, title || null, roadmapData, createdAt);
+    await db.run('INSERT INTO roadmaps (id,"ownerId","careerId",title,weeks,"createdAt") VALUES (?,?,?,?,?,?)', id, ownerId || null, careerId, title || null, roadmapData, createdAt);
 
-    const base = process.env.FRONTEND_URL || "http://localhost:3001";
+    const base = process.env.FRONTEND_URL || "http://localhost:3000";
     return res.json({ success: true, id, url: `${base}/roadmap?share=${id}` });
   } catch (err) {
     console.error(err);
@@ -51,7 +37,7 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const row = await db.get('SELECT id,ownerId,careerId,title,weeks,createdAt FROM roadmaps WHERE id = ?', id);
+    const row = await db.get('SELECT id,"ownerId","careerId",title,weeks,"createdAt" FROM roadmaps WHERE id = ?', id);
     if (!row) return res.status(404).json({ error: "Not found" });
 
     // Parse stored data — may be new format (object with months) or old format (flat array)
@@ -88,7 +74,7 @@ router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const ownerId = getUserIdFromAuth(req);
-    const row = await db.get('SELECT ownerId FROM roadmaps WHERE id = ?', id);
+    const row = await db.get('SELECT "ownerId" FROM roadmaps WHERE id = ?', id);
     if (!row) return res.status(404).json({ error: 'Not found' });
     if (row.ownerId && row.ownerId !== ownerId) return res.status(403).json({ error: 'forbidden' });
 
@@ -114,7 +100,7 @@ router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const ownerId = getUserIdFromAuth(req);
-    const row = await db.get('SELECT ownerId FROM roadmaps WHERE id = ?', id);
+    const row = await db.get('SELECT "ownerId" FROM roadmaps WHERE id = ?', id);
     if (!row) return res.status(404).json({ error: 'Not found' });
     if (row.ownerId && row.ownerId !== ownerId) return res.status(403).json({ error: 'forbidden' });
 
@@ -130,7 +116,7 @@ router.delete("/:id", async (req, res) => {
 router.post("/:id/generate-tasks", async (req, res) => {
   try {
     const id = req.params.id;
-    const row = await db.get('SELECT id,careerId,title,weeks FROM roadmaps WHERE id = ?', id);
+    const row = await db.get('SELECT id,"careerId",title,weeks FROM roadmaps WHERE id = ?', id);
     if (!row) return res.status(404).json({ error: 'Not found' });
     const weeks = JSON.parse(row.weeks || '[]');
     const openaiKey = process.env.OPENAI_API_KEY;
@@ -145,13 +131,13 @@ router.post("/:id/generate-tasks", async (req, res) => {
       return res.json({ success: true, weeks: newWeeks });
     }
 
-    const configuration = new Configuration({ apiKey: openaiKey });
-    const client = new OpenAIApi(configuration);
+    const OpenAI = require("openai");
+    const client = new OpenAI({ apiKey: openaiKey });
 
     // build prompt using careerId and existing weeks
     const prompt = `You are an assistant generating 12-week learning tasks for the career ${row.careerId}. For each week produce 4 concise tasks (1-2 short phrases) — return JSON array of arrays of objects with id and title.`;
-    const r = await client.createChatCompletion({ model: 'gpt-4o-mini', messages: [{ role: 'user', content: prompt }], max_tokens: 800 });
-    const content = r.data.choices?.[0]?.message?.content || '';
+    const r = await client.chat.completions.create({ model: 'gpt-4o-mini', messages: [{ role: 'user', content: prompt }], max_tokens: 800 });
+    const content = r.choices?.[0]?.message?.content || '';
     // try parse JSON from content
     let parsed = null;
     try { parsed = JSON.parse(content); } catch (e) { parsed = null; }
@@ -173,7 +159,7 @@ router.post("/:id/generate-tasks", async (req, res) => {
 router.get('/:id/ics', async (req, res) => {
   try {
     const id = req.params.id;
-    const row = await db.get('SELECT id,careerId,title,weeks,createdAt FROM roadmaps WHERE id = ?', id);
+    const row = await db.get('SELECT id,"careerId",title,weeks,"createdAt" FROM roadmaps WHERE id = ?', id);
     if (!row) return res.status(404).json({ error: 'Not found' });
     let parsedData = JSON.parse(row.weeks || '[]');
     // Handle both old format (array of arrays) and new format (object with months/weeks)

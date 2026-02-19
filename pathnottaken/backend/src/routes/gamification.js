@@ -1,20 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const jwt = require("jsonwebtoken");
 const GamificationService = require("../services/gamificationService");
-
-const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
-
-function getUserIdFromAuth(req) {
-  const auth = (req.headers.authorization || "").replace("Bearer ", "");
-  if (!auth) return null;
-  try {
-    const p = jwt.verify(auth, JWT_SECRET);
-    return p.sub;
-  } catch (e) {
-    return null;
-  }
-}
+const { getUserIdFromAuth } = require("../middleware/auth");
 
 // GET /api/gamification/profile - Get user's gamification data
 router.get("/profile", async (req, res) => {
