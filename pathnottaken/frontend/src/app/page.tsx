@@ -120,15 +120,15 @@ export default function Home() {
   return (
     <>
       {/* ─── Hero Section ─── */}
-      <section className="relative overflow-hidden min-h-[92vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[92vh] flex items-center noise-bg">
         {/* Animated background */}
         <div className="absolute inset-0 hero-mesh" />
-        <div className="absolute inset-0 grid-pattern opacity-40" />
+        <div className="absolute inset-0 grid-pattern opacity-30" />
 
-        {/* Animated blobs */}
-        <div className="absolute top-20 left-[10%] w-72 h-72 bg-emerald-200/20 rounded-full blur-3xl animate-blob" />
-        <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-teal-200/15 rounded-full blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-100/10 rounded-full blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
+        {/* Animated blobs — softer and more organic */}
+        <div className="absolute top-20 left-[10%] w-80 h-80 bg-emerald-200/15 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-teal-200/10 rounded-full blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-100/8 rounded-full blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -141,7 +141,7 @@ export default function Home() {
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
                 Your skills lead to
-                <span className="block gradient-text mt-1">careers you&apos;d never expect</span>
+                <span className="block animate-gradient-text mt-1">careers you&apos;d never expect</span>
               </h1>
 
               <p className="text-lg sm:text-xl text-gray-500 max-w-lg leading-relaxed">
@@ -189,7 +189,7 @@ export default function Home() {
                   {careerPreviews.map((career, i) => (
                     <div
                       key={i}
-                      className="card-static p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 opacity-0 animate-fade-in-up"
+                      className="glass-card rounded-2xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 opacity-0 animate-fade-in-up card-lift"
                       style={{ animationDelay: `${500 + i * 100}ms`, animationFillMode: "forwards" }}
                     >
                       <div className="flex items-start gap-3">
@@ -264,7 +264,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase mb-3">Why PathNotTaken</p>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-              Career discovery, <span className="gradient-text">reimagined</span>
+              Career discovery, <span className="animate-gradient-text">reimagined</span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-lg">
               We don&apos;t just match keywords. Our engine understands how skills transfer across fields to find careers you&apos;d never think to search for.
@@ -276,7 +276,7 @@ export default function Home() {
             {features.map((feature, i) => (
               <div
                 key={i}
-                className="group relative card-static p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+                className="group relative card-static p-6 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden glow-border"
               >
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                 <div className={`w-14 h-14 ${feature.bg} rounded-2xl flex items-center justify-center mb-5 ${feature.iconColor} group-hover:scale-110 transition-transform duration-300`}>
@@ -296,7 +296,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase mb-3">The difference</p>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-              Traditional search vs. <span className="gradient-text">PathNotTaken</span>
+              Traditional search vs. <span className="animate-gradient-text">PathNotTaken</span>
             </h2>
             <div className="section-divider mt-6" />
           </div>
@@ -370,7 +370,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase mb-3">How it works</p>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-              From skills to roadmap in <span className="gradient-text">4 steps</span>
+              From skills to roadmap in <span className="animate-gradient-text">4 steps</span>
             </h2>
             <div className="section-divider mt-6" />
           </div>
@@ -403,7 +403,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase mb-3">Any background welcome</p>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-              We understand <span className="gradient-text">your industry</span>
+              We understand <span className="animate-gradient-text">your industry</span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-lg">
               Type skills from any field — agriculture, healthcare, finance, construction — and we auto-map them to matching career paths.
@@ -420,7 +420,7 @@ export default function Home() {
               { field: "Education", skills: ["Teaching", "Curriculum Design", "Mentoring", "Research"], arrow: "UX Researcher, Content Strategist", color: "from-purple-400 to-pink-500", emoji: "📚" },
               { field: "Military", skills: ["Leadership", "Operations", "Intelligence", "Security"], arrow: "Cybersecurity, Project Manager", color: "from-gray-500 to-gray-700", emoji: "🎖️" },
             ].map((item, i) => (
-              <div key={i} className="card-static p-5 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+              <div key={i} className="card-static p-5 hover:shadow-xl transition-all duration-500 hover:-translate-y-1.5 group glow-border">
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white text-lg`}>
                     {item.emoji}
@@ -450,7 +450,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase mb-3">Success Stories</p>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-              Real paths, <span className="gradient-text">real discoveries</span>
+              Real paths, <span className="animate-gradient-text">real discoveries</span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-lg">
               See how others found careers they never knew existed
@@ -461,30 +461,30 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: "Sarah K.",
-                role: "Former Teacher → UX Researcher",
-                quote: "I had no idea my classroom observation skills translated directly into user research. PathNotTaken connected the dots I never could have.",
-                skills: ["Teaching", "Empathy", "Research"],
+                name: "Shandy N.",
+                role: "Former Teacher → Software Engineer",
+                quote: "I had no idea my problem-solving and analytical skills translated directly into software engineering. PathNotTaken connected the dots I never could have.",
+                skills: ["Problem Solving", "Logic", "Communication"],
                 match: 87,
               },
               {
-                name: "Marcus R.",
-                role: "Accountant → Data Ethicist",
-                quote: "I thought my only option was senior accountant. Turns out, my attention to detail and ethics knowledge are exactly what AI companies need.",
-                skills: ["Data Analysis", "Ethics", "Attention to Detail"],
+                name: "Daniel A.",
+                role: "Draftsman → Architect",
+                quote: "I thought my only option was staying a draftsman. Turns out, my attention to detail and spatial reasoning are exactly what architecture firms need.",
+                skills: ["Design", "Spatial Reasoning", "Attention to Detail"],
                 match: 82,
               },
               {
-                name: "Priya M.",
-                role: "Biology Major → Climate Tech PM",
-                quote: "As a recent grad, I felt lost. This tool showed me how my science background + communication skills open doors in climate tech I didn't know existed.",
-                skills: ["Research", "Science", "Communication"],
+                name: "Demson V.",
+                role: "Technician → Engineer",
+                quote: "As a technician, I felt stuck. This tool showed me how my hands-on skills + technical knowledge open doors in engineering I didn't know existed.",
+                skills: ["Technical Skills", "Problem Solving", "Mathematics"],
                 match: 79,
               },
             ].map((story, i) => (
               <div
                 key={i}
-                className="group card-static p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden"
+                className="group card-static p-6 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden glow-border"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -528,10 +528,10 @@ export default function Home() {
       </section>
 
       {/* ─── CTA Section ─── */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden noise-bg">
         <div className="absolute inset-0 dot-pattern opacity-5" />
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-teal-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-emerald-500/8 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-0 right-1/4 w-56 h-56 bg-teal-500/8 rounded-full blur-3xl animate-blob" style={{ animationDelay: '3s' }} />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 bg-emerald-900/30 border border-emerald-700/30 px-4 py-2 rounded-full mb-6">
@@ -560,10 +560,10 @@ export default function Home() {
           </div>
 
           <Link
-            href="/explore"
+            href="/signup"
             className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group"
           >
-            Start Your Discovery
+            Get Started Free
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

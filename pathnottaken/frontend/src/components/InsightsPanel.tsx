@@ -130,10 +130,9 @@ export default function InsightsPanel({ recommendations, userSkills, userInteres
 
           <div className="space-y-3">
             {quickWins.map((career) => {
-              const total = career.requiredSkills?.length || 1;
+              const total = userSkills.length || 1;
               const matched = career.matchedSkills?.length || 0;
               const missing = career.missingSkills || [];
-              const pct = Math.round((matched / total) * 100);
 
               return (
                 <div key={career.id} className="bg-white/80 rounded-xl p-4 border border-emerald-100">
@@ -151,7 +150,7 @@ export default function InsightsPanel({ recommendations, userSkills, userInteres
                   </div>
 
                   <div className="w-full bg-emerald-100 rounded-full h-2 mb-2">
-                    <div className="bg-emerald-500 h-2 rounded-full transition-all" style={{ width: `${pct}%` }} />
+                    <div className="bg-emerald-500 h-2 rounded-full transition-all" style={{ width: `${career.matchScore}%` }} />
                   </div>
 
                   <div className="flex items-center gap-2 flex-wrap">

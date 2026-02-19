@@ -55,7 +55,7 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-gray-200/50 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+    <header className="sticky top-0 z-50 backdrop-blur-2xl bg-white/60 border-b border-gray-200/40 shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}

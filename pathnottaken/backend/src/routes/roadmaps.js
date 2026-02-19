@@ -120,7 +120,9 @@ router.post("/:id/generate-tasks", async (req, res) => {
     if (!row) return res.status(404).json({ error: 'Not found' });
     const weeks = JSON.parse(row.weeks || '[]');
     const openaiKey = process.env.OPENAI_API_KEY;
-    if (!openaiKey) {
+    const hfKey = process.env.HUGGINGFACE_API_KEY;
+
+    if (!openaiKey && !hfKey) {
       // fallback simple generator: append "(AI-suggestion)" to each week's first task
       const newWeeks = weeks.map((w) => w.map((t) => ({ ...t })));
       for (let i = 0; i < newWeeks.length; i++) {
@@ -131,13 +133,26 @@ router.post("/:id/generate-tasks", async (req, res) => {
       return res.json({ success: true, weeks: newWeeks });
     }
 
-    const OpenAI = require("openai");
-    const client = new OpenAI({ apiKey: openaiKey });
-
     // build prompt using careerId and existing weeks
     const prompt = `You are an assistant generating 12-week learning tasks for the career ${row.careerId}. For each week produce 4 concise tasks (1-2 short phrases) — return JSON array of arrays of objects with id and title.`;
-    const r = await client.chat.completions.create({ model: 'gpt-4o-mini', messages: [{ role: 'user', content: prompt }], max_tokens: 800 });
-    const content = r.choices?.[0]?.message?.content || '';
+    let content = '';
+
+    if (openaiKey) {
+      const OpenAI = require("openai");
+      const client = new OpenAI({ apiKey: openaiKey });
+      const r = await client.chat.completions.create({ model: 'gpt-4o-mini', messages: [{ role: 'user', content: prompt }], max_tokens: 800 });
+      content = r.choices?.[0]?.message?.content || '';
+    } else if (hfKey) {
+      // Use HuggingFace Inference API
+      const model = process.env.HF_MODEL || 'Qwen/Qwen2.5-72B-Instruct';
+      const hfRes = await fetch('https://router.huggingface.co/v1/chat/completions', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${hfKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model, messages: [{ role: 'user', content: prompt }], max_tokens: 800, temperature: 0.3 }),
+      });
+      const hfBody = await hfRes.json();
+      content = hfBody.choices?.[0]?.message?.content || '';
+    }
     // try parse JSON from content
     let parsed = null;
     try { parsed = JSON.parse(content); } catch (e) { parsed = null; }

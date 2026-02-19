@@ -3,8 +3,13 @@
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { CareerRecommendation, fetchAllCareers } from "@/lib/api";
+import AuthGuard from "@/components/AuthGuard";
 
 export default function CareersPage() {
+  return <AuthGuard><CareersContent /></AuthGuard>;
+}
+
+function CareersContent() {
   const [careers, setCareers] = useState<CareerRecommendation[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

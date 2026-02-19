@@ -30,14 +30,16 @@ export default function ProgressDashboard() {
         const json = await res.json();
 
         // Build progress data from gamification profile
+        // API returns { success, data: { ... } }
+        const profile = json.data || json;
         setData({
-          totalXP: json.xp || 0,
-          level: json.level || 1,
-          tasksCompleted: json.tasksCompleted || 0,
-          streak: json.streak?.streakDays || 0,
-          roadmapCount: json.roadmaps || 0,
-          skillBreakdown: json.skillBreakdown || [],
-          weeklyActivity: json.weeklyActivity || [0, 0, 0, 0, 0, 0, 0],
+          totalXP: profile.xp || 0,
+          level: profile.level || 1,
+          tasksCompleted: profile.tasksCompleted || 0,
+          streak: profile.streakDays || profile.streak?.streakDays || 0,
+          roadmapCount: profile.roadmaps || 0,
+          skillBreakdown: profile.skillBreakdown || [],
+          weeklyActivity: profile.weeklyActivity || [0, 0, 0, 0, 0, 0, 0],
         });
       } catch {
         // Silently fail - profile endpoint may not exist yet

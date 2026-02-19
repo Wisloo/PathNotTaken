@@ -1,5 +1,85 @@
 const careersData = require("../data/careers.json");
 
+// ─── AI Provider Detection ───
+// Priority: OPENAI_API_KEY > HUGGINGFACE_API_KEY > rule-based fallback
+const HF_TOKEN = process.env.HUGGINGFACE_API_KEY || '';
+const OPENAI_KEY = process.env.OPENAI_API_KEY || '';
+const AI_PROVIDER =
+  OPENAI_KEY.length > 10 ? 'openai' :
+  HF_TOKEN.length > 5 ? 'huggingface' :
+  'rule';
+
+console.log(`[AI Provider] Using: ${AI_PROVIDER}${AI_PROVIDER === 'huggingface' ? ' (model: ' + (process.env.HF_MODEL || 'Qwen/Qwen2.5-72B-Instruct') + ')' : ''}`);
+
+/**
+ * Call Hugging Face Inference API (text-generation).
+ * Works with any Inference-API-enabled model on the Hub.
+ */
+/** Helper: race a promise against a timeout (ms). */
+function withTimeout(promise, ms, label = 'operation') {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms)
+    ),
+  ]);
+}
+
+async function callHuggingFace(prompt, opts = {}) {
+  const model = process.env.HF_MODEL || 'Qwen/Qwen2.5-72B-Instruct';
+  const maxTokens = opts.maxTokens ?? 800;
+  const temperature = opts.temperature ?? 0.7;
+  const timeoutMs = opts.timeout ?? 10000; // 10 s default timeout
+
+  const start = Date.now();
+
+  const fetchPromise = fetch('https://router.huggingface.co/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${HF_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model,
+      messages: [
+        { role: 'system', content: 'You are a career advisor API. Respond ONLY with valid JSON — no markdown fences, no commentary.' },
+        { role: 'user', content: prompt },
+      ],
+      max_tokens: maxTokens,
+      temperature,
+    }),
+  });
+
+  const res = await withTimeout(fetchPromise, timeoutMs, 'HuggingFace API');
+
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`HuggingFace API error ${res.status}: ${body}`);
+  }
+
+  const payload = await res.json();
+  console.log(`[HF] Response received in ${Date.now() - start}ms`);
+  // OpenAI-compatible chat completions format
+  if (payload.choices?.[0]?.message?.content) return payload.choices[0].message.content;
+  if (Array.isArray(payload) && payload[0]?.generated_text) return payload[0].generated_text;
+  return typeof payload === 'string' ? payload : JSON.stringify(payload);
+}
+
+/**
+ * Extract JSON from an LLM response that may contain markdown fences or preamble text.
+ */
+function extractJSON(text) {
+  // Try direct parse first
+  try { return JSON.parse(text); } catch (_) {}
+  // Try to extract from ```json ... ``` fences
+  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (fenceMatch) try { return JSON.parse(fenceMatch[1].trim()); } catch (_) {}
+  // Try to find first [ or { and parse from there
+  const start = text.search(/[\[{]/);
+  if (start >= 0) try { return JSON.parse(text.slice(start)); } catch (_) {}
+  return null;
+}
+
 // Build a quick lookup of skill labels -> id from the careers dataset (server-side synonym base)
 const skillLabelToId = {};
 careersData.skillCategories.forEach((cat) => {
@@ -448,14 +528,19 @@ function getBuiltInRecommendations(skills, interests, currentField) {
   const affinityTags = INDUSTRY_AFFINITY[fieldKey] || [];
 
   const scored = careers.map((career) => {
-    // Weighted skill match — skills listed earlier in requiredSkills are more foundational
-    const totalWeight = career.requiredSkills.reduce((sum, _, i) => sum + (career.requiredSkills.length - i), 0);
+    // Weighted skill match — skills listed earlier are slightly more foundational,
+    // but weighting is softened so that matching MORE skills always wins over
+    // matching a single highly-weighted skill.
+    const n = career.requiredSkills.length;
+    const totalWeight = career.requiredSkills.reduce(
+      (sum, _, i) => sum + (1 + (n - 1 - i) * 0.3), 0
+    );
     let matchedWeight = 0;
     const matchedSkills = [];
     const missingSkills = [];
 
     career.requiredSkills.forEach((s, i) => {
-      const weight = career.requiredSkills.length - i; // higher weight for earlier skills
+      const weight = 1 + (n - 1 - i) * 0.3; // soft positional weight (e.g. 2.8, 2.5 … 1.0 for 7 skills)
       if (normalizedSkills.includes(s)) {
         matchedWeight += weight;
         matchedSkills.push(s);
@@ -472,10 +557,15 @@ function getBuiltInRecommendations(skills, interests, currentField) {
       ? matchedInterests.length / career.relatedInterests.length
       : 0;
 
-    // Bonus: reward careers where user has MORE of the required skills (coverage ratio)
+    // Coverage bonus: reward careers where user covers more of the required skills
     const coverageBonus = career.requiredSkills.length > 0
-      ? (matchedSkills.length / career.requiredSkills.length) * 0.1
+      ? (matchedSkills.length / career.requiredSkills.length) * 0.15
       : 0;
+
+    // Absolute skill count bonus: directly rewards matching more skills regardless
+    // of career size or positional weighting. Each matched skill adds +7%, capped at 35%.
+    // This ensures that matching 5 skills ALWAYS beats matching 2 skills.
+    const absoluteSkillBonus = Math.min(matchedSkills.length * 0.07, 0.35);
 
     // Industry affinity bonus: slightly boost careers whose category/interests overlap
     // with the user's current field (encourages adjacent-industry recommendations)
@@ -491,8 +581,9 @@ function getBuiltInRecommendations(skills, interests, currentField) {
       industryBonus = Math.min(overlap * 0.03, 0.08); // up to 8% bonus
     }
 
-    // Combined score (skills weighted most + interests + coverage + industry)
-    const totalScore = Math.min(1, skillScore * 0.55 + interestScore * 0.35 + coverageBonus + industryBonus);
+    // Combined score: skills 40%, interests 25%, coverage 15%, absolute count 35%, industry 8%
+    // Rebalanced to make raw skill count the dominant differentiator.
+    const totalScore = Math.min(1, skillScore * 0.40 + interestScore * 0.25 + coverageBonus + absoluteSkillBonus + industryBonus);
 
     // Generate match explanation
     const explanation = generateExplanation(career, matchedSkills, matchedInterests, missingSkills);
@@ -619,69 +710,108 @@ async function getSemanticRecommendations(openai, skills, interests, background)
 }
 
 /**
- * AI-powered recommendations using OpenAI (when API key is available).
+ * AI-powered recommendations using OpenAI or HuggingFace (auto-detected).
  */
 async function getAIRecommendations(skills, interests, background) {
-  const OpenAI = require("openai");
-
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-
   const skillLabels = skills.map((s) => s.replace(/-/g, " ")).join(", ");
   const interestLabels = interests.map((i) => i.replace(/-/g, " ")).join(", ");
 
-  const prompt = `You are a career exploration advisor specializing in non-obvious, alternative career paths. A user has the following profile:
+  const prompt = `Skills: ${skillLabels}. Interests: ${interestLabels}.${background ? ` Background: ${background}.` : ''}
+Suggest 2 non-obvious, emerging career paths. Return: {"careers":[{"title":"...","category":"...","explanation":"one sentence","salaryRange":{"min":0,"max":0},"growthOutlook":"High","missingSkills":["skill1","skill2"],"matchScore":75}]}`;
 
-Skills: ${skillLabels}
-Interests: ${interestLabels}
-${background ? `Background: ${background}` : ""}
+  let content;
 
-Recommend 5 non-obvious, alternative career paths that most people wouldn't immediately think of. For each career, provide:
-1. Career title
-2. Why it's a good fit based on their skills and interests
-3. What makes this a "path not taken" (why it's non-obvious)
-4. Salary range (USD)
-5. Growth outlook (Low/Moderate/High/Very High)
-6. 2-3 skills they'd need to develop
-7. A brief "day in the life" description
+  if (AI_PROVIDER === 'openai') {
+    const OpenAI = require("openai");
+    const openai = new OpenAI({ apiKey: OPENAI_KEY });
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [{ role: "user", content: prompt }],
+      response_format: { type: "json_object" },
+      temperature: 0.8,
+    });
+    content = response.choices[0].message.content;
+  } else if (AI_PROVIDER === 'huggingface') {
+    console.log('Requesting HuggingFace-powered recommendations...');
+    content = await callHuggingFace(prompt, { maxTokens: 350, temperature: 0.7, timeout: 15000 });
+  } else {
+    throw new Error('No AI provider configured');
+  }
 
-Focus on careers that are:
-- Emerging or under-recognized
-- At the intersection of multiple disciplines
-- Leveraging transferable skills in unexpected ways
+  const parsed = extractJSON(content);
+  if (!parsed) throw new Error('AI response was not valid JSON');
 
-Respond in valid JSON format as an array of objects with keys: title, category, explanation, whyNonObvious, salaryRange (object with min, max), growthOutlook, missingSkills (array), dayInLife, matchScore (1-100 based on fit).`;
-
-  const response = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [{ role: "user", content: prompt }],
-    response_format: { type: "json_object" },
-    temperature: 0.8,
-  });
-
-  const content = response.choices[0].message.content;
-  const parsed = JSON.parse(content);
-
-  // Normalize the response
+  // Normalize the response and enrich AI careers with full data
+  // so they work with CareerCard tabs (overview, pros/cons, skills) and roadmaps
   const recommendations = (parsed.careers || parsed.recommendations || []).map(
-    (career, index) => ({
-      id: `ai-${index}`,
-      title: career.title,
-      category: career.category || "AI Recommended",
-      description: career.explanation || career.description,
-      dayInLife: career.dayInLife || career.day_in_life || "",
-      salaryRange: career.salaryRange || career.salary_range || { min: 0, max: 0 },
-      growthOutlook: career.growthOutlook || career.growth_outlook || "Unknown",
-      matchScore: career.matchScore || career.match_score || 70,
-      matchedSkills: skills,
-      matchedInterests: interests,
-      missingSkills: career.missingSkills || career.missing_skills || [],
-      explanation: career.explanation || "",
-      whyNonObvious: career.whyNonObvious || career.why_non_obvious || "",
-      nonObvious: true,
-      source: "ai",
-    })
+    (career, index) => {
+      const title = career.title || 'AI Career';
+      const explanation = career.explanation || career.description || '';
+      const missingSkills = career.missingSkills || career.missing_skills || [];
+      const salaryRange = career.salaryRange || career.salary_range || { min: 60000, max: 120000 };
+
+      // Build a realistic requiredSkills list: user's matched skills + missing skills
+      const requiredSkillsList = [
+        ...skills.map(s => s.replace(/-/g, ' ')),
+        ...missingSkills.map(s => typeof s === 'string' ? s : ''),
+      ].filter(Boolean);
+
+      // Generate pros/cons from the career data
+      const salaryLabel = salaryRange.max >= 130000 ? 'competitive' : salaryRange.max >= 90000 ? 'solid' : 'growing';
+      const growthOutlook = career.growthOutlook || career.growth_outlook || 'High';
+      const pros = [
+        `Leverages your existing skills in ${skills.slice(0, 2).map(s => s.replace(/-/g, ' ')).join(' and ')}`,
+        `${growthOutlook} growth outlook with ${salaryLabel} salary potential`,
+        `Non-traditional path — less competition from conventional candidates`,
+      ];
+      const cons = [
+        `Requires developing new skills: ${missingSkills.slice(0, 2).join(', ') || 'domain expertise'}`,
+        `May need additional certifications or portfolio work`,
+        `Emerging field — fewer established mentorship paths`,
+      ];
+
+      // Build skill transfer explanations
+      const skillTransfers = {};
+      skills.forEach(s => {
+        const label = s.replace(/-/g, ' ');
+        skillTransfers[label] = `Your ${label} experience directly applies to ${title} work`;
+      });
+
+      return {
+        id: `ai-${index}`,
+        title,
+        category: career.category || 'AI Recommended',
+        description: explanation,
+        dayInLife: career.dayInLife || career.day_in_life || `A typical day involves applying ${skills.slice(0, 2).map(s => s.replace(/-/g, ' ')).join(' and ')} skills to solve complex problems in this emerging field.`,
+        salaryRange,
+        growthOutlook,
+        matchScore: Math.min(95, Math.max(40, career.matchScore || career.match_score || 70)),
+        matchedSkills: skills.map(s => s.replace(/-/g, ' ')),
+        matchedInterests: interests.map(i => i.replace(/-/g, ' ')),
+        requiredSkills: requiredSkillsList,
+        missingSkills,
+        explanation,
+        whyNonObvious: career.whyNonObvious || career.why_non_obvious || 'This career combines your skills in an unexpected way that most people overlook.',
+        nonObvious: true,
+        source: 'ai',
+        pros,
+        cons,
+        skillTransfers,
+        entryPaths: [
+          `Build foundational knowledge in ${missingSkills[0] || 'the domain'}`,
+          `Create 2-3 portfolio projects demonstrating your cross-disciplinary skills`,
+          `Network with professionals in the ${career.category || 'field'} space`,
+        ],
+        careerProgression: [
+          `Junior ${title}`,
+          `Mid-level ${title}`,
+          `Senior ${title}`,
+          `Lead / Director`,
+        ],
+        industries: [career.category || 'Technology', 'Consulting', 'Startups'].filter(Boolean),
+        typicalBackgrounds: ['Career changers', 'Cross-disciplinary professionals', 'Self-taught specialists'],
+      };
+    }
   );
 
   return recommendations;
@@ -691,33 +821,49 @@ Respond in valid JSON format as an array of objects with keys: title, category, 
  * Main recommendation function — tries AI first, falls back to built-in.
  */
 async function getRecommendations(skills, interests, background, currentField) {
-  // 1) Always try the built-in engine first (fast + deterministic)
+  // 1) Run built-in engine (fast, <50ms) — this is the primary source
   console.log("Running built-in recommendation engine...");
   const builtInResults = getBuiltInRecommendations(skills, interests, currentField);
 
-  // 2) If OpenAI is available, compute semantic embeddings and AI recommendations, then merge
-  if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY.length > 10) {
-    const OpenAI = require("openai");
-    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  // 2) If an AI provider is available, run AI in PARALLEL with a timeout
+  //    so we never block the response for more than ~10 seconds total.
+  if (AI_PROVIDER !== 'rule') {
+    // Fire AI & semantic in parallel (both best-effort)
+    const aiPromise = (async () => {
+      try {
+        console.log("Requesting LLM-powered recommendations...");
+        return await getAIRecommendations(skills, interests, background);
+      } catch (err) {
+        console.warn("LLM recommendations failed:", err.message);
+        return [];
+      }
+    })();
 
-    // 2a) Try the LLM-based creative recommendations (best-effort)
-    let aiResults = [];
-    try {
-      console.log("Requesting LLM-powered recommendations...");
-      aiResults = await getAIRecommendations(skills, interests, background);
-    } catch (err) {
-      console.warn("LLM recommendations failed:", err.message);
-    }
+    const semanticPromise = (async () => {
+      if (AI_PROVIDER !== 'openai') return [];
+      try {
+        const OpenAI = require("openai");
+        const openai = new OpenAI({ apiKey: OPENAI_KEY });
+        return await getSemanticRecommendations(openai, skills, interests, background);
+      } catch (err) {
+        console.warn("Semantic recommendation (embeddings) failed:", err.message);
+        return [];
+      }
+    })();
 
-    // 2b) Semantic (embedding) matches — useful as a robust fallback and to surface related items
-    let semanticResults = [];
-    try {
-      semanticResults = await getSemanticRecommendations(openai, skills, interests, background);
-    } catch (err) {
-      console.warn("Semantic recommendation (embeddings) failed:", err.message);
-    }
+    // Wait for both with a hard ceiling (if HF is slow, we still return built-in)
+    const [aiSettled, semSettled] = await Promise.allSettled([
+      withTimeout(aiPromise, 18000, 'AI recommendations'),
+      withTimeout(semanticPromise, 18000, 'Semantic recommendations'),
+    ]);
 
-    // 2c) Merge results: prefer AI > built-in > semantic; dedupe by career id
+    const aiResults = aiSettled.status === 'fulfilled' ? aiSettled.value : [];
+    const semanticResults = semSettled.status === 'fulfilled' ? semSettled.value : [];
+
+    if (aiSettled.status === 'rejected') console.warn('AI timed out or failed:', aiSettled.reason?.message);
+    if (semSettled.status === 'rejected') console.warn('Semantic timed out or failed:', semSettled.reason?.message);
+
+    // Merge: built-in first (they have accurate scores), then AI extras
     const merged = [];
     const seen = new Set();
 
@@ -729,17 +875,16 @@ async function getRecommendations(skills, interests, background, currentField) {
       }
     };
 
-    // Add LLM results first (if any)
-    aiResults.forEach(pushIfNew);
-    // Then built-in
+    // Built-in first (reliable scores), then AI (creative extras), then semantic
     builtInResults.forEach(pushIfNew);
-    // Then semantic
+    aiResults.forEach(pushIfNew);
     semanticResults.forEach(pushIfNew);
 
-    return { source: aiResults.length > 0 ? "ai" : "semantic", recommendations: merged.slice(0, 8) };
+    const source = aiResults.length > 0 ? 'huggingface' : (semanticResults.length > 0 ? 'semantic' : 'built-in');
+    return { source, recommendations: merged.slice(0, 8) };
   }
 
-  // No OpenAI: return built-in
+  // No AI provider: return built-in
   return { source: "built-in", recommendations: builtInResults };
 }
 

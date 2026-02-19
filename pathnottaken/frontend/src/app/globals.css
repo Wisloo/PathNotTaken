@@ -190,6 +190,14 @@ h1, h2, h3, h4 {
   to { background-position: 200% 0; }
 }
 
+@keyframes progress {
+  0% { width: 0%; }
+  30% { width: 40%; }
+  60% { width: 70%; }
+  80% { width: 85%; }
+  100% { width: 95%; }
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
@@ -605,4 +613,143 @@ select:focus {
 /* ─── Tabular nums ─── */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+/* ─── Modern Glass Card ─── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04), inset 0 0 0 0.5px rgba(255,255,255,0.6);
+}
+
+.glass-card-dark {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Animated gradient border ─── */
+@keyframes border-glow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.glow-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 30%, rgba(5,150,105,0.3) 50%, transparent 70%);
+  background-size: 200% 200%;
+  animation: border-glow 4s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.glow-border:hover::after {
+  opacity: 1;
+}
+
+/* ─── Score Circle Glow ─── */
+@keyframes score-glow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(5,150,105,0.2)); }
+  50% { filter: drop-shadow(0 0 12px rgba(5,150,105,0.35)); }
+}
+
+.score-circle-glow {
+  animation: score-glow 3s ease-in-out infinite;
+}
+
+/* ─── Animated gradient text ─── */
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient-text {
+  background: linear-gradient(90deg, #059669, #10b981, #14b8a6, #059669);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-x 6s ease infinite;
+}
+
+/* ─── Subtle noise texture ─── */
+.noise-bg {
+  position: relative;
+}
+
+.noise-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Smooth card lift ─── */
+.card-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06), 0 8px 16px rgba(0,0,0,0.04);
+}
+
+/* ─── Chip hover ─── */
+.chip-hover {
+  transition: all 0.2s ease;
+}
+
+.chip-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(5,150,105,0.15);
+}
+
+/* ─── Mesh gradient hero backgrounds ─── */
+.mesh-gradient {
+  background:
+    radial-gradient(at 0% 0%, rgba(5,150,105,0.12) 0%, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(20,184,166,0.08) 0%, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(16,185,129,0.06) 0%, transparent 50%);
+}
+
+/* ─── Smooth underline animation ─── */
+.animated-underline {
+  position: relative;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-brand);
+  border-radius: 1px;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animated-underline:hover::after {
+  width: 100%;
 }

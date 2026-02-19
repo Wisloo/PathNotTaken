@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { fetchCareerById, API_ORIGIN } from "@/lib/api";
 import { useToast } from "@/components/Toast";
+import AuthGuard from "@/components/AuthGuard";
 
 type Resource = { type: string; title: string; provider: string; url?: string; free?: boolean; hours?: number; skill?: string; skillId?: string; isFree?: boolean };
 type Project = { title: string; description: string; hours?: number; skills?: string[] };
@@ -25,6 +26,7 @@ type Milestone = { week: number; title: string; description: string };
 
 export default function RoadmapPage() {
   return (
+    <AuthGuard>
     <Suspense fallback={
       <div className="max-w-4xl mx-auto py-20 px-4 text-center">
         <div className="flex items-center justify-center gap-3">
@@ -35,6 +37,7 @@ export default function RoadmapPage() {
     }>
       <RoadmapContent />
     </Suspense>
+    </AuthGuard>
   );
 }
 
@@ -146,7 +149,19 @@ function RoadmapContent() {
       setError(null);
       let careerData: any = null;
       try {
-        careerData = await fetchCareerById(id);
+        // For AI-generated careers (id starts with "ai-"), load from localStorage
+        if (id.startsWith('ai-')) {
+          try {
+            const stored = JSON.parse(localStorage.getItem('pn_ai_careers') || '[]');
+            careerData = stored.find((c: any) => c.id === id);
+          } catch (_) { /* ignore parse errors */ }
+        }
+
+        // If not found from localStorage (or not an AI career), fetch from backend
+        if (!careerData) {
+          careerData = await fetchCareerById(id);
+        }
+
         setCareer(careerData);
 
         // Try loading concrete roadmap from backend
@@ -155,6 +170,13 @@ function RoadmapContent() {
         const urlSkills = params?.get("skills")?.split(",").filter(Boolean) || [];
         const storedSkills = JSON.parse(localStorage.getItem("pn_user_skills") || "[]");
         const userSkills = urlSkills.length > 0 ? urlSkills : storedSkills;
+
+        // For AI careers, skip the concrete-roadmap endpoint (it won't know the career)
+        // and go straight to the legacy roadmap builder
+        if (id.startsWith('ai-')) {
+          buildLegacyRoadmap(careerData);
+          return;
+        }
 
         const res = await fetch(`${API_ORIGIN}/api/skills/concrete-roadmap`, {
           method: 'POST',

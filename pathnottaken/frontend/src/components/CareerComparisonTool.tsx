@@ -150,7 +150,7 @@ export default function CareerComparisonTool({ careers, userSkills }: Props) {
                 <td className="px-4 py-3 text-xs font-medium text-gray-500">Your Skill Match</td>
                 {compared.map((c) => {
                   const overlap = c.matchedSkills?.length || 0;
-                  const total = c.requiredSkills?.length || 1;
+                  const total = userSkills.length || 1;
                   const pct = Math.round((overlap / total) * 100);
                   return (
                     <td key={c.id} className="px-4 py-3 text-center">

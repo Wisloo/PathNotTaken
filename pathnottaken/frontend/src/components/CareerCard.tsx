@@ -58,11 +58,11 @@ export default function CareerCard({ career, index }: CareerCardProps) {
 
   return (
     <div
-      className="animate-fade-in-up opacity-0 overflow-hidden flex flex-col group bg-white rounded-2xl border border-gray-200/60 shadow-sm hover:shadow-xl hover:border-emerald-200/60 transition-all duration-500 hover:-translate-y-1"
+      className="animate-fade-in-up opacity-0 overflow-hidden flex flex-col group bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/60 shadow-sm hover:shadow-2xl hover:border-emerald-300/50 transition-all duration-500 hover:-translate-y-1.5 glow-border"
       style={{ animationDelay: `${index * 100}ms`, animationFillMode: "forwards" }}
     >
-      {/* Score accent bar */}
-      <div className={`h-1.5 bg-gradient-to-r ${scoreGradient}`} />
+      {/* Score accent bar — animated gradient */}
+      <div className={`h-1 bg-gradient-to-r ${scoreGradient} animate-gradient`} style={{ backgroundSize: '200% 200%' }} />
 
       <div className="p-6 flex-1 flex flex-col">
         {/* Quick Win Badge */}
@@ -91,14 +91,14 @@ export default function CareerCard({ career, index }: CareerCardProps) {
             </div>
           </div>
 
-          {/* Match Score Circle */}
-          <div className="flex-shrink-0 relative w-16 h-16">
+          {/* Match Score Circle — with glow */}
+          <div className="flex-shrink-0 relative w-16 h-16 score-circle-glow">
             <svg className="w-16 h-16 -rotate-90" viewBox="0 0 64 64">
-              <circle cx="32" cy="32" r="28" fill="none" stroke="#f1f5f9" strokeWidth="5" />
+              <circle cx="32" cy="32" r="28" fill="none" stroke="#f1f5f9" strokeWidth="4" />
               <circle
                 cx="32" cy="32" r="28" fill="none"
                 stroke={career.matchScore >= 80 ? "#059669" : career.matchScore >= 60 ? "#14b8a6" : "#94a3b8"}
-                strokeWidth="5"
+                strokeWidth="4"
                 strokeLinecap="round"
                 strokeDasharray={`${(career.matchScore / 100) * 175.93} 175.93`}
                 className="score-bar-fill"
@@ -113,15 +113,15 @@ export default function CareerCard({ career, index }: CareerCardProps) {
 
         {/* Salary & Growth Stats */}
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <div className="bg-gray-50 rounded-xl px-3.5 py-2.5">
+          <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-xl px-3.5 py-2.5 border border-gray-100/80">
             <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider mb-0.5">Salary Range</p>
             <p className="text-sm font-bold text-gray-900">
               {formatSalary(career.salaryRange.min)} – {formatSalary(career.salaryRange.max)}
             </p>
           </div>
-          <div className="bg-gray-50 rounded-xl px-3.5 py-2.5">
+          <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-xl px-3.5 py-2.5 border border-gray-100/80">
             <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider mb-0.5">Match Level</p>
-            <p className="text-sm font-bold text-gray-900">
+            <p className={`text-sm font-bold ${career.matchScore >= 80 ? 'text-emerald-700' : career.matchScore >= 60 ? 'text-teal-700' : 'text-gray-900'}`}>
               {career.matchScore >= 80 ? "Excellent" : career.matchScore >= 60 ? "Strong" : "Good"} Fit
             </p>
           </div>
@@ -142,7 +142,7 @@ export default function CareerCard({ career, index }: CareerCardProps) {
               {(career.matchedSkills ?? []).slice(0, 4).map((skill) => (
                 <span
                   key={skill}
-                  className="inline-flex items-center gap-1 text-xs font-medium bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg border border-emerald-200/60"
+                  className="chip-hover inline-flex items-center gap-1 text-xs font-medium bg-emerald-50/80 text-emerald-700 px-2.5 py-1 rounded-lg border border-emerald-200/60 backdrop-blur-sm"
                 >
                   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
@@ -423,7 +423,8 @@ export default function CareerCard({ career, index }: CareerCardProps) {
       <div className="px-6 pb-6 space-y-2.5 mt-auto">
         <Link
           href={`/roadmap?career=${career.id}`}
-          className="group/btn block w-full text-center py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white text-sm font-bold rounded-xl hover:from-emerald-700 hover:to-emerald-800 transition-all shadow-md shadow-emerald-600/20 hover:shadow-lg hover:shadow-emerald-600/30 hover:-translate-y-px"
+          className="group/btn block w-full text-center py-3.5 bg-gradient-to-r from-emerald-600 via-emerald-600 to-teal-600 text-white text-sm font-bold rounded-xl hover:from-emerald-700 hover:via-emerald-700 hover:to-teal-700 transition-all shadow-md shadow-emerald-600/20 hover:shadow-xl hover:shadow-emerald-600/25 hover:-translate-y-px animate-gradient"
+          style={{ backgroundSize: '200% 200%' }}
         >
           Start 90-Day Plan
           <svg className="inline-block w-4 h-4 ml-1.5 group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
