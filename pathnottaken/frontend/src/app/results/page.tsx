@@ -7,7 +7,7 @@ import CareerCard from "@/components/CareerCard";
 import CareerComparisonTool from "@/components/CareerComparisonTool";
 import InsightsPanel from "@/components/InsightsPanel";
 import SkillTransferVisualizer from "@/components/SkillTransferVisualizer";
-import { CareerRecommendation, fetchRecommendations } from "@/lib/api";
+import { CareerRecommendation, fetchRecommendations, saveSkillSnapshot, saveResults } from "@/lib/api";
 import AuthGuard from "@/components/AuthGuard";
 
 function ResultsContent() {
@@ -16,6 +16,8 @@ function ResultsContent() {
   const [source, setSource] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [savedMsg, setSavedMsg] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
 
   // Filters
   const [sortBy, setSortBy] = useState("best-match");
@@ -186,6 +188,37 @@ function ResultsContent() {
                 <p className="text-[10px] text-gray-400 mt-0.5">High Growth</p>
               </div>
             </div>
+          </div>
+
+          {/* Save Results & Skills — sits inside the hero content area */}
+          <div className="flex flex-wrap gap-3 items-center mt-4">
+            <button
+              disabled={saving}
+              onClick={async () => {
+                setSaving(true);
+                try {
+                  const token = localStorage.getItem('pn_token');
+                  if (!token) { setSavedMsg('Sign in to save results'); setSaving(false); return; }
+                  await saveSkillSnapshot(skills, interests, background, currentField);
+                  await saveResults(skills, interests, recommendations, source, background, currentField);
+                  setSavedMsg('Results & skills saved to your profile!');
+                } catch {
+                  setSavedMsg('Failed to save. Please try again.');
+                }
+                setSaving(false);
+                setTimeout(() => setSavedMsg(null), 4000);
+              }}
+              className="px-4 py-2.5 bg-emerald-500/20 backdrop-blur border border-emerald-400/30 text-emerald-300 text-sm rounded-xl hover:bg-emerald-500/30 font-medium transition-all disabled:opacity-50 flex items-center gap-2"
+            >
+              {saving ? (
+                <><span className="w-4 h-4 border-2 border-emerald-300/30 border-t-emerald-300 rounded-full animate-spin" /> Saving...</>
+              ) : (
+                <><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" /></svg> Save Results &amp; Skills</>
+              )}
+            </button>
+            {savedMsg && (
+              <span className="text-xs text-emerald-300 font-medium animate-fade-in bg-emerald-500/10 px-3 py-1.5 rounded-lg">{savedMsg}</span>
+            )}
           </div>
         </div>
       </div>

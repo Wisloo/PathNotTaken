@@ -2,6 +2,22 @@ const express = require("express");
 const router = express.Router();
 const GamificationService = require("../services/gamificationService");
 const { getUserIdFromAuth } = require("../middleware/auth");
+const db = require("../db");
+
+// Helper to gather user context for achievement checks
+async function getAchievementContext(userId) {
+  const roadmapCount = await db.get(
+    'SELECT COUNT(*) as count FROM roadmaps WHERE "ownerId" = ?', userId
+  );
+  const explorationCount = await db.get(
+    'SELECT COUNT(*) as count FROM saved_results WHERE "userId" = ?', userId
+  ).catch(() => ({ count: 0 }));
+
+  return {
+    roadmapsCompleted: roadmapCount?.count || 0,
+    careersExplored: explorationCount?.count || 0,
+  };
+}
 
 // GET /api/gamification/profile - Get user's gamification data
 router.get("/profile", async (req, res) => {
@@ -98,7 +114,8 @@ router.post("/check-achievements", async (req, res) => {
     const userId = getUserIdFromAuth(req);
     if (!userId) return res.status(401).json({ error: "Unauthorized" });
 
-    const newAchievements = await GamificationService.checkAchievements(userId);
+    const context = await getAchievementContext(userId);
+    const newAchievements = await GamificationService.checkAchievements(userId, context);
 
     return res.json({
       success: true,
@@ -107,6 +124,36 @@ router.post("/check-achievements", async (req, res) => {
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Failed to check achievements" });
+  }
+});
+
+// POST /api/gamification/complete-roadmap - Called when user completes all tasks in a roadmap
+router.post("/complete-roadmap", async (req, res) => {
+  try {
+    const userId = getUserIdFromAuth(req);
+    if (!userId) return res.status(401).json({ error: "Unauthorized" });
+
+    // Award bonus XP for completing a full roadmap
+    const bonusXP = 500;
+    await GamificationService.addXP(userId, bonusXP);
+
+    // Check achievements with roadmap context
+    const context = await getAchievementContext(userId);
+    // Mark at least 1 roadmap completed (since the roadmap just finished)
+    context.roadmapsCompleted = Math.max(context.roadmapsCompleted, 1);
+    const newAchievements = await GamificationService.checkAchievements(userId, context);
+
+    const updatedData = await GamificationService.getUserGamification(userId);
+
+    return res.json({
+      success: true,
+      bonusXP,
+      newAchievements,
+      profile: updatedData
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Failed to process roadmap completion" });
   }
 });
 

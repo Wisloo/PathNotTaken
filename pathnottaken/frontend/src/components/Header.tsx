@@ -98,7 +98,7 @@ export default function Header() {
               </>
             ) : (
               <div className="flex items-center gap-1">
-                <Link href="/account" className="text-sm font-medium text-gray-600 px-3 py-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 transition-all duration-200">My Roadmaps</Link>
+                <Link href="/account" className="text-sm font-medium text-gray-600 px-3 py-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 transition-all duration-200">My Profile</Link>
                 <button onClick={logout} className="text-sm text-gray-400 px-3 py-2 rounded-lg hover:bg-gray-50 hover:text-gray-600 transition-all duration-200">Logout</button>
               </div>
             )}
@@ -146,7 +146,7 @@ export default function Header() {
                 </>
               ) : (
                 <>
-                  <Link href="/account" className="flex-1 text-center py-2.5 rounded-xl text-sm font-medium border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all">My Roadmaps</Link>
+                  <Link href="/account" className="flex-1 text-center py-2.5 rounded-xl text-sm font-medium border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all">My Profile</Link>
                   <button onClick={logout} className="flex-1 text-center py-2.5 rounded-xl text-sm font-medium border border-gray-200 text-gray-500 hover:bg-gray-50 transition-all">Logout</button>
                 </>
               )}

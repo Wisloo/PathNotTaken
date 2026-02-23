@@ -117,13 +117,41 @@ function RoadmapContent() {
         if (!res.ok) throw new Error("Roadmap not found");
         const json = await res.json();
         const r = json.roadmap;
-        const c = await fetchCareerById(r.careerId);
+
+        // Try to load career info: first from backend JSON, then from saved careerData,
+        // then from localStorage (AI careers), and finally build a minimal fallback.
+        // WHY: AI-generated careers don't exist in careers.json, so fetchCareerById would 404.
+        // We now store careerData in the roadmap record so it survives across sessions.
+        let c: any = null;
+        try { c = await fetchCareerById(r.careerId); } catch (_) { /* not in careers.json */ }
+        if (!c && r.careerData) {
+          // Use the career metadata saved alongside the roadmap
+          c = r.careerData;
+        }
+        if (!c && r.careerId?.startsWith('ai-')) {
+          try {
+            const stored = JSON.parse(localStorage.getItem('pn_ai_careers') || '[]');
+            c = stored.find((x: any) => x.id === r.careerId);
+          } catch (_) { /* ignore */ }
+        }
+        if (!c) {
+          // Last resort: build minimal career object so the page doesn't crash
+          c = { id: r.careerId, title: r.title || r.careerId, description: '', salaryRange: null };
+        }
         setCareer(c);
+
         // Restore month structure from saved data
         if (r.months && Array.isArray(r.months) && r.months.length > 0) {
-          // New save format with full month structure
-          setMonths(r.months);
-          setOriginalMonths(r.months);
+          // Ensure every task has a `done` property (old saves might not have it)
+          const normalizedMonths = r.months.map((m: any) => ({
+            ...m,
+            weeks: m.weeks.map((w: any) => ({
+              ...w,
+              tasks: w.tasks.map((t: any) => ({ ...t, done: !!t.done })),
+            })),
+          }));
+          setMonths(normalizedMonths);
+          setOriginalMonths(normalizedMonths);
           setMilestones(r.milestones || []);
           setMatchedSkills(r.matchedSkills || []);
           setMissingSkills(r.missingSkills || []);
@@ -171,17 +199,22 @@ function RoadmapContent() {
         const storedSkills = JSON.parse(localStorage.getItem("pn_user_skills") || "[]");
         const userSkills = urlSkills.length > 0 ? urlSkills : storedSkills;
 
-        // For AI careers, skip the concrete-roadmap endpoint (it won't know the career)
-        // and go straight to the legacy roadmap builder
-        if (id.startsWith('ai-')) {
-          buildLegacyRoadmap(careerData);
-          return;
-        }
-
+        // FIXED: For AI careers, we NOW send the career data to the concrete-roadmap
+        // endpoint so it can build a proper resource-rich roadmap.
+        // Previously, AI careers were forced to use the generic legacy builder
+        // (which only produced placeholder tasks like "Learn: core concept").
+        // The backend now accepts a `careerData` field and uses it when the career
+        // isn't found in careers.json.
         const res = await fetch(`${API_ORIGIN}/api/skills/concrete-roadmap`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ careerId: id, userSkills, weeklyHours })
+          body: JSON.stringify({
+            careerId: id,
+            userSkills,
+            weeklyHours,
+            // Send career data so AI careers can also get proper roadmaps
+            ...(id.startsWith('ai-') && careerData ? { careerData } : {}),
+          })
         });
 
         if (res.ok) {
@@ -267,8 +300,39 @@ function RoadmapContent() {
       task.done = !task.done;
       // Award XP if completing
       if (task.done) awardXPForTask(task);
+
+      // Check if all tasks are now done — trigger roadmap completion
+      const allDone = copy.every((m: MonthData) => m.weeks.every(w => w.tasks.every(t => t.done)));
+      if (allDone && task.done) {
+        handleRoadmapComplete();
+      }
+
       return copy;
     });
+  }
+
+  async function handleRoadmapComplete() {
+    try {
+      const token = localStorage.getItem('pn_token');
+      if (!token) return;
+      const res = await fetch(`${API_ORIGIN}/api/gamification/complete-roadmap`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+      });
+      if (res.ok) {
+        const json = await res.json();
+        toast(`🎉 Roadmap complete! +${json.bonusXP} bonus XP!`, 'success');
+        if (json.newAchievements && json.newAchievements.length > 0) {
+          setTimeout(() => {
+            json.newAchievements.forEach((badge: { title: string; icon: string }) => {
+              toast(`🏅 Achievement unlocked: ${badge.icon} ${badge.title}!`, 'success');
+            });
+          }, 1500);
+        }
+      }
+    } catch (err) {
+      console.error('Failed to process roadmap completion:', err);
+    }
   }
 
   async function awardXPForTask(task: WeekTask) {
@@ -298,6 +362,11 @@ function RoadmapContent() {
       if (token) headers.Authorization = `Bearer ${token}`;
 
       const shareId = params?.get('share');
+
+      // FIXED: Include careerData for AI-generated careers so the saved roadmap
+      // can be loaded later even without localStorage. This is the key fix for
+      // "Save Roadmap doesn't work for HuggingFace recommended careers".
+      const isAICareer = career.id?.startsWith('ai-') || career.source === 'ai';
       const payload = {
         careerId: career.id,
         title: career.title,
@@ -307,6 +376,8 @@ function RoadmapContent() {
         matchedSkills,
         missingSkills,
         weeklyHours,
+        // Persist AI career metadata so it can be reconstructed on load
+        ...(isAICareer ? { careerData: career } : {}),
       };
 
       if (shareId) {
@@ -336,8 +407,9 @@ function RoadmapContent() {
   }
 
   // Calculate progress
+  // FIXED: Use !!t.done to coerce undefined/null to false (old saves didn't include done property)
   const allTasks = months.flatMap(m => m.weeks.flatMap(w => w.tasks));
-  const completedTasks = allTasks.filter(t => t.done);
+  const completedTasks = allTasks.filter(t => !!t.done);
   const progressPercent = allTasks.length > 0 ? Math.round((completedTasks.length / allTasks.length) * 100) : 0;
 
   // Estimated completion date

@@ -138,3 +138,64 @@ export async function fetchCareerById(
   const data = await res.json();
   return data.career;
 }
+
+// ── Skill & Result Saving APIs ──
+
+/** Save the user's current skill set as a snapshot (for tracking growth over time) */
+export async function saveSkillSnapshot(
+  skills: string[],
+  interests: string[],
+  background?: string,
+  currentField?: string
+) {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('pn_token') : null;
+  if (!token) return { error: 'Not authenticated' };
+
+  const res = await fetch(`${API_ORIGIN}/api/auth/save-skills`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ skills, interests, background, currentField }),
+  });
+  return res.json();
+}
+
+/** Save a set of recommendation results so the user can view them later */
+export async function saveResults(
+  skills: string[],
+  interests: string[],
+  recommendations: CareerRecommendation[],
+  source: string,
+  background?: string,
+  currentField?: string
+) {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('pn_token') : null;
+  if (!token) return { error: 'Not authenticated' };
+
+  const res = await fetch(`${API_ORIGIN}/api/auth/save-results`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ skills, interests, recommendations, source, background, currentField }),
+  });
+  return res.json();
+}
+
+/** Load a previously saved result set */
+export async function fetchSavedResult(id: string) {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('pn_token') : null;
+  if (!token) return null;
+
+  const res = await fetch(`${API_ORIGIN}/api/auth/saved-results/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.result;
+}
+
+/** Load a public user profile (for share links) */
+export async function fetchPublicProfile(userId: string) {
+  const res = await fetch(`${API_ORIGIN}/api/auth/public-profile/${userId}`);
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.profile;
+}

@@ -143,6 +143,30 @@ async function migrate(db) {
       "matchScore" INTEGER,
       bookmarked INTEGER DEFAULT 0
     );`);
+
+    // Skill snapshots: periodic record of a user's skills over time
+    await db.exec(`CREATE TABLE IF NOT EXISTS skill_snapshots (
+      id SERIAL PRIMARY KEY,
+      "userId" TEXT NOT NULL,
+      skills TEXT NOT NULL,
+      interests TEXT DEFAULT '[]',
+      background TEXT,
+      "currentField" TEXT,
+      "createdAt" TEXT NOT NULL
+    );`);
+
+    // Saved recommendation results
+    await db.exec(`CREATE TABLE IF NOT EXISTS saved_results (
+      id TEXT PRIMARY KEY,
+      "userId" TEXT NOT NULL,
+      skills TEXT NOT NULL,
+      interests TEXT DEFAULT '[]',
+      background TEXT,
+      "currentField" TEXT,
+      recommendations TEXT NOT NULL,
+      source TEXT,
+      "createdAt" TEXT NOT NULL
+    );`);
   } else {
     await db.exec(`CREATE TABLE IF NOT EXISTS user_skills (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -160,6 +184,30 @@ async function migrate(db) {
       exploredAt TEXT,
       matchScore INTEGER,
       bookmarked INTEGER DEFAULT 0
+    );`);
+
+    // Skill snapshots: periodic record of a user's skills over time
+    await db.exec(`CREATE TABLE IF NOT EXISTS skill_snapshots (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      userId TEXT NOT NULL,
+      skills TEXT NOT NULL,
+      interests TEXT DEFAULT '[]',
+      background TEXT,
+      currentField TEXT,
+      createdAt TEXT NOT NULL
+    );`);
+
+    // Saved recommendation results
+    await db.exec(`CREATE TABLE IF NOT EXISTS saved_results (
+      id TEXT PRIMARY KEY,
+      userId TEXT NOT NULL,
+      skills TEXT NOT NULL,
+      interests TEXT DEFAULT '[]',
+      background TEXT,
+      currentField TEXT,
+      recommendations TEXT NOT NULL,
+      source TEXT,
+      createdAt TEXT NOT NULL
     );`);
   }
 

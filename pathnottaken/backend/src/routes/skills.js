@@ -80,14 +80,34 @@ router.get("/learning-resources/:skillId", (req, res) => {
 // POST /api/skills/concrete-roadmap - Generate a concrete 90-day roadmap with real resources
 router.post("/concrete-roadmap", (req, res) => {
   try {
-    const { careerId, userSkills = [], weeklyHours = 10 } = req.body;
+    const { careerId, userSkills = [], weeklyHours = 10, careerData: clientCareer } = req.body;
     if (!careerId) {
       return res.status(400).json({ error: "careerId is required" });
     }
 
-    const career = careersData.careers.find(c => c.id === careerId);
+    // Look up career in our database first; if not found (e.g. AI-generated career),
+    // accept the career data sent from the frontend as a fallback.
+    // WHY: AI-recommended careers (id starts with "ai-") don't exist in careers.json.
+    // The frontend stores them in localStorage and forwards them here so we can still
+    // build a real, resource-rich roadmap instead of falling back to the generic legacy builder.
+    let career = careersData.careers.find(c => c.id === careerId);
+    if (!career && clientCareer) {
+      // Validate that the client-provided career has the minimum fields we need
+      career = {
+        id: careerId,
+        title: clientCareer.title || 'AI Career',
+        description: clientCareer.description || '',
+        category: clientCareer.category || 'AI Recommended',
+        requiredSkills: clientCareer.requiredSkills || clientCareer.missingSkills || [],
+        relatedInterests: clientCareer.relatedInterests || clientCareer.matchedInterests || [],
+        salaryRange: clientCareer.salaryRange || { min: 50000, max: 120000 },
+        growthOutlook: clientCareer.growthOutlook || 'High',
+        dayInLife: clientCareer.dayInLife || '',
+        whyNonObvious: clientCareer.whyNonObvious || '',
+      };
+    }
     if (!career) {
-      return res.status(404).json({ error: "Career not found" });
+      return res.status(404).json({ error: "Career not found. For AI careers, include careerData in the request body." });
     }
 
     const requiredSkills = career.requiredSkills || [];
@@ -107,6 +127,41 @@ router.post("/concrete-roadmap", (req, res) => {
       return resource;
     }
 
+    // Helper: generate skill-specific default resources when no curated data exists
+    function createSkillSpecificDefaults(skillKey) {
+      const label = formatSkillLabel(skillKey);
+      const encoded = encodeURIComponent(label);
+      return {
+        label: label,
+        beginnerResources: [
+          { type: 'course', title: `Learn ${label} — Coursera`, provider: 'Coursera', url: `https://www.coursera.org/search?query=${encoded}`, free: false, hours: 10 },
+          { type: 'course', title: `${label} for Beginners — YouTube`, provider: 'YouTube', url: `https://www.youtube.com/results?search_query=${encoded}+tutorial+for+beginners`, free: true, hours: 5 },
+          { type: 'course', title: `${label} — Udemy`, provider: 'Udemy', url: `https://www.udemy.com/courses/search/?q=${encoded}`, free: false, hours: 10 }
+        ],
+        intermediateResources: [
+          { type: 'course', title: `Advanced ${label} — LinkedIn Learning`, provider: 'LinkedIn Learning', url: `https://www.linkedin.com/learning/search?keywords=${encoded}`, free: false, hours: 10 },
+          { type: 'practice', title: `${label} — Skillshare Classes`, provider: 'Skillshare', url: `https://www.skillshare.com/search?query=${encoded}`, free: false, hours: 8 }
+        ],
+        exercises: [
+          `Find a step-by-step ${label} tutorial and complete it end-to-end`,
+          `Write a 1-page summary of 3 key ${label} concepts you learned this week`,
+          `Practice applying ${label} to a real-world scenario for 1 hour`,
+          `Teach someone else one concept from ${label} — explaining solidifies knowledge`
+        ],
+        projectIdeas: [
+          { title: `${label} Portfolio Piece`, description: `Create a portfolio project demonstrating your ${label} skills with real-world application`, hours: 10, skills: [skillKey] },
+          { title: `${label} Case Study`, description: `Research a professional who uses ${label} and write a 1-page analysis of their methods`, hours: 5, skills: [skillKey, 'research'] }
+        ],
+        estimatedHours: 40,
+        weeklyMilestones: [
+          `Understand the fundamentals of ${label}`,
+          `Practice core ${label} techniques daily for one week`,
+          `Build a small project applying ${label} knowledge`,
+          `Share your ${label} work and get feedback`
+        ]
+      };
+    }
+
     // Guard against empty skills
     if (orderedSkills.length === 0) {
       return res.status(400).json({ error: 'This career has no required skills defined.' });
@@ -123,7 +178,7 @@ router.post("/concrete-roadmap", (req, res) => {
       const primarySkill = orderedSkills[primarySkillIdx];
       const skillData = learningResources.skillResources[primarySkill] 
         || (learningResources.additionalSkills && learningResources.additionalSkills[primarySkill]) 
-        || learningResources.defaultResources;
+        || createSkillSpecificDefaults(primarySkill);
       
       const isMissing = missingSkills.includes(primarySkill);
       const phase = month === 0 ? 'foundation' : month === 1 ? 'practice' : 'project';

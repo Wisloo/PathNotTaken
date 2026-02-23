@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 /* Animated counter hook */
 function useCountUp(target: number, duration = 2000, startOnMount = false) {
@@ -34,9 +34,48 @@ function useCountUp(target: number, duration = 2000, startOnMount = false) {
   return { count, ref };
 }
 
+/* Typewriter career rotation */
+function useTypewriter(words: string[], typingSpeed = 100, deletingSpeed = 50, pauseTime = 2000) {
+  const [text, setText] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const tick = useCallback(() => {
+    const currentWord = words[wordIndex];
+    if (isDeleting) {
+      setText(currentWord.substring(0, text.length - 1));
+    } else {
+      setText(currentWord.substring(0, text.length + 1));
+    }
+  }, [text, wordIndex, isDeleting, words]);
+
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+    let timeout: NodeJS.Timeout;
+
+    if (!isDeleting && text === currentWord) {
+      timeout = setTimeout(() => setIsDeleting(true), pauseTime);
+    } else if (isDeleting && text === '') {
+      setIsDeleting(false);
+      setWordIndex((prev) => (prev + 1) % words.length);
+    } else {
+      timeout = setTimeout(tick, isDeleting ? deletingSpeed : typingSpeed);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, wordIndex, words, tick, typingSpeed, deletingSpeed, pauseTime]);
+
+  return text;
+}
+
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  const rotatingCareer = useTypewriter(
+    ['Data Ethicist', 'Developer Advocate', 'Climate Tech PM', 'UX Researcher', 'Sports Analyst', 'Cybersecurity Lead'],
+    80, 40, 2200
+  );
 
   const stat1 = useCountUp(20, 1500);
   const stat2 = useCountUp(85, 1800);
@@ -143,6 +182,14 @@ export default function Home() {
                 Your skills lead to
                 <span className="block animate-gradient-text mt-1">careers you&apos;d never expect</span>
               </h1>
+
+              {/* Typewriter career preview */}
+              <div className="flex items-center gap-2 text-gray-400">
+                <span className="text-sm">Like becoming a</span>
+                <span className="text-lg font-bold text-emerald-500 min-w-[200px]">
+                  {rotatingCareer}<span className="animate-pulse">|</span>
+                </span>
+              </div>
 
               <p className="text-lg sm:text-xl text-gray-500 max-w-lg leading-relaxed">
                 PathNotTaken discovers hidden career paths by analyzing your unique combination of skills, interests, and experience — across every industry from tech to agriculture.
@@ -523,6 +570,72 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Track Your Growth Section ─── */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-[#fafbfc] to-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase mb-3">Track Your Growth</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+              Level up with <span className="animate-gradient-text">gamified progress</span>
+            </h2>
+            <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+              Earn XP, unlock badges, maintain streaks, and watch your skills evolve over time.
+            </p>
+            <div className="section-divider mt-6" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* XP & Levels */}
+            <div className="card-static p-6 text-center group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 glow-border">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-3xl">⭐</span>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Earn XP & Level Up</h3>
+              <p className="text-sm text-gray-500 mb-4">Complete roadmap tasks to earn experience points. Higher-demand skills give bonus XP.</p>
+              <div className="bg-gray-50 rounded-xl p-3">
+                <div className="flex items-center justify-between text-xs text-gray-500 mb-1">
+                  <span>Level 3</span><span>450 / 1500 XP</span><span>Level 4</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
+                  <div className="h-2.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-400 w-[30%]" />
+                </div>
+              </div>
+            </div>
+
+            {/* Badges */}
+            <div className="card-static p-6 text-center group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 glow-border">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-3xl">🏅</span>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Unlock 12 Badges</h3>
+              <p className="text-sm text-gray-500 mb-4">From First Steps to Pathfinder — earn achievements for milestones and skill mastery.</p>
+              <div className="flex justify-center gap-2">
+                {['👣', '🔥', '🏆', '🚀', '🧠', '📊'].map((emoji, i) => (
+                  <div key={i} className={`w-9 h-9 rounded-lg flex items-center justify-center text-lg ${i < 3 ? 'bg-amber-50 border border-amber-200' : 'bg-gray-100 border border-gray-200 grayscale opacity-50'}`}>
+                    {emoji}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Streaks & History */}
+            <div className="card-static p-6 text-center group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 glow-border">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-red-100 to-pink-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-3xl">🔥</span>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Streaks & Skill History</h3>
+              <p className="text-sm text-gray-500 mb-4">Maintain daily streaks, save skill snapshots, and track your growth over months.</p>
+              <div className="flex justify-center gap-1">
+                {Array.from({ length: 14 }).map((_, i) => (
+                  <div key={i} className={`w-5 h-5 rounded ${i < 7 ? 'bg-emerald-400' : i < 10 ? 'bg-emerald-200' : 'bg-gray-100'}`} />
+                ))}
+              </div>
+              <p className="text-[10px] text-gray-400 mt-2">Contribution calendar — like GitHub, but for your career</p>
+            </div>
           </div>
         </div>
       </section>

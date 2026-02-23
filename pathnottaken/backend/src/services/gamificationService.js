@@ -298,7 +298,7 @@ class GamificationService {
   /**
    * Check and award achievements
    */
-  static async checkAchievements(userId) {
+  static async checkAchievements(userId, extraContext = {}) {
     const userData = await this.getUserGamification(userId);
     const currentBadges = userData.badges || [];
     const newBadges = [];
@@ -314,6 +314,12 @@ class GamificationService {
         earned = true;
       }
       if (achievement.criteria.tasksCompleted && userData.tasksCompleted >= achievement.criteria.tasksCompleted) {
+        earned = true;
+      }
+      if (achievement.criteria.roadmapsCompleted && extraContext.roadmapsCompleted >= achievement.criteria.roadmapsCompleted) {
+        earned = true;
+      }
+      if (achievement.criteria.careersExplored && extraContext.careersExplored >= achievement.criteria.careersExplored) {
         earned = true;
       }
 

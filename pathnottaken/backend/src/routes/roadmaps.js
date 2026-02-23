@@ -6,21 +6,25 @@ const { getUserIdFromAuth } = require("../middleware/auth");
 // POST /api/roadmaps  -> save roadmap, returns { id, url }
 router.post("/", async (req, res) => {
   try {
-    const { careerId, title, weeks, months, milestones, matchedSkills, missingSkills, weeklyHours } = req.body;
+    const { careerId, title, weeks, months, milestones, matchedSkills, missingSkills, weeklyHours, careerData } = req.body;
     if (!careerId) return res.status(400).json({ error: "careerId is required" });
 
     const id = (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)).toLowerCase();
     const createdAt = new Date().toISOString();
     const ownerId = getUserIdFromAuth(req);
 
-    // Store full roadmap data including month structure
+    // Store full roadmap data including month structure.
+    // For AI-generated careers we also persist the career metadata (careerData)
+    // so that when someone loads the shared roadmap later, we can reconstruct
+    // the career info without needing it in careers.json or localStorage.
     const roadmapData = JSON.stringify({
       weeks: weeks || [],
       months: months || null,
       milestones: milestones || [],
       matchedSkills: matchedSkills || [],
       missingSkills: missingSkills || [],
-      weeklyHours: weeklyHours || 10
+      weeklyHours: weeklyHours || 10,
+      careerData: careerData || null
     });
 
     await db.run('INSERT INTO roadmaps (id,"ownerId","careerId",title,weeks,"createdAt") VALUES (?,?,?,?,?,?)', id, ownerId || null, careerId, title || null, roadmapData, createdAt);
@@ -52,6 +56,7 @@ router.get("/:id", async (req, res) => {
       row.matchedSkills = [];
       row.missingSkills = [];
       row.weeklyHours = 10;
+      row.careerData = null;
     } else {
       // New format: object with months, milestones, etc.
       row.weeks = parsed.weeks || [];
@@ -60,6 +65,8 @@ router.get("/:id", async (req, res) => {
       row.matchedSkills = parsed.matchedSkills || [];
       row.missingSkills = parsed.missingSkills || [];
       row.weeklyHours = parsed.weeklyHours || 10;
+      // Return stored AI career data so frontend can reconstruct the career card
+      row.careerData = parsed.careerData || null;
     }
 
     return res.json({ success: true, roadmap: row });

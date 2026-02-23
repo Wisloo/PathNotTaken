@@ -6,6 +6,7 @@ import {
   Interest,
   fetchInterests,
   fetchSkillCategories,
+  fetchMe,
 } from "@/lib/api";
 
 // --- Synonym map: common free-text skills -> canonical backend skill IDs ---
@@ -450,6 +451,7 @@ export default function SkillsForm() {
   // UI state
   const [interestSearch, setInterestSearch] = useState("");
   const [showAllInterests, setShowAllInterests] = useState(false);
+  const [savedSkillsLoaded, setSavedSkillsLoaded] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
@@ -470,7 +472,58 @@ export default function SkillsForm() {
       try {
         const [ints, categories] = await Promise.all([fetchInterests(), fetchSkillCategories()]);
         setInterests(ints);
-        remoteSuggestionsRef.current = categories.flatMap((cat) => cat.skills.map((s) => ({ id: s.id, label: s.label })));
+        const remoteSuggestions = categories.flatMap((cat) => cat.skills.map((s) => ({ id: s.id, label: s.label })));
+        remoteSuggestionsRef.current = remoteSuggestions;
+
+        // Auto-populate from user's latest saved skill snapshot
+        const token = typeof window !== 'undefined' ? localStorage.getItem('pn_token') : null;
+        if (token) {
+          try {
+            const me = await fetchMe(token);
+            const userData = me?.user || me;
+            if (userData && !userData.error && userData.skillSnapshots && userData.skillSnapshots.length > 0) {
+              const latestSnap = userData.skillSnapshots[0];
+              // Map saved skill IDs to {id, label} objects using remote suggestions
+              const savedSkills: Array<{ id: string; label: string }> = [];
+              for (const skillId of latestSnap.skills) {
+                const remote = remoteSuggestions.find((s) => s.id === skillId);
+                if (remote) {
+                  savedSkills.push(remote);
+                } else {
+                  // Fallback: use the ID as label with dashes replaced
+                  savedSkills.push({ id: skillId, label: skillId.replace(/-/g, ' ') });
+                }
+              }
+              if (savedSkills.length > 0) {
+                setSkills(savedSkills);
+                setSavedSkillsLoaded(true);
+              }
+
+              // Also pre-fill interests if available
+              if (latestSnap.interests && latestSnap.interests.length > 0) {
+                setSelectedInterests(latestSnap.interests);
+              }
+
+              // Pre-fill current field if available
+              if (latestSnap.currentField) {
+                setCurrentField(latestSnap.currentField);
+              }
+
+              // Pre-fill background if available
+              if (latestSnap.background) {
+                const bgParts = latestSnap.background.split('. ');
+                for (const part of bgParts) {
+                  if (part.startsWith('Education: ')) setEducationLevel(part.replace('Education: ', ''));
+                  if (part.includes('years of experience')) setYearsExperience(part.replace(' years of experience', ''));
+                }
+              }
+            }
+          } catch (err) {
+            // Silently fail — user just won't get auto-populated skills
+            console.log('Could not load saved skills:', err);
+          }
+        }
+
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -773,6 +826,23 @@ export default function SkillsForm() {
                   <p className="text-xs text-gray-400">Add tools, technologies, and abilities you&apos;re confident in</p>
                 </div>
               </div>
+
+              {/* Auto-loaded Skills Banner */}
+              {savedSkillsLoaded && skills.length > 0 && (
+                <div className="mt-3 mb-3 flex items-center gap-3 bg-blue-50 border border-blue-200 rounded-xl px-4 py-2.5">
+                  <span className="text-lg">💡</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold text-blue-800">Skills loaded from your latest snapshot</p>
+                    <p className="text-[10px] text-blue-600">Feel free to add, remove, or modify them before searching</p>
+                  </div>
+                  <button
+                    onClick={() => { setSkills([]); setSelectedInterests([]); setCurrentField(''); setSavedSkillsLoaded(false); }}
+                    className="text-[10px] font-medium text-blue-600 hover:text-blue-800 bg-blue-100 hover:bg-blue-200 px-2.5 py-1 rounded-lg transition-colors flex-shrink-0"
+                  >
+                    Clear all
+                  </button>
+                </div>
+              )}
 
               {/* Popular Skills Quick-add */}
               <div className="mt-4 mb-4">
