@@ -15,7 +15,7 @@ const SKILL_MARKET_DATA = {
   "machine-learning": {
     demandTrend: "rising-fast", // rising-fast, rising, stable, declining
     trendPercentage: 245, // % change over last year
-    avgSalaryPremium: 1400000, // additional salary vs baseline
+    avgSalaryPremium: 117000, // additional monthly salary vs baseline
     jobPostings: 45230,
     growthRate: 28.5, // annual % growth
     obsolescenceRisk: "low",
@@ -25,7 +25,7 @@ const SKILL_MARKET_DATA = {
   "ai": {
     demandTrend: "rising-fast",
     trendPercentage: 312,
-    avgSalaryPremium: 1680000,
+    avgSalaryPremium: 140000,
     jobPostings: 38920,
     growthRate: 35.2,
     obsolescenceRisk: "low",
@@ -35,7 +35,7 @@ const SKILL_MARKET_DATA = {
   "blockchain": {
     demandTrend: "rising",
     trendPercentage: 85,
-    avgSalaryPremium: 840000,
+    avgSalaryPremium: 70000,
     jobPostings: 8430,
     growthRate: 12.3,
     obsolescenceRisk: "medium",
@@ -45,7 +45,7 @@ const SKILL_MARKET_DATA = {
   "data-analysis": {
     demandTrend: "stable",
     trendPercentage: 15,
-    avgSalaryPremium: 672000,
+    avgSalaryPremium: 56000,
     jobPostings: 78430,
     growthRate: 8.5,
     obsolescenceRisk: "low",
@@ -55,7 +55,7 @@ const SKILL_MARKET_DATA = {
   "programming": {
     demandTrend: "stable",
     trendPercentage: 8,
-    avgSalaryPremium: 1008000,
+    avgSalaryPremium: 84000,
     jobPostings: 125840,
     growthRate: 5.2,
     obsolescenceRisk: "low",
@@ -65,7 +65,7 @@ const SKILL_MARKET_DATA = {
   "cybersecurity": {
     demandTrend: "rising",
     trendPercentage: 95,
-    avgSalaryPremium: 1232000,
+    avgSalaryPremium: 103000,
     jobPostings: 34210,
     growthRate: 15.8,
     obsolescenceRisk: "low",
@@ -75,7 +75,7 @@ const SKILL_MARKET_DATA = {
   "flash": {
     demandTrend: "declining",
     trendPercentage: -85,
-    avgSalaryPremium: -280000,
+    avgSalaryPremium: -23000,
     jobPostings: 120,
     growthRate: -42.5,
     obsolescenceRisk: "critical",
@@ -305,13 +305,13 @@ class MarketIntelligenceService {
     const marketData = this.getSkillMarketData(skillId);
     const avgHourlyRate = 2800; // baseline developer rate (PHP)
     const learningCost = hoursToLearn * avgHourlyRate; // opportunity cost
-    const annualPremium = marketData.avgSalaryPremium;
+    const monthlyPremium = marketData.avgSalaryPremium;
     
     // ROI = (Annual Premium / Learning Cost) * 100
+    const annualPremium = monthlyPremium * 12;
     const roi = learningCost > 0 ? (annualPremium / learningCost) * 100 : 0;
     
     // Payback period in months
-    const monthlyPremium = annualPremium / 12;
     const paybackMonths = monthlyPremium > 0 ? learningCost / monthlyPremium : 999;
 
     return {

@@ -114,7 +114,7 @@ export default function MarketInsights({ careerId }: Props) {
             {insights.salaryPremium >= 0 ? "+" : ""}₱
             {(insights.salaryPremium / 1000).toFixed(0)}K
           </div>
-          <div className="text-xs text-gray-500">vs baseline</div>
+          <div className="text-xs text-gray-500">vs baseline/mo</div>
         </div>
       </div>
 

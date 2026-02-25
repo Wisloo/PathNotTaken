@@ -14,13 +14,10 @@ export default function CareerCard({ career, index }: CareerCardProps) {
   const [activeTab, setActiveTab] = useState<"overview" | "pros-cons" | "skills">("overview");
 
   const formatSalary = (amount: number) => {
-    if (amount >= 1000000) {
-      return `₱${(amount / 1000000).toFixed(1)}M`;
-    }
     if (amount >= 1000) {
-      return `₱${Math.round(amount / 1000)}K`;
+      return `₱${Math.round(amount / 1000)}K/mo`;
     }
-    return `₱${amount}`;
+    return `₱${amount.toLocaleString()}/mo`;
   };
 
   const growthLabel: Record<string, { text: string; color: string }> = {

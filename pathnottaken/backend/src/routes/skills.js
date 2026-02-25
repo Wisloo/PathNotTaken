@@ -154,7 +154,7 @@ router.post("/concrete-roadmap", (req, res) => {
         category: clientCareer.category || 'AI Recommended',
         requiredSkills: clientCareer.requiredSkills || clientCareer.missingSkills || [],
         relatedInterests: clientCareer.relatedInterests || clientCareer.matchedInterests || [],
-        salaryRange: clientCareer.salaryRange || { min: 2800000, max: 6720000, currency: 'PHP' },
+        salaryRange: clientCareer.salaryRange || { min: 233000, max: 560000, currency: 'PHP' },
         growthOutlook: clientCareer.growthOutlook || 'High',
         dayInLife: clientCareer.dayInLife || '',
         whyNonObvious: clientCareer.whyNonObvious || '',

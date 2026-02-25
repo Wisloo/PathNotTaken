@@ -21,7 +21,7 @@ function ResultsContent() {
 
   // Filters
   const [sortBy, setSortBy] = useState("best-match");
-  const [salaryMin, setSalaryMin] = useState(1680000);
+  const [salaryMin, setSalaryMin] = useState(140000);
   const [growthFilter, setGrowthFilter] = useState("Any");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -284,19 +284,19 @@ function ResultsContent() {
                 </label>
                 <input
                   type="range"
-                  min={1680000}
-                  max={11200000}
-                  step={560000}
+                  min={140000}
+                  max={940000}
+                  step={40000}
                   value={salaryMin}
                   onChange={(e) => setSalaryMin(Number(e.target.value))}
                   className="w-full accent-emerald-600"
                 />
                 <div className="flex justify-between text-xs text-gray-400 mt-1">
-                  <span>₱1.7M</span>
+                  <span>₱140K</span>
                   <span className="font-medium text-emerald-600">
-                    ₱{(salaryMin / 1000000).toFixed(1)}M+
+                    ₱{Math.round(salaryMin / 1000)}K+/mo
                   </span>
-                  <span>₱11.2M+</span>
+                  <span>₱940K+</span>
                 </div>
               </div>
 
@@ -321,7 +321,7 @@ function ResultsContent() {
               <div className="pt-2 space-y-2">
                 <button
                   onClick={() => {
-                    setSalaryMin(1680000);
+                    setSalaryMin(140000);
                     setGrowthFilter("Any");
                   }}
                   className="w-full py-2.5 text-sm text-gray-500 hover:text-gray-700 border border-gray-200 rounded-xl transition-colors hover:bg-gray-50"
@@ -352,11 +352,11 @@ function ResultsContent() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-gray-600 mb-2">Salary Range</label>
-                    <input type="range" min={1680000} max={11200000} step={560000} value={salaryMin} onChange={(e) => setSalaryMin(Number(e.target.value))} className="w-full accent-emerald-600" />
+                    <input type="range" min={140000} max={940000} step={40000} value={salaryMin} onChange={(e) => setSalaryMin(Number(e.target.value))} className="w-full accent-emerald-600" />
                     <div className="flex justify-between text-xs text-gray-400 mt-1">
-                      <span>₱1.7M</span>
-                      <span className="font-medium text-emerald-600">₱{(salaryMin / 1000000).toFixed(1)}M+</span>
-                      <span>₱11.2M+</span>
+                      <span>₱140K</span>
+                      <span className="font-medium text-emerald-600">₱{Math.round(salaryMin / 1000)}K+/mo</span>
+                      <span>₱940K+</span>
                     </div>
                   </div>
                   <div>
@@ -369,7 +369,7 @@ function ResultsContent() {
                     </select>
                   </div>
                 </div>
-                <button onClick={() => { setSalaryMin(1680000); setGrowthFilter("Any"); }} className="text-sm text-gray-500 hover:text-gray-700">Reset filters</button>
+                <button onClick={() => { setSalaryMin(140000); setGrowthFilter("Any"); }} className="text-sm text-gray-500 hover:text-gray-700">Reset filters</button>
               </div>
             )}
 

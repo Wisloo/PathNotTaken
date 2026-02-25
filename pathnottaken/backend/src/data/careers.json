@@ -7,9 +7,9 @@
       "description": "UX Researchers study how people interact with products and services, using psychology, data analysis, and empathy to improve user experiences. They conduct interviews, surveys, and usability tests to uncover insights that drive product decisions.",
       "dayInLife": "Your day starts with analyzing survey responses from last week's study. Mid-morning, you moderate a usability test session with participants. After lunch, you synthesize findings into a report with actionable recommendations for the design team. You end the day planning the methodology for an upcoming research project.",
       "salaryRange": {
-        "min": 3640000,
-        "median": 5152000,
-        "max": 7280000,
+        "min": 303333,
+        "median": 429333,
+        "max": 606667,
         "currency": "PHP"
       },
       "growthOutlook": "High",
@@ -94,9 +94,9 @@
       "description": "Technical Writers translate complex technical concepts into clear, accessible documentation. They create user guides, API docs, tutorials, and help content that makes technology understandable for different audiences.",
       "dayInLife": "You spend the morning reviewing a developer's pull request to understand a new feature, then draft documentation for it. After lunch, you meet with the product team to discuss upcoming releases. You spend the afternoon updating the API reference guide and creating a tutorial with code examples.",
       "salaryRange": {
-        "min": 3080000,
-        "median": 4480000,
-        "max": 6440000,
+        "min": 256667,
+        "median": 373333,
+        "max": 536667,
         "currency": "PHP"
       },
       "growthOutlook": "Moderate",
@@ -178,9 +178,9 @@
       "description": "Data Ethicists ensure that data collection, AI systems, and algorithmic decisions are fair, transparent, and respectful of privacy. They bridge philosophy, law, and technology to guide responsible innovation.",
       "dayInLife": "You review an AI model's training data for potential biases in the morning. After a cross-functional meeting with engineers and legal, you draft ethical guidelines for a new data collection initiative. The afternoon involves researching emerging regulation and preparing a presentation on responsible AI for leadership.",
       "salaryRange": {
-        "min": 4480000,
-        "median": 6440000,
-        "max": 8960000,
+        "min": 373333,
+        "median": 536667,
+        "max": 746667,
         "currency": "PHP"
       },
       "growthOutlook": "Very High",
@@ -265,9 +265,9 @@
       "description": "Urban Informatics Specialists use data science and technology to solve city-scale problems — from traffic optimization to public health mapping. They combine GIS, data analysis, and civic technology to improve urban life.",
       "dayInLife": "You start by analyzing city transit data to identify inefficient routes. Late morning, you meet with city planners to present findings from a noise pollution study. After lunch, you build a dashboard visualizing neighborhood walkability scores. You end the day writing a proposal for a smart city sensor network.",
       "salaryRange": {
-        "min": 3360000,
-        "median": 4760000,
-        "max": 6720000,
+        "min": 280000,
+        "median": 396667,
+        "max": 560000,
         "currency": "PHP"
       },
       "growthOutlook": "High",
@@ -350,9 +350,9 @@
       "description": "Developer Advocates are the bridge between a technology company and its developer community. They create tutorials, give talks, write blog posts, and build sample applications to help developers succeed with a platform or tool.",
       "dayInLife": "Morning: you record a video tutorial for a new SDK feature. You then respond to developer questions on the community forum. After lunch, you prototype a demo app for an upcoming conference talk. Late afternoon, you write a blog post about a common developer pain point and how to solve it.",
       "salaryRange": {
-        "min": 4480000,
-        "median": 6720000,
-        "max": 9520000,
+        "min": 373333,
+        "median": 560000,
+        "max": 793333,
         "currency": "PHP"
       },
       "growthOutlook": "High",
@@ -437,9 +437,9 @@
       "description": "Bioinformatics Scientists use programming, statistics, and biology knowledge to analyze genomic data, model biological systems, and accelerate drug discovery and personalized medicine.",
       "dayInLife": "You begin by running a genome alignment pipeline on a new patient dataset. Mid-morning, you debug a Python script that visualizes gene expression patterns. After lunch, you present your mutation analysis findings to the research team. The afternoon is spent developing a machine learning model to predict drug responses.",
       "salaryRange": {
-        "min": 3920000,
-        "median": 5600000,
-        "max": 7840000,
+        "min": 326667,
+        "median": 466667,
+        "max": 653333,
         "currency": "PHP"
       },
       "growthOutlook": "Very High",
@@ -525,9 +525,9 @@
       "description": "Sustainability Analysts help organizations measure, report, and reduce their environmental impact. They combine data analysis with environmental science to drive corporate sustainability strategies and ESG reporting.",
       "dayInLife": "Morning: you collect energy consumption data from facilities worldwide and update the carbon footprint dashboard. You then join a call with supply chain partners to discuss emission reduction targets. After lunch, you draft the quarterly sustainability report for investors. Late afternoon, you research renewable energy options for the company's data centers.",
       "salaryRange": {
-        "min": 3080000,
-        "median": 4368000,
-        "max": 6160000,
+        "min": 256667,
+        "median": 364000,
+        "max": 513333,
         "currency": "PHP"
       },
       "growthOutlook": "Very High",
@@ -611,9 +611,9 @@
       "description": "Forensic Accountants investigate financial fraud, embezzlement, and white-collar crime. They combine accounting expertise with detective work, analyzing financial records to uncover hidden patterns and testify as expert witnesses.",
       "dayInLife": "You spend the morning tracing suspicious transactions through multiple bank accounts. After a meeting with the legal team about an upcoming court case, you analyze expense reports looking for anomalies. The afternoon involves preparing a detailed forensic report and creating visualizations that explain the fraud scheme for a jury.",
       "salaryRange": {
-        "min": 3360000,
-        "median": 5152000,
-        "max": 7560000,
+        "min": 280000,
+        "median": 429333,
+        "max": 630000,
         "currency": "PHP"
       },
       "growthOutlook": "High",
@@ -698,9 +698,9 @@
       "description": "Localization Engineers adapt software products for different languages, cultures, and regions. They combine programming skills with cultural knowledge to ensure apps work naturally for users worldwide.",
       "dayInLife": "Morning: you fix a bug where Arabic text isn't rendering correctly in the mobile app. Then you review a translator's work for a Japanese release. After lunch, you build automated tests for locale-specific date and currency formatting. Late afternoon, you meet with the product team to plan internationalization for a new feature.",
       "salaryRange": {
-        "min": 3640000,
-        "median": 5040000,
-        "max": 7000000,
+        "min": 303333,
+        "median": 420000,
+        "max": 583333,
         "currency": "PHP"
       },
       "growthOutlook": "Moderate",
@@ -783,9 +783,9 @@
       "description": "Computational Designers use programming, algorithms, and mathematical models to create designs — from architecture and product design to generative art. They bridge aesthetics and code to create forms impossible by hand.",
       "dayInLife": "You start by tweaking parameters in a generative algorithm that creates organic-looking building facades. Mid-morning, you code a Grasshopper script to optimize material usage. After lunch, you prototype an interactive installation using Processing. The afternoon is spent collaborating with architects on a parametric design for a community center.",
       "salaryRange": {
-        "min": 3360000,
-        "median": 4928000,
-        "max": 7280000,
+        "min": 280000,
+        "median": 410667,
+        "max": 606667,
         "currency": "PHP"
       },
       "growthOutlook": "High",
@@ -869,9 +869,9 @@
       "description": "Healthcare UX Designers create intuitive interfaces for medical applications, electronic health records, telemedicine platforms, and health monitoring devices. Their designs directly impact patient outcomes and clinician efficiency.",
       "dayInLife": "Morning: you shadow a nurse using the EHR system to identify pain points. Then you sketch wireframes for a new patient intake flow. After lunch, you run a usability test of a telemedicine app with elderly patients. The afternoon is spent creating a design system for accessible health content.",
       "salaryRange": {
-        "min": 4200000,
-        "median": 5880000,
-        "max": 8120000,
+        "min": 350000,
+        "median": 490000,
+        "max": 676667,
         "currency": "PHP"
       },
       "growthOutlook": "Very High",
@@ -955,9 +955,9 @@
       "description": "Climate Tech Product Managers lead the development of technology solutions that address climate change — from carbon tracking software to renewable energy platforms and sustainable supply chain tools.",
       "dayInLife": "Morning: you review user feedback on the carbon accounting dashboard and prioritize backlog items. Then you lead a sprint planning meeting with engineers building a supply chain emissions tracker. After lunch, you interview a sustainability director at a potential client. The afternoon is spent drafting a product roadmap for Q3.",
       "salaryRange": {
-        "min": 5040000,
-        "median": 7280000,
-        "max": 9800000,
+        "min": 420000,
+        "median": 606667,
+        "max": 816667,
         "currency": "PHP"
       },
       "growthOutlook": "Very High",
@@ -1042,9 +1042,9 @@
       "description": "Product Designers own the end-to-end experience of digital products — from user research and wireframing to high-fidelity prototypes and design systems. They combine visual design, interaction design, and user psychology to create intuitive, delightful interfaces.",
       "dayInLife": "Morning: you review analytics on a new feature launch and sketch ideas for improvements. You then join a design critique where teammates give feedback on your checkout flow redesign. After lunch, you build an interactive prototype in Figma for user testing. Late afternoon, you update the design system with new component variants.",
       "salaryRange": {
-        "min": 4200000,
-        "median": 6440000,
-        "max": 9240000,
+        "min": 350000,
+        "median": 536667,
+        "max": 770000,
         "currency": "PHP"
       },
       "growthOutlook": "High",
@@ -1129,9 +1129,9 @@
       "description": "DevOps Engineers build and maintain the infrastructure that lets software teams ship code reliably and at scale. They automate deployments, manage cloud infrastructure, and ensure systems stay fast, secure, and available 24/7.",
       "dayInLife": "Morning: you review overnight alerts and fix a memory leak in the staging environment. Then you write Terraform to provision a new Kubernetes cluster. After lunch, you optimize the CI/CD pipeline to cut build times from 20 minutes to 8. Late afternoon, you pair with a developer to troubleshoot a deployment issue.",
       "salaryRange": {
-        "min": 4760000,
-        "median": 7280000,
-        "max": 10360000,
+        "min": 396667,
+        "median": 606667,
+        "max": 863333,
         "currency": "PHP"
       },
       "growthOutlook": "Very High",
@@ -1214,9 +1214,9 @@
       "description": "Content Strategists plan, create, and optimize content across channels to achieve business goals. They blend writing, SEO, analytics, and audience psychology to build content ecosystems that drive growth, engagement, and brand authority.",
       "dayInLife": "Morning: you analyze which blog posts drove the most organic traffic last month and brief writers on new topics. Then you review a product launch content plan with the marketing team. After lunch, you audit the website's content architecture and create a taxonomy for better navigation. Late afternoon, you write a content brief and review SEO keyword research.",
       "salaryRange": {
-        "min": 3360000,
-        "median": 5040000,
-        "max": 7560000,
+        "min": 280000,
+        "median": 420000,
+        "max": 630000,
         "currency": "PHP"
       },
       "growthOutlook": "High",
@@ -1301,9 +1301,9 @@
       "description": "Cybersecurity Analysts protect organizations from digital threats by monitoring systems, investigating breaches, and building defenses. They combine technical skills with investigative thinking to stay one step ahead of attackers.",
       "dayInLife": "Morning: you review overnight security alerts and investigate a suspicious login pattern. Then you run a vulnerability scan on the company's web applications. After lunch, you lead a security awareness training for new employees. Late afternoon, you write detection rules for a new type of phishing attack and update the incident response playbook.",
       "salaryRange": {
-        "min": 3920000,
-        "median": 5880000,
-        "max": 8680000,
+        "min": 326667,
+        "median": 490000,
+        "max": 723333,
         "currency": "PHP"
       },
       "growthOutlook": "Very High",
@@ -1387,9 +1387,9 @@
       "description": "Learning Experience Designers create engaging educational content for online courses, corporate training, and edtech products. They combine instructional design theory, multimedia production, and user experience principles to make learning effective and enjoyable.",
       "dayInLife": "Morning: you storyboard an interactive simulation for a compliance training module. Then you conduct a needs analysis interview with subject matter experts. After lunch, you build an interactive lesson in Articulate Rise and record a short video explanation. Late afternoon, you analyze course completion data and A/B test results to optimize a struggling module.",
       "salaryRange": {
-        "min": 3360000,
-        "median": 4760000,
-        "max": 7000000,
+        "min": 280000,
+        "median": 396667,
+        "max": 583333,
         "currency": "PHP"
       },
       "growthOutlook": "High",
@@ -1474,9 +1474,9 @@
       "description": "Sports Analytics Managers use data science, statistics, and domain expertise to help sports teams and organizations make better decisions — from player recruitment and game strategy to fan engagement and revenue optimization.",
       "dayInLife": "Morning: you analyze player performance data from last night's game and prepare a scouting report. Then you build a predictive model for injury risk based on training load data. After lunch, you present your findings to coaches and front office staff. Late afternoon, you work on a ticket pricing model that optimizes revenue based on opponent, day of week, and weather.",
       "salaryRange": {
-        "min": 3360000,
-        "median": 5320000,
-        "max": 8120000,
+        "min": 280000,
+        "median": 443333,
+        "max": 676667,
         "currency": "PHP"
       },
       "growthOutlook": "High",
@@ -1561,9 +1561,9 @@
       "description": "Digital Health Consultants advise healthcare organizations on adopting technology solutions — from telemedicine and EHR systems to AI diagnostics and remote patient monitoring. They bridge the gap between healthcare operations and technological innovation.",
       "dayInLife": "Morning: you lead a stakeholder workshop with hospital administrators to map their current patient flow. Then you draft a technology roadmap for a clinic's digital transformation. After lunch, you evaluate three telemedicine vendors and prepare a comparison matrix. Late afternoon, you present recommendations to the C-suite on how to reduce readmission rates using predictive analytics.",
       "salaryRange": {
-        "min": 4480000,
-        "median": 6720000,
-        "max": 9800000,
+        "min": 373333,
+        "median": 560000,
+        "max": 816667,
         "currency": "PHP"
       },
       "growthOutlook": "Very High",
@@ -1648,9 +1648,9 @@
       "description": "Supply Chain Data Analysts use data science to optimize how goods move from suppliers to customers. They forecast demand, reduce waste, improve logistics, and build dashboards that help companies save millions in operational costs.",
       "dayInLife": "Morning: you analyze last quarter's inventory data to identify overstocked and understocked items. Then you update a demand forecasting model with new sales data. After lunch, you build a dashboard showing real-time logistics performance across distribution centers. Late afternoon, you present recommendations to the operations team on optimizing shipping routes.",
       "salaryRange": {
-        "min": 3080000,
-        "median": 4480000,
-        "max": 6720000,
+        "min": 256667,
+        "median": 373333,
+        "max": 560000,
         "currency": "PHP"
       },
       "growthOutlook": "High",

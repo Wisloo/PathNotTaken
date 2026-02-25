@@ -48,7 +48,7 @@ function CareersContent() {
       style: "currency",
       currency: "PHP",
       maximumFractionDigits: 0,
-    }).format(amount);
+    }).format(amount) + "/mo";
 
   const growthColors: Record<string, string> = {
     "Very High": "bg-green-100 text-green-800",
