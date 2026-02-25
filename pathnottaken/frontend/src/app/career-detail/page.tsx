@@ -105,7 +105,7 @@ function CareerDetailPage() {
       style: "currency",
       currency: "PHP",
       maximumFractionDigits: 0,
-    }).format(amount) + "/mo";
+    }).format(amount);
 
   return (
     <div className="min-h-screen bg-[#fafbfc]">

@@ -118,7 +118,7 @@ export default function CareerTransitionAnalyzer({
         </div>
         <div className="bg-white rounded-lg p-4 text-center shadow-sm">
           <div className="text-2xl font-bold text-purple-600">
-            ₱{(analysis.estimatedCost.total / 1000).toFixed(0)}K
+            ₱{analysis.estimatedCost.total.toLocaleString()}
           </div>
           <div className="text-xs text-gray-600 mt-1">Est. Investment</div>
         </div>

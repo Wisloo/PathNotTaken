@@ -733,7 +733,7 @@ Based on their SPECIFIC skills and interests, suggest exactly 2 non-obvious but 
 
 Requirements:
 - Titles must be real job titles (e.g. "UX Research Lead", "Technical Product Manager", "Data Storyteller")
-- Salary ranges must be realistic PHP (Philippine Peso) MONTHLY figures (min 140000, max 1200000)
+- Salary ranges must be realistic PHP (Philippine Peso) MONTHLY figures typical in the Philippines (min around 20000, max around 120000)
 - Missing skills should be actual learnable skills (2-3 per career)
 - Match scores should reflect how well their current skills transfer (40-90 range)
 - Growth outlook must be one of: "Very High", "High", "Moderate"
@@ -780,12 +780,12 @@ Return ONLY this JSON (no other text): {"careers":[{"title":"...","category":"..
       const rawSalary = career.salaryRange || career.salary_range || {};
       // Clamp salary to realistic ranges to prevent hallucinated values
       const salaryRange = {
-        min: Math.max(116000, Math.min(933000, Number(rawSalary.min) || 280000)),
-        max: Math.max(187000, Math.min(1400000, Number(rawSalary.max) || 560000)),
+        min: Math.max(18000, Math.min(80000, Number(rawSalary.min) || 30000)),
+        max: Math.max(25000, Math.min(150000, Number(rawSalary.max) || 65000)),
         currency: 'PHP',
       };
       // Ensure min < max
-      if (salaryRange.min >= salaryRange.max) salaryRange.max = salaryRange.min + 140000;
+      if (salaryRange.min >= salaryRange.max) salaryRange.max = salaryRange.min + 15000;
 
       // Build a realistic requiredSkills list: user's matched skills + missing skills
       const requiredSkillsList = [
@@ -794,7 +794,7 @@ Return ONLY this JSON (no other text): {"careers":[{"title":"...","category":"..
       ].filter(Boolean);
 
       // Generate pros/cons from the career data
-      const salaryLabel = salaryRange.max >= 607000 ? 'competitive' : salaryRange.max >= 420000 ? 'solid' : 'growing';
+      const salaryLabel = salaryRange.max >= 80000 ? 'competitive' : salaryRange.max >= 55000 ? 'solid' : 'growing';
       const growthOutlook = career.growthOutlook || career.growth_outlook || 'High';
       const pros = [
         `Leverages your existing skills in ${skills.slice(0, 2).map(s => s.replace(/-/g, ' ')).join(' and ')}`,

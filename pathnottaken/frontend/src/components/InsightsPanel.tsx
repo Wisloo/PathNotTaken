@@ -65,7 +65,7 @@ export default function InsightsPanel({ recommendations, userSkills, userInteres
             <div className="text-[10px] text-gray-500 mt-0.5">High Growth Careers</div>
           </div>
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 text-center border border-white/60">
-            <div className="text-2xl font-bold text-amber-600">₱{Math.round(topSalary / 1000)}K</div>
+            <div className="text-2xl font-bold text-amber-600">₱{topSalary.toLocaleString()}</div>
             <div className="text-[10px] text-gray-500 mt-0.5">Top Median Salary/mo</div>
           </div>
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 text-center border border-white/60">

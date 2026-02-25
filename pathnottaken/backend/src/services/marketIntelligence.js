@@ -15,7 +15,7 @@ const SKILL_MARKET_DATA = {
   "machine-learning": {
     demandTrend: "rising-fast", // rising-fast, rising, stable, declining
     trendPercentage: 245, // % change over last year
-    avgSalaryPremium: 117000, // additional monthly salary vs baseline
+    avgSalaryPremium: 15000, // additional monthly salary vs baseline
     jobPostings: 45230,
     growthRate: 28.5, // annual % growth
     obsolescenceRisk: "low",
@@ -25,7 +25,7 @@ const SKILL_MARKET_DATA = {
   "ai": {
     demandTrend: "rising-fast",
     trendPercentage: 312,
-    avgSalaryPremium: 140000,
+    avgSalaryPremium: 18000,
     jobPostings: 38920,
     growthRate: 35.2,
     obsolescenceRisk: "low",
@@ -35,7 +35,7 @@ const SKILL_MARKET_DATA = {
   "blockchain": {
     demandTrend: "rising",
     trendPercentage: 85,
-    avgSalaryPremium: 70000,
+    avgSalaryPremium: 10000,
     jobPostings: 8430,
     growthRate: 12.3,
     obsolescenceRisk: "medium",
@@ -45,7 +45,7 @@ const SKILL_MARKET_DATA = {
   "data-analysis": {
     demandTrend: "stable",
     trendPercentage: 15,
-    avgSalaryPremium: 56000,
+    avgSalaryPremium: 8000,
     jobPostings: 78430,
     growthRate: 8.5,
     obsolescenceRisk: "low",
@@ -55,7 +55,7 @@ const SKILL_MARKET_DATA = {
   "programming": {
     demandTrend: "stable",
     trendPercentage: 8,
-    avgSalaryPremium: 84000,
+    avgSalaryPremium: 12000,
     jobPostings: 125840,
     growthRate: 5.2,
     obsolescenceRisk: "low",
@@ -65,7 +65,7 @@ const SKILL_MARKET_DATA = {
   "cybersecurity": {
     demandTrend: "rising",
     trendPercentage: 95,
-    avgSalaryPremium: 103000,
+    avgSalaryPremium: 14000,
     jobPostings: 34210,
     growthRate: 15.8,
     obsolescenceRisk: "low",
@@ -75,7 +75,7 @@ const SKILL_MARKET_DATA = {
   "flash": {
     demandTrend: "declining",
     trendPercentage: -85,
-    avgSalaryPremium: -23000,
+    avgSalaryPremium: -5000,
     jobPostings: 120,
     growthRate: -42.5,
     obsolescenceRisk: "critical",
@@ -222,10 +222,10 @@ class MarketIntelligenceService {
    * Estimate cost of career transition
    */
   static estimateTransitionCost(months) {
-    // Assumes bootcamp/courses average ₱28,000/month
-    const educationCost = months * 28000;
-    // Potential income loss if leaving job early
-    const opportunityCost = months * 224000; // rough estimate
+    // Assumes bootcamp/courses average ₱3,500/month in PH
+    const educationCost = months * 3500;
+    // Potential income loss if reducing work hours
+    const opportunityCost = months * 25000; // rough PH estimate
     
     return {
       education: educationCost,
@@ -303,7 +303,7 @@ class MarketIntelligenceService {
    */
   static calculateSkillROI(skillId, hoursToLearn = 100) {
     const marketData = this.getSkillMarketData(skillId);
-    const avgHourlyRate = 2800; // baseline developer rate (PHP)
+    const avgHourlyRate = 250; // baseline developer rate (PHP/hr)
     const learningCost = hoursToLearn * avgHourlyRate; // opportunity cost
     const monthlyPremium = marketData.avgSalaryPremium;
     

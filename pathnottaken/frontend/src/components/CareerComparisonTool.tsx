@@ -116,11 +116,11 @@ export default function CareerComparisonTool({ careers, userSkills }: Props) {
                   return (
                     <td key={c.id} className="px-4 py-3 text-center">
                       <div className={`font-bold text-base ${salary === maxSalary ? 'text-emerald-600' : 'text-gray-700'}`}>
-                        ₱{Math.round(salary / 1000)}K/mo
+                        ₱{salary.toLocaleString()}/mo
                         {salary === maxSalary && <span className="ml-1 text-xs">👑</span>}
                       </div>
                       <div className="text-[10px] text-gray-400 mt-0.5">
-                        ₱{Math.round(c.salaryRange.min / 1000)}K – ₱{Math.round(c.salaryRange.max / 1000)}K
+                        ₱{c.salaryRange.min.toLocaleString()} – ₱{c.salaryRange.max.toLocaleString()}
                       </div>
                     </td>
                   );

@@ -15,9 +15,9 @@ export default function CareerCard({ career, index }: CareerCardProps) {
 
   const formatSalary = (amount: number) => {
     if (amount >= 1000) {
-      return `₱${Math.round(amount / 1000)}K/mo`;
+      return `₱${Math.round(amount / 1000)}K`;
     }
-    return `₱${amount.toLocaleString()}/mo`;
+    return `₱${amount.toLocaleString()}`;
   };
 
   const growthLabel: Record<string, { text: string; color: string }> = {
@@ -116,7 +116,7 @@ export default function CareerCard({ career, index }: CareerCardProps) {
           <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-xl px-3.5 py-2.5 border border-gray-100/80">
             <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider mb-0.5">Salary Range</p>
             <p className="text-sm font-bold text-gray-900">
-              {formatSalary(career.salaryRange.min)} – {formatSalary(career.salaryRange.max)}
+              {formatSalary(career.salaryRange.min)}/mo – {formatSalary(career.salaryRange.max)}/mo
             </p>
           </div>
           <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-xl px-3.5 py-2.5 border border-gray-100/80">
