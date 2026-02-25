@@ -20,20 +20,17 @@ const IS_PROD = process.env.NODE_ENV === "production";
 // ---------- Security ----------
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 
-// Rate limiting on auth routes to prevent brute-force
-const isDev = process.env.NODE_ENV !== 'production';
+// Rate limiting — kept high so demos and testing are never blocked
 const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 200,
+  windowMs: 15 * 60 * 1000,
+  max: 10000,
   standardHeaders: true,
   legacyHeaders: false,
-  message: { error: "Too many attempts, please try again later." },
 });
 
-// Global rate limit (generous)
 const globalLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000, // 1 minute
-  max: 200,
+  windowMs: 1 * 60 * 1000,
+  max: 10000,
   standardHeaders: true,
   legacyHeaders: false,
 });
