@@ -386,122 +386,122 @@ const SKILL_CATEGORIES = [
     name: "Technical Skills",
     icon: "💻",
     skills: [
-      { label: "Programming", synonym: "programming" },
-      { label: "Python", synonym: "python" },
-      { label: "JavaScript", synonym: "javascript" },
-      { label: "React", synonym: "react" },
-      { label: "SQL", synonym: "sql" },
-      { label: "Web Development", synonym: "web development" },
-      { label: "Mobile Development", synonym: "mobile development" },
-      { label: "API Development", synonym: "api development" },
-      { label: "Data Analysis", synonym: "data analysis" },
-      { label: "Machine Learning", synonym: "machine learning" },
-      { label: "Statistics", synonym: "statistics" },
-      { label: "GIS / Mapping", synonym: "gis" },
-      { label: "3D Modeling", synonym: "3d modeling" },
-      { label: "Testing / QA", synonym: "testing" },
-      { label: "Visualization", synonym: "data visualization" },
-      { label: "Cloud Computing", synonym: "cloud computing" },
-      { label: "Cybersecurity", synonym: "cybersecurity" },
-      { label: "DevOps", synonym: "devops" },
-      { label: "Automation", synonym: "automation" },
-      { label: "UI Design", synonym: "ui design" },
-      { label: "Networking", synonym: "computer networking" },
-      { label: "Linux", synonym: "linux" },
-      { label: "Database Management", synonym: "database management" },
-      { label: "Excel", synonym: "excel" },
-      { label: "Technical Literacy", synonym: "technical literacy" },
+      { label: "Programming", id: "programming" },
+      { label: "Python", id: "python" },
+      { label: "JavaScript", id: "javascript" },
+      { label: "React", id: "react" },
+      { label: "SQL", id: "sql" },
+      { label: "Web Development", id: "web-development" },
+      { label: "Mobile Development", id: "mobile-development" },
+      { label: "API Development", id: "api-development" },
+      { label: "Data Analysis", id: "data-analysis" },
+      { label: "Machine Learning", id: "machine-learning" },
+      { label: "Statistics", id: "statistics" },
+      { label: "GIS / Mapping", id: "gis" },
+      { label: "3D Modeling", id: "3d-modeling" },
+      { label: "Testing / QA", id: "testing" },
+      { label: "Visualization", id: "visualization" },
+      { label: "Cloud Computing", id: "cloud-computing" },
+      { label: "Cybersecurity", id: "cybersecurity" },
+      { label: "DevOps", id: "devops" },
+      { label: "Automation", id: "automation" },
+      { label: "UI Design", id: "ui-design" },
+      { label: "Networking", id: "computer-networking" },
+      { label: "Linux", id: "linux" },
+      { label: "Database Management", id: "database-management" },
+      { label: "Excel", id: "excel" },
+      { label: "Technical Literacy", id: "technical-literacy" },
     ],
   },
   {
     name: "Creative Skills",
     icon: "🎨",
     skills: [
-      { label: "Design", synonym: "design" },
-      { label: "Figma", synonym: "figma" },
-      { label: "Writing", synonym: "writing" },
-      { label: "Creativity", synonym: "creativity" },
-      { label: "Prototyping", synonym: "prototyping" },
-      { label: "Photography", synonym: "photography" },
-      { label: "Content Strategy", synonym: "content strategy" },
-      { label: "Storytelling", synonym: "storytelling" },
-      { label: "Digital Marketing", synonym: "digital marketing" },
-      { label: "Video Production", synonym: "video production" },
-      { label: "Copywriting", synonym: "copywriting" },
-      { label: "Graphic Design", synonym: "graphic design" },
-      { label: "UX/UI Design", synonym: "ux design" },
+      { label: "Design", id: "design" },
+      { label: "Figma", id: "figma" },
+      { label: "Writing", id: "writing" },
+      { label: "Creativity", id: "creativity" },
+      { label: "Prototyping", id: "prototyping" },
+      { label: "Photography", id: "photography" },
+      { label: "Content Strategy", id: "content-strategy" },
+      { label: "Storytelling", id: "storytelling" },
+      { label: "Digital Marketing", id: "digital-marketing" },
+      { label: "Video Production", id: "video-production" },
+      { label: "Copywriting", id: "copywriting" },
+      { label: "Graphic Design", id: "graphic-design" },
+      { label: "UX/UI Design", id: "ux-design" },
     ],
   },
   {
     name: "Analytical Skills",
     icon: "🔍",
     skills: [
-      { label: "Critical Thinking", synonym: "critical thinking" },
-      { label: "Analytical Thinking", synonym: "analytical thinking" },
-      { label: "Research", synonym: "research" },
-      { label: "Problem Solving", synonym: "problem solving" },
-      { label: "Attention to Detail", synonym: "attention to detail" },
-      { label: "Investigation", synonym: "investigation" },
-      { label: "Accounting", synonym: "accounting" },
-      { label: "Systems Thinking", synonym: "systems thinking" },
-      { label: "Risk Assessment", synonym: "risk assessment" },
-      { label: "Data Modeling", synonym: "data modeling" },
-      { label: "Process Improvement", synonym: "process improvement" },
+      { label: "Critical Thinking", id: "critical-thinking" },
+      { label: "Analytical Thinking", id: "analytical-thinking" },
+      { label: "Research", id: "research" },
+      { label: "Problem Solving", id: "problem-solving" },
+      { label: "Attention to Detail", id: "attention-to-detail" },
+      { label: "Investigation", id: "investigation" },
+      { label: "Accounting", id: "accounting" },
+      { label: "Systems Thinking", id: "systems-thinking" },
+      { label: "Risk Assessment", id: "risk-assessment" },
+      { label: "Data Modeling", id: "data-modeling" },
+      { label: "Process Improvement", id: "process-improvement" },
     ],
   },
   {
     name: "People & Communication",
     icon: "🤝",
     skills: [
-      { label: "Communication", synonym: "communication" },
-      { label: "Empathy", synonym: "empathy" },
-      { label: "Teaching", synonym: "teaching" },
-      { label: "Public Speaking", synonym: "public speaking" },
-      { label: "Interviewing", synonym: "interviewing" },
-      { label: "Leadership", synonym: "leadership" },
-      { label: "Cultural Awareness", synonym: "cultural awareness" },
-      { label: "Negotiation", synonym: "negotiation" },
-      { label: "Conflict Resolution", synonym: "conflict resolution" },
-      { label: "Networking", synonym: "networking (social)" },
-      { label: "Teamwork", synonym: "teamwork" },
-      { label: "Mentoring", synonym: "mentoring" },
+      { label: "Communication", id: "communication" },
+      { label: "Empathy", id: "empathy" },
+      { label: "Teaching", id: "teaching" },
+      { label: "Public Speaking", id: "public-speaking" },
+      { label: "Interviewing", id: "interviewing" },
+      { label: "Leadership", id: "leadership" },
+      { label: "Cultural Awareness", id: "cultural-awareness" },
+      { label: "Negotiation", id: "negotiation" },
+      { label: "Conflict Resolution", id: "conflict-resolution" },
+      { label: "Networking", id: "networking" },
+      { label: "Teamwork", id: "teamwork" },
+      { label: "Mentoring", id: "mentoring" },
     ],
   },
   {
     name: "Domain Knowledge",
     icon: "📚",
     skills: [
-      { label: "Psychology", synonym: "psychology" },
-      { label: "Biology", synonym: "biology" },
-      { label: "Environmental Science", synonym: "environmental science" },
-      { label: "Healthcare Knowledge", synonym: "healthcare knowledge" },
-      { label: "Ethics", synonym: "ethics" },
-      { label: "Policy", synonym: "policy" },
-      { label: "Philosophy", synonym: "philosophy" },
-      { label: "Languages", synonym: "languages" },
-      { label: "Mathematics", synonym: "mathematics" },
-      { label: "Accessibility", synonym: "accessibility" },
-      { label: "Sports Science", synonym: "sports science" },
-      { label: "Supply Chain", synonym: "supply chain" },
-      { label: "Education Theory", synonym: "education theory" },
-      { label: "Finance", synonym: "finance" },
-      { label: "Law / Legal", synonym: "law" },
+      { label: "Psychology", id: "psychology" },
+      { label: "Biology", id: "biology" },
+      { label: "Environmental Science", id: "environmental-science" },
+      { label: "Healthcare Knowledge", id: "healthcare-knowledge" },
+      { label: "Ethics", id: "ethics" },
+      { label: "Policy", id: "policy" },
+      { label: "Philosophy", id: "philosophy" },
+      { label: "Languages", id: "languages" },
+      { label: "Mathematics", id: "mathematics" },
+      { label: "Accessibility", id: "accessibility" },
+      { label: "Sports Science", id: "sports-science" },
+      { label: "Supply Chain", id: "supply-chain" },
+      { label: "Education Theory", id: "education-theory" },
+      { label: "Finance", id: "finance" },
+      { label: "Law / Legal", id: "law" },
     ],
   },
   {
     name: "Management & Organization",
     icon: "📋",
     skills: [
-      { label: "Project Management", synonym: "project management" },
-      { label: "Organization", synonym: "organization" },
-      { label: "Strategy", synonym: "strategy" },
-      { label: "Stakeholder Management", synonym: "stakeholder management" },
-      { label: "Agile / Scrum", synonym: "agile" },
-      { label: "Budgeting", synonym: "budgeting" },
-      { label: "Change Management", synonym: "change management" },
-      { label: "Product Management", synonym: "product management" },
-      { label: "Marketing", synonym: "digital marketing" },
-      { label: "Operations", synonym: "operations" },
+      { label: "Project Management", id: "project-management" },
+      { label: "Organization", id: "organization" },
+      { label: "Strategy", id: "strategy" },
+      { label: "Stakeholder Management", id: "stakeholder-management" },
+      { label: "Agile / Scrum", id: "agile" },
+      { label: "Budgeting", id: "budgeting" },
+      { label: "Change Management", id: "change-management" },
+      { label: "Product Management", id: "product-management" },
+      { label: "Marketing", id: "marketing" },
+      { label: "Operations", id: "operations" },
     ],
   },
 ];
@@ -599,13 +599,19 @@ export default function SkillsForm() {
               const latestSnap = userData.skillSnapshots[0];
               // Map saved skill IDs to {id, label} objects using remote suggestions
               const savedSkills: Array<{ id: string; label: string }> = [];
+              // Build a lookup from browse categories for proper labels
+              const browseSkillById: Record<string, string> = {};
+              SKILL_CATEGORIES.forEach((cat) => cat.skills.forEach((s) => { browseSkillById[s.id] = s.label; }));
               for (const skillId of latestSnap.skills) {
                 const remote = remoteSuggestions.find((s) => s.id === skillId);
                 if (remote) {
                   savedSkills.push(remote);
+                } else if (browseSkillById[skillId]) {
+                  savedSkills.push({ id: skillId, label: browseSkillById[skillId] });
                 } else {
-                  // Fallback: use the ID as label with dashes replaced
-                  savedSkills.push({ id: skillId, label: skillId.replace(/-/g, ' ') });
+                  // Fallback: use the ID as label with dashes replaced and title-cased
+                  const label = skillId.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+                  savedSkills.push({ id: skillId, label });
                 }
               }
               if (savedSkills.length > 0) {
@@ -781,8 +787,10 @@ export default function SkillsForm() {
     inputRef.current?.focus();
   };
 
-  const addPopularSkill = (synonym: string) => {
-    addSkill(synonym);
+  const addPopularSkill = (skillId: string, skillLabel: string) => {
+    if (!skills.find((sk) => sk.id === skillId)) {
+      setSkills((prev) => [...prev, { id: skillId, label: skillLabel }]);
+    }
   };
 
   const removeSkill = (skillId: string) => {
@@ -976,13 +984,11 @@ export default function SkillsForm() {
                       </p>
                       <div className="flex flex-wrap gap-1.5">
                         {cat.skills.map((ps) => {
-                          const canon = SYNONYMS[ps.synonym];
-                          const ids = canon ? (Array.isArray(canon) ? canon : [canon]) : [ps.synonym];
-                          const alreadyAdded = ids.some((id) => skills.some((sk) => sk.id === id));
+                          const alreadyAdded = skills.some((sk) => sk.id === ps.id);
                           return (
                             <button
                               key={ps.label}
-                              onClick={() => !alreadyAdded && addPopularSkill(ps.synonym)}
+                              onClick={() => !alreadyAdded && addPopularSkill(ps.id, ps.label)}
                               disabled={alreadyAdded}
                               className={`text-xs px-2.5 py-1 rounded-full border transition-all ${
                                 alreadyAdded
