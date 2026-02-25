@@ -116,11 +116,11 @@ export default function CareerComparisonTool({ careers, userSkills }: Props) {
                   return (
                     <td key={c.id} className="px-4 py-3 text-center">
                       <div className={`font-bold text-base ${salary === maxSalary ? 'text-emerald-600' : 'text-gray-700'}`}>
-                        ${(salary / 1000).toFixed(0)}K
-                        {salary === maxSalary && <span className="ml-1 text-xs">👑</span>}
+                        \u20b1{(salary / 1000000).toFixed(1)}M
+                        {salary === maxSalary && <span className="ml-1 text-xs">\ud83d\udc51</span>}
                       </div>
                       <div className="text-[10px] text-gray-400 mt-0.5">
-                        ${(c.salaryRange.min / 1000).toFixed(0)}K – ${(c.salaryRange.max / 1000).toFixed(0)}K
+                        \u20b1{(c.salaryRange.min / 1000000).toFixed(1)}M \u2013 \u20b1{(c.salaryRange.max / 1000000).toFixed(1)}M
                       </div>
                     </td>
                   );

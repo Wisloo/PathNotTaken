@@ -6,14 +6,47 @@
       "category": "Design & Research",
       "description": "UX Researchers study how people interact with products and services, using psychology, data analysis, and empathy to improve user experiences. They conduct interviews, surveys, and usability tests to uncover insights that drive product decisions.",
       "dayInLife": "Your day starts with analyzing survey responses from last week's study. Mid-morning, you moderate a usability test session with participants. After lunch, you synthesize findings into a report with actionable recommendations for the design team. You end the day planning the methodology for an upcoming research project.",
-      "salaryRange": { "min": 65000, "median": 92000, "max": 130000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3640000,
+        "median": 5152000,
+        "max": 7280000,
+        "currency": "PHP"
+      },
       "growthOutlook": "High",
-      "requiredSkills": ["empathy", "analytical-thinking", "communication", "research", "psychology", "data-analysis", "interviewing"],
-      "relatedInterests": ["understanding-people", "problem-solving", "psychology", "design", "technology"],
+      "requiredSkills": [
+        "empathy",
+        "analytical-thinking",
+        "communication",
+        "research",
+        "psychology",
+        "data-analysis",
+        "interviewing"
+      ],
+      "relatedInterests": [
+        "understanding-people",
+        "problem-solving",
+        "psychology",
+        "design",
+        "technology"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Many people with psychology or communication backgrounds don't realize their skills directly apply to tech careers in UX research.",
-      "typicalBackgrounds": ["Psychology", "Sociology", "Communications", "Anthropology", "Marketing", "Human Factors"],
-      "industries": ["Tech companies", "Healthcare apps", "Financial services", "E-commerce", "Government digital services", "Consulting firms"],
+      "typicalBackgrounds": [
+        "Psychology",
+        "Sociology",
+        "Communications",
+        "Anthropology",
+        "Marketing",
+        "Human Factors"
+      ],
+      "industries": [
+        "Tech companies",
+        "Healthcare apps",
+        "Financial services",
+        "E-commerce",
+        "Government digital services",
+        "Consulting firms"
+      ],
       "skillTransfers": {
         "empathy": "Your ability to understand others' feelings directly translates to identifying user pain points and unmet needs",
         "research": "Literature reviews and study design are the same methodological skills used in usability research",
@@ -32,7 +65,14 @@
         "Build a portfolio with 2-3 case studies showing your research process",
         "Apply for junior UX researcher or UX research assistant positions"
       ],
-      "careerProgression": ["UX Research Assistant", "Junior UX Researcher", "UX Researcher", "Senior UX Researcher", "Lead/Principal UX Researcher", "Head of Research"],
+      "careerProgression": [
+        "UX Research Assistant",
+        "Junior UX Researcher",
+        "UX Researcher",
+        "Senior UX Researcher",
+        "Lead/Principal UX Researcher",
+        "Head of Research"
+      ],
       "pros": [
         "High demand with strong job security across tech, healthcare, and finance",
         "Meaningful work that directly improves how people experience products",
@@ -53,14 +93,45 @@
       "category": "Writing & Communication",
       "description": "Technical Writers translate complex technical concepts into clear, accessible documentation. They create user guides, API docs, tutorials, and help content that makes technology understandable for different audiences.",
       "dayInLife": "You spend the morning reviewing a developer's pull request to understand a new feature, then draft documentation for it. After lunch, you meet with the product team to discuss upcoming releases. You spend the afternoon updating the API reference guide and creating a tutorial with code examples.",
-      "salaryRange": { "min": 55000, "median": 80000, "max": 115000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3080000,
+        "median": 4480000,
+        "max": 6440000,
+        "currency": "PHP"
+      },
       "growthOutlook": "Moderate",
-      "requiredSkills": ["writing", "communication", "technical-literacy", "attention-to-detail", "organization", "research"],
-      "relatedInterests": ["writing", "technology", "teaching", "problem-solving", "organization"],
+      "requiredSkills": [
+        "writing",
+        "communication",
+        "technical-literacy",
+        "attention-to-detail",
+        "organization",
+        "research"
+      ],
+      "relatedInterests": [
+        "writing",
+        "technology",
+        "teaching",
+        "problem-solving",
+        "organization"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Writers and communicators often overlook tech industry roles where their core skills command strong salaries.",
-      "typicalBackgrounds": ["English", "Journalism", "Communications", "Computer Science", "Liberal Arts"],
-      "industries": ["Software companies", "API platforms", "Developer tools", "Healthcare IT", "Fintech", "Cloud services"],
+      "typicalBackgrounds": [
+        "English",
+        "Journalism",
+        "Communications",
+        "Computer Science",
+        "Liberal Arts"
+      ],
+      "industries": [
+        "Software companies",
+        "API platforms",
+        "Developer tools",
+        "Healthcare IT",
+        "Fintech",
+        "Cloud services"
+      ],
       "skillTransfers": {
         "writing": "Your ability to write clearly and concisely is the core skill — you'll translate complex technical concepts into guides that thousands of developers read daily",
         "communication": "Interviewing engineers, understanding their intent, and communicating it to different audiences is what you'll do every day",
@@ -78,7 +149,14 @@
         "Take the Google Technical Writing courses (free)",
         "Apply for technical writing internships or junior technical writer roles"
       ],
-      "careerProgression": ["Junior Technical Writer", "Technical Writer", "Senior Technical Writer", "Staff Technical Writer", "Documentation Manager", "Director of Documentation"],
+      "careerProgression": [
+        "Junior Technical Writer",
+        "Technical Writer",
+        "Senior Technical Writer",
+        "Staff Technical Writer",
+        "Documentation Manager",
+        "Director of Documentation"
+      ],
       "pros": [
         "Excellent remote work opportunities since writing is inherently async",
         "Steady demand in every tech company that ships a product or API",
@@ -99,14 +177,48 @@
       "category": "Ethics & Policy",
       "description": "Data Ethicists ensure that data collection, AI systems, and algorithmic decisions are fair, transparent, and respectful of privacy. They bridge philosophy, law, and technology to guide responsible innovation.",
       "dayInLife": "You review an AI model's training data for potential biases in the morning. After a cross-functional meeting with engineers and legal, you draft ethical guidelines for a new data collection initiative. The afternoon involves researching emerging regulation and preparing a presentation on responsible AI for leadership.",
-      "salaryRange": { "min": 80000, "median": 115000, "max": 160000, "currency": "USD" },
+      "salaryRange": {
+        "min": 4480000,
+        "median": 6440000,
+        "max": 8960000,
+        "currency": "PHP"
+      },
       "growthOutlook": "Very High",
-      "requiredSkills": ["critical-thinking", "ethics", "communication", "research", "data-analysis", "policy", "philosophy"],
-      "relatedInterests": ["ethics", "technology", "social-impact", "law", "philosophy", "psychology"],
+      "requiredSkills": [
+        "critical-thinking",
+        "ethics",
+        "communication",
+        "research",
+        "data-analysis",
+        "policy",
+        "philosophy"
+      ],
+      "relatedInterests": [
+        "ethics",
+        "technology",
+        "social-impact",
+        "law",
+        "philosophy",
+        "psychology"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Philosophy and ethics graduates rarely consider tech, but the industry desperately needs their perspective on AI fairness and data rights.",
-      "typicalBackgrounds": ["Philosophy", "Ethics", "Law", "Political Science", "Data Science", "Public Policy"],
-      "industries": ["Big Tech (Google, Meta, Microsoft)", "AI startups", "Government regulation", "Healthcare AI", "Financial technology", "Consulting"],
+      "typicalBackgrounds": [
+        "Philosophy",
+        "Ethics",
+        "Law",
+        "Political Science",
+        "Data Science",
+        "Public Policy"
+      ],
+      "industries": [
+        "Big Tech (Google, Meta, Microsoft)",
+        "AI startups",
+        "Government regulation",
+        "Healthcare AI",
+        "Financial technology",
+        "Consulting"
+      ],
       "skillTransfers": {
         "critical-thinking": "Evaluating AI systems for fairness requires the same rigorous logical analysis you use in philosophical arguments",
         "ethics": "Your training in ethical frameworks (utilitarian, deontological, virtue ethics) directly applies to evaluating AI decisions that affect millions of people",
@@ -124,7 +236,14 @@
         "Write articles or give talks about AI ethics issues",
         "Apply for ethics roles at major tech companies or AI policy think tanks"
       ],
-      "careerProgression": ["Ethics Research Assistant", "Data Ethics Analyst", "AI Ethics Specialist", "Senior Ethics Advisor", "Head of Responsible AI", "Chief Ethics Officer"],
+      "careerProgression": [
+        "Ethics Research Assistant",
+        "Data Ethics Analyst",
+        "AI Ethics Specialist",
+        "Senior Ethics Advisor",
+        "Head of Responsible AI",
+        "Chief Ethics Officer"
+      ],
       "pros": [
         "Rapidly growing field with increasing regulatory pressure creating new positions",
         "Deeply meaningful work that protects vulnerable communities from algorithmic harm",
@@ -145,14 +264,48 @@
       "category": "Data & Cities",
       "description": "Urban Informatics Specialists use data science and technology to solve city-scale problems — from traffic optimization to public health mapping. They combine GIS, data analysis, and civic technology to improve urban life.",
       "dayInLife": "You start by analyzing city transit data to identify inefficient routes. Late morning, you meet with city planners to present findings from a noise pollution study. After lunch, you build a dashboard visualizing neighborhood walkability scores. You end the day writing a proposal for a smart city sensor network.",
-      "salaryRange": { "min": 60000, "median": 85000, "max": 120000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3360000,
+        "median": 4760000,
+        "max": 6720000,
+        "currency": "PHP"
+      },
       "growthOutlook": "High",
-      "requiredSkills": ["data-analysis", "programming", "gis", "statistics", "visualization", "problem-solving", "communication"],
-      "relatedInterests": ["cities", "environment", "data", "social-impact", "technology", "geography"],
+      "requiredSkills": [
+        "data-analysis",
+        "programming",
+        "gis",
+        "statistics",
+        "visualization",
+        "problem-solving",
+        "communication"
+      ],
+      "relatedInterests": [
+        "cities",
+        "environment",
+        "data",
+        "social-impact",
+        "technology",
+        "geography"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Students interested in geography or urban planning don't realize their passion can combine with data skills for high-impact tech roles.",
-      "typicalBackgrounds": ["Geography", "Urban Planning", "Civil Engineering", "Environmental Science", "Data Science", "Public Policy"],
-      "industries": ["City governments", "Transportation companies (Uber, Lyft)", "Smart city startups", "Environmental consulting", "Real estate tech", "Public health agencies"],
+      "typicalBackgrounds": [
+        "Geography",
+        "Urban Planning",
+        "Civil Engineering",
+        "Environmental Science",
+        "Data Science",
+        "Public Policy"
+      ],
+      "industries": [
+        "City governments",
+        "Transportation companies (Uber, Lyft)",
+        "Smart city startups",
+        "Environmental consulting",
+        "Real estate tech",
+        "Public health agencies"
+      ],
       "skillTransfers": {
         "data-analysis": "Analyzing city-scale datasets (traffic, census, pollution) requires the same analytical skills as any data role, but with a civic impact",
         "programming": "Your coding skills let you build dashboards, automate analysis, and create tools that city planners actually use",
@@ -170,7 +323,13 @@
         "Build a portfolio analyzing open city data (most cities publish open datasets)",
         "Apply for data analyst roles in city government or urban planning firms"
       ],
-      "careerProgression": ["Urban Data Analyst", "Urban Informatics Specialist", "Senior Spatial Data Scientist", "Director of Urban Analytics", "Chief Innovation Officer (City)"],
+      "careerProgression": [
+        "Urban Data Analyst",
+        "Urban Informatics Specialist",
+        "Senior Spatial Data Scientist",
+        "Director of Urban Analytics",
+        "Chief Innovation Officer (City)"
+      ],
       "pros": [
         "Tangible real-world impact — your work visibly improves neighborhoods and cities",
         "Growing smart-city investment creates expanding job opportunities worldwide",
@@ -190,14 +349,48 @@
       "category": "Technology & Community",
       "description": "Developer Advocates are the bridge between a technology company and its developer community. They create tutorials, give talks, write blog posts, and build sample applications to help developers succeed with a platform or tool.",
       "dayInLife": "Morning: you record a video tutorial for a new SDK feature. You then respond to developer questions on the community forum. After lunch, you prototype a demo app for an upcoming conference talk. Late afternoon, you write a blog post about a common developer pain point and how to solve it.",
-      "salaryRange": { "min": 80000, "median": 120000, "max": 170000, "currency": "USD" },
+      "salaryRange": {
+        "min": 4480000,
+        "median": 6720000,
+        "max": 9520000,
+        "currency": "PHP"
+      },
       "growthOutlook": "High",
-      "requiredSkills": ["programming", "communication", "public-speaking", "writing", "teaching", "empathy", "creativity"],
-      "relatedInterests": ["technology", "teaching", "community", "public-speaking", "writing", "problem-solving"],
+      "requiredSkills": [
+        "programming",
+        "communication",
+        "public-speaking",
+        "writing",
+        "teaching",
+        "empathy",
+        "creativity"
+      ],
+      "relatedInterests": [
+        "technology",
+        "teaching",
+        "community",
+        "public-speaking",
+        "writing",
+        "problem-solving"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Many developers and communicators don't know this role exists — it perfectly combines technical skills with people skills.",
-      "typicalBackgrounds": ["Computer Science", "Software Engineering", "Communications", "Education", "Journalism", "Content Creation"],
-      "industries": ["Cloud platforms (AWS, Google Cloud, Azure)", "Developer tools", "Open source companies", "API companies (Stripe, Twilio)", "DevOps tools", "Database companies"],
+      "typicalBackgrounds": [
+        "Computer Science",
+        "Software Engineering",
+        "Communications",
+        "Education",
+        "Journalism",
+        "Content Creation"
+      ],
+      "industries": [
+        "Cloud platforms (AWS, Google Cloud, Azure)",
+        "Developer tools",
+        "Open source companies",
+        "API companies (Stripe, Twilio)",
+        "DevOps tools",
+        "Database companies"
+      ],
       "skillTransfers": {
         "programming": "You need to be a competent developer who can write real code — you'll build demos, debug issues, and write sample applications",
         "communication": "You'll present at conferences, write blog posts, and create tutorials. The ability to explain complex concepts simply is your superpower",
@@ -215,7 +408,14 @@
         "Contribute to open source and help others in community forums",
         "Apply for junior developer advocate or community manager positions"
       ],
-      "careerProgression": ["Junior Developer Advocate", "Developer Advocate", "Senior Developer Advocate", "Staff Developer Advocate", "Head of Developer Relations", "VP of Developer Experience"],
+      "careerProgression": [
+        "Junior Developer Advocate",
+        "Developer Advocate",
+        "Senior Developer Advocate",
+        "Staff Developer Advocate",
+        "Head of Developer Relations",
+        "VP of Developer Experience"
+      ],
       "pros": [
         "One of the highest-paying non-management tech roles with strong compensation",
         "Incredible variety — coding, writing, speaking, and traveling in one job",
@@ -236,14 +436,48 @@
       "category": "Science & Technology",
       "description": "Bioinformatics Scientists use programming, statistics, and biology knowledge to analyze genomic data, model biological systems, and accelerate drug discovery and personalized medicine.",
       "dayInLife": "You begin by running a genome alignment pipeline on a new patient dataset. Mid-morning, you debug a Python script that visualizes gene expression patterns. After lunch, you present your mutation analysis findings to the research team. The afternoon is spent developing a machine learning model to predict drug responses.",
-      "salaryRange": { "min": 70000, "median": 100000, "max": 140000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3920000,
+        "median": 5600000,
+        "max": 7840000,
+        "currency": "PHP"
+      },
       "growthOutlook": "Very High",
-      "requiredSkills": ["programming", "biology", "statistics", "data-analysis", "machine-learning", "research", "attention-to-detail"],
-      "relatedInterests": ["science", "biology", "technology", "data", "healthcare", "research"],
+      "requiredSkills": [
+        "programming",
+        "biology",
+        "statistics",
+        "data-analysis",
+        "machine-learning",
+        "research",
+        "attention-to-detail"
+      ],
+      "relatedInterests": [
+        "science",
+        "biology",
+        "technology",
+        "data",
+        "healthcare",
+        "research"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Biology students often don't see the massive demand for computational skills in biotech, where coding meets life sciences.",
-      "typicalBackgrounds": ["Biology", "Biochemistry", "Computer Science", "Statistics", "Genetics", "Biomedical Engineering"],
-      "industries": ["Pharmaceutical companies", "Biotech startups", "Research hospitals", "Genomics companies (23andMe, Illumina)", "Academic research labs", "Government health agencies (NIH, CDC)"],
+      "typicalBackgrounds": [
+        "Biology",
+        "Biochemistry",
+        "Computer Science",
+        "Statistics",
+        "Genetics",
+        "Biomedical Engineering"
+      ],
+      "industries": [
+        "Pharmaceutical companies",
+        "Biotech startups",
+        "Research hospitals",
+        "Genomics companies (23andMe, Illumina)",
+        "Academic research labs",
+        "Government health agencies (NIH, CDC)"
+      ],
       "skillTransfers": {
         "programming": "Python and R are the primary languages — if you can code, you can analyze genomic data. You don't need to be a software engineer",
         "biology": "Your understanding of molecular biology, genetics, and cellular processes is irreplaceable — pure computer scientists can't interpret results without it",
@@ -262,7 +496,14 @@
         "Practice with publicly available datasets from NCBI GEO",
         "Apply for bioinformatics intern or research assistant positions at universities or biotech companies"
       ],
-      "careerProgression": ["Bioinformatics Intern", "Junior Bioinformatician", "Bioinformatics Scientist", "Senior Bioinformatics Scientist", "Principal Scientist", "Director of Computational Biology"],
+      "careerProgression": [
+        "Bioinformatics Intern",
+        "Junior Bioinformatician",
+        "Bioinformatics Scientist",
+        "Senior Bioinformatics Scientist",
+        "Principal Scientist",
+        "Director of Computational Biology"
+      ],
       "pros": [
         "Directly contributes to life-saving medical breakthroughs and drug discoveries",
         "Booming job market fueled by genomics, precision medicine, and biotech investment",
@@ -283,14 +524,47 @@
       "category": "Environment & Business",
       "description": "Sustainability Analysts help organizations measure, report, and reduce their environmental impact. They combine data analysis with environmental science to drive corporate sustainability strategies and ESG reporting.",
       "dayInLife": "Morning: you collect energy consumption data from facilities worldwide and update the carbon footprint dashboard. You then join a call with supply chain partners to discuss emission reduction targets. After lunch, you draft the quarterly sustainability report for investors. Late afternoon, you research renewable energy options for the company's data centers.",
-      "salaryRange": { "min": 55000, "median": 78000, "max": 110000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3080000,
+        "median": 4368000,
+        "max": 6160000,
+        "currency": "PHP"
+      },
       "growthOutlook": "Very High",
-      "requiredSkills": ["data-analysis", "environmental-science", "communication", "research", "critical-thinking", "project-management"],
-      "relatedInterests": ["environment", "social-impact", "data", "business", "science", "sustainability"],
+      "requiredSkills": [
+        "data-analysis",
+        "environmental-science",
+        "communication",
+        "research",
+        "critical-thinking",
+        "project-management"
+      ],
+      "relatedInterests": [
+        "environment",
+        "social-impact",
+        "data",
+        "business",
+        "science",
+        "sustainability"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Environmental science majors often aim for fieldwork but miss the growing corporate demand for sustainability data expertise.",
-      "typicalBackgrounds": ["Environmental Science", "Environmental Engineering", "Business Administration", "Data Science", "Chemistry", "Public Policy"],
-      "industries": ["Fortune 500 corporations", "ESG consulting firms", "Renewable energy companies", "Government environmental agencies", "Investment firms", "Manufacturing companies"],
+      "typicalBackgrounds": [
+        "Environmental Science",
+        "Environmental Engineering",
+        "Business Administration",
+        "Data Science",
+        "Chemistry",
+        "Public Policy"
+      ],
+      "industries": [
+        "Fortune 500 corporations",
+        "ESG consulting firms",
+        "Renewable energy companies",
+        "Government environmental agencies",
+        "Investment firms",
+        "Manufacturing companies"
+      ],
       "skillTransfers": {
         "data-analysis": "Carbon tracking, emissions modeling, and ESG reporting are fundamentally data problems — your analytical skills apply directly",
         "environmental-science": "Understanding ecosystems, pollution, and climate science lets you ask the right questions and interpret environmental data meaningfully",
@@ -308,7 +582,14 @@
         "Take a sustainability certification course",
         "Apply for sustainability coordinator or analyst roles at large companies"
       ],
-      "careerProgression": ["Sustainability Coordinator", "Sustainability Analyst", "Senior Sustainability Analyst", "Sustainability Manager", "Director of Sustainability", "Chief Sustainability Officer"],
+      "careerProgression": [
+        "Sustainability Coordinator",
+        "Sustainability Analyst",
+        "Senior Sustainability Analyst",
+        "Sustainability Manager",
+        "Director of Sustainability",
+        "Chief Sustainability Officer"
+      ],
       "pros": [
         "Rapidly expanding field driven by ESG regulations and investor pressure",
         "Purpose-driven work that directly addresses the climate crisis",
@@ -329,14 +610,48 @@
       "category": "Finance & Investigation",
       "description": "Forensic Accountants investigate financial fraud, embezzlement, and white-collar crime. They combine accounting expertise with detective work, analyzing financial records to uncover hidden patterns and testify as expert witnesses.",
       "dayInLife": "You spend the morning tracing suspicious transactions through multiple bank accounts. After a meeting with the legal team about an upcoming court case, you analyze expense reports looking for anomalies. The afternoon involves preparing a detailed forensic report and creating visualizations that explain the fraud scheme for a jury.",
-      "salaryRange": { "min": 60000, "median": 92000, "max": 135000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3360000,
+        "median": 5152000,
+        "max": 7560000,
+        "currency": "PHP"
+      },
       "growthOutlook": "High",
-      "requiredSkills": ["accounting", "analytical-thinking", "attention-to-detail", "investigation", "communication", "critical-thinking", "data-analysis"],
-      "relatedInterests": ["investigation", "law", "finance", "problem-solving", "justice", "data"],
+      "requiredSkills": [
+        "accounting",
+        "analytical-thinking",
+        "attention-to-detail",
+        "investigation",
+        "communication",
+        "critical-thinking",
+        "data-analysis"
+      ],
+      "relatedInterests": [
+        "investigation",
+        "law",
+        "finance",
+        "problem-solving",
+        "justice",
+        "data"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Accounting students rarely discover this exciting intersection of finance and criminal investigation.",
-      "typicalBackgrounds": ["Accounting", "Finance", "Criminal Justice", "Law", "Mathematics", "Economics"],
-      "industries": ["Big Four accounting firms", "FBI/Law enforcement", "Corporate investigation units", "Insurance companies", "Law firms", "Government agencies (SEC, IRS)"],
+      "typicalBackgrounds": [
+        "Accounting",
+        "Finance",
+        "Criminal Justice",
+        "Law",
+        "Mathematics",
+        "Economics"
+      ],
+      "industries": [
+        "Big Four accounting firms",
+        "FBI/Law enforcement",
+        "Corporate investigation units",
+        "Insurance companies",
+        "Law firms",
+        "Government agencies (SEC, IRS)"
+      ],
       "skillTransfers": {
         "accounting": "Your understanding of financial statements, bookkeeping, and audit trails is the foundation — you'll use it to trace money through complex schemes",
         "analytical-thinking": "You'll analyze thousands of transactions to find needles in haystacks — the same analytical patterns from accounting and finance",
@@ -354,7 +669,14 @@
         "Learn data analytics tools for financial data (SQL, Benford's Law analysis)",
         "Apply to forensic accounting divisions at Big Four firms or FBI financial crimes units"
       ],
-      "careerProgression": ["Staff Accountant", "Forensic Accountant", "Senior Forensic Accountant", "Forensic Accounting Manager", "Partner/Director", "Chief Investigator"],
+      "careerProgression": [
+        "Staff Accountant",
+        "Forensic Accountant",
+        "Senior Forensic Accountant",
+        "Forensic Accounting Manager",
+        "Partner/Director",
+        "Chief Investigator"
+      ],
       "pros": [
         "Thrilling detective-style work that makes accounting far more engaging",
         "Strong job security since financial fraud never goes away",
@@ -375,14 +697,48 @@
       "category": "Technology & Languages",
       "description": "Localization Engineers adapt software products for different languages, cultures, and regions. They combine programming skills with cultural knowledge to ensure apps work naturally for users worldwide.",
       "dayInLife": "Morning: you fix a bug where Arabic text isn't rendering correctly in the mobile app. Then you review a translator's work for a Japanese release. After lunch, you build automated tests for locale-specific date and currency formatting. Late afternoon, you meet with the product team to plan internationalization for a new feature.",
-      "salaryRange": { "min": 65000, "median": 90000, "max": 125000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3640000,
+        "median": 5040000,
+        "max": 7000000,
+        "currency": "PHP"
+      },
       "growthOutlook": "Moderate",
-      "requiredSkills": ["programming", "languages", "attention-to-detail", "cultural-awareness", "testing", "communication", "problem-solving"],
-      "relatedInterests": ["languages", "culture", "technology", "travel", "problem-solving", "global-perspective"],
+      "requiredSkills": [
+        "programming",
+        "languages",
+        "attention-to-detail",
+        "cultural-awareness",
+        "testing",
+        "communication",
+        "problem-solving"
+      ],
+      "relatedInterests": [
+        "languages",
+        "culture",
+        "technology",
+        "travel",
+        "problem-solving",
+        "global-perspective"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Language and linguistics graduates often don't know their skills are valued in software engineering contexts.",
-      "typicalBackgrounds": ["Linguistics", "Foreign Languages", "Computer Science", "Translation Studies", "Cultural Studies", "International Relations"],
-      "industries": ["Global software companies", "Gaming studios", "E-commerce platforms", "Social media companies", "SaaS companies", "Localization service providers"],
+      "typicalBackgrounds": [
+        "Linguistics",
+        "Foreign Languages",
+        "Computer Science",
+        "Translation Studies",
+        "Cultural Studies",
+        "International Relations"
+      ],
+      "industries": [
+        "Global software companies",
+        "Gaming studios",
+        "E-commerce platforms",
+        "Social media companies",
+        "SaaS companies",
+        "Localization service providers"
+      ],
       "skillTransfers": {
         "languages": "Your fluency in multiple languages gives you an intuitive understanding of how text, dates, currencies, and cultural norms vary worldwide",
         "programming": "You'll write automation scripts, fix encoding bugs, and build internationalization frameworks — coding is essential",
@@ -400,7 +756,13 @@
         "Contribute to open-source localization projects",
         "Apply for localization QA or junior localization engineer roles"
       ],
-      "careerProgression": ["Localization QA Tester", "Localization Engineer", "Senior Localization Engineer", "Internationalization Architect", "Director of Globalization"],
+      "careerProgression": [
+        "Localization QA Tester",
+        "Localization Engineer",
+        "Senior Localization Engineer",
+        "Internationalization Architect",
+        "Director of Globalization"
+      ],
       "pros": [
         "Unique niche combining language skills with engineering for less competition",
         "Remote-friendly role since global teams naturally span time zones",
@@ -420,14 +782,48 @@
       "category": "Design & Technology",
       "description": "Computational Designers use programming, algorithms, and mathematical models to create designs — from architecture and product design to generative art. They bridge aesthetics and code to create forms impossible by hand.",
       "dayInLife": "You start by tweaking parameters in a generative algorithm that creates organic-looking building facades. Mid-morning, you code a Grasshopper script to optimize material usage. After lunch, you prototype an interactive installation using Processing. The afternoon is spent collaborating with architects on a parametric design for a community center.",
-      "salaryRange": { "min": 60000, "median": 88000, "max": 130000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3360000,
+        "median": 4928000,
+        "max": 7280000,
+        "currency": "PHP"
+      },
       "growthOutlook": "High",
-      "requiredSkills": ["programming", "design", "mathematics", "creativity", "3d-modeling", "problem-solving", "visualization"],
-      "relatedInterests": ["art", "design", "technology", "mathematics", "architecture", "creativity"],
+      "requiredSkills": [
+        "programming",
+        "design",
+        "mathematics",
+        "creativity",
+        "3d-modeling",
+        "problem-solving",
+        "visualization"
+      ],
+      "relatedInterests": [
+        "art",
+        "design",
+        "technology",
+        "mathematics",
+        "architecture",
+        "creativity"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Art and design students often overlook how adding programming skills opens up entirely new creative career paths.",
-      "typicalBackgrounds": ["Architecture", "Industrial Design", "Fine Arts", "Computer Science", "Mathematics", "Graphic Design"],
-      "industries": ["Architecture firms", "Product design studios", "Art installations", "Fashion tech", "Game studios", "Digital art agencies"],
+      "typicalBackgrounds": [
+        "Architecture",
+        "Industrial Design",
+        "Fine Arts",
+        "Computer Science",
+        "Mathematics",
+        "Graphic Design"
+      ],
+      "industries": [
+        "Architecture firms",
+        "Product design studios",
+        "Art installations",
+        "Fashion tech",
+        "Game studios",
+        "Digital art agencies"
+      ],
       "skillTransfers": {
         "programming": "Your coding skills let you create forms, patterns, and structures that are impossible to make by hand — algorithms become your creative tools",
         "design": "Your eye for aesthetics and composition guides the parametric designs you create with code",
@@ -445,7 +841,13 @@
         "Participate in creative coding challenges (Genuary, Inktober)",
         "Apply to design studios that use computational methods"
       ],
-      "careerProgression": ["Creative Coder", "Computational Designer", "Senior Computational Designer", "Design Technologist Lead", "Director of Creative Technology"],
+      "careerProgression": [
+        "Creative Coder",
+        "Computational Designer",
+        "Senior Computational Designer",
+        "Design Technologist Lead",
+        "Director of Creative Technology"
+      ],
       "pros": [
         "Uniquely creative role where code is your artistic medium",
         "High demand in architecture, fashion, and digital art industries",
@@ -466,14 +868,48 @@
       "category": "Healthcare & Design",
       "description": "Healthcare UX Designers create intuitive interfaces for medical applications, electronic health records, telemedicine platforms, and health monitoring devices. Their designs directly impact patient outcomes and clinician efficiency.",
       "dayInLife": "Morning: you shadow a nurse using the EHR system to identify pain points. Then you sketch wireframes for a new patient intake flow. After lunch, you run a usability test of a telemedicine app with elderly patients. The afternoon is spent creating a design system for accessible health content.",
-      "salaryRange": { "min": 75000, "median": 105000, "max": 145000, "currency": "USD" },
+      "salaryRange": {
+        "min": 4200000,
+        "median": 5880000,
+        "max": 8120000,
+        "currency": "PHP"
+      },
       "growthOutlook": "Very High",
-      "requiredSkills": ["design", "empathy", "research", "accessibility", "prototyping", "communication", "healthcare-knowledge"],
-      "relatedInterests": ["healthcare", "design", "helping-people", "technology", "psychology", "accessibility"],
+      "requiredSkills": [
+        "design",
+        "empathy",
+        "research",
+        "accessibility",
+        "prototyping",
+        "communication",
+        "healthcare-knowledge"
+      ],
+      "relatedInterests": [
+        "healthcare",
+        "design",
+        "helping-people",
+        "technology",
+        "psychology",
+        "accessibility"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Healthcare and design are rarely connected in education, but this intersection has tremendous impact and demand.",
-      "typicalBackgrounds": ["Graphic Design", "Human-Computer Interaction", "Nursing", "Public Health", "Psychology", "Biomedical Engineering"],
-      "industries": ["Health tech companies", "Hospital systems", "Telemedicine platforms", "Medical device companies", "Health insurance companies", "Digital health startups"],
+      "typicalBackgrounds": [
+        "Graphic Design",
+        "Human-Computer Interaction",
+        "Nursing",
+        "Public Health",
+        "Psychology",
+        "Biomedical Engineering"
+      ],
+      "industries": [
+        "Health tech companies",
+        "Hospital systems",
+        "Telemedicine platforms",
+        "Medical device companies",
+        "Health insurance companies",
+        "Digital health startups"
+      ],
       "skillTransfers": {
         "design": "Your visual and interaction design skills directly apply — but in healthcare, a confusing interface can literally endanger lives, making design even more critical",
         "empathy": "Understanding patients, doctors, and nurses — each with vastly different needs, stress levels, and technical abilities — is essential",
@@ -491,7 +927,13 @@
         "Build case studies redesigning existing health apps",
         "Apply to health tech companies or hospital innovation departments"
       ],
-      "careerProgression": ["UX Designer (Healthcare)", "Healthcare UX Designer", "Senior Healthcare UX Designer", "UX Lead (Healthcare)", "VP of Design (Health Tech)"],
+      "careerProgression": [
+        "UX Designer (Healthcare)",
+        "Healthcare UX Designer",
+        "Senior Healthcare UX Designer",
+        "UX Lead (Healthcare)",
+        "VP of Design (Health Tech)"
+      ],
       "pros": [
         "Your designs can literally save lives by reducing medical errors",
         "Booming health tech industry with very high demand for specialized UX talent",
@@ -512,14 +954,48 @@
       "category": "Environment & Technology",
       "description": "Climate Tech Product Managers lead the development of technology solutions that address climate change — from carbon tracking software to renewable energy platforms and sustainable supply chain tools.",
       "dayInLife": "Morning: you review user feedback on the carbon accounting dashboard and prioritize backlog items. Then you lead a sprint planning meeting with engineers building a supply chain emissions tracker. After lunch, you interview a sustainability director at a potential client. The afternoon is spent drafting a product roadmap for Q3.",
-      "salaryRange": { "min": 90000, "median": 130000, "max": 175000, "currency": "USD" },
+      "salaryRange": {
+        "min": 5040000,
+        "median": 7280000,
+        "max": 9800000,
+        "currency": "PHP"
+      },
       "growthOutlook": "Very High",
-      "requiredSkills": ["project-management", "communication", "analytical-thinking", "leadership", "environmental-science", "strategy", "technology"],
-      "relatedInterests": ["environment", "technology", "leadership", "social-impact", "business", "sustainability"],
+      "requiredSkills": [
+        "project-management",
+        "communication",
+        "analytical-thinking",
+        "leadership",
+        "environmental-science",
+        "strategy",
+        "technology"
+      ],
+      "relatedInterests": [
+        "environment",
+        "technology",
+        "leadership",
+        "social-impact",
+        "business",
+        "sustainability"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Environmentally-passionate students often don't realize they can lead technology products that fight climate change.",
-      "typicalBackgrounds": ["Environmental Science", "Business Administration", "Engineering", "Public Policy", "Computer Science", "Sustainability Studies"],
-      "industries": ["Climate tech startups", "Clean energy companies", "Carbon accounting platforms", "ESG data providers", "Sustainable supply chain companies", "Green building technology"],
+      "typicalBackgrounds": [
+        "Environmental Science",
+        "Business Administration",
+        "Engineering",
+        "Public Policy",
+        "Computer Science",
+        "Sustainability Studies"
+      ],
+      "industries": [
+        "Climate tech startups",
+        "Clean energy companies",
+        "Carbon accounting platforms",
+        "ESG data providers",
+        "Sustainable supply chain companies",
+        "Green building technology"
+      ],
       "skillTransfers": {
         "project-management": "Product management is advanced project management — you'll prioritize features, manage timelines, and coordinate engineering teams",
         "communication": "You'll be the bridge between engineers, customers, and executives — clear communication is your primary tool",
@@ -537,7 +1013,14 @@
         "Build something small in the climate space to demonstrate product thinking",
         "Apply for associate PM roles at climate tech companies or sustainability divisions of large companies"
       ],
-      "careerProgression": ["Associate Product Manager", "Product Manager (Climate Tech)", "Senior Product Manager", "Group Product Manager", "VP of Product", "Chief Product Officer"],
+      "careerProgression": [
+        "Associate Product Manager",
+        "Product Manager (Climate Tech)",
+        "Senior Product Manager",
+        "Group Product Manager",
+        "VP of Product",
+        "Chief Product Officer"
+      ],
       "pros": [
         "Among the highest salaries in the sustainability space with strong upside",
         "Mission-driven work directly combating climate change through technology",
@@ -558,14 +1041,48 @@
       "category": "Design & Technology",
       "description": "Product Designers own the end-to-end experience of digital products — from user research and wireframing to high-fidelity prototypes and design systems. They combine visual design, interaction design, and user psychology to create intuitive, delightful interfaces.",
       "dayInLife": "Morning: you review analytics on a new feature launch and sketch ideas for improvements. You then join a design critique where teammates give feedback on your checkout flow redesign. After lunch, you build an interactive prototype in Figma for user testing. Late afternoon, you update the design system with new component variants.",
-      "salaryRange": { "min": 75000, "median": 115000, "max": 165000, "currency": "USD" },
+      "salaryRange": {
+        "min": 4200000,
+        "median": 6440000,
+        "max": 9240000,
+        "currency": "PHP"
+      },
       "growthOutlook": "High",
-      "requiredSkills": ["design", "prototyping", "empathy", "communication", "creativity", "research", "ui-design"],
-      "relatedInterests": ["design", "technology", "psychology", "creativity", "problem-solving", "helping-people"],
+      "requiredSkills": [
+        "design",
+        "prototyping",
+        "empathy",
+        "communication",
+        "creativity",
+        "research",
+        "ui-design"
+      ],
+      "relatedInterests": [
+        "design",
+        "technology",
+        "psychology",
+        "creativity",
+        "problem-solving",
+        "helping-people"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Many creative people don't realize product design is one of the highest-paying creative careers in tech, with massive demand.",
-      "typicalBackgrounds": ["Graphic Design", "Fine Arts", "Human-Computer Interaction", "Psychology", "Architecture", "Industrial Design"],
-      "industries": ["Tech companies (FAANG)", "SaaS startups", "E-commerce", "Fintech", "Healthcare tech", "Design agencies"],
+      "typicalBackgrounds": [
+        "Graphic Design",
+        "Fine Arts",
+        "Human-Computer Interaction",
+        "Psychology",
+        "Architecture",
+        "Industrial Design"
+      ],
+      "industries": [
+        "Tech companies (FAANG)",
+        "SaaS startups",
+        "E-commerce",
+        "Fintech",
+        "Healthcare tech",
+        "Design agencies"
+      ],
       "skillTransfers": {
         "design": "Your visual design eye is foundational — you'll craft interfaces used by millions of people daily",
         "empathy": "Understanding user frustrations, motivations, and mental models is how you create products people love",
@@ -583,7 +1100,14 @@
         "Build 3-4 case studies showing your design process from research to final designs",
         "Apply for junior product designer or UI/UX designer positions at startups"
       ],
-      "careerProgression": ["Junior Product Designer", "Product Designer", "Senior Product Designer", "Staff Designer", "Design Lead", "VP of Design"],
+      "careerProgression": [
+        "Junior Product Designer",
+        "Product Designer",
+        "Senior Product Designer",
+        "Staff Designer",
+        "Design Lead",
+        "VP of Design"
+      ],
       "pros": [
         "One of the highest-paying creative careers with strong demand across all tech companies",
         "Deeply satisfying to see millions of people use interfaces you designed",
@@ -604,14 +1128,46 @@
       "category": "Technology & Infrastructure",
       "description": "DevOps Engineers build and maintain the infrastructure that lets software teams ship code reliably and at scale. They automate deployments, manage cloud infrastructure, and ensure systems stay fast, secure, and available 24/7.",
       "dayInLife": "Morning: you review overnight alerts and fix a memory leak in the staging environment. Then you write Terraform to provision a new Kubernetes cluster. After lunch, you optimize the CI/CD pipeline to cut build times from 20 minutes to 8. Late afternoon, you pair with a developer to troubleshoot a deployment issue.",
-      "salaryRange": { "min": 85000, "median": 130000, "max": 185000, "currency": "USD" },
+      "salaryRange": {
+        "min": 4760000,
+        "median": 7280000,
+        "max": 10360000,
+        "currency": "PHP"
+      },
       "growthOutlook": "Very High",
-      "requiredSkills": ["programming", "cloud-computing", "devops", "automation", "problem-solving", "linux", "computer-networking"],
-      "relatedInterests": ["technology", "problem-solving", "security", "automation", "data"],
+      "requiredSkills": [
+        "programming",
+        "cloud-computing",
+        "devops",
+        "automation",
+        "problem-solving",
+        "linux",
+        "computer-networking"
+      ],
+      "relatedInterests": [
+        "technology",
+        "problem-solving",
+        "security",
+        "automation",
+        "data"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Many programmers focus on app development without realizing infrastructure roles often pay more and have even higher demand.",
-      "typicalBackgrounds": ["Computer Science", "IT Administration", "Software Engineering", "Network Engineering", "Mathematics"],
-      "industries": ["Cloud providers (AWS, GCP, Azure)", "Fintech", "E-commerce", "SaaS companies", "Gaming", "Streaming platforms"],
+      "typicalBackgrounds": [
+        "Computer Science",
+        "IT Administration",
+        "Software Engineering",
+        "Network Engineering",
+        "Mathematics"
+      ],
+      "industries": [
+        "Cloud providers (AWS, GCP, Azure)",
+        "Fintech",
+        "E-commerce",
+        "SaaS companies",
+        "Gaming",
+        "Streaming platforms"
+      ],
       "skillTransfers": {
         "programming": "You'll write infrastructure-as-code, automation scripts, and CI/CD pipelines — coding is essential but focused on systems, not features",
         "cloud-computing": "Understanding cloud services (compute, storage, networking) is the foundation of modern DevOps",
@@ -629,7 +1185,14 @@
         "Practice with personal projects: deploy apps, set up CI/CD, write Terraform",
         "Start as a junior sysadmin, SRE, or cloud engineer and grow into DevOps"
       ],
-      "careerProgression": ["Junior DevOps Engineer", "DevOps Engineer", "Senior DevOps Engineer", "Staff Platform Engineer", "Principal Engineer", "VP of Infrastructure"],
+      "careerProgression": [
+        "Junior DevOps Engineer",
+        "DevOps Engineer",
+        "Senior DevOps Engineer",
+        "Staff Platform Engineer",
+        "Principal Engineer",
+        "VP of Infrastructure"
+      ],
       "pros": [
         "Among the highest-paying engineering roles with extreme demand",
         "Fascinating puzzle-solving when diagnosing and fixing production systems",
@@ -650,14 +1213,48 @@
       "category": "Marketing & Communication",
       "description": "Content Strategists plan, create, and optimize content across channels to achieve business goals. They blend writing, SEO, analytics, and audience psychology to build content ecosystems that drive growth, engagement, and brand authority.",
       "dayInLife": "Morning: you analyze which blog posts drove the most organic traffic last month and brief writers on new topics. Then you review a product launch content plan with the marketing team. After lunch, you audit the website's content architecture and create a taxonomy for better navigation. Late afternoon, you write a content brief and review SEO keyword research.",
-      "salaryRange": { "min": 60000, "median": 90000, "max": 135000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3360000,
+        "median": 5040000,
+        "max": 7560000,
+        "currency": "PHP"
+      },
       "growthOutlook": "High",
-      "requiredSkills": ["writing", "communication", "analytical-thinking", "creativity", "digital-marketing", "research", "strategy"],
-      "relatedInterests": ["writing", "marketing", "technology", "psychology", "creativity", "business"],
+      "requiredSkills": [
+        "writing",
+        "communication",
+        "analytical-thinking",
+        "creativity",
+        "digital-marketing",
+        "research",
+        "strategy"
+      ],
+      "relatedInterests": [
+        "writing",
+        "marketing",
+        "technology",
+        "psychology",
+        "creativity",
+        "business"
+      ],
       "nonObvious": true,
       "whyNonObvious": "English and journalism majors often don't realize content strategy is a lucrative tech career that values their storytelling and editorial skills.",
-      "typicalBackgrounds": ["English", "Journalism", "Communications", "Marketing", "Liberal Arts", "Public Relations"],
-      "industries": ["SaaS companies", "E-commerce", "Media companies", "Marketing agencies", "Tech startups", "Publishing platforms"],
+      "typicalBackgrounds": [
+        "English",
+        "Journalism",
+        "Communications",
+        "Marketing",
+        "Liberal Arts",
+        "Public Relations"
+      ],
+      "industries": [
+        "SaaS companies",
+        "E-commerce",
+        "Media companies",
+        "Marketing agencies",
+        "Tech startups",
+        "Publishing platforms"
+      ],
       "skillTransfers": {
         "writing": "Your ability to write compelling, clear content is the core skill — you'll craft everything from landing pages to email sequences",
         "communication": "Collaborating with designers, developers, and executives to align content with business goals is a daily activity",
@@ -675,7 +1272,14 @@
         "Take courses in content strategy (HubSpot, Coursera, or Content Marketing Institute)",
         "Apply for content coordinator or junior content strategist roles"
       ],
-      "careerProgression": ["Content Coordinator", "Content Strategist", "Senior Content Strategist", "Head of Content", "VP of Content Marketing", "Chief Content Officer"],
+      "careerProgression": [
+        "Content Coordinator",
+        "Content Strategist",
+        "Senior Content Strategist",
+        "Head of Content",
+        "VP of Content Marketing",
+        "Chief Content Officer"
+      ],
       "pros": [
         "Creative and analytical in equal measure — satisfies both sides of your brain",
         "Strong demand as every company needs content to grow",
@@ -696,14 +1300,47 @@
       "category": "Technology & Security",
       "description": "Cybersecurity Analysts protect organizations from digital threats by monitoring systems, investigating breaches, and building defenses. They combine technical skills with investigative thinking to stay one step ahead of attackers.",
       "dayInLife": "Morning: you review overnight security alerts and investigate a suspicious login pattern. Then you run a vulnerability scan on the company's web applications. After lunch, you lead a security awareness training for new employees. Late afternoon, you write detection rules for a new type of phishing attack and update the incident response playbook.",
-      "salaryRange": { "min": 70000, "median": 105000, "max": 155000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3920000,
+        "median": 5880000,
+        "max": 8680000,
+        "currency": "PHP"
+      },
       "growthOutlook": "Very High",
-      "requiredSkills": ["cybersecurity", "programming", "analytical-thinking", "computer-networking", "attention-to-detail", "problem-solving", "communication"],
-      "relatedInterests": ["technology", "security", "investigation", "problem-solving", "data"],
+      "requiredSkills": [
+        "cybersecurity",
+        "programming",
+        "analytical-thinking",
+        "computer-networking",
+        "attention-to-detail",
+        "problem-solving",
+        "communication"
+      ],
+      "relatedInterests": [
+        "technology",
+        "security",
+        "investigation",
+        "problem-solving",
+        "data"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Many tech-curious people overlook cybersecurity, not realizing it's one of the fastest-growing and highest-paying fields with a massive talent shortage.",
-      "typicalBackgrounds": ["Computer Science", "Information Technology", "Criminal Justice", "Mathematics", "Network Engineering", "Military/Intelligence"],
-      "industries": ["Financial services", "Government/Defense", "Healthcare", "Tech companies", "Consulting firms", "Retail/E-commerce"],
+      "typicalBackgrounds": [
+        "Computer Science",
+        "Information Technology",
+        "Criminal Justice",
+        "Mathematics",
+        "Network Engineering",
+        "Military/Intelligence"
+      ],
+      "industries": [
+        "Financial services",
+        "Government/Defense",
+        "Healthcare",
+        "Tech companies",
+        "Consulting firms",
+        "Retail/E-commerce"
+      ],
       "skillTransfers": {
         "programming": "Writing scripts to automate threat detection, analyze malware, and build security tools requires solid coding skills",
         "analytical-thinking": "Analyzing attack patterns, correlating security events, and investigating breaches is detective work applied to technology",
@@ -721,7 +1358,14 @@
         "Participate in Capture The Flag (CTF) competitions to build practical skills",
         "Apply for SOC analyst or junior security analyst positions"
       ],
-      "careerProgression": ["SOC Analyst", "Cybersecurity Analyst", "Senior Security Analyst", "Security Engineer", "Security Architect", "CISO"],
+      "careerProgression": [
+        "SOC Analyst",
+        "Cybersecurity Analyst",
+        "Senior Security Analyst",
+        "Security Engineer",
+        "Security Architect",
+        "CISO"
+      ],
       "pros": [
         "Massive talent shortage means high salaries and easy job placement",
         "Intellectually thrilling cat-and-mouse game against real attackers",
@@ -742,14 +1386,48 @@
       "category": "Education & Technology",
       "description": "Learning Experience Designers create engaging educational content for online courses, corporate training, and edtech products. They combine instructional design theory, multimedia production, and user experience principles to make learning effective and enjoyable.",
       "dayInLife": "Morning: you storyboard an interactive simulation for a compliance training module. Then you conduct a needs analysis interview with subject matter experts. After lunch, you build an interactive lesson in Articulate Rise and record a short video explanation. Late afternoon, you analyze course completion data and A/B test results to optimize a struggling module.",
-      "salaryRange": { "min": 60000, "median": 85000, "max": 125000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3360000,
+        "median": 4760000,
+        "max": 7000000,
+        "currency": "PHP"
+      },
       "growthOutlook": "High",
-      "requiredSkills": ["teaching", "design", "writing", "creativity", "communication", "empathy", "education-theory"],
-      "relatedInterests": ["teaching", "design", "technology", "psychology", "creativity", "helping-people"],
+      "requiredSkills": [
+        "teaching",
+        "design",
+        "writing",
+        "creativity",
+        "communication",
+        "empathy",
+        "education-theory"
+      ],
+      "relatedInterests": [
+        "teaching",
+        "design",
+        "technology",
+        "psychology",
+        "creativity",
+        "helping-people"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Teachers and educators rarely discover that their pedagogical skills are in huge demand in the corporate and edtech sectors.",
-      "typicalBackgrounds": ["Education", "Instructional Design", "Psychology", "Communications", "Graphic Design", "English"],
-      "industries": ["Edtech companies (Coursera, Udemy)", "Corporate L&D departments", "Healthcare training", "Tech companies", "Government agencies", "Consulting firms"],
+      "typicalBackgrounds": [
+        "Education",
+        "Instructional Design",
+        "Psychology",
+        "Communications",
+        "Graphic Design",
+        "English"
+      ],
+      "industries": [
+        "Edtech companies (Coursera, Udemy)",
+        "Corporate L&D departments",
+        "Healthcare training",
+        "Tech companies",
+        "Government agencies",
+        "Consulting firms"
+      ],
       "skillTransfers": {
         "teaching": "Your understanding of how people learn, retain, and apply knowledge is the core of this role — it's teaching, evolved for digital",
         "design": "Visual design skills help you create engaging slides, infographics, and interactive elements that keep learners motivated",
@@ -767,7 +1445,14 @@
         "Build a portfolio with sample course designs showing your process",
         "Apply for instructional designer or learning designer roles in corporate L&D or edtech"
       ],
-      "careerProgression": ["Instructional Designer", "Senior Learning Designer", "Learning Experience Lead", "Director of Learning", "VP of Learning & Development", "Chief Learning Officer"],
+      "careerProgression": [
+        "Instructional Designer",
+        "Senior Learning Designer",
+        "Learning Experience Lead",
+        "Director of Learning",
+        "VP of Learning & Development",
+        "Chief Learning Officer"
+      ],
       "pros": [
         "Deeply rewarding work helping people learn and grow professionally",
         "Strong demand in corporate training — every large company has L&D teams",
@@ -788,14 +1473,48 @@
       "category": "Sports & Data",
       "description": "Sports Analytics Managers use data science, statistics, and domain expertise to help sports teams and organizations make better decisions — from player recruitment and game strategy to fan engagement and revenue optimization.",
       "dayInLife": "Morning: you analyze player performance data from last night's game and prepare a scouting report. Then you build a predictive model for injury risk based on training load data. After lunch, you present your findings to coaches and front office staff. Late afternoon, you work on a ticket pricing model that optimizes revenue based on opponent, day of week, and weather.",
-      "salaryRange": { "min": 60000, "median": 95000, "max": 145000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3360000,
+        "median": 5320000,
+        "max": 8120000,
+        "currency": "PHP"
+      },
       "growthOutlook": "High",
-      "requiredSkills": ["data-analysis", "statistics", "programming", "communication", "visualization", "sports-science", "machine-learning"],
-      "relatedInterests": ["sports", "data", "technology", "problem-solving", "business", "science"],
+      "requiredSkills": [
+        "data-analysis",
+        "statistics",
+        "programming",
+        "communication",
+        "visualization",
+        "sports-science",
+        "machine-learning"
+      ],
+      "relatedInterests": [
+        "sports",
+        "data",
+        "technology",
+        "problem-solving",
+        "business",
+        "science"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Sports fans with data skills don't realize that professional teams actively hire analysts — it's not just for former athletes.",
-      "typicalBackgrounds": ["Statistics", "Data Science", "Sports Management", "Mathematics", "Computer Science", "Economics"],
-      "industries": ["Professional sports teams (NFL, NBA, MLB, Premier League)", "Sports media companies (ESPN)", "Sports betting platforms", "Athletic performance companies", "College athletic departments", "Sports agencies"],
+      "typicalBackgrounds": [
+        "Statistics",
+        "Data Science",
+        "Sports Management",
+        "Mathematics",
+        "Computer Science",
+        "Economics"
+      ],
+      "industries": [
+        "Professional sports teams (NFL, NBA, MLB, Premier League)",
+        "Sports media companies (ESPN)",
+        "Sports betting platforms",
+        "Athletic performance companies",
+        "College athletic departments",
+        "Sports agencies"
+      ],
       "skillTransfers": {
         "data-analysis": "Analyzing player statistics, game footage data, and performance metrics uses the same analytical toolkit as any data role",
         "statistics": "Building predictive models for player performance, injury risk, and game outcomes is applied statistics at its most exciting",
@@ -813,7 +1532,14 @@
         "Start a sports analytics blog or Twitter account to build your reputation",
         "Apply for analytics intern positions at professional sports teams or sports media companies"
       ],
-      "careerProgression": ["Analytics Intern", "Junior Sports Analyst", "Sports Analyst", "Senior Sports Analyst", "Director of Analytics", "VP of Strategy & Analytics"],
+      "careerProgression": [
+        "Analytics Intern",
+        "Junior Sports Analyst",
+        "Sports Analyst",
+        "Senior Sports Analyst",
+        "Director of Analytics",
+        "VP of Strategy & Analytics"
+      ],
       "pros": [
         "Dream job for sports fans — you get paid to analyze the games you love",
         "Growing field with teams investing more heavily in analytics every year",
@@ -834,14 +1560,48 @@
       "category": "Healthcare & Technology",
       "description": "Digital Health Consultants advise healthcare organizations on adopting technology solutions — from telemedicine and EHR systems to AI diagnostics and remote patient monitoring. They bridge the gap between healthcare operations and technological innovation.",
       "dayInLife": "Morning: you lead a stakeholder workshop with hospital administrators to map their current patient flow. Then you draft a technology roadmap for a clinic's digital transformation. After lunch, you evaluate three telemedicine vendors and prepare a comparison matrix. Late afternoon, you present recommendations to the C-suite on how to reduce readmission rates using predictive analytics.",
-      "salaryRange": { "min": 80000, "median": 120000, "max": 175000, "currency": "USD" },
+      "salaryRange": {
+        "min": 4480000,
+        "median": 6720000,
+        "max": 9800000,
+        "currency": "PHP"
+      },
       "growthOutlook": "Very High",
-      "requiredSkills": ["healthcare-knowledge", "communication", "analytical-thinking", "project-management", "strategy", "technology", "problem-solving"],
-      "relatedInterests": ["healthcare", "technology", "helping-people", "business", "social-impact", "problem-solving"],
+      "requiredSkills": [
+        "healthcare-knowledge",
+        "communication",
+        "analytical-thinking",
+        "project-management",
+        "strategy",
+        "technology",
+        "problem-solving"
+      ],
+      "relatedInterests": [
+        "healthcare",
+        "technology",
+        "helping-people",
+        "business",
+        "social-impact",
+        "problem-solving"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Healthcare professionals often don't realize their clinical experience combined with tech interest makes them extremely valuable as consultants.",
-      "typicalBackgrounds": ["Healthcare Administration", "Nursing", "Public Health", "Business Administration", "Health Informatics", "Biomedical Engineering"],
-      "industries": ["Healthcare consulting firms (McKinsey, Deloitte Health)", "Health tech companies", "Hospital systems", "Health insurance companies", "Government health agencies", "Pharmaceutical companies"],
+      "typicalBackgrounds": [
+        "Healthcare Administration",
+        "Nursing",
+        "Public Health",
+        "Business Administration",
+        "Health Informatics",
+        "Biomedical Engineering"
+      ],
+      "industries": [
+        "Healthcare consulting firms (McKinsey, Deloitte Health)",
+        "Health tech companies",
+        "Hospital systems",
+        "Health insurance companies",
+        "Government health agencies",
+        "Pharmaceutical companies"
+      ],
       "skillTransfers": {
         "healthcare-knowledge": "Understanding clinical workflows, patient needs, and regulatory requirements (HIPAA, FDA) gives you credibility that pure tech consultants lack",
         "communication": "You'll translate between clinical staff and technology teams, making complex concepts accessible to both audiences",
@@ -859,7 +1619,14 @@
         "Learn the health tech landscape — major vendors, emerging startups, regulatory frameworks",
         "Apply for healthcare consulting roles at big firms or health tech product management positions"
       ],
-      "careerProgression": ["Health IT Analyst", "Digital Health Consultant", "Senior Consultant", "Manager/Principal", "Director of Digital Health", "Chief Digital Health Officer"],
+      "careerProgression": [
+        "Health IT Analyst",
+        "Digital Health Consultant",
+        "Senior Consultant",
+        "Manager/Principal",
+        "Director of Digital Health",
+        "Chief Digital Health Officer"
+      ],
       "pros": [
         "High-impact work that directly improves patient care and outcomes",
         "Excellent compensation driven by the complexity and stakes of healthcare",
@@ -880,14 +1647,48 @@
       "category": "Business & Data",
       "description": "Supply Chain Data Analysts use data science to optimize how goods move from suppliers to customers. They forecast demand, reduce waste, improve logistics, and build dashboards that help companies save millions in operational costs.",
       "dayInLife": "Morning: you analyze last quarter's inventory data to identify overstocked and understocked items. Then you update a demand forecasting model with new sales data. After lunch, you build a dashboard showing real-time logistics performance across distribution centers. Late afternoon, you present recommendations to the operations team on optimizing shipping routes.",
-      "salaryRange": { "min": 55000, "median": 80000, "max": 120000, "currency": "USD" },
+      "salaryRange": {
+        "min": 3080000,
+        "median": 4480000,
+        "max": 6720000,
+        "currency": "PHP"
+      },
       "growthOutlook": "High",
-      "requiredSkills": ["data-analysis", "statistics", "programming", "visualization", "supply-chain", "problem-solving", "communication"],
-      "relatedInterests": ["data", "business", "problem-solving", "technology", "sustainability", "finance"],
+      "requiredSkills": [
+        "data-analysis",
+        "statistics",
+        "programming",
+        "visualization",
+        "supply-chain",
+        "problem-solving",
+        "communication"
+      ],
+      "relatedInterests": [
+        "data",
+        "business",
+        "problem-solving",
+        "technology",
+        "sustainability",
+        "finance"
+      ],
       "nonObvious": true,
       "whyNonObvious": "Data-skilled graduates gravitate toward flashy tech roles, not realizing that supply chain analytics is a massive, well-paying field with global impact.",
-      "typicalBackgrounds": ["Supply Chain Management", "Operations Research", "Statistics", "Business Analytics", "Industrial Engineering", "Economics"],
-      "industries": ["Retail (Amazon, Walmart)", "Manufacturing", "Logistics companies (FedEx, UPS)", "Consumer goods (P&G, Unilever)", "Automotive", "Pharmaceutical supply chain"],
+      "typicalBackgrounds": [
+        "Supply Chain Management",
+        "Operations Research",
+        "Statistics",
+        "Business Analytics",
+        "Industrial Engineering",
+        "Economics"
+      ],
+      "industries": [
+        "Retail (Amazon, Walmart)",
+        "Manufacturing",
+        "Logistics companies (FedEx, UPS)",
+        "Consumer goods (P&G, Unilever)",
+        "Automotive",
+        "Pharmaceutical supply chain"
+      ],
       "skillTransfers": {
         "data-analysis": "Analyzing inventory levels, shipping data, and supplier performance uses the same analytical skills as any data role — but impacts physical supply chains",
         "statistics": "Demand forecasting, quality control, and risk modeling are fundamentally statistical problems",
@@ -905,7 +1706,14 @@
         "Build projects analyzing publicly available supply chain datasets",
         "Apply for supply chain analyst or operations analyst roles at large companies"
       ],
-      "careerProgression": ["Junior Supply Chain Analyst", "Supply Chain Analyst", "Senior Analyst", "Supply Chain Data Scientist", "Director of Supply Chain Analytics", "VP of Operations"],
+      "careerProgression": [
+        "Junior Supply Chain Analyst",
+        "Supply Chain Analyst",
+        "Senior Analyst",
+        "Supply Chain Data Scientist",
+        "Director of Supply Chain Analytics",
+        "VP of Operations"
+      ],
       "pros": [
         "Massive global industry with high demand in every sector",
         "Tangible, measurable impact — you can see the millions you save in real data",
@@ -926,146 +1734,502 @@
       "id": "technical",
       "name": "Technical Skills",
       "skills": [
-        { "id": "programming", "label": "Programming / Coding" },
-        { "id": "data-analysis", "label": "Data Analysis" },
-        { "id": "machine-learning", "label": "Machine Learning / AI" },
-        { "id": "statistics", "label": "Statistics" },
-        { "id": "gis", "label": "GIS / Mapping" },
-        { "id": "3d-modeling", "label": "3D Modeling" },
-        { "id": "testing", "label": "Software Testing" },
-        { "id": "technical-literacy", "label": "Technical Literacy" },
-        { "id": "visualization", "label": "Data Visualization" },
-        { "id": "cloud-computing", "label": "Cloud Computing" },
-        { "id": "cybersecurity", "label": "Cybersecurity" },
-        { "id": "devops", "label": "DevOps / CI-CD" },
-        { "id": "automation", "label": "Automation" },
-        { "id": "web-development", "label": "Web Development" },
-        { "id": "ui-design", "label": "UI Design" },
-        { "id": "computer-networking", "label": "Computer Networking" },
-        { "id": "linux", "label": "Linux / Systems" },
-        { "id": "database-management", "label": "Database Management" },
-        { "id": "mobile-development", "label": "Mobile App Development" },
-        { "id": "api-development", "label": "API Development" }
+        {
+          "id": "programming",
+          "label": "Programming / Coding"
+        },
+        {
+          "id": "data-analysis",
+          "label": "Data Analysis"
+        },
+        {
+          "id": "machine-learning",
+          "label": "Machine Learning / AI"
+        },
+        {
+          "id": "statistics",
+          "label": "Statistics"
+        },
+        {
+          "id": "gis",
+          "label": "GIS / Mapping"
+        },
+        {
+          "id": "3d-modeling",
+          "label": "3D Modeling"
+        },
+        {
+          "id": "testing",
+          "label": "Software Testing"
+        },
+        {
+          "id": "technical-literacy",
+          "label": "Technical Literacy"
+        },
+        {
+          "id": "visualization",
+          "label": "Data Visualization"
+        },
+        {
+          "id": "cloud-computing",
+          "label": "Cloud Computing"
+        },
+        {
+          "id": "cybersecurity",
+          "label": "Cybersecurity"
+        },
+        {
+          "id": "devops",
+          "label": "DevOps / CI-CD"
+        },
+        {
+          "id": "automation",
+          "label": "Automation"
+        },
+        {
+          "id": "web-development",
+          "label": "Web Development"
+        },
+        {
+          "id": "ui-design",
+          "label": "UI Design"
+        },
+        {
+          "id": "computer-networking",
+          "label": "Computer Networking"
+        },
+        {
+          "id": "linux",
+          "label": "Linux / Systems"
+        },
+        {
+          "id": "database-management",
+          "label": "Database Management"
+        },
+        {
+          "id": "mobile-development",
+          "label": "Mobile App Development"
+        },
+        {
+          "id": "api-development",
+          "label": "API Development"
+        }
       ]
     },
     {
       "id": "creative",
       "name": "Creative Skills",
       "skills": [
-        { "id": "design", "label": "Design / Visual Design" },
-        { "id": "writing", "label": "Writing" },
-        { "id": "creativity", "label": "Creative Thinking" },
-        { "id": "prototyping", "label": "Prototyping" },
-        { "id": "photography", "label": "Photography / Video" },
-        { "id": "content-strategy", "label": "Content Strategy" },
-        { "id": "storytelling", "label": "Storytelling" },
-        { "id": "digital-marketing", "label": "Digital Marketing" },
-        { "id": "video-production", "label": "Video Production" },
-        { "id": "copywriting", "label": "Copywriting" }
+        {
+          "id": "design",
+          "label": "Design / Visual Design"
+        },
+        {
+          "id": "writing",
+          "label": "Writing"
+        },
+        {
+          "id": "creativity",
+          "label": "Creative Thinking"
+        },
+        {
+          "id": "prototyping",
+          "label": "Prototyping"
+        },
+        {
+          "id": "photography",
+          "label": "Photography / Video"
+        },
+        {
+          "id": "content-strategy",
+          "label": "Content Strategy"
+        },
+        {
+          "id": "storytelling",
+          "label": "Storytelling"
+        },
+        {
+          "id": "digital-marketing",
+          "label": "Digital Marketing"
+        },
+        {
+          "id": "video-production",
+          "label": "Video Production"
+        },
+        {
+          "id": "copywriting",
+          "label": "Copywriting"
+        }
       ]
     },
     {
       "id": "analytical",
       "name": "Analytical Skills",
       "skills": [
-        { "id": "critical-thinking", "label": "Critical Thinking" },
-        { "id": "analytical-thinking", "label": "Analytical Thinking" },
-        { "id": "research", "label": "Research" },
-        { "id": "problem-solving", "label": "Problem Solving" },
-        { "id": "attention-to-detail", "label": "Attention to Detail" },
-        { "id": "investigation", "label": "Investigation" },
-        { "id": "accounting", "label": "Accounting / Finance" },
-        { "id": "systems-thinking", "label": "Systems Thinking" },
-        { "id": "risk-assessment", "label": "Risk Assessment" },
-        { "id": "data-modeling", "label": "Data Modeling" },
-        { "id": "process-improvement", "label": "Process Improvement" }
+        {
+          "id": "critical-thinking",
+          "label": "Critical Thinking"
+        },
+        {
+          "id": "analytical-thinking",
+          "label": "Analytical Thinking"
+        },
+        {
+          "id": "research",
+          "label": "Research"
+        },
+        {
+          "id": "problem-solving",
+          "label": "Problem Solving"
+        },
+        {
+          "id": "attention-to-detail",
+          "label": "Attention to Detail"
+        },
+        {
+          "id": "investigation",
+          "label": "Investigation"
+        },
+        {
+          "id": "accounting",
+          "label": "Accounting / Finance"
+        },
+        {
+          "id": "systems-thinking",
+          "label": "Systems Thinking"
+        },
+        {
+          "id": "risk-assessment",
+          "label": "Risk Assessment"
+        },
+        {
+          "id": "data-modeling",
+          "label": "Data Modeling"
+        },
+        {
+          "id": "process-improvement",
+          "label": "Process Improvement"
+        }
       ]
     },
     {
       "id": "interpersonal",
       "name": "People & Communication Skills",
       "skills": [
-        { "id": "communication", "label": "Communication" },
-        { "id": "empathy", "label": "Empathy" },
-        { "id": "teaching", "label": "Teaching / Mentoring" },
-        { "id": "public-speaking", "label": "Public Speaking" },
-        { "id": "interviewing", "label": "Interviewing" },
-        { "id": "leadership", "label": "Leadership" },
-        { "id": "cultural-awareness", "label": "Cultural Awareness" },
-        { "id": "negotiation", "label": "Negotiation" },
-        { "id": "conflict-resolution", "label": "Conflict Resolution" },
-        { "id": "networking", "label": "Professional Networking" }
+        {
+          "id": "communication",
+          "label": "Communication"
+        },
+        {
+          "id": "empathy",
+          "label": "Empathy"
+        },
+        {
+          "id": "teaching",
+          "label": "Teaching / Mentoring"
+        },
+        {
+          "id": "public-speaking",
+          "label": "Public Speaking"
+        },
+        {
+          "id": "interviewing",
+          "label": "Interviewing"
+        },
+        {
+          "id": "leadership",
+          "label": "Leadership"
+        },
+        {
+          "id": "cultural-awareness",
+          "label": "Cultural Awareness"
+        },
+        {
+          "id": "negotiation",
+          "label": "Negotiation"
+        },
+        {
+          "id": "conflict-resolution",
+          "label": "Conflict Resolution"
+        },
+        {
+          "id": "networking",
+          "label": "Professional Networking"
+        }
       ]
     },
     {
       "id": "domain",
       "name": "Domain Knowledge",
       "skills": [
-        { "id": "psychology", "label": "Psychology" },
-        { "id": "biology", "label": "Biology / Life Sciences" },
-        { "id": "environmental-science", "label": "Environmental Science" },
-        { "id": "healthcare-knowledge", "label": "Healthcare Knowledge" },
-        { "id": "ethics", "label": "Ethics / Philosophy" },
-        { "id": "policy", "label": "Policy / Regulation" },
-        { "id": "philosophy", "label": "Philosophy" },
-        { "id": "languages", "label": "Foreign Languages" },
-        { "id": "mathematics", "label": "Mathematics" },
-        { "id": "accessibility", "label": "Accessibility" },
-        { "id": "sports-science", "label": "Sports Science" },
-        { "id": "supply-chain", "label": "Supply Chain / Logistics" },
-        { "id": "education-theory", "label": "Education Theory" }
+        {
+          "id": "psychology",
+          "label": "Psychology"
+        },
+        {
+          "id": "biology",
+          "label": "Biology / Life Sciences"
+        },
+        {
+          "id": "environmental-science",
+          "label": "Environmental Science"
+        },
+        {
+          "id": "healthcare-knowledge",
+          "label": "Healthcare Knowledge"
+        },
+        {
+          "id": "ethics",
+          "label": "Ethics / Philosophy"
+        },
+        {
+          "id": "policy",
+          "label": "Policy / Regulation"
+        },
+        {
+          "id": "philosophy",
+          "label": "Philosophy"
+        },
+        {
+          "id": "languages",
+          "label": "Foreign Languages"
+        },
+        {
+          "id": "mathematics",
+          "label": "Mathematics"
+        },
+        {
+          "id": "accessibility",
+          "label": "Accessibility"
+        },
+        {
+          "id": "sports-science",
+          "label": "Sports Science"
+        },
+        {
+          "id": "supply-chain",
+          "label": "Supply Chain / Logistics"
+        },
+        {
+          "id": "education-theory",
+          "label": "Education Theory"
+        }
       ]
     },
     {
       "id": "management",
       "name": "Management & Organization",
       "skills": [
-        { "id": "project-management", "label": "Project Management" },
-        { "id": "organization", "label": "Organization" },
-        { "id": "strategy", "label": "Strategic Thinking" },
-        { "id": "stakeholder-management", "label": "Stakeholder Management" },
-        { "id": "agile-methodology", "label": "Agile / Scrum" },
-        { "id": "budgeting", "label": "Budgeting & Cost Control" },
-        { "id": "change-management", "label": "Change Management" },
-        { "id": "product-management", "label": "Product Management" }
+        {
+          "id": "project-management",
+          "label": "Project Management"
+        },
+        {
+          "id": "organization",
+          "label": "Organization"
+        },
+        {
+          "id": "strategy",
+          "label": "Strategic Thinking"
+        },
+        {
+          "id": "stakeholder-management",
+          "label": "Stakeholder Management"
+        },
+        {
+          "id": "agile-methodology",
+          "label": "Agile / Scrum"
+        },
+        {
+          "id": "budgeting",
+          "label": "Budgeting & Cost Control"
+        },
+        {
+          "id": "change-management",
+          "label": "Change Management"
+        },
+        {
+          "id": "product-management",
+          "label": "Product Management"
+        }
       ]
     }
   ],
   "interests": [
-    { "id": "technology", "label": "Technology", "icon": "💻" },
-    { "id": "design", "label": "Design & Art", "icon": "🎨" },
-    { "id": "science", "label": "Science", "icon": "🔬" },
-    { "id": "healthcare", "label": "Healthcare", "icon": "🏥" },
-    { "id": "environment", "label": "Environment & Nature", "icon": "🌍" },
-    { "id": "social-impact", "label": "Social Impact", "icon": "🤝" },
-    { "id": "writing", "label": "Writing & Content", "icon": "✍️" },
-    { "id": "psychology", "label": "Psychology & Behavior", "icon": "🧠" },
-    { "id": "data", "label": "Data & Numbers", "icon": "📊" },
-    { "id": "law", "label": "Law & Justice", "icon": "⚖️" },
-    { "id": "business", "label": "Business & Strategy", "icon": "📈" },
-    { "id": "teaching", "label": "Teaching & Education", "icon": "📚" },
-    { "id": "languages", "label": "Languages & Culture", "icon": "🌐" },
-    { "id": "helping-people", "label": "Helping People", "icon": "💛" },
-    { "id": "creativity", "label": "Creativity & Innovation", "icon": "💡" },
-    { "id": "problem-solving", "label": "Problem Solving", "icon": "🧩" },
-    { "id": "community", "label": "Community Building", "icon": "👥" },
-    { "id": "investigation", "label": "Investigation & Research", "icon": "🔍" },
-    { "id": "finance", "label": "Finance & Economics", "icon": "💰" },
-    { "id": "sustainability", "label": "Sustainability", "icon": "♻️" },
-    { "id": "sports", "label": "Sports & Athletics", "icon": "⚽" },
-    { "id": "gaming", "label": "Gaming", "icon": "🎮" },
-    { "id": "music", "label": "Music & Audio", "icon": "🎵" },
-    { "id": "fashion", "label": "Fashion & Style", "icon": "👗" },
-    { "id": "education", "label": "Education", "icon": "🎓" },
-    { "id": "marketing", "label": "Marketing & Growth", "icon": "📣" },
-    { "id": "security", "label": "Security & Privacy", "icon": "🔒" },
-    { "id": "automation", "label": "Automation & Efficiency", "icon": "⚙️" },
-    { "id": "travel", "label": "Travel & Exploration", "icon": "✈️" },
-    { "id": "entrepreneurship", "label": "Entrepreneurship & Startups", "icon": "🚀" },
-    { "id": "media", "label": "Media & Entertainment", "icon": "🎬" },
-    { "id": "real-estate", "label": "Real Estate & Property", "icon": "🏠" },
-    { "id": "food", "label": "Food & Agriculture", "icon": "🌾" },
-    { "id": "manufacturing", "label": "Manufacturing & Production", "icon": "🏭" },
-    { "id": "nonprofit", "label": "Nonprofit & NGO", "icon": "🕊️" }
+    {
+      "id": "technology",
+      "label": "Technology",
+      "icon": "💻"
+    },
+    {
+      "id": "design",
+      "label": "Design & Art",
+      "icon": "🎨"
+    },
+    {
+      "id": "science",
+      "label": "Science",
+      "icon": "🔬"
+    },
+    {
+      "id": "healthcare",
+      "label": "Healthcare",
+      "icon": "🏥"
+    },
+    {
+      "id": "environment",
+      "label": "Environment & Nature",
+      "icon": "🌍"
+    },
+    {
+      "id": "social-impact",
+      "label": "Social Impact",
+      "icon": "🤝"
+    },
+    {
+      "id": "writing",
+      "label": "Writing & Content",
+      "icon": "✍️"
+    },
+    {
+      "id": "psychology",
+      "label": "Psychology & Behavior",
+      "icon": "🧠"
+    },
+    {
+      "id": "data",
+      "label": "Data & Numbers",
+      "icon": "📊"
+    },
+    {
+      "id": "law",
+      "label": "Law & Justice",
+      "icon": "⚖️"
+    },
+    {
+      "id": "business",
+      "label": "Business & Strategy",
+      "icon": "📈"
+    },
+    {
+      "id": "teaching",
+      "label": "Teaching & Education",
+      "icon": "📚"
+    },
+    {
+      "id": "languages",
+      "label": "Languages & Culture",
+      "icon": "🌐"
+    },
+    {
+      "id": "helping-people",
+      "label": "Helping People",
+      "icon": "💛"
+    },
+    {
+      "id": "creativity",
+      "label": "Creativity & Innovation",
+      "icon": "💡"
+    },
+    {
+      "id": "problem-solving",
+      "label": "Problem Solving",
+      "icon": "🧩"
+    },
+    {
+      "id": "community",
+      "label": "Community Building",
+      "icon": "👥"
+    },
+    {
+      "id": "investigation",
+      "label": "Investigation & Research",
+      "icon": "🔍"
+    },
+    {
+      "id": "finance",
+      "label": "Finance & Economics",
+      "icon": "💰"
+    },
+    {
+      "id": "sustainability",
+      "label": "Sustainability",
+      "icon": "♻️"
+    },
+    {
+      "id": "sports",
+      "label": "Sports & Athletics",
+      "icon": "⚽"
+    },
+    {
+      "id": "gaming",
+      "label": "Gaming",
+      "icon": "🎮"
+    },
+    {
+      "id": "music",
+      "label": "Music & Audio",
+      "icon": "🎵"
+    },
+    {
+      "id": "fashion",
+      "label": "Fashion & Style",
+      "icon": "👗"
+    },
+    {
+      "id": "education",
+      "label": "Education",
+      "icon": "🎓"
+    },
+    {
+      "id": "marketing",
+      "label": "Marketing & Growth",
+      "icon": "📣"
+    },
+    {
+      "id": "security",
+      "label": "Security & Privacy",
+      "icon": "🔒"
+    },
+    {
+      "id": "automation",
+      "label": "Automation & Efficiency",
+      "icon": "⚙️"
+    },
+    {
+      "id": "travel",
+      "label": "Travel & Exploration",
+      "icon": "✈️"
+    },
+    {
+      "id": "entrepreneurship",
+      "label": "Entrepreneurship & Startups",
+      "icon": "🚀"
+    },
+    {
+      "id": "media",
+      "label": "Media & Entertainment",
+      "icon": "🎬"
+    },
+    {
+      "id": "real-estate",
+      "label": "Real Estate & Property",
+      "icon": "🏠"
+    },
+    {
+      "id": "food",
+      "label": "Food & Agriculture",
+      "icon": "🌾"
+    },
+    {
+      "id": "manufacturing",
+      "label": "Manufacturing & Production",
+      "icon": "🏭"
+    },
+    {
+      "id": "nonprofit",
+      "label": "Nonprofit & NGO",
+      "icon": "🕊️"
+    }
   ]
 }

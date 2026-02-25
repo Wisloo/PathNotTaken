@@ -101,9 +101,9 @@ function CareerDetailPage() {
   }
 
   const formatSalary = (amount: number) =>
-    new Intl.NumberFormat("en-US", {
+    new Intl.NumberFormat("en-PH", {
       style: "currency",
-      currency: "USD",
+      currency: "PHP",
       maximumFractionDigits: 0,
     }).format(amount);
 

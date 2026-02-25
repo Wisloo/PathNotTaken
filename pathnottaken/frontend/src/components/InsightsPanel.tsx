@@ -65,7 +65,7 @@ export default function InsightsPanel({ recommendations, userSkills, userInteres
             <div className="text-[10px] text-gray-500 mt-0.5">High Growth Careers</div>
           </div>
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 text-center border border-white/60">
-            <div className="text-2xl font-bold text-amber-600">${(topSalary / 1000).toFixed(0)}K</div>
+            <div className="text-2xl font-bold text-amber-600">\u20b1{(topSalary / 1000000).toFixed(1)}M</div>
             <div className="text-[10px] text-gray-500 mt-0.5">Top Median Salary</div>
           </div>
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 text-center border border-white/60">

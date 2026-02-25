@@ -8,6 +8,62 @@ const {
   generateSkillGapAnalysis 
 } = require("../services/aiService");
 
+// Helper: format a skill ID like "data-analysis" → "Data Analysis"
+function formatSkillLabel(raw) {
+  return raw
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase())
+    .replace(/\bCi Cd\b/i, 'CI/CD')
+    .replace(/\bUi\b/g, 'UI')
+    .replace(/\bUx\b/g, 'UX')
+    .replace(/\bAi\b/g, 'AI')
+    .replace(/\bApi\b/g, 'API')
+    .replace(/\bDevops\b/g, 'DevOps')
+    .replace(/\bGis\b/g, 'GIS');
+}
+
+// Helper: generate skill-specific default resources when no curated data exists
+function createSkillSpecificDefaults(skillKey) {
+  const label = formatSkillLabel(skillKey);
+  const encoded = encodeURIComponent(label);
+  return {
+    label: label,
+    beginnerResources: [
+      { type: 'course', title: `Learn ${label} — Coursera`, provider: 'Coursera', url: `https://www.coursera.org/search?query=${encoded}`, free: false, hours: 10 },
+      { type: 'course', title: `${label} for Beginners — YouTube`, provider: 'YouTube', url: `https://www.youtube.com/results?search_query=${encoded}+tutorial+for+beginners`, free: true, hours: 5 },
+      { type: 'course', title: `${label} — Udemy`, provider: 'Udemy', url: `https://www.udemy.com/courses/search/?q=${encoded}`, free: false, hours: 10 }
+    ],
+    intermediateResources: [
+      { type: 'course', title: `Advanced ${label} — LinkedIn Learning`, provider: 'LinkedIn Learning', url: `https://www.linkedin.com/learning/search?keywords=${encoded}`, free: false, hours: 10 },
+      { type: 'practice', title: `${label} — Skillshare Classes`, provider: 'Skillshare', url: `https://www.skillshare.com/search?query=${encoded}`, free: false, hours: 8 }
+    ],
+    exercises: [
+      `Find a step-by-step ${label} tutorial and complete it end-to-end`,
+      `Write a 1-page summary of 3 key ${label} concepts you learned this week`,
+      `Practice applying ${label} to a real-world scenario for 1 hour`,
+      `Teach someone else one concept from ${label} — explaining solidifies knowledge`
+    ],
+    projectIdeas: [
+      { title: `${label} Portfolio Piece`, description: `Create a portfolio project demonstrating your ${label} skills with real-world application`, hours: 10, skills: [skillKey] },
+      { title: `${label} Case Study`, description: `Research a professional who uses ${label} and write a 1-page analysis of their methods`, hours: 5, skills: [skillKey, 'research'] }
+    ],
+    estimatedHours: 40,
+    weeklyMilestones: [
+      `Understand the fundamentals of ${label}`,
+      `Practice core ${label} techniques daily for one week`,
+      `Build a small project applying ${label} knowledge`,
+      `Share your ${label} work and get feedback`
+    ]
+  };
+}
+
+// Helper: get resources for a skill (curated or skill-specific fallback, never generic)
+function getSkillResources(skillId) {
+  return learningResources.skillResources[skillId]
+    || (learningResources.additionalSkills && learningResources.additionalSkills[skillId])
+    || createSkillSpecificDefaults(skillId);
+}
+
 // GET /api/skills/categories
 router.get("/categories", (req, res) => {
   res.json({
@@ -71,9 +127,7 @@ router.post("/gap-analysis", (req, res) => {
 // GET /api/skills/learning-resources/:skillId - Get learning resources for a specific skill
 router.get("/learning-resources/:skillId", (req, res) => {
   const skillId = req.params.skillId;
-  const resources = learningResources.skillResources[skillId] 
-    || (learningResources.additionalSkills && learningResources.additionalSkills[skillId])
-    || learningResources.defaultResources;
+  const resources = getSkillResources(skillId);
   return res.json({ success: true, skillId, resources });
 });
 
@@ -100,7 +154,7 @@ router.post("/concrete-roadmap", (req, res) => {
         category: clientCareer.category || 'AI Recommended',
         requiredSkills: clientCareer.requiredSkills || clientCareer.missingSkills || [],
         relatedInterests: clientCareer.relatedInterests || clientCareer.matchedInterests || [],
-        salaryRange: clientCareer.salaryRange || { min: 50000, max: 120000 },
+        salaryRange: clientCareer.salaryRange || { min: 2800000, max: 6720000, currency: 'PHP' },
         growthOutlook: clientCareer.growthOutlook || 'High',
         dayInLife: clientCareer.dayInLife || '',
         whyNonObvious: clientCareer.whyNonObvious || '',
@@ -127,41 +181,6 @@ router.post("/concrete-roadmap", (req, res) => {
       return resource;
     }
 
-    // Helper: generate skill-specific default resources when no curated data exists
-    function createSkillSpecificDefaults(skillKey) {
-      const label = formatSkillLabel(skillKey);
-      const encoded = encodeURIComponent(label);
-      return {
-        label: label,
-        beginnerResources: [
-          { type: 'course', title: `Learn ${label} — Coursera`, provider: 'Coursera', url: `https://www.coursera.org/search?query=${encoded}`, free: false, hours: 10 },
-          { type: 'course', title: `${label} for Beginners — YouTube`, provider: 'YouTube', url: `https://www.youtube.com/results?search_query=${encoded}+tutorial+for+beginners`, free: true, hours: 5 },
-          { type: 'course', title: `${label} — Udemy`, provider: 'Udemy', url: `https://www.udemy.com/courses/search/?q=${encoded}`, free: false, hours: 10 }
-        ],
-        intermediateResources: [
-          { type: 'course', title: `Advanced ${label} — LinkedIn Learning`, provider: 'LinkedIn Learning', url: `https://www.linkedin.com/learning/search?keywords=${encoded}`, free: false, hours: 10 },
-          { type: 'practice', title: `${label} — Skillshare Classes`, provider: 'Skillshare', url: `https://www.skillshare.com/search?query=${encoded}`, free: false, hours: 8 }
-        ],
-        exercises: [
-          `Find a step-by-step ${label} tutorial and complete it end-to-end`,
-          `Write a 1-page summary of 3 key ${label} concepts you learned this week`,
-          `Practice applying ${label} to a real-world scenario for 1 hour`,
-          `Teach someone else one concept from ${label} — explaining solidifies knowledge`
-        ],
-        projectIdeas: [
-          { title: `${label} Portfolio Piece`, description: `Create a portfolio project demonstrating your ${label} skills with real-world application`, hours: 10, skills: [skillKey] },
-          { title: `${label} Case Study`, description: `Research a professional who uses ${label} and write a 1-page analysis of their methods`, hours: 5, skills: [skillKey, 'research'] }
-        ],
-        estimatedHours: 40,
-        weeklyMilestones: [
-          `Understand the fundamentals of ${label}`,
-          `Practice core ${label} techniques daily for one week`,
-          `Build a small project applying ${label} knowledge`,
-          `Share your ${label} work and get feedback`
-        ]
-      };
-    }
-
     // Guard against empty skills
     if (orderedSkills.length === 0) {
       return res.status(400).json({ error: 'This career has no required skills defined.' });
@@ -176,9 +195,7 @@ router.post("/concrete-roadmap", (req, res) => {
       // Rotate through skills
       const primarySkillIdx = w % orderedSkills.length;
       const primarySkill = orderedSkills[primarySkillIdx];
-      const skillData = learningResources.skillResources[primarySkill] 
-        || (learningResources.additionalSkills && learningResources.additionalSkills[primarySkill]) 
-        || createSkillSpecificDefaults(primarySkill);
+      const skillData = getSkillResources(primarySkill);
       
       const isMissing = missingSkills.includes(primarySkill);
       const phase = month === 0 ? 'foundation' : month === 1 ? 'practice' : 'project';
@@ -290,9 +307,7 @@ router.post("/concrete-roadmap", (req, res) => {
     const seenUrls = new Set();
     const topResources = [];
     for (const skill of orderedSkills) {
-      const sd = learningResources.skillResources[skill] 
-        || (learningResources.additionalSkills && learningResources.additionalSkills[skill])
-        || learningResources.defaultResources;
+      const sd = getSkillResources(skill);
       const label = (sd.label || skill).replace(/-/g, ' ');
       const allRes = [...(sd.beginnerResources || []), ...(sd.intermediateResources || [])];
       for (const r of allRes) {
@@ -375,17 +390,6 @@ function getTip(phase, weekInMonth, isMissing, skillLabel) {
   return tips.project[weekInMonth % tips.project.length];
 }
 
-function formatSkillLabel(raw) {
-  return raw
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, c => c.toUpperCase())
-    .replace(/\bCi Cd\b/i, 'CI/CD')
-    .replace(/\bUi\b/g, 'UI')
-    .replace(/\bUx\b/g, 'UX')
-    .replace(/\bAi\b/g, 'AI')
-    .replace(/\bApi\b/g, 'API')
-    .replace(/\bDevops\b/g, 'DevOps')
-    .replace(/\bGis\b/g, 'GIS');
-}
+
 
 module.exports = router;
