@@ -24,7 +24,7 @@ app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 const isDev = process.env.NODE_ENV !== 'production';
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: isDev ? 100 : 20,    // generous in dev, strict in prod
+  max: 200,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: "Too many attempts, please try again later." },
