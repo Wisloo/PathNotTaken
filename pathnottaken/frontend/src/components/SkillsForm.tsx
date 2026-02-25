@@ -641,7 +641,7 @@ export default function SkillsForm() {
         setLoading(false);
       } catch (err) {
         console.error(err);
-        setError("Failed to connect. Make sure the backend is running on port 5000.");
+        setError("Failed to connect to the server. Please try again in a moment.");
         setLoading(false);
       }
     }
@@ -861,9 +861,9 @@ export default function SkillsForm() {
         <div className="bg-red-50 border border-red-200 rounded-xl p-8">
           <h3 className="text-lg font-semibold text-red-800 mb-2">Connection Error</h3>
           <p className="text-sm text-red-600 mb-4">{error}</p>
-          <code className="text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg">
-            cd backend &amp;&amp; npm run dev
-          </code>
+          <button onClick={() => window.location.reload()} className="text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 transition-colors">
+            Try again
+          </button>
         </div>
       </div>
     );
