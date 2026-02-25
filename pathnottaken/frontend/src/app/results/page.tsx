@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState, Suspense } from "react";
@@ -292,11 +292,11 @@ function ResultsContent() {
                   className="w-full accent-emerald-600"
                 />
                 <div className="flex justify-between text-xs text-gray-400 mt-1">
-                  <span>\u20b11.7M</span>
+                  <span>₱1.7M</span>
                   <span className="font-medium text-emerald-600">
-                    \u20b1{(salaryMin / 1000000).toFixed(1)}M+
+                    ₱{(salaryMin / 1000000).toFixed(1)}M+
                   </span>
-                  <span>\u20b111.2M+</span>
+                  <span>₱11.2M+</span>
                 </div>
               </div>
 
@@ -354,9 +354,9 @@ function ResultsContent() {
                     <label className="block text-xs font-semibold text-gray-600 mb-2">Salary Range</label>
                     <input type="range" min={1680000} max={11200000} step={560000} value={salaryMin} onChange={(e) => setSalaryMin(Number(e.target.value))} className="w-full accent-emerald-600" />
                     <div className="flex justify-between text-xs text-gray-400 mt-1">
-                      <span>\u20b11.7M</span>
-                      <span className="font-medium text-emerald-600">\u20b1{(salaryMin / 1000000).toFixed(1)}M+</span>
-                      <span>\u20b111.2M+</span>
+                      <span>₱1.7M</span>
+                      <span className="font-medium text-emerald-600">₱{(salaryMin / 1000000).toFixed(1)}M+</span>
+                      <span>₱11.2M+</span>
                     </div>
                   </div>
                   <div>

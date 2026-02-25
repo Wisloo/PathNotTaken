@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useEffect, useState, useRef, useCallback } from "react";
@@ -141,12 +141,12 @@ export default function Home() {
   ];
 
   const careerPreviews = [
-    { title: "Data Ethicist", cat: "Ethics & Policy", growth: "Very High", salary: "\u20b16.4M", color: "from-emerald-400 to-emerald-600" },
-    { title: "Developer Advocate", cat: "Tech & Community", growth: "High", salary: "\u20b16.7M", color: "from-blue-400 to-indigo-600" },
-    { title: "Sports Analyst", cat: "Sports & Data", growth: "High", salary: "\u20b15.3M", color: "from-purple-400 to-pink-600" },
-    { title: "Cybersecurity", cat: "Tech & Security", growth: "Very High", salary: "\u20b15.9M", color: "from-red-400 to-rose-600" },
-    { title: "Climate Tech PM", cat: "Environment", growth: "Very High", salary: "\u20b17.3M", color: "from-teal-400 to-cyan-600" },
-    { title: "UX Researcher", cat: "Design & Research", growth: "High", salary: "\u20b15.2M", color: "from-amber-400 to-orange-600" },
+    { title: "Data Ethicist", cat: "Ethics & Policy", growth: "Very High", salary: "₱6.4M", color: "from-emerald-400 to-emerald-600" },
+    { title: "Developer Advocate", cat: "Tech & Community", growth: "High", salary: "₱6.7M", color: "from-blue-400 to-indigo-600" },
+    { title: "Sports Analyst", cat: "Sports & Data", growth: "High", salary: "₱5.3M", color: "from-purple-400 to-pink-600" },
+    { title: "Cybersecurity", cat: "Tech & Security", growth: "Very High", salary: "₱5.9M", color: "from-red-400 to-rose-600" },
+    { title: "Climate Tech PM", cat: "Environment", growth: "Very High", salary: "₱7.3M", color: "from-teal-400 to-cyan-600" },
+    { title: "UX Researcher", cat: "Design & Research", growth: "High", salary: "₱5.2M", color: "from-amber-400 to-orange-600" },
   ];
 
   // Industries marquee

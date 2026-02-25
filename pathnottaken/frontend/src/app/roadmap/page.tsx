@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
@@ -905,15 +905,15 @@ function RoadmapContent() {
             <div className="mb-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 text-center">
                 <p className="text-[10px] text-gray-400 uppercase tracking-wider font-medium">Entry Level</p>
-                <p className="text-lg font-bold text-gray-900 mt-1">\u20b1{(career.salaryRange.min / 1000000).toFixed(1)}M</p>
+                <p className="text-lg font-bold text-gray-900 mt-1">₱{(career.salaryRange.min / 1000000).toFixed(1)}M</p>
               </div>
               <div className="p-4 bg-gradient-to-br from-emerald-50 to-emerald-50 rounded-xl border border-emerald-200 text-center relative">
                 <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-semibold">MEDIAN</div>
-                <p className="text-lg font-bold text-emerald-700 mt-2">\u20b1{(Math.round((career.salaryRange.min + career.salaryRange.max) / 2) / 1000000).toFixed(1)}M</p>
+                <p className="text-lg font-bold text-emerald-700 mt-2">₱{(Math.round((career.salaryRange.min + career.salaryRange.max) / 2) / 1000000).toFixed(1)}M</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 text-center">
                 <p className="text-[10px] text-gray-400 uppercase tracking-wider font-medium">Senior Level</p>
-                <p className="text-lg font-bold text-gray-900 mt-1">\u20b1{(career.salaryRange.max / 1000000).toFixed(1)}M</p>
+                <p className="text-lg font-bold text-gray-900 mt-1">₱{(career.salaryRange.max / 1000000).toFixed(1)}M</p>
               </div>
             </div>
           )}

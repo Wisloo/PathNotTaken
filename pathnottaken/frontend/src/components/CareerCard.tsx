@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { CareerRecommendation } from "@/lib/api";
 import { useState } from "react";
@@ -15,12 +15,12 @@ export default function CareerCard({ career, index }: CareerCardProps) {
 
   const formatSalary = (amount: number) => {
     if (amount >= 1000000) {
-      return `\u20b1${(amount / 1000000).toFixed(1)}M`;
+      return `₱${(amount / 1000000).toFixed(1)}M`;
     }
     if (amount >= 1000) {
-      return `\u20b1${Math.round(amount / 1000)}K`;
+      return `₱${Math.round(amount / 1000)}K`;
     }
-    return `\u20b1${amount}`;
+    return `₱${amount}`;
   };
 
   const growthLabel: Record<string, { text: string; color: string }> = {

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -118,7 +118,7 @@ export default function CareerTransitionAnalyzer({
         </div>
         <div className="bg-white rounded-lg p-4 text-center shadow-sm">
           <div className="text-2xl font-bold text-purple-600">
-            \u20b1{(analysis.estimatedCost.total / 1000).toFixed(0)}K
+            ₱{(analysis.estimatedCost.total / 1000).toFixed(0)}K
           </div>
           <div className="text-xs text-gray-600 mt-1">Est. Investment</div>
         </div>
@@ -150,19 +150,19 @@ export default function CareerTransitionAnalyzer({
           <div className="flex justify-between">
             <span className="text-gray-600">Education & Courses:</span>
             <span className="font-semibold">
-              \u20b1{analysis.estimatedCost.education.toLocaleString()}
+              ₱{analysis.estimatedCost.education.toLocaleString()}
             </span>
           </div>
           <div className="flex justify-between">
             <span className="text-gray-600">Opportunity Cost:</span>
             <span className="font-semibold">
-              \u20b1{analysis.estimatedCost.opportunityCost.toLocaleString()}
+              ₱{analysis.estimatedCost.opportunityCost.toLocaleString()}
             </span>
           </div>
           <div className="border-t pt-2 flex justify-between">
             <span className="font-semibold text-gray-800">Total Investment:</span>
             <span className="font-bold text-indigo-600">
-              \u20b1{analysis.estimatedCost.total.toLocaleString()}
+              ₱{analysis.estimatedCost.total.toLocaleString()}
             </span>
           </div>
         </div>
