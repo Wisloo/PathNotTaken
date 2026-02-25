@@ -7,6 +7,7 @@ import {
   fetchInterests,
   fetchSkillCategories,
   fetchMe,
+  saveSkillSnapshot,
 } from "@/lib/api";
 
 // --- Synonym map: common free-text skills -> canonical backend skill IDs ---
@@ -379,21 +380,134 @@ const SYNONYMS: Record<string, string | string[]> = {
   purchasing: ["supply-chain", "negotiation", "data-analysis"],
 };
 
-// Popular skill chips users can click for quick-add
-const POPULAR_SKILLS = [
-  { label: "Python", synonym: "python" },
-  { label: "Excel", synonym: "excel" },
-  { label: "JavaScript", synonym: "javascript" },
-  { label: "SQL", synonym: "sql" },
-  { label: "Project Management", synonym: "project management" },
-  { label: "Data Analysis", synonym: "data analysis" },
-  { label: "Figma", synonym: "figma" },
-  { label: "Communication", synonym: "communication" },
-  { label: "Writing", synonym: "writing" },
-  { label: "Leadership", synonym: "leadership" },
-  { label: "Marketing", synonym: "digital marketing" },
-  { label: "React", synonym: "react" },
+// Comprehensive skill catalog organized by category — matches careers.json skillCategories
+const SKILL_CATEGORIES = [
+  {
+    name: "Technical Skills",
+    icon: "💻",
+    skills: [
+      { label: "Programming", synonym: "programming" },
+      { label: "Python", synonym: "python" },
+      { label: "JavaScript", synonym: "javascript" },
+      { label: "React", synonym: "react" },
+      { label: "SQL", synonym: "sql" },
+      { label: "Web Development", synonym: "web development" },
+      { label: "Mobile Development", synonym: "mobile development" },
+      { label: "API Development", synonym: "api development" },
+      { label: "Data Analysis", synonym: "data analysis" },
+      { label: "Machine Learning", synonym: "machine learning" },
+      { label: "Statistics", synonym: "statistics" },
+      { label: "GIS / Mapping", synonym: "gis" },
+      { label: "3D Modeling", synonym: "3d modeling" },
+      { label: "Testing / QA", synonym: "testing" },
+      { label: "Visualization", synonym: "data visualization" },
+      { label: "Cloud Computing", synonym: "cloud computing" },
+      { label: "Cybersecurity", synonym: "cybersecurity" },
+      { label: "DevOps", synonym: "devops" },
+      { label: "Automation", synonym: "automation" },
+      { label: "UI Design", synonym: "ui design" },
+      { label: "Networking", synonym: "computer networking" },
+      { label: "Linux", synonym: "linux" },
+      { label: "Database Management", synonym: "database management" },
+      { label: "Excel", synonym: "excel" },
+      { label: "Technical Literacy", synonym: "technical literacy" },
+    ],
+  },
+  {
+    name: "Creative Skills",
+    icon: "🎨",
+    skills: [
+      { label: "Design", synonym: "design" },
+      { label: "Figma", synonym: "figma" },
+      { label: "Writing", synonym: "writing" },
+      { label: "Creativity", synonym: "creativity" },
+      { label: "Prototyping", synonym: "prototyping" },
+      { label: "Photography", synonym: "photography" },
+      { label: "Content Strategy", synonym: "content strategy" },
+      { label: "Storytelling", synonym: "storytelling" },
+      { label: "Digital Marketing", synonym: "digital marketing" },
+      { label: "Video Production", synonym: "video production" },
+      { label: "Copywriting", synonym: "copywriting" },
+      { label: "Graphic Design", synonym: "graphic design" },
+      { label: "UX/UI Design", synonym: "ux design" },
+    ],
+  },
+  {
+    name: "Analytical Skills",
+    icon: "🔍",
+    skills: [
+      { label: "Critical Thinking", synonym: "critical thinking" },
+      { label: "Analytical Thinking", synonym: "analytical thinking" },
+      { label: "Research", synonym: "research" },
+      { label: "Problem Solving", synonym: "problem solving" },
+      { label: "Attention to Detail", synonym: "attention to detail" },
+      { label: "Investigation", synonym: "investigation" },
+      { label: "Accounting", synonym: "accounting" },
+      { label: "Systems Thinking", synonym: "systems thinking" },
+      { label: "Risk Assessment", synonym: "risk assessment" },
+      { label: "Data Modeling", synonym: "data modeling" },
+      { label: "Process Improvement", synonym: "process improvement" },
+    ],
+  },
+  {
+    name: "People & Communication",
+    icon: "🤝",
+    skills: [
+      { label: "Communication", synonym: "communication" },
+      { label: "Empathy", synonym: "empathy" },
+      { label: "Teaching", synonym: "teaching" },
+      { label: "Public Speaking", synonym: "public speaking" },
+      { label: "Interviewing", synonym: "interviewing" },
+      { label: "Leadership", synonym: "leadership" },
+      { label: "Cultural Awareness", synonym: "cultural awareness" },
+      { label: "Negotiation", synonym: "negotiation" },
+      { label: "Conflict Resolution", synonym: "conflict resolution" },
+      { label: "Networking", synonym: "networking (social)" },
+      { label: "Teamwork", synonym: "teamwork" },
+      { label: "Mentoring", synonym: "mentoring" },
+    ],
+  },
+  {
+    name: "Domain Knowledge",
+    icon: "📚",
+    skills: [
+      { label: "Psychology", synonym: "psychology" },
+      { label: "Biology", synonym: "biology" },
+      { label: "Environmental Science", synonym: "environmental science" },
+      { label: "Healthcare Knowledge", synonym: "healthcare knowledge" },
+      { label: "Ethics", synonym: "ethics" },
+      { label: "Policy", synonym: "policy" },
+      { label: "Philosophy", synonym: "philosophy" },
+      { label: "Languages", synonym: "languages" },
+      { label: "Mathematics", synonym: "mathematics" },
+      { label: "Accessibility", synonym: "accessibility" },
+      { label: "Sports Science", synonym: "sports science" },
+      { label: "Supply Chain", synonym: "supply chain" },
+      { label: "Education Theory", synonym: "education theory" },
+      { label: "Finance", synonym: "finance" },
+      { label: "Law / Legal", synonym: "law" },
+    ],
+  },
+  {
+    name: "Management & Organization",
+    icon: "📋",
+    skills: [
+      { label: "Project Management", synonym: "project management" },
+      { label: "Organization", synonym: "organization" },
+      { label: "Strategy", synonym: "strategy" },
+      { label: "Stakeholder Management", synonym: "stakeholder management" },
+      { label: "Agile / Scrum", synonym: "agile" },
+      { label: "Budgeting", synonym: "budgeting" },
+      { label: "Change Management", synonym: "change management" },
+      { label: "Product Management", synonym: "product management" },
+      { label: "Marketing", synonym: "digital marketing" },
+      { label: "Operations", synonym: "operations" },
+    ],
+  },
 ];
+
+// Flat list for backward compatibility (used in the popular skills rendering)
+const POPULAR_SKILLS = SKILL_CATEGORIES.flatMap((cat) => cat.skills);
 
 // Predefined industry options
 const INDUSTRIES = [
@@ -713,6 +827,13 @@ export default function SkillsForm() {
       .filter(Boolean)
       .join(". ");
 
+    // Auto-save skill snapshot for logged-in users (so Skill History tab stays up to date)
+    const token = typeof window !== 'undefined' ? localStorage.getItem('pn_token') : null;
+    if (token) {
+      saveSkillSnapshot(skillIds, selectedInterests, background || undefined, currentField || undefined)
+        .catch(() => { /* silent — snapshot is best-effort */ });
+    }
+
     const params = new URLSearchParams({
       skills: skillIds.join(","),
       interests: selectedInterests.join(","),
@@ -844,29 +965,38 @@ export default function SkillsForm() {
                 </div>
               )}
 
-              {/* Popular Skills Quick-add */}
+              {/* Skill Catalog — Browse by Category */}
               <div className="mt-4 mb-4">
-                <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Popular &#8212; click to add</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {POPULAR_SKILLS.map((ps) => {
-                    const canon = SYNONYMS[ps.synonym];
-                    const ids = canon ? (Array.isArray(canon) ? canon : [canon]) : [ps.synonym];
-                    const alreadyAdded = ids.some((id) => skills.some((sk) => sk.id === id));
-                    return (
-                      <button
-                        key={ps.label}
-                        onClick={() => !alreadyAdded && addPopularSkill(ps.synonym)}
-                        disabled={alreadyAdded}
-                        className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
-                          alreadyAdded
-                            ? "bg-emerald-50 text-emerald-600 border-emerald-200 cursor-default opacity-60"
-                            : "bg-white text-gray-600 border-gray-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 cursor-pointer"
-                        }`}
-                      >
-                        {alreadyAdded ? "\u2713 " : "+ "}{ps.label}
-                      </button>
-                    );
-                  })}
+                <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-3">Browse Skills &#8212; click to add</p>
+                <div className="space-y-3 max-h-[420px] overflow-y-auto pr-1 scrollbar-thin">
+                  {SKILL_CATEGORIES.map((cat) => (
+                    <div key={cat.name} className="bg-gray-50/60 rounded-xl px-3 py-2.5 border border-gray-100">
+                      <p className="text-xs font-bold text-gray-600 mb-2 flex items-center gap-1.5">
+                        <span>{cat.icon}</span> {cat.name}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {cat.skills.map((ps) => {
+                          const canon = SYNONYMS[ps.synonym];
+                          const ids = canon ? (Array.isArray(canon) ? canon : [canon]) : [ps.synonym];
+                          const alreadyAdded = ids.some((id) => skills.some((sk) => sk.id === id));
+                          return (
+                            <button
+                              key={ps.label}
+                              onClick={() => !alreadyAdded && addPopularSkill(ps.synonym)}
+                              disabled={alreadyAdded}
+                              className={`text-xs px-2.5 py-1 rounded-full border transition-all ${
+                                alreadyAdded
+                                  ? "bg-emerald-50 text-emerald-600 border-emerald-200 cursor-default opacity-60"
+                                  : "bg-white text-gray-600 border-gray-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 cursor-pointer"
+                              }`}
+                            >
+                              {alreadyAdded ? "\u2713 " : "+ "}{ps.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 

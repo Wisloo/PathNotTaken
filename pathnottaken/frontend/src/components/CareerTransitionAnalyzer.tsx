@@ -70,10 +70,10 @@ export default function CareerTransitionAnalyzer({
   if (!analysis) return null;
 
   const difficultyConfig = {
-    easy: { color: "green", icon: "✅", text: "Easy" },
-    moderate: { color: "yellow", icon: "⚡", text: "Moderate" },
-    hard: { color: "orange", icon: "⚠️", text: "Challenging" },
-    unknown: { color: "gray", icon: "❓", text: "Unknown" },
+    easy: { color: "green", icon: "✅", text: "Easy", classes: "bg-green-100 text-green-800 border-green-300" },
+    moderate: { color: "yellow", icon: "⚡", text: "Moderate", classes: "bg-yellow-100 text-yellow-800 border-yellow-300" },
+    hard: { color: "orange", icon: "⚠️", text: "Challenging", classes: "bg-orange-100 text-orange-800 border-orange-300" },
+    unknown: { color: "gray", icon: "❓", text: "Unknown", classes: "bg-gray-100 text-gray-800 border-gray-300" },
   };
 
   const difficulty =
@@ -96,7 +96,7 @@ export default function CareerTransitionAnalyzer({
 
       {/* Difficulty Badge */}
       <div
-        className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-${difficulty.color}-100 text-${difficulty.color}-800 border border-${difficulty.color}-300`}
+        className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border ${difficulty.classes || 'bg-gray-100 text-gray-800 border-gray-300'}`}
       >
         <span className="text-xl">{difficulty.icon}</span>
         <span className="font-semibold">{difficulty.text} Transition</span>

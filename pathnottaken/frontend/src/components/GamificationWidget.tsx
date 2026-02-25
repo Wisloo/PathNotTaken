@@ -33,7 +33,7 @@ export default function GamificationWidget() {
   async function fetchGamificationData() {
     try {
       const { API_ORIGIN } = await import("@/lib/api");
-      const token = localStorage.getItem("authToken");
+      const token = localStorage.getItem("pn_token");
       
       if (!token) {
         setLoading(false);

@@ -196,7 +196,8 @@ function RoadmapContent() {
 
         // Get user skills from URL or localStorage
         const urlSkills = params?.get("skills")?.split(",").filter(Boolean) || [];
-        const storedSkills = JSON.parse(localStorage.getItem("pn_user_skills") || "[]");
+        let storedSkills: string[] = [];
+        try { storedSkills = JSON.parse(localStorage.getItem("pn_user_skills") || "[]"); } catch { /* ignore */ }
         const userSkills = urlSkills.length > 0 ? urlSkills : storedSkills;
 
         // FIXED: For AI careers, we NOW send the career data to the concrete-roadmap
@@ -562,7 +563,7 @@ function RoadmapContent() {
         <div className="card-static p-4">
           <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">Duration</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">12 <span className="text-sm font-medium text-gray-400">weeks</span></p>
-          <p className="text-xs text-gray-400">{weeklyHours}h per week</p>
+          <p className="text-xs text-gray-400">estimated timeline</p>
         </div>
         <div className="card-static p-4">
           <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">Skills</p>
@@ -574,35 +575,6 @@ function RoadmapContent() {
           <p className="text-lg font-bold text-gray-900 mt-1">{estimatedDate.toLocaleDateString("en-US", { month: "short", day: "numeric" })}</p>
           <p className="text-xs text-gray-400">{weeksRemaining} weeks left</p>
         </div>
-      </div>
-
-      {/* ──────── WEEKLY HOURS SELECTOR ──────── */}
-      <div className="card-static p-4 mb-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-          <div className="flex items-center gap-3 flex-1">
-            <span className="text-lg">⏱️</span>
-            <div>
-              <label htmlFor="weeklyHours" className="text-sm font-semibold text-gray-700 block">Weekly time commitment</label>
-              <p className="text-xs text-gray-400">Adjusts task hours across your entire roadmap</p>
-            </div>
-          </div>
-          <select
-            id="weeklyHours"
-            value={weeklyHours}
-            onChange={(e) => setWeeklyHours(Number(e.target.value))}
-            className="px-4 py-2.5 border border-gray-200 rounded-lg text-sm bg-white font-medium text-gray-700 min-w-[220px]"
-          >
-            <option value={5}>5 hours/week — casual</option>
-            <option value={10}>10 hours/week — balanced</option>
-            <option value={15}>15 hours/week — intensive</option>
-            <option value={20}>20 hours/week — full commitment</option>
-          </select>
-        </div>
-        {weeklyHours !== initialWeeklyHours && (
-          <div className="mt-3 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 text-xs text-blue-700">
-            ✨ Task hours adjusted from {initialWeeklyHours}h → {weeklyHours}h per week. All task estimates have been scaled accordingly.
-          </div>
-        )}
       </div>
 
       {/* ──────── LEARNING JOURNEY SUMMARY ──────── */}
@@ -937,7 +909,7 @@ function RoadmapContent() {
               </div>
               <div className="p-4 bg-gradient-to-br from-emerald-50 to-emerald-50 rounded-xl border border-emerald-200 text-center relative">
                 <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-semibold">MEDIAN</div>
-                <p className="text-lg font-bold text-emerald-700 mt-2">${(career.salaryRange.median / 1000).toFixed(0)}K</p>
+                <p className="text-lg font-bold text-emerald-700 mt-2">${(Math.round((career.salaryRange.min + career.salaryRange.max) / 2) / 1000).toFixed(0)}K</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 text-center">
                 <p className="text-[10px] text-gray-400 uppercase tracking-wider font-medium">Senior Level</p>

@@ -191,8 +191,8 @@ router.get("/public-profile/:userId", async (req, res) => {
     const user = await db.get('SELECT id, name, "createdAt" FROM users WHERE id = ?', targetId);
     if (!user) return res.status(404).json({ error: "User not found" });
 
-    // Public roadmaps
-    const roadmaps = await db.all('SELECT id, "careerId", title, "createdAt" FROM roadmaps WHERE "ownerId" = ? ORDER BY "createdAt" DESC', targetId);
+    // Public roadmaps — include weeks data to compute completion
+    const roadmaps = await db.all('SELECT id, "careerId", title, weeks, "createdAt" FROM roadmaps WHERE "ownerId" = ? ORDER BY "createdAt" DESC', targetId);
 
     // Gamification data (public)
     const gamification = await db.get('SELECT xp, level, "streakDays", "tasksCompleted", badges FROM user_gamification WHERE "userId" = ?', targetId);
@@ -200,13 +200,37 @@ router.get("/public-profile/:userId", async (req, res) => {
     // Latest skill snapshot (public)
     const latestSkills = await db.get('SELECT skills, "createdAt" FROM skill_snapshots WHERE "userId" = ? ORDER BY "createdAt" DESC LIMIT 1', targetId);
 
+    // Compute completion percentage for each roadmap from stored task data
+    const roadmapsMapped = roadmaps.map(r => {
+      let completionPercent = 0;
+      try {
+        const parsed = JSON.parse(r.weeks || '{}');
+        const months = parsed.months || parsed.weeks || [];
+        let totalTasks = 0;
+        let doneTasks = 0;
+        const iterateMonths = Array.isArray(months) ? months : [];
+        for (const month of iterateMonths) {
+          const weeks = month.weeks || [];
+          for (const week of weeks) {
+            const tasks = week.tasks || [];
+            for (const task of tasks) {
+              totalTasks++;
+              if (task.done) doneTasks++;
+            }
+          }
+        }
+        if (totalTasks > 0) completionPercent = Math.round((doneTasks / totalTasks) * 100);
+      } catch { /* ignore parse errors */ }
+      return { id: r.id, careerId: r.careerId, title: r.title, createdAt: r.createdAt, completionPercent };
+    });
+
     return res.json({
       success: true,
       profile: {
         id: user.id,
         name: user.name || 'Anonymous',
         memberSince: user.createdAt,
-        roadmaps: roadmaps.map(r => ({ id: r.id, careerId: r.careerId, title: r.title, createdAt: r.createdAt })),
+        roadmaps: roadmapsMapped,
         gamification: gamification ? {
           xp: gamification.xp,
           level: gamification.level,

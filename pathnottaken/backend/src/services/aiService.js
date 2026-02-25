@@ -29,7 +29,7 @@ async function callHuggingFace(prompt, opts = {}) {
   const model = process.env.HF_MODEL || 'Qwen/Qwen2.5-72B-Instruct';
   const maxTokens = opts.maxTokens ?? 800;
   const temperature = opts.temperature ?? 0.7;
-  const timeoutMs = opts.timeout ?? 10000; // 10 s default timeout
+  const timeoutMs = opts.timeout ?? 20000; // 20 s default timeout (large model needs more time)
 
   const start = Date.now();
 
@@ -42,7 +42,7 @@ async function callHuggingFace(prompt, opts = {}) {
     body: JSON.stringify({
       model,
       messages: [
-        { role: 'system', content: 'You are a career advisor API. Respond ONLY with valid JSON — no markdown fences, no commentary.' },
+        { role: 'system', content: 'You are a career advisor API. You MUST respond ONLY with valid JSON — no markdown fences, no commentary, no explanation. Output must be parseable by JSON.parse() directly.' },
         { role: 'user', content: prompt },
       ],
       max_tokens: maxTokens,
@@ -557,15 +557,10 @@ function getBuiltInRecommendations(skills, interests, currentField) {
       ? matchedInterests.length / career.relatedInterests.length
       : 0;
 
-    // Coverage bonus: reward careers where user covers more of the required skills
-    const coverageBonus = career.requiredSkills.length > 0
-      ? (matchedSkills.length / career.requiredSkills.length) * 0.15
+    // Raw skill coverage ratio (dominant factor — more skills matched = higher score, always)
+    const skillRatio = career.requiredSkills.length > 0
+      ? matchedSkills.length / career.requiredSkills.length
       : 0;
-
-    // Absolute skill count bonus: directly rewards matching more skills regardless
-    // of career size or positional weighting. Each matched skill adds +7%, capped at 35%.
-    // This ensures that matching 5 skills ALWAYS beats matching 2 skills.
-    const absoluteSkillBonus = Math.min(matchedSkills.length * 0.07, 0.35);
 
     // Industry affinity bonus: slightly boost careers whose category/interests overlap
     // with the user's current field (encourages adjacent-industry recommendations)
@@ -578,12 +573,20 @@ function getBuiltInRecommendations(skills, interests, currentField) {
       const overlap = affinityTags.filter(tag =>
         careerTags.some(ct => ct.includes(tag))
       ).length;
-      industryBonus = Math.min(overlap * 0.03, 0.08); // up to 8% bonus
+      industryBonus = Math.min(overlap * 0.02, 0.05); // up to 5% bonus
     }
 
-    // Combined score: skills 40%, interests 25%, coverage 15%, absolute count 35%, industry 8%
-    // Rebalanced to make raw skill count the dominant differentiator.
-    const totalScore = Math.min(1, skillScore * 0.40 + interestScore * 0.25 + coverageBonus + absoluteSkillBonus + industryBonus);
+    // Combined score: skill coverage 60% + weighted importance 15% + interests 15% + industry 5% + base 5%
+    // Skill coverage is the dominant factor — for the same career, more matched skills
+    // ALWAYS produces a higher score regardless of interest alignment.
+    // Non-skill bonuses (max 20%) are always less than one skill step (≥ 60/7 ≈ 8.6pp).
+    const totalScore = Math.min(1,
+      skillRatio * 0.60 +           // 60% from raw skill coverage ratio
+      skillScore * 0.15 +           // 15% from positional-weighted match (rewards matching key skills)
+      interestScore * 0.15 +        // 15% from interest alignment
+      industryBonus +               // up to 5% from industry affinity
+      (matchedSkills.length > 0 ? 0.05 : 0)  // 5% base for any skill match
+    );
 
     // Generate match explanation
     const explanation = generateExplanation(career, matchedSkills, matchedInterests, missingSkills);
@@ -716,8 +719,18 @@ async function getAIRecommendations(skills, interests, background) {
   const skillLabels = skills.map((s) => s.replace(/-/g, " ")).join(", ");
   const interestLabels = interests.map((i) => i.replace(/-/g, " ")).join(", ");
 
-  const prompt = `Skills: ${skillLabels}. Interests: ${interestLabels}.${background ? ` Background: ${background}.` : ''}
-Suggest 2 non-obvious, emerging career paths. Return: {"careers":[{"title":"...","category":"...","explanation":"one sentence","salaryRange":{"min":0,"max":0},"growthOutlook":"High","missingSkills":["skill1","skill2"],"matchScore":75}]}`;
+  const prompt = `A user has these skills: ${skillLabels}. Their interests: ${interestLabels}.${background ? ` Background: ${background}.` : ''}
+
+Based on their SPECIFIC skills and interests, suggest exactly 2 non-obvious but REALISTIC career paths that genuinely leverage these skills. Each career must actually exist in the job market.
+
+Requirements:
+- Titles must be real job titles (e.g. "UX Research Lead", "Technical Product Manager", "Data Storyteller")
+- Salary ranges must be realistic USD annual figures (min 30000, max 250000)
+- Missing skills should be actual learnable skills (2-3 per career)
+- Match scores should reflect how well their current skills transfer (40-90 range)
+- Growth outlook must be one of: "Very High", "High", "Moderate"
+
+Return ONLY this JSON (no other text): {"careers":[{"title":"...","category":"...","explanation":"one sentence why this fits","salaryRange":{"min":0,"max":0},"growthOutlook":"High","missingSkills":["skill1","skill2"],"matchScore":75}]}`;
 
   let content;
 
@@ -733,7 +746,7 @@ Suggest 2 non-obvious, emerging career paths. Return: {"careers":[{"title":"..."
     content = response.choices[0].message.content;
   } else if (AI_PROVIDER === 'huggingface') {
     console.log('Requesting HuggingFace-powered recommendations...');
-    content = await callHuggingFace(prompt, { maxTokens: 350, temperature: 0.7, timeout: 15000 });
+    content = await callHuggingFace(prompt, { maxTokens: 500, temperature: 0.6, timeout: 25000 });
   } else {
     throw new Error('No AI provider configured');
   }
@@ -741,14 +754,29 @@ Suggest 2 non-obvious, emerging career paths. Return: {"careers":[{"title":"..."
   const parsed = extractJSON(content);
   if (!parsed) throw new Error('AI response was not valid JSON');
 
+  // Validate and sanitize AI-generated careers to prevent hallucinations
+  const rawCareers = parsed.careers || parsed.recommendations || [];
+  if (!Array.isArray(rawCareers) || rawCareers.length === 0) {
+    throw new Error('AI response did not contain valid careers array');
+  }
+
   // Normalize the response and enrich AI careers with full data
   // so they work with CareerCard tabs (overview, pros/cons, skills) and roadmaps
-  const recommendations = (parsed.careers || parsed.recommendations || []).map(
+  const recommendations = rawCareers.slice(0, 3).map(
     (career, index) => {
-      const title = career.title || 'AI Career';
-      const explanation = career.explanation || career.description || '';
-      const missingSkills = career.missingSkills || career.missing_skills || [];
-      const salaryRange = career.salaryRange || career.salary_range || { min: 60000, max: 120000 };
+      const title = (career.title && typeof career.title === 'string') ? career.title.slice(0, 80) : 'AI Career';
+      const explanation = (career.explanation || career.description || '').slice(0, 300);
+      const missingSkills = Array.isArray(career.missingSkills || career.missing_skills)
+        ? (career.missingSkills || career.missing_skills).filter(s => typeof s === 'string').slice(0, 5)
+        : [];
+      const rawSalary = career.salaryRange || career.salary_range || {};
+      // Clamp salary to realistic ranges to prevent hallucinated values
+      const salaryRange = {
+        min: Math.max(25000, Math.min(200000, Number(rawSalary.min) || 60000)),
+        max: Math.max(40000, Math.min(300000, Number(rawSalary.max) || 120000)),
+      };
+      // Ensure min < max
+      if (salaryRange.min >= salaryRange.max) salaryRange.max = salaryRange.min + 30000;
 
       // Build a realistic requiredSkills list: user's matched skills + missing skills
       const requiredSkillsList = [
@@ -853,7 +881,7 @@ async function getRecommendations(skills, interests, background, currentField) {
 
     // Wait for both with a hard ceiling (if HF is slow, we still return built-in)
     const [aiSettled, semSettled] = await Promise.allSettled([
-      withTimeout(aiPromise, 18000, 'AI recommendations'),
+      withTimeout(aiPromise, 30000, 'AI recommendations'),
       withTimeout(semanticPromise, 18000, 'Semantic recommendations'),
     ]);
 

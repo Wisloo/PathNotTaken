@@ -125,15 +125,17 @@ router.post("/:id/generate-tasks", async (req, res) => {
     const id = req.params.id;
     const row = await db.get('SELECT id,"careerId",title,weeks FROM roadmaps WHERE id = ?', id);
     if (!row) return res.status(404).json({ error: 'Not found' });
-    const weeks = JSON.parse(row.weeks || '[]');
+    const parsedData = JSON.parse(row.weeks || '[]');
+    const weeks = Array.isArray(parsedData) ? parsedData : (parsedData.weeks || []);
     const openaiKey = process.env.OPENAI_API_KEY;
     const hfKey = process.env.HUGGINGFACE_API_KEY;
 
     if (!openaiKey && !hfKey) {
       // fallback simple generator: append "(AI-suggestion)" to each week's first task
-      const newWeeks = weeks.map((w) => w.map((t) => ({ ...t })));
+      const newWeeks = weeks.map((w) => Array.isArray(w) ? w.map((t) => ({ ...t })) : { ...w });
       for (let i = 0; i < newWeeks.length; i++) {
-        if (newWeeks[i][0]) newWeeks[i][0].title = `${newWeeks[i][0].title} (suggested)`;
+        const item = Array.isArray(newWeeks[i]) ? newWeeks[i][0] : (newWeeks[i]?.tasks ? newWeeks[i].tasks[0] : null);
+        if (item) item.title = `${item.title} (suggested)`;
       }
       // persist
       await db.run('UPDATE roadmaps SET weeks = ? WHERE id = ?', JSON.stringify(newWeeks), id);

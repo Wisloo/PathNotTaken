@@ -406,7 +406,7 @@ function ResultsContent() {
 
             {/* Cards Grid */}
             {filtered.length > 0 ? (
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-6 items-start">
                 {filtered.map((career, index) => (
                   <CareerCard key={career.id} career={career} index={index} />
                 ))}

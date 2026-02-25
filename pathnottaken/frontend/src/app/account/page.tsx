@@ -122,7 +122,7 @@ export default function AccountPage() {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'overview' | 'roadmaps' | 'skills' | 'results'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'roadmaps' | 'skills'>('overview');
   const [profileCopied, setProfileCopied] = useState(false);
   const router = useRouter();
   const { toast, confirm } = useToast();
@@ -209,13 +209,17 @@ export default function AccountPage() {
 
   /* ─── Gamification data ─── */
   const g = user.gamification || { xp: 0, level: 1, streakDays: 0, tasksCompleted: 0, badges: [], lastActivityDate: undefined };
-  const xpToNext = g.level * 500;
-  const xpProgress = Math.min(100, Math.round((g.xp % xpToNext) / xpToNext * 100));
+  // Use exponential thresholds matching backend (100 * 1.5^level)
+  const LEVEL_THRESHOLDS = Array.from({ length: 100 }, (_, i) => Math.floor(100 * Math.pow(1.5, i)));
+  const currentLevelXP = LEVEL_THRESHOLDS[g.level - 1] || 0;
+  const nextLevelXP = LEVEL_THRESHOLDS[g.level] || currentLevelXP + 500;
+  const xpToNext = nextLevelXP - currentLevelXP;
+  const xpIntoLevel = g.xp - currentLevelXP;
+  const xpProgress = xpToNext > 0 ? Math.min(100, Math.round((xpIntoLevel / xpToNext) * 100)) : 100;
   const memberSince = user.createdAt ? new Date(user.createdAt) : new Date();
   const daysSinceJoin = Math.max(1, Math.floor((Date.now() - memberSince.getTime()) / (1000 * 60 * 60 * 24)));
   const roadmapCount = (user.roadmapDetails || []).length;
   const snapshotCount = (user.skillSnapshots || []).length;
-  const resultCount = (user.savedResults || []).length;
 
   return (
     <div className="max-w-5xl mx-auto pb-8">
@@ -293,7 +297,7 @@ export default function AccountPage() {
           <div className="bg-white rounded-xl border border-gray-200 p-3 mt-3 mb-6">
             <div className="flex items-center justify-between text-xs text-gray-500 mb-1">
               <span>Level {g.level}</span>
-              <span>{g.xp % xpToNext} / {xpToNext} XP</span>
+              <span>{Math.max(0, xpIntoLevel)} / {xpToNext} XP</span>
               <span>Level {g.level + 1}</span>
             </div>
             <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
@@ -383,7 +387,6 @@ export default function AccountPage() {
             { key: 'overview' as const, label: 'Overview', count: roadmapCount },
             { key: 'roadmaps' as const, label: 'Roadmaps', count: roadmapCount },
             { key: 'skills' as const, label: 'Skill History', count: snapshotCount },
-            { key: 'results' as const, label: 'Saved Results', count: resultCount },
           ].map(tab => (
             <button
               key={tab.key}
@@ -405,7 +408,7 @@ export default function AccountPage() {
       {activeTab === 'overview' && (
         <div className="space-y-6">
           {/* Quick summary stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="card-static p-5">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center"><span className="text-lg">🗺️</span></div>
@@ -424,15 +427,7 @@ export default function AccountPage() {
                 </div>
               </div>
             </div>
-            <div className="card-static p-5">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center"><span className="text-lg">🔍</span></div>
-                <div>
-                  <p className="text-lg font-bold text-gray-900">{resultCount}</p>
-                  <p className="text-xs text-gray-500">Saved Explorations</p>
-                </div>
-              </div>
-            </div>
+
           </div>
 
           {/* Member stats */}
@@ -753,55 +748,6 @@ export default function AccountPage() {
         </div>
       )}
 
-      {/* ─── Saved Results Tab ─── */}
-      {activeTab === 'results' && (
-        <div className="space-y-4">
-          <div className="card-static p-5">
-            <h3 className="text-sm font-bold text-gray-800 mb-1">🔍 Saved Career Explorations</h3>
-            <p className="text-xs text-gray-400 mb-4">
-              Your previous career recommendation searches. Click to re-explore those results.
-            </p>
-            {(user.savedResults || []).length > 0 ? (
-              <div className="space-y-3">
-                {(user.savedResults || []).map(result => (
-                  <Link
-                    key={result.id}
-                    href={`/results?skills=${result.skills.join(',')}&interests=${result.interests.join(',')}`}
-                    className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50/30 transition-all"
-                  >
-                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-lg">🔍</span>
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-gray-800">
-                        {result.skills.slice(0, 3).map(s => s.replace(/-/g, ' ')).join(', ')}
-                        {result.skills.length > 3 && ` +${result.skills.length - 3} more`}
-                      </p>
-                      <div className="flex items-center gap-2 mt-0.5">
-                        <span className="text-[10px] text-gray-400">
-                          {new Date(result.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                        </span>
-                        <span className="text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">{result.source}</span>
-                      </div>
-                    </div>
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-6">
-                <span className="text-3xl mb-3 block">🔍</span>
-                <p className="text-sm text-gray-500 mb-1">No saved results yet</p>
-                <p className="text-xs text-gray-400">
-                  <Link href="/explore" className="text-emerald-600 hover:underline">Explore careers</Link> and save your results to view them later.
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

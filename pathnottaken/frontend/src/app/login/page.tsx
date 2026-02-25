@@ -21,7 +21,7 @@ export default function LoginPage() {
 
     if (!email.trim()) return setError("Please enter your email address.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setError("Please enter a valid email address.");
-    if (!password || password.length < 6) return setError("Password must be at least 6 characters.");
+    if (!password || password.length < 8) return setError("Password must be at least 8 characters.");
 
     setLoading(true);
     try {

@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { fetchPublicProfile } from "@/lib/api";
 
 /* ─── Types (matches backend response shape) ─── */
-interface RoadmapItem { id: string; careerId: string; title: string; createdAt: string }
+interface RoadmapItem { id: string; careerId: string; title: string; createdAt: string; completionPercent?: number }
 interface GamificationData { xp: number; level: number; streakDays: number; tasksCompleted: number; badges: string[] }
 interface PublicProfile {
   id: string;
@@ -81,8 +81,12 @@ function ProfileContent() {
   const skills = profile.skills || [];
   const memberDate = new Date(profile.memberSince);
   const daysSinceJoin = Math.max(1, Math.floor((Date.now() - memberDate.getTime()) / (1000 * 60 * 60 * 24)));
-  const xpToNext = g.level * 500;
-  const xpProgress = Math.min(100, Math.round((g.xp % xpToNext) / xpToNext * 100));
+  const LEVEL_THRESHOLDS = Array.from({ length: 100 }, (_, i) => Math.floor(100 * Math.pow(1.5, i)));
+  const currentLevelXP = LEVEL_THRESHOLDS[g.level - 1] || 0;
+  const nextLevelXP = LEVEL_THRESHOLDS[g.level] || currentLevelXP + 500;
+  const xpToNext = nextLevelXP - currentLevelXP;
+  const xpIntoLevel = g.xp - currentLevelXP;
+  const xpProgress = xpToNext > 0 ? Math.min(100, Math.round((xpIntoLevel / xpToNext) * 100)) : 100;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
@@ -117,7 +121,7 @@ function ProfileContent() {
             <div className="w-full max-w-xs mt-5">
               <div className="flex items-center justify-between text-[10px] text-gray-500 mb-1">
                 <span>Level {g.level}</span>
-                <span>{g.xp % xpToNext} / {xpToNext} XP</span>
+                <span>{Math.max(0, xpIntoLevel)} / {xpToNext} XP</span>
                 <span>Level {g.level + 1}</span>
               </div>
               <div className="w-full bg-gray-700/50 rounded-full h-2 overflow-hidden">
@@ -206,24 +210,75 @@ function ProfileContent() {
             <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
               <span className="text-lg">📋</span> Career Roadmaps
               <span className="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full">{roadmaps.length} roadmaps</span>
+              {roadmaps.some(rm => (rm.completionPercent ?? 0) === 100) && (
+                <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full">
+                  {roadmaps.filter(rm => (rm.completionPercent ?? 0) === 100).length} completed
+                </span>
+              )}
             </h3>
             <div className="space-y-2">
-              {roadmaps.map((rm, i) => (
-                <div
-                  key={rm.id}
-                  className="flex items-center gap-3 p-3 bg-gray-900/40 border border-gray-700/30 rounded-xl hover:border-gray-600/50 transition-colors"
-                >
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border border-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm font-bold text-blue-300">#{i + 1}</span>
+              {[...roadmaps].sort((a, b) => (b.completionPercent ?? 0) - (a.completionPercent ?? 0)).map((rm, i) => {
+                const pct = rm.completionPercent ?? 0;
+                const isComplete = pct === 100;
+                return (
+                  <div
+                    key={rm.id}
+                    className={`flex items-center gap-3 p-3 bg-gray-900/40 border rounded-xl transition-colors ${
+                      isComplete ? 'border-emerald-500/40 bg-emerald-900/10' : 'border-gray-700/30 hover:border-gray-600/50'
+                    }`}
+                  >
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                      isComplete
+                        ? 'bg-gradient-to-br from-emerald-500/30 to-teal-500/30 border border-emerald-500/30'
+                        : 'bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border border-blue-500/20'
+                    }`}>
+                      {isComplete ? (
+                        <span className="text-lg">🏆</span>
+                      ) : (
+                        <span className="text-sm font-bold text-blue-300">#{i + 1}</span>
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <p className="text-sm font-medium text-white truncate">{rm.title || 'Untitled Roadmap'}</p>
+                        {isComplete && (
+                          <span className="flex-shrink-0 text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-semibold">
+                            ✅ Completed
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <p className="text-[10px] text-gray-500">
+                          Created {new Date(rm.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                        </p>
+                        {!isComplete && pct > 0 && (
+                          <span className="text-[10px] text-blue-400">{pct}% complete</span>
+                        )}
+                      </div>
+                      {/* Progress bar */}
+                      {pct > 0 && (
+                        <div className="mt-2 w-full bg-gray-700/50 rounded-full h-1.5">
+                          <div
+                            className={`h-1.5 rounded-full transition-all duration-700 ${
+                              isComplete ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : 'bg-gradient-to-r from-blue-400 to-indigo-400'
+                            }`}
+                            style={{ width: `${pct}%` }}
+                          />
+                        </div>
+                      )}
+                      {/* Show earned badge for completed roadmaps */}
+                      {isComplete && g.badges.includes('pathfinder') && (
+                        <div className="flex items-center gap-1.5 mt-2">
+                          <div className="w-5 h-5 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-md flex items-center justify-center">
+                            <span className="text-xs">🚀</span>
+                          </div>
+                          <span className="text-[10px] text-emerald-300 font-medium">Earned: Pathfinder Badge</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-medium text-white truncate">{rm.title || 'Untitled Roadmap'}</p>
-                    <p className="text-[10px] text-gray-500">
-                      Created {new Date(rm.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}

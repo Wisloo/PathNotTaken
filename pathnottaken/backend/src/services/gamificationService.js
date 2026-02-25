@@ -419,3 +419,4 @@ class GamificationService {
 }
 
 module.exports = GamificationService;
+module.exports.ACHIEVEMENTS = ACHIEVEMENTS;

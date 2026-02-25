@@ -17,7 +17,7 @@ export default function SignUpPage() {
   const router = useRouter();
   const { toast } = useToast();
 
-  const passwordStrength = !password ? 0 : password.length < 6 ? 1 : password.length < 10 ? 2 : /[A-Z]/.test(password) && /[0-9]/.test(password) ? 4 : 3;
+  const passwordStrength = !password ? 0 : password.length < 8 ? 1 : password.length < 10 ? 2 : /[A-Z]/.test(password) && /[0-9]/.test(password) ? 4 : 3;
   const strengthLabels = ["", "Weak", "Fair", "Good", "Strong"];
   const strengthColors = ["", "bg-red-400", "bg-amber-400", "bg-blue-400", "bg-emerald-400"];
 
@@ -28,7 +28,7 @@ export default function SignUpPage() {
     if (!name.trim()) return setError("Please enter your name.");
     if (!email.trim()) return setError("Please enter your email address.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setError("Please enter a valid email address.");
-    if (password.length < 6) return setError("Password must be at least 6 characters.");
+    if (password.length < 8) return setError("Password must be at least 8 characters.");
     if (password !== confirmPassword) return setError("Passwords do not match.");
 
     setLoading(true);
@@ -95,10 +95,10 @@ export default function SignUpPage() {
                 autoComplete="new-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="At least 6 characters"
+                placeholder="At least 8 characters"
                 className="w-full border border-gray-200 px-3 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 pr-10"
                 required
-                minLength={6}
+                minLength={8}
               />
               <button
                 type="button"

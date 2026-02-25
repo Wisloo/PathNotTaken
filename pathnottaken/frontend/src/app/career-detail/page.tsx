@@ -47,9 +47,9 @@ function CareerDetailPage() {
     }
 
     // Load user's current skills from localStorage if available
-    const savedSkills = localStorage.getItem("userSkills");
+    const savedSkills = localStorage.getItem("pn_user_skills");
     if (savedSkills) {
-      setUserSkills(JSON.parse(savedSkills));
+      try { setUserSkills(JSON.parse(savedSkills)); } catch { /* ignore corrupted data */ }
     }
   }, [careerId]);
 
