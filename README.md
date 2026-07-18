@@ -1,7 +1,7 @@
 # PathNotTaken
 
 <p align="center">
-  <img src="assets/PathNotTaken.png" alt="PathNotTaken" width="600" />
+  <img src="pathnottaken/assets/PathNotTaken.png" alt="PathNotTaken" width="600" />
 </p>
 
 **Discover career paths you never knew existed.**
