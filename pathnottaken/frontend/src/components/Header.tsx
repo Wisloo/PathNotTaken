@@ -19,7 +19,6 @@ export default function Header() {
 
   const [me, setMe] = useState<{ id: string; email: string; name?: string } | null>(null);
 
-  // detect token (use API origin helper so requests go to backend, not Next's /api)
   useEffect(() => {
     let mounted = true;
     async function load() {
@@ -50,67 +49,66 @@ export default function Header() {
   function logout() {
     localStorage.removeItem("pn_token");
     setMe(null);
-    // refresh to clear any auth-only UI
     window.location.reload();
   }
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-2xl bg-white/60 border-b border-gray-200/40 shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 font-display backdrop-blur-2xl">
+      <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
+        <div className="relative flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="relative w-9 h-9 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-xl flex items-center justify-center shadow-md shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-shadow duration-300">
-              <span className="text-white font-extrabold text-sm tracking-tight">PN</span>
-              <div className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <Link href="/" className="group flex shrink-0 items-center gap-2.5">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-lime shadow-[0_0_24px_rgba(204,255,0,0.35)] transition-transform duration-300 group-hover:scale-105">
+              <span className="text-sm font-bold tracking-tight text-black">PN</span>
             </div>
-            <span className="text-[17px] font-extrabold text-gray-900 tracking-tight">
-              Path<span className="gradient-text">NotTaken</span>
+            <span className="text-[17px] font-medium tracking-tight text-ink">
+              Path<span className="text-lime">NotTaken</span>
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-0.5">
+          {/* Desktop Nav — centered pill */}
+          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border border-white/10 bg-white/5 px-1.5 py-1.5 backdrop-blur-xl md:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`rounded-full px-4 py-2 text-sm transition-all duration-200 ${
                   isActive(link.href)
-                    ? "text-emerald-700 bg-emerald-50/80"
-                    : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+                    ? "bg-lime font-medium text-black"
+                    : "text-white/70 hover:bg-white/5 hover:text-white"
                 }`}
               >
                 {link.label}
-                {isActive(link.href) && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full" />
-                )}
               </Link>
             ))}
           </nav>
 
-          {/* Right side (auth) */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right side */}
+          <div className="hidden items-center gap-4 md:flex">
+            <span className="status-tag text-white/50">
+              <span className="status-dot" />
+              System Online
+            </span>
             {!me ? (
               <>
-                <Link href="/login" className="text-sm font-medium text-gray-500 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200">Login</Link>
-                <Link href="/signup" className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all shadow-md shadow-emerald-600/20 hover:shadow-emerald-600/30 hover:-translate-y-px">Sign Up</Link>
+                <Link href="/login" className="text-sm font-medium text-white/70 transition-colors hover:text-white">Login</Link>
+                <Link href="/signup" className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-black transition-transform duration-300 hover:scale-105">Sign Up</Link>
               </>
             ) : (
               <div className="flex items-center gap-1">
-                <Link href="/account" className="text-sm font-medium text-gray-600 px-3 py-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 transition-all duration-200">My Profile</Link>
-                <button onClick={logout} className="text-sm text-gray-400 px-3 py-2 rounded-lg hover:bg-gray-50 hover:text-gray-600 transition-all duration-200">Logout</button>
+                <Link href="/account" className="rounded-full px-4 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/5 hover:text-white">My Profile</Link>
+                <button onClick={logout} className="rounded-full px-4 py-2 text-sm text-white/40 transition-colors hover:bg-white/5 hover:text-white/70">Logout</button>
               </div>
             )}
           </div>
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 text-gray-400 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-all"
+            className="rounded-lg p-2 text-white/60 transition-all hover:bg-white/5 hover:text-white md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -122,32 +120,32 @@ export default function Header() {
 
         {/* Mobile Nav */}
         {mobileOpen && (
-          <div className="md:hidden border-t border-gray-100 py-3 space-y-1 animate-fade-in">
+          <div className="animate-fade-in space-y-1 border-t border-white/10 py-3 md:hidden">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                className={`block rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
                   isActive(link.href)
-                    ? "text-emerald-700 bg-emerald-50/80"
-                    : "text-gray-600 hover:bg-gray-50"
+                    ? "bg-lime text-black"
+                    : "text-white/70 hover:bg-white/5"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
 
-            <div className="pt-3 border-t border-gray-100 flex gap-2 px-4">
+            <div className="flex gap-2 border-t border-white/10 px-4 pt-3">
               {!me ? (
                 <>
-                  <Link href="/login" className="flex-1 text-center py-2.5 rounded-xl text-sm font-medium border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all">Login</Link>
-                  <Link href="/signup" className="flex-1 text-center py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-emerald-600 to-emerald-700 text-white">Sign Up</Link>
+                  <Link href="/login" className="flex-1 rounded-full border border-white/15 py-2.5 text-center text-sm font-medium text-white/80 transition-all hover:bg-white/5">Login</Link>
+                  <Link href="/signup" className="flex-1 rounded-full bg-lime py-2.5 text-center text-sm font-bold text-black">Sign Up</Link>
                 </>
               ) : (
                 <>
-                  <Link href="/account" className="flex-1 text-center py-2.5 rounded-xl text-sm font-medium border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all">My Profile</Link>
-                  <button onClick={logout} className="flex-1 text-center py-2.5 rounded-xl text-sm font-medium border border-gray-200 text-gray-500 hover:bg-gray-50 transition-all">Logout</button>
+                  <Link href="/account" className="flex-1 rounded-full border border-white/15 py-2.5 text-center text-sm font-medium text-white/80 transition-all hover:bg-white/5">My Profile</Link>
+                  <button onClick={logout} className="flex-1 rounded-full border border-white/15 py-2.5 text-center text-sm font-medium text-white/60 transition-all hover:bg-white/5">Logout</button>
                 </>
               )}
             </div>

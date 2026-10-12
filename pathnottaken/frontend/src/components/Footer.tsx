@@ -28,40 +28,48 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-950 text-white relative overflow-hidden">
-      {/* Subtle gradient glow */}
-      <div className="absolute top-0 left-1/3 w-96 h-32 bg-emerald-500/5 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-24 bg-teal-500/5 blur-3xl rounded-full" />
+    <footer className="relative overflow-hidden bg-black font-display text-ink">
+      {/* Watermark */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center overflow-hidden">
+        <span className="select-none text-[10rem] font-bold leading-none tracking-[-0.06em] text-white/5">
+          SUPER
+        </span>
+      </div>
+      <div className="glow-sphere left-1/4 top-10 h-64 w-64 bg-lime/5" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Top: Brand + columns */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-14">
-          {/* Brand column */}
+      <div className="relative mx-auto max-w-[1600px] px-6 pb-10 pt-28 sm:px-8 lg:px-12">
+        {/* Top: brand + columns */}
+        <div className="grid grid-cols-2 gap-10 border-b border-white/10 pb-14 md:grid-cols-4">
           <div className="col-span-2">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-xl flex items-center justify-center shadow-md shadow-emerald-500/20">
-                <span className="text-white font-extrabold text-sm">PN</span>
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-lime">
+                <span className="text-sm font-bold text-black">PN</span>
               </div>
-              <span className="text-[17px] font-extrabold tracking-tight">
-                Path<span className="text-emerald-400">NotTaken</span>
+              <span className="text-[17px] font-medium tracking-tight">
+                Path<span className="text-lime">NotTaken</span>
               </span>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-              Discover non-obvious career paths powered by your unique combination of skills and interests.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
+              Discover non-obvious career paths powered by your unique combination of
+              skills and interests.
             </p>
+            <Link
+              href="/signup"
+              className="btn-lime mt-6 text-sm"
+            >
+              Get Started Free
+            </Link>
           </div>
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h4 className="font-semibold text-xs uppercase text-gray-500 mb-4 tracking-widest">
-                {col.title}
-              </h4>
-              <ul className="space-y-3">
+              <h4 className="font-mono-label text-white/40">{col.title}</h4>
+              <ul className="mt-5 space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-200"
+                      className="text-sm text-white/60 transition-colors duration-200 hover:text-lime"
                     >
                       {link.label}
                     </Link>
@@ -72,21 +80,21 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-gray-800/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} PathNotTaken. All rights reserved.
+        <div className="flex flex-col items-center justify-between gap-6 pt-8 sm:flex-row">
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/30">
+            © {new Date().getFullYear()} PathNotTaken — All rights reserved
           </p>
 
-          {/* Social icons */}
+          {/* Social icons — hollow circles */}
           <div className="flex items-center gap-2">
             {["twitter", "github", "linkedin"].map((social) => (
               <a
                 key={social}
                 href="#"
-                className="w-9 h-9 rounded-xl bg-gray-800/60 hover:bg-emerald-500/10 hover:text-emerald-400 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 text-gray-500"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/50 transition-all duration-200 hover:border-lime hover:text-lime"
                 aria-label={social}
               >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                   {social === "twitter" && (
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   )}

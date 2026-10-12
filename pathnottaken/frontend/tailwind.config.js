@@ -31,9 +31,43 @@ module.exports = {
       fontFamily: {
         sans: ["Inter", "DM Sans", "system-ui", "-apple-system", "sans-serif"],
         serif: ["Instrument Serif", "Georgia", "serif"],
+        display: ["Space Grotesk", "Inter", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+      },
+      colors: {
+        lime: {
+          DEFAULT: "#ccff00",
+        },
+        obsidian: "#0c0c0c",
+        shell: "#000000",
+        ink: {
+          DEFAULT: "#ebebeb",
+        },
+        emeraldGlow: "#10b981",
       },
       borderRadius: {
         "4xl": "2rem",
+        "5xl": "2.5rem",
+        "6xl": "4rem",
+      },
+      keyframes: {
+        "obsidian-float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "obsidian-pulse": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.5", transform: "scale(1.5)" },
+        },
+        "obsidian-marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        "float-anim": "obsidian-float 6s ease-in-out infinite",
+        "dot-pulse": "obsidian-pulse 2s ease-in-out infinite",
+        "obsidian-marquee": "obsidian-marquee 32s linear infinite",
       },
     },
   },
